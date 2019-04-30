@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Павел Григорьев](https://up.htmlacademy.ru/react/1/user/564549).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Бренчев](https://htmlacademy.ru/profile/id59895).
 
 ---
 
