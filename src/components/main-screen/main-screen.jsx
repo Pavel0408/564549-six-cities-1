@@ -2,7 +2,6 @@ import React from "react";
 
 export const MainScreen = () => {
   return <React.Fragment>
-
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
