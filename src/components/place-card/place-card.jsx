@@ -56,4 +56,4 @@ export const PlaceCard = (props) => {
 
 PlaceCard.propTypes = {
   cardTitle: PropTypes.string.isRequired
-}
+};

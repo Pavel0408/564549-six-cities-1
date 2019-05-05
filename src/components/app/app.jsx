@@ -11,4 +11,4 @@ export const App = (props) => {
 
 App.propTypes = {
   cardTitles: PropTypes.array.isRequired
-}
+};
