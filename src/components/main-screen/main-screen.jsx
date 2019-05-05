@@ -1,9 +1,10 @@
+import PropTypes from "prop-types";
 import React from "react";
+
 import {PlaceCard} from "../place-card/place-card";
 
 export const MainScreen = (props) => {
   const {cardTitles} = props;
-  console.log(cardTitles);
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -147,4 +148,8 @@ export const MainScreen = (props) => {
       </div>
     </main>
   </React.Fragment>;
+};
+
+MainScreen.propTypes = {
+  cardTitles: PropTypes.array.isRequired
 };

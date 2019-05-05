@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 export const PlaceCard = (props) => {
@@ -52,3 +53,7 @@ export const PlaceCard = (props) => {
     </div>
   </article>;
 };
+
+PlaceCard.propTypes = {
+  cardTitle: PropTypes.string.isRequired
+}
