@@ -17,7 +17,8 @@ export const MainScreen = (props) => {
           />
         </symbol>
         <symbol id="icon-bookmark" viewBox="0 0 17 18">
-          <path d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z" />
+          <path
+            d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z"/>
         </symbol>
         <symbol id="icon-star" viewBox="0 0 13 12">
           <path
@@ -49,7 +50,7 @@ export const MainScreen = (props) => {
                   className="header__nav-link header__nav-link--profile"
                   href="#"
                 >
-                  <div className="header__avatar-wrapper user__avatar-wrapper" />
+                  <div className="header__avatar-wrapper user__avatar-wrapper"/>
                   <span className="header__user-name user__name">
                   Oliver.conner@gmail.com
                   </span>
@@ -103,7 +104,7 @@ export const MainScreen = (props) => {
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
             <b className="places__found">
-                312 places to stay in Amsterdam
+              312 places to stay in Amsterdam
             </b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
@@ -114,7 +115,7 @@ export const MainScreen = (props) => {
                   width={7}
                   height={4}
                 >
-                  <use xlinkHref="#icon-arrow-select" />
+                  <use xlinkHref="#icon-arrow-select"/>
                 </svg>
               </span>
               <ul className="places__options places__options--custom">
@@ -122,27 +123,26 @@ export const MainScreen = (props) => {
                   className="places__option places__option--active"
                   tabIndex={0}
                 >
-                    Popular
+                  Popular
                 </li>
                 <li className="places__option" tabIndex={0}>
-                    Price: low to high
+                  Price: low to high
                 </li>
                 <li className="places__option" tabIndex={0}>
-                    Price: high to low
+                  Price: high to low
                 </li>
                 <li className="places__option" tabIndex={0}>
-                    Top rated first
+                  Top rated first
                 </li>
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {cardTitles.map((cardTitle, i)=>{
-                return <PlaceCard key={i} cardTitle={cardTitle}/>;
-              })}
+              {cardTitles.map((cardTitle, i) => <PlaceCard key={i} cardTitle={cardTitle}/>
+              )}
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map" />
+            <section className="cities__map map"/>
           </div>
         </div>
       </div>
@@ -151,5 +151,5 @@ export const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  cardTitles: PropTypes.array.isRequired
+  cardTitles: PropTypes.array.isRequired,
 };
