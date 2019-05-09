@@ -10,10 +10,17 @@ const cardTitlesMock = [
   `Nice, cozy, warm big bed apartment`
 ];
 
+const titleClickHandler = (evt) => {
+  evt.preventDefault();
+
+  return null;
+};
+
 describe(`testing App render`, () => {
   it(`App is render correctly`, () => {
     const tree = renderer.create(<App
       cardTitles={cardTitlesMock}
+      titleClickHandler={titleClickHandler}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();

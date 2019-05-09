@@ -5,9 +5,18 @@ import {PlaceCard} from "./place-card";
 
 const nameMock = `Beautiful & luxurious apartment at great location`;
 
+const titleClickHandler = (evt) => {
+  evt.preventDefault();
+
+  return null;
+};
+
 describe(`testing PlaceCard render`, () => {
   it(`PlaceCard is render correctly`, () => {
-    const tree = renderer.create(<PlaceCard name={nameMock}/>).toJSON();
+    const tree = renderer.create(<PlaceCard
+      name={nameMock}
+      titleClickHandler={titleClickHandler}
+    />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

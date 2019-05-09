@@ -10,9 +10,18 @@ const cardTitlesMock = [
   `Nice, cozy, warm big bed apartment`
 ];
 
+const titleClickHandler = (evt) => {
+  evt.preventDefault();
+
+  return null;
+};
+
 describe(`testing MainScreen render`, () => {
   it(`MainScreen is render correctly`, () => {
-    const tree = renderer.create(<MainScreen cardTitles={cardTitlesMock}/>).toJSON();
+    const tree = renderer.create(<MainScreen
+      cardTitles={cardTitlesMock}
+      titleClickHandler={titleClickHandler}
+    />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

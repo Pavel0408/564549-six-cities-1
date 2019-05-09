@@ -10,9 +10,18 @@ const cardTitles = [
   `Nice, cozy, warm big bed apartment`
 ];
 
+const titleClickHandler = (evt) => {
+  evt.preventDefault();
+
+  return null;
+};
+
 const init = () => {
   ReactDOM.render(
-      <App cardTitles={cardTitles}/>,
+      <App
+        cardTitles={cardTitles}
+        titleClickHandler={titleClickHandler}
+      />,
       document.querySelector(`#root`)
   );
 };
