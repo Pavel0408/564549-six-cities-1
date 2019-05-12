@@ -22,8 +22,8 @@ describe(`testing the App work`, () => {
     />);
 
     const titles = app.find(`.place-card__name a`);
-    titles.forEach((it) => {
-      it.simulate(`click`);
+    titles.forEach((title) => {
+      title.simulate(`click`);
     });
 
     expect(titleClickHandler).toHaveBeenCalledTimes(cardTitlesMock.length);
