@@ -5,10 +5,7 @@ import {PlaceCard} from "./place-card";
 
 const nameMock = `Beautiful & luxurious apartment at great location`;
 
-const titleClickHandler = (evt) => {
-  evt.preventDefault();
-
-  return null;
+const titleClickHandler = () => {
 };
 
 describe(`testing PlaceCard render`, () => {

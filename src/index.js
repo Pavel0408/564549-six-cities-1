@@ -10,10 +10,7 @@ const cardTitles = [
   `Nice, cozy, warm big bed apartment`
 ];
 
-const titleClickHandler = (evt) => {
-  evt.preventDefault();
-
-  return null;
+const titleClickHandler = () => {
 };
 
 const init = () => {

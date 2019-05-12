@@ -10,10 +10,7 @@ const cardTitlesMock = [
   `Nice, cozy, warm big bed apartment`
 ];
 
-const titleClickHandler = (evt) => {
-  evt.preventDefault();
-
-  return null;
+const titleClickHandler = () => {
 };
 
 describe(`testing App render`, () => {
