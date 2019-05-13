@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import {PlaceCard} from "../place-card/place-card";
 import OffersList from "../offers-list/offers-list";
 
 export const MainScreen = (props) => {
@@ -152,6 +151,6 @@ export const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  cardTitles: PropTypes.array.isRequired,
+  offers: PropTypes.array.isRequired,
   titleClickHandler: PropTypes.func.isRequired
 };

@@ -11,27 +11,29 @@ class OffersList extends PureComponent {
     };
   }
 
+  _generateImgHoverHandler() {
+    return (evt) => {
+      this.setState({
+        activeCard: evt.target.closest(`article`)
+      });
+    };
+  }
+
   render() {
     const {offers, titleClickHandler} = this.props;
 
     return offers.map((offer, i) => {
-      const card = offers[i];
-
       return <PlaceCard key={i} offer={offer} titleClickHandler={titleClickHandler}
-        imgHoverHandler={this._imgHoverHandler(card)}/>;
+        imgHoverHandler={this._generateImgHoverHandler()}/>;
     }
     );
   }
-
-  _imgHoverHandler(card) {
-
-    return () => {
-      this.setState({
-        activeCard: card
-      });
-    };
-  }
 }
+
+OffersList.propTypes = {
+  offers: PropTypes.array.isRequired,
+  titleClickHandler: PropTypes.func.isRequired
+};
 
 export default OffersList;
 

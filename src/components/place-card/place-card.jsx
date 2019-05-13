@@ -59,6 +59,7 @@ export const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  titleClickHandler: PropTypes.func.isRequired
+  offer: PropTypes.object.isRequired,
+  titleClickHandler: PropTypes.func.isRequired,
+  imgHoverHandler: PropTypes.func.isRequired
 };

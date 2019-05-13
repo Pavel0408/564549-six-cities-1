@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {App} from './app.jsx';
+import OffersList from './offers-list';
 
 const offersMock = [
   {name: `Beautiful & luxurious apartment at great location`,
@@ -24,9 +24,9 @@ const offersMock = [
 const titleClickHandler = () => {
 };
 
-describe(`testing App render`, () => {
-  it(`App is render correctly`, () => {
-    const tree = renderer.create(<App
+describe(`testing OffersList render`, () => {
+  it(`OffersList is render correctly`, () => {
+    const tree = renderer.create(<OffersList
       offers={offersMock}
       titleClickHandler={titleClickHandler}
     />).toJSON();
@@ -34,3 +34,5 @@ describe(`testing App render`, () => {
     expect(tree).toMatchSnapshot();
   });
 });
+
+

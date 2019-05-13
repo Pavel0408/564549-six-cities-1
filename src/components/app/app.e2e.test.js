@@ -6,18 +6,29 @@ import {App} from "./app";
 
 configure({adapter: new Adapter()});
 
-const cardTitlesMock = [
-  `Beautiful & luxurious apartment at great location`,
-  `Wood and stone place`,
-  `Canal View Prinsengracht`,
-  `Nice, cozy, warm big bed apartment`
+const offersMock = [
+  {name: `Beautiful & luxurious apartment at great location`,
+    image: `img/apartment-01.jpg`,
+    price: 120,
+    rating: 5,
+    isPremium: false,
+    isFavorite: true
+  },
+  {
+    name: `Wood and stone place`,
+    image: `img/room.jpg`,
+    price: 80,
+    rating: 10,
+    isPremium: true,
+    isFavorite: false
+  }
 ];
 
 describe(`testing the App work`, () => {
   it(`click card title calls ths handler`, () => {
     const titleClickHandler = jest.fn();
     const app = mount(<App
-      cardTitles={cardTitlesMock}
+      offers={offersMock}
       titleClickHandler={titleClickHandler}
     />);
 
@@ -26,6 +37,6 @@ describe(`testing the App work`, () => {
       title.simulate(`click`);
     });
 
-    expect(titleClickHandler).toHaveBeenCalledTimes(cardTitlesMock.length);
+    expect(titleClickHandler).toHaveBeenCalledTimes(offersMock.length);
   });
 });
