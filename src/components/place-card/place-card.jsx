@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 export const PlaceCard = (props) => {
-  const {offer, titleClickHandler} = props;
+  const {offer, titleClickHandler, imgHoverHandler} = props;
 
   return <article className="cities__place-card place-card">
     {offer.isPremium ? <div className="place-card__mark">
@@ -16,6 +16,7 @@ export const PlaceCard = (props) => {
           width={260}
           height={200}
           alt="Place image"
+          onMouseOver={imgHoverHandler}
         />
       </a>
     </div>

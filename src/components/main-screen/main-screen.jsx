@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import {PlaceCard} from "../place-card/place-card";
+import OffersList from "../offers-list/offers-list";
 
 export const MainScreen = (props) => {
   const {offers, titleClickHandler} = props;
@@ -137,8 +138,8 @@ export const MainScreen = (props) => {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {offers.map((offer, i) => <PlaceCard key={i} offer={offer} titleClickHandler={titleClickHandler}/>
-              )}
+              {<OffersList offers={offers} titleClickHandler={titleClickHandler}/>
+              }
             </div>
           </section>
           <div className="cities__right-section">
