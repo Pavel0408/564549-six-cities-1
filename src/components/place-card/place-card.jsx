@@ -2,14 +2,17 @@ import PropTypes from "prop-types";
 import React from "react";
 
 export const PlaceCard = (props) => {
-  const {name, titleClickHandler} = props;
+  const {offer, titleClickHandler} = props;
 
   return <article className="cities__place-card place-card">
+    {offer.isPremium ? <div className="place-card__mark">
+      <span>Premium</span>
+    </div> : ``}
     <div className="cities__image-wrapper place-card__image-wrapper">
       <a href="#">
         <img
           className="place-card__image"
-          src="img/room.jpg"
+          src={offer.image}
           width={260}
           height={200}
           alt="Place image"
@@ -19,13 +22,13 @@ export const PlaceCard = (props) => {
     <div className="place-card__info">
       <div className="place-card__price-wrapper">
         <div className="place-card__price">
-          <b className="place-card__price-value">€80</b>
+          <b className="place-card__price-value">€{offer.price}</b>
           <span className="place-card__price-text">
                       /&nbsp;night
           </span>
         </div>
         <button
-          className="place-card__bookmark-button place-card__bookmark-button--active button"
+          className={offer.isFavorite ? `place-card__bookmark-button  place-card__bookmark-button--active button` : `place-card__bookmark-button button`}
           type="button"
         >
           <svg
@@ -42,12 +45,12 @@ export const PlaceCard = (props) => {
       </div>
       <div className="place-card__rating rating">
         <div className="place-card__stars rating__stars">
-          <span style={{width: `80%`}} />
+          <span style={{width: offer.rating * 10 + `%`}} />
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
       <h2 className="place-card__name">
-        <a href="#" onClick={titleClickHandler}>{name}</a>
+        <a href="#" onClick={titleClickHandler}>{offer.name}</a>
       </h2>
       <p className="place-card__type">Private room</p>
     </div>

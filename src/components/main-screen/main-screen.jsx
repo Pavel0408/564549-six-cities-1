@@ -4,7 +4,7 @@ import React from "react";
 import {PlaceCard} from "../place-card/place-card";
 
 export const MainScreen = (props) => {
-  const {cardTitles, titleClickHandler} = props;
+  const {offers, titleClickHandler} = props;
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -137,7 +137,7 @@ export const MainScreen = (props) => {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {cardTitles.map((name, i) => <PlaceCard key={i} name={name} titleClickHandler={titleClickHandler}/>
+              {offers.map((offer, i) => <PlaceCard key={i} offer={offer} titleClickHandler={titleClickHandler}/>
               )}
             </div>
           </section>

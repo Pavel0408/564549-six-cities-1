@@ -4,15 +4,15 @@ import React from "react";
 import {MainScreen} from "../main-screen/main-screen";
 
 export const App = (props) => {
-  const {cardTitles, titleClickHandler} = props;
+  const {offers, titleClickHandler} = props;
 
   return <MainScreen
-    cardTitles={cardTitles}
+    offers={offers}
     titleClickHandler={titleClickHandler}
   />;
 };
 
 App.propTypes = {
-  cardTitles: PropTypes.array.isRequired,
+  offers: PropTypes.array.isRequired,
   titleClickHandler: PropTypes.func.isRequired
 };
