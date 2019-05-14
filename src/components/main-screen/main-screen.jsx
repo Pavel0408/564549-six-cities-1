@@ -137,8 +137,7 @@ export const MainScreen = (props) => {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {<OffersList offers={offers} titleClickHandler={titleClickHandler}/>
-              }
+              <OffersList offers={offers} titleClickHandler={titleClickHandler}/>
             </div>
           </section>
           <div className="cities__right-section">
