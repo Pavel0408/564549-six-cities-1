@@ -5,9 +5,9 @@ export const PlaceCard = (props) => {
   const {offer, titleClickHandler, imgHoverHandler} = props;
 
   return <article className="cities__place-card place-card">
-    {offer.isPremium ? <div className="place-card__mark">
+    {offer.isPremium && <div className="place-card__mark">
       <span>Premium</span>
-    </div> : ``}
+    </div>}
     <div className="cities__image-wrapper place-card__image-wrapper">
       <a href="#">
         <img
