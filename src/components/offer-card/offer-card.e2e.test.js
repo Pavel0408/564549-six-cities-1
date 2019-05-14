@@ -14,31 +14,51 @@ const offerMock = {name: `Beautiful & luxurious apartment at great location`,
   isFavorite: true
 };
 
-const titleClickHandler = () => {
-};
-
 const state = {
-  activeCard: null
+  activeCard: null,
+  clickedCard: null
 };
 
-const generateImgHoverHandler = () => {
+const generateTitleClickHandler = (offer) => {
   return (evt) => {
-    state.activeCard = evt.target.closest(`article`);
+    evt.preventDefault();
+
+    state.clickedCard = offer;
+  };
+};
+
+const generateImgHoverHandler = (offer) => {
+  return () => {
+    state.activeCard = offer;
   };
 };
 
 describe(`testing the OfferCard work`, () => {
-  it(`click on image return card element`, () => {
+  it(`over on image return offers element`, () => {
     const card = mount(<OfferCard
-      imgHoverHandler={generateImgHoverHandler()}
-      titleClickHandler={titleClickHandler}
+      imgHoverHandler={generateImgHoverHandler(offerMock)}
+      titleClickHandler={generateTitleClickHandler(offerMock)}
       offer={offerMock}
     />);
 
     const image = card.find(`img`);
     image.simulate(`mouseOver`);
-    const title = state.activeCard.querySelectorAll(`.place-card__name a`);
+    const title = state.activeCard.name;
 
-    expect(title.length === 1);
+    expect(title === `Beautiful & luxurious apartment at great location`);
+  });
+
+  it(`click on title return offers element`, () => {
+    const card = mount(<OfferCard
+      imgHoverHandler={generateImgHoverHandler(offerMock)}
+      titleClickHandler={generateTitleClickHandler(offerMock)}
+      offer={offerMock}
+    />);
+
+    const title = card.find(`.place-card__name a`);
+    title.simulate(`click`);
+    const price = state.clickedCard.price;
+
+    expect(price === 120);
   });
 });

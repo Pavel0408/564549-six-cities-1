@@ -21,14 +21,10 @@ const offersMock = [
   }
 ];
 
-const titleClickHandler = () => {
-};
-
 describe(`testing App render`, () => {
   it(`App is render correctly`, () => {
     const tree = renderer.create(<App
       offers={offersMock}
-      titleClickHandler={titleClickHandler}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();

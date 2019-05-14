@@ -4,7 +4,7 @@ import React from "react";
 import OffersList from "../offers-list/offers-list";
 
 export const MainScreen = (props) => {
-  const {offers, titleClickHandler} = props;
+  const {offers} = props;
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -137,7 +137,7 @@ export const MainScreen = (props) => {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <OffersList offers={offers} titleClickHandler={titleClickHandler}/>
+              <OffersList offers={offers}/>
             </div>
           </section>
           <div className="cities__right-section">
@@ -157,7 +157,5 @@ MainScreen.propTypes = {
     rating: PropTypes.number.isRequired,
     isPremium: PropTypes.bool.isRequired,
     isFavorite: PropTypes.bool.isRequired
-  })).isRequired,
-
-  titleClickHandler: PropTypes.func.isRequired
+  })).isRequired
 };

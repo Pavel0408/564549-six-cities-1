@@ -7,27 +7,37 @@ class OffersList extends PureComponent {
     super(props);
 
     this.state = {
-      activeCard: null
+      activeCard: null,
+      clickedCard: null
     };
   }
 
-  _generateImgHoverHandler() {
-    return (evt) => {
+  _generateImgHoverHandler(offer) {
+    return () => {
       this.setState({
-        activeCard: evt.target.closest(`article`)
+        activeCard: offer
+      });
+    };
+  }
+
+  _generateTitleClickHandler(offer) {
+    return (evt) => {
+      evt.preventDefault();
+      this.setState({
+        clickedCard: offer
       });
     };
   }
 
   render() {
-    const {offers, titleClickHandler} = this.props;
+    const {offers} = this.props;
 
     return offers.map((offer, i) => {
       return <OfferCard
         key={i}
         offer={offer}
-        titleClickHandler={titleClickHandler}
-        imgHoverHandler={this._generateImgHoverHandler()}
+        titleClickHandler={this._generateTitleClickHandler(offer)}
+        imgHoverHandler={this._generateImgHoverHandler(offer)}
       />;
     }
     );
@@ -35,8 +45,7 @@ class OffersList extends PureComponent {
 }
 
 OffersList.propTypes = {
-  offers: PropTypes.array.isRequired,
-  titleClickHandler: PropTypes.func.isRequired
+  offers: PropTypes.array.isRequired
 };
 
 export default OffersList;

@@ -21,14 +21,10 @@ const offersMock = [
   }
 ];
 
-const titleClickHandler = () => {
-};
-
 describe(`testing MainScreen render`, () => {
   it(`MainScreen is render correctly`, () => {
     const tree = renderer.create(<MainScreen
       offers={offersMock}
-      titleClickHandler={titleClickHandler}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();
