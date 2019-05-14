@@ -2,7 +2,7 @@ import Adapter from "enzyme-adapter-react-16";
 import React from "react";
 import {configure, mount} from "enzyme";
 
-import {PlaceCard} from "./place-card";
+import {OfferCard} from "./offer-card";
 
 configure({adapter: new Adapter()});
 
@@ -27,9 +27,9 @@ const generateImgHoverHandler = () => {
   };
 };
 
-describe(`testing the PlaceCard work`, () => {
+describe(`testing the OfferCard work`, () => {
   it(`click on image return card element`, () => {
-    const card = mount(<PlaceCard
+    const card = mount(<OfferCard
       imgHoverHandler={generateImgHoverHandler()}
       titleClickHandler={titleClickHandler}
       offer={offerMock}

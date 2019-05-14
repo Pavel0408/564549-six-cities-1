@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-export const PlaceCard = (props) => {
+export const OfferCard = (props) => {
   const {offer, titleClickHandler, imgHoverHandler} = props;
 
   return <article className="cities__place-card place-card">
@@ -58,7 +58,7 @@ export const PlaceCard = (props) => {
   </article>;
 };
 
-PlaceCard.propTypes = {
+OfferCard.propTypes = {
   offer: PropTypes.shape({
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,

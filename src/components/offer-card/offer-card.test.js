@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {PlaceCard} from "./place-card";
+import {OfferCard} from "./offer-card";
 
 const offerMock = {name: `Beautiful & luxurious apartment at great location`,
   image: `img/apartment-01.jpg`,
@@ -24,9 +24,9 @@ const generateImgHoverHandler = () => {
   };
 };
 
-describe(`testing PlaceCard render`, () => {
-  it(`PlaceCard is render correctly`, () => {
-    const tree = renderer.create(<PlaceCard
+describe(`testing OfferCard render`, () => {
+  it(`OfferCard is render correctly`, () => {
+    const tree = renderer.create(<OfferCard
       offer={offerMock}
       titleClickHandler={titleClickHandler}
       imgHoverHandler={generateImgHoverHandler()}
