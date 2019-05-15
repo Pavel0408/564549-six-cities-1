@@ -74,7 +74,6 @@ OfferCard.propTypes = {
     rating: PropTypes.number.isRequired,
     isPremium: PropTypes.bool.isRequired,
     isFavorite: PropTypes.bool.isRequired}).isRequired,
-
   titleOnClick: PropTypes.func.isRequired,
   imgOnHover: PropTypes.func.isRequired
 };
