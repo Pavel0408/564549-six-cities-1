@@ -7,8 +7,7 @@ class OffersList extends PureComponent {
     super(props);
 
     this.state = {
-      activeCard: null,
-      clickedCard: null
+      activeCard: null
     };
     this._imgOnHover = this._imgOnHover.bind(this);
     this._titleOnClick = this._titleOnClick.bind(this);
