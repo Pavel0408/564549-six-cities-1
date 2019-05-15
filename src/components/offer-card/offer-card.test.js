@@ -11,25 +11,18 @@ const offerMock = {name: `Beautiful & luxurious apartment at great location`,
   isFavorite: true
 };
 
-const titleClickHandler = () => {
+const titleOnClick = () => {
 };
 
-const state = {
-  activeCard: null
-};
-
-const generateImgHoverHandler = () => {
-  return (evt) => {
-    state.activeCard = evt.target.closest(`article`);
-  };
+const imgOnHover = () => {
 };
 
 describe(`testing OfferCard render`, () => {
   it(`OfferCard is render correctly`, () => {
     const tree = renderer.create(<OfferCard
       offer={offerMock}
-      titleClickHandler={titleClickHandler}
-      imgHoverHandler={generateImgHoverHandler()}
+      titleOnClick={titleOnClick}
+      imgOnHover={imgOnHover}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();
