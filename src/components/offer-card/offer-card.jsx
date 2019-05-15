@@ -2,7 +2,15 @@ import PropTypes from "prop-types";
 import React from "react";
 
 export const OfferCard = (props) => {
-  const {offer, titleClickHandler, imgHoverHandler} = props;
+  const {offer, titleOnClick, imgOnHover} = props;
+  const imgHoverHandler = () => {
+    imgOnHover(offer);
+  };
+
+  const titleClickHandler = (evt) => {
+    evt.preventDefault();
+    titleOnClick(offer);
+  };
 
   return <article className="cities__place-card place-card">
     {offer.isPremium && <div className="place-card__mark">

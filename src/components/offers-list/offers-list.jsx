@@ -10,23 +10,18 @@ class OffersList extends PureComponent {
       activeCard: null,
       clickedCard: null
     };
+    this._imgOnHover = this._imgOnHover.bind(this);
+    this._titleOnClick = this._titleOnClick.bind(this);
   }
 
-  _generateImgHoverHandler(offer) {
-    return () => {
-      this.setState({
-        activeCard: offer
-      });
-    };
+  _imgOnHover(offer) {
+    this.setState({
+      activeCard: offer
+    });
   }
 
-  _generateTitleClickHandler(offer) {
-    return (evt) => {
-      evt.preventDefault();
-      this.setState({
-        clickedCard: offer
-      });
-    };
+  _titleOnClick(offer) {
+    return offer;
   }
 
   render() {
@@ -36,8 +31,8 @@ class OffersList extends PureComponent {
       return <OfferCard
         key={i}
         offer={offer}
-        titleClickHandler={this._generateTitleClickHandler(offer)}
-        imgHoverHandler={this._generateImgHoverHandler(offer)}
+        titleOnClick={this._titleOnClick}
+        imgOnHover={this._imgOnHover}
       />;
     }
     );
