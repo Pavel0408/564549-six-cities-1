@@ -14,51 +14,36 @@ const offerMock = {name: `Beautiful & luxurious apartment at great location`,
   isFavorite: true
 };
 
-const state = {
-  activeCard: null,
-  clickedCard: null
-};
-
-const generateTitleClickHandler = (offer) => {
-  return (evt) => {
-    evt.preventDefault();
-
-    state.clickedCard = offer;
-  };
-};
-
-const generateImgHoverHandler = (offer) => {
-  return () => {
-    state.activeCard = offer;
-  };
-};
-
 describe(`testing the OfferCard work`, () => {
   it(`over on image return offers element`, () => {
+    const titleOnClick = () => {};
+    const imgOnHover = jest.fn();
     const card = mount(<OfferCard
-      imgHoverHandler={generateImgHoverHandler(offerMock)}
-      titleClickHandler={generateTitleClickHandler(offerMock)}
+      imgOnHover={imgOnHover}
+      titleOnClick={titleOnClick}
       offer={offerMock}
     />);
 
     const image = card.find(`img`);
     image.simulate(`mouseOver`);
-    const title = state.activeCard.name;
 
-    expect(title === `Beautiful & luxurious apartment at great location`);
+    expect(imgOnHover).toHaveBeenCalledTimes(1);
+    expect(imgOnHover).toHaveBeenCalledWith(offerMock);
   });
 
   it(`click on title return offers element`, () => {
+    const titleOnClick = jest.fn();
+    const imgOnHover = () => {};
     const card = mount(<OfferCard
-      imgHoverHandler={generateImgHoverHandler(offerMock)}
-      titleClickHandler={generateTitleClickHandler(offerMock)}
+      imgOnHover={imgOnHover}
+      titleOnClick={titleOnClick}
       offer={offerMock}
     />);
 
     const title = card.find(`.place-card__name a`);
     title.simulate(`click`);
-    const price = state.clickedCard.price;
 
-    expect(price === 120);
+    expect(titleOnClick).toHaveBeenCalledTimes(1);
+    expect(titleOnClick).toHaveBeenCalledWith(offerMock);
   });
 });
