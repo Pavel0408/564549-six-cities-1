@@ -75,6 +75,6 @@ OfferCard.propTypes = {
     isPremium: PropTypes.bool.isRequired,
     isFavorite: PropTypes.bool.isRequired}).isRequired,
 
-  titleClickHandler: PropTypes.func.isRequired,
-  imgHoverHandler: PropTypes.func.isRequired
+  titleOnClick: PropTypes.func.isRequired,
+  imgOnHover: PropTypes.func.isRequired
 };
