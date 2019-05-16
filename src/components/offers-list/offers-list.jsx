@@ -34,8 +34,7 @@ export class OffersList extends PureComponent {
         titleOnClick={this._titleOnClick}
         imgOnHover={this._imgOnHover}
       />;
-    }
-    );
+    });
   }
 }
 
