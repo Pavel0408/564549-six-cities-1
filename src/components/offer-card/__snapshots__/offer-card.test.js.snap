@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`testing PlaceCard render PlaceCard is render correctly 1`] = `
+exports[`testing OfferCard render OfferCard is render correctly 1`] = `
 <article
   className="cities__place-card place-card"
 >
@@ -14,7 +14,8 @@ exports[`testing PlaceCard render PlaceCard is render correctly 1`] = `
         alt="Place image"
         className="place-card__image"
         height={200}
-        src="img/room.jpg"
+        onMouseOver={[Function]}
+        src="img/apartment-01.jpg"
         width={260}
       />
     </a>
@@ -31,7 +32,8 @@ exports[`testing PlaceCard render PlaceCard is render correctly 1`] = `
         <b
           className="place-card__price-value"
         >
-          €80
+          €
+          120
         </b>
         <span
           className="place-card__price-text"
@@ -40,7 +42,7 @@ exports[`testing PlaceCard render PlaceCard is render correctly 1`] = `
         </span>
       </div>
       <button
-        className="place-card__bookmark-button place-card__bookmark-button--active button"
+        className="place-card__bookmark-button  place-card__bookmark-button--active button"
         type="button"
       >
         <svg
@@ -68,7 +70,7 @@ exports[`testing PlaceCard render PlaceCard is render correctly 1`] = `
         <span
           style={
             Object {
-              "width": "80%",
+              "width": "50%",
             }
           }
         />

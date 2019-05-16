@@ -2,13 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import {App} from "./components/app/app";
-
-const cardTitles = [
-  `Beautiful & luxurious apartment at great location`,
-  `Wood and stone place`,
-  `Canal View Prinsengracht`,
-  `Nice, cozy, warm big bed apartment`
-];
+import {offers} from "./mocks/offers";
 
 const titleClickHandler = () => {
 };
@@ -16,7 +10,7 @@ const titleClickHandler = () => {
 const init = () => {
   ReactDOM.render(
       <App
-        cardTitles={cardTitles}
+        offers={offers}
         titleClickHandler={titleClickHandler}
       />,
       document.querySelector(`#root`)

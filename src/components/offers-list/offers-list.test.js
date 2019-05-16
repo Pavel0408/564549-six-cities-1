@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {MainScreen} from './main-screen';
+import {OffersList} from './offers-list';
 
 const offersMock = [
   {name: `Beautiful & luxurious apartment at great location`,
@@ -21,12 +21,18 @@ const offersMock = [
   }
 ];
 
-describe(`testing MainScreen render`, () => {
-  it(`MainScreen is render correctly`, () => {
-    const tree = renderer.create(<MainScreen
+const titleClickHandler = () => {
+};
+
+describe(`testing OffersList render`, () => {
+  it(`OffersList is render correctly`, () => {
+    const tree = renderer.create(<OffersList
       offers={offersMock}
+      titleClickHandler={titleClickHandler}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 });
+
+

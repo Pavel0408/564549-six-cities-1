@@ -3,21 +3,28 @@ import renderer from 'react-test-renderer';
 
 import {App} from './app.jsx';
 
-const cardTitlesMock = [
-  `Beautiful & luxurious apartment at great location`,
-  `Wood and stone place`,
-  `Canal View Prinsengracht`,
-  `Nice, cozy, warm big bed apartment`
+const offersMock = [
+  {name: `Beautiful & luxurious apartment at great location`,
+    image: `img/apartment-01.jpg`,
+    price: 120,
+    rating: 5,
+    isPremium: false,
+    isFavorite: true
+  },
+  {
+    name: `Wood and stone place`,
+    image: `img/room.jpg`,
+    price: 80,
+    rating: 10,
+    isPremium: true,
+    isFavorite: false
+  }
 ];
-
-const titleClickHandler = () => {
-};
 
 describe(`testing App render`, () => {
   it(`App is render correctly`, () => {
     const tree = renderer.create(<App
-      cardTitles={cardTitlesMock}
-      titleClickHandler={titleClickHandler}
+      offers={offersMock}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();

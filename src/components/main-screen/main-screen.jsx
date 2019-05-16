@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import {PlaceCard} from "../place-card/place-card";
+import {OffersList} from "../offers-list/offers-list";
 
 export const MainScreen = (props) => {
-  const {cardTitles, titleClickHandler} = props;
+  const {offers} = props;
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -137,8 +137,7 @@ export const MainScreen = (props) => {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {cardTitles.map((name, i) => <PlaceCard key={i} name={name} titleClickHandler={titleClickHandler}/>
-              )}
+              <OffersList offers={offers}/>
             </div>
           </section>
           <div className="cities__right-section">
@@ -151,6 +150,12 @@ export const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  cardTitles: PropTypes.array.isRequired,
-  titleClickHandler: PropTypes.func.isRequired
+  offers: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    isPremium: PropTypes.bool.isRequired,
+    isFavorite: PropTypes.bool.isRequired
+  })).isRequired
 };
