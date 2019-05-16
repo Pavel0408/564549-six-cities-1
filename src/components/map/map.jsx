@@ -1,4 +1,5 @@
 import leaflet from "leaflet";
+import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
 export class Map extends PureComponent {
@@ -19,27 +20,36 @@ export class Map extends PureComponent {
     });
 
     const zoom = 12;
-    const map = leaflet.map(`map`, {
-      center: city,
-      zoom,
-      zoomControl: false,
-      marker: true
-    });
-    map.setView(city, zoom);
+    try {
+      const map = leaflet.map(`map`, {
+        center: city,
+        zoom,
+        zoomControl: false,
+        marker: true
+      });
+      map.setView(city, zoom);
 
-    leaflet
-      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
-        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
-      })
-      .addTo(map);
-
-    offers.map((offer)=>{
-      const offerCords = offer.coordinate;
-      return leaflet
-        .marker(offerCords, {icon})
+      leaflet
+        .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+          attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+        })
         .addTo(map);
-    });
+
+      offers.map((offer) => {
+        const offerCords = offer.coordinate;
+        return leaflet
+          .marker(offerCords, {icon})
+          .addTo(map);
+      });
+    } catch (e) {
+      return;
+    }
+
   }
 }
+
+Map.propTypes = {
+  offers: PropTypes.array.isRequired
+};
 
 

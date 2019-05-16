@@ -159,6 +159,7 @@ MainScreen.propTypes = {
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     isPremium: PropTypes.bool.isRequired,
-    isFavorite: PropTypes.bool.isRequired
+    isFavorite: PropTypes.bool.isRequired,
+    coordinate: PropTypes.arrayOf(PropTypes.number)
   })).isRequired
 };

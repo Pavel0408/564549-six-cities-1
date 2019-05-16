@@ -9,7 +9,8 @@ const offersMock = [
     price: 120,
     rating: 5,
     isPremium: false,
-    isFavorite: true
+    isFavorite: true,
+    coordinate: [52.3909553943508, 4.85309666406198]
   },
   {
     name: `Wood and stone place`,
@@ -17,7 +18,8 @@ const offersMock = [
     price: 80,
     rating: 10,
     isPremium: true,
-    isFavorite: false
+    isFavorite: false,
+    coordinate: [52.369553943508, 4.85309666406198]
   }
 ];
 
