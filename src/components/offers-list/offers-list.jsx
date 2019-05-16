@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
+
 import {OfferCard} from "../offer-card/offer-card";
 
 export class OffersList extends PureComponent {
