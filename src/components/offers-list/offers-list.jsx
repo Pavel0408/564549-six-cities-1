@@ -26,7 +26,6 @@ export class OffersList extends PureComponent {
 
   render() {
     const {offers} = this.props;
-
     return offers.map((offer, i) => {
       return <OfferCard
         key={i}

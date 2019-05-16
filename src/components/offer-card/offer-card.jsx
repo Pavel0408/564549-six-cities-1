@@ -23,7 +23,6 @@ export class OfferCard extends PureComponent {
   }
 
   render() {
-
     return <article className="cities__place-card place-card">
       {this._offer.isPremium && <div className="place-card__mark">
         <span>Premium</span>
