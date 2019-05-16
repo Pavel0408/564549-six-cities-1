@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import OffersList from "../offers-list/offers-list";
+import {OffersList} from "../offers-list/offers-list";
 
 export const MainScreen = (props) => {
   const {offers} = props;

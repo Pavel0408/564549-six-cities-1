@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 import {OfferCard} from "../offer-card/offer-card";
 
-class OffersList extends PureComponent {
+export class OffersList extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -41,7 +41,5 @@ class OffersList extends PureComponent {
 OffersList.propTypes = {
   offers: PropTypes.array.isRequired
 };
-
-export default OffersList;
 
 
