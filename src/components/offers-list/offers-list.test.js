@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import OffersList from './offers-list';
+import {OffersList} from './offers-list';
 
 const offersMock = [
   {name: `Beautiful & luxurious apartment at great location`,
