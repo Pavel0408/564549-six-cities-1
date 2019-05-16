@@ -10,17 +10,17 @@ export class OffersList extends PureComponent {
     this.state = {
       activeCard: null
     };
-    this._imgOnHover = this._imgOnHover.bind(this);
-    this._titleOnClick = this._titleOnClick.bind(this);
+    this.imgOnHover = this.imgOnHover.bind(this);
+    this.titleOnClick = this.titleOnClick.bind(this);
   }
 
-  _imgOnHover(offer) {
+  imgOnHover(offer) {
     this.setState({
       activeCard: offer
     });
   }
 
-  _titleOnClick(offer) {
+  titleOnClick(offer) {
     return offer;
   }
 
@@ -30,8 +30,8 @@ export class OffersList extends PureComponent {
       return <OfferCard
         key={i}
         offer={offer}
-        titleOnClick={this._titleOnClick}
-        imgOnHover={this._imgOnHover}
+        titleOnClick={this.titleOnClick}
+        imgOnHover={this.imgOnHover}
       />;
     });
   }

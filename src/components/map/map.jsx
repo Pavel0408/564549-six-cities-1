@@ -44,12 +44,9 @@ export class Map extends PureComponent {
     } catch (e) {
       return;
     }
-
   }
 }
 
 Map.propTypes = {
   offers: PropTypes.array.isRequired
 };
-
-
