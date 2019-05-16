@@ -4,7 +4,8 @@ import renderer from 'react-test-renderer';
 import {Map} from "./map";
 
 const offersMock = [
-  {name: `Beautiful & luxurious apartment at great location`,
+  {
+    name: `Beautiful & luxurious apartment at great location`,
     image: `img/apartment-01.jpg`,
     price: 120,
     rating: 5,
