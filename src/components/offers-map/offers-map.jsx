@@ -13,7 +13,7 @@ export class OffersMap extends PureComponent {
 
   componentDidMount() {
     const {offers} = this.props;
-    this.props.service.render(offers);
+    this.props.mapService.render(offers);
   }
 }
 
@@ -27,7 +27,7 @@ OffersMap.propTypes = {
     isFavorite: PropTypes.bool.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number)
   })).isRequired,
-  service: PropTypes.shape({
+  mapService: PropTypes.shape({
     render: PropTypes.func
   }).isRequired
 };

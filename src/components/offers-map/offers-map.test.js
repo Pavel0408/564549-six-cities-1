@@ -33,7 +33,7 @@ describe(`testing OffersMap render`, () => {
   it(`OffersMap is render correctly`, () => {
     const tree = renderer.create(<OffersMap
       offers={offersMock}
-      service={mapService}
+      mapService={mapService}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();

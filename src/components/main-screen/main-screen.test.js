@@ -24,10 +24,16 @@ const offersMock = [
   }
 ];
 
+const mapService = {
+  render() {
+  }
+};
+
 describe(`testing MainScreen render`, () => {
   it(`MainScreen is render correctly`, () => {
     const tree = renderer.create(<MainScreen
       offers={offersMock}
+      mapService={mapService}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();

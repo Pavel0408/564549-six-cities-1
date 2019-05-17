@@ -3,10 +3,9 @@ import React from "react";
 
 import {OffersList} from "../offers-list/offers-list";
 import {OffersMap} from "../offers-map/offers-map";
-import {mapService} from "../../services/map-service";
 
 export const MainScreen = (props) => {
-  const {offers} = props;
+  const {offers, mapService} = props;
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -146,7 +145,7 @@ export const MainScreen = (props) => {
             <section className="cities__map map">
               <OffersMap
                 offers={offers}
-                service={mapService}
+                mapService={mapService}
               />
             </section>
           </div>
@@ -165,5 +164,8 @@ MainScreen.propTypes = {
     isPremium: PropTypes.bool.isRequired,
     isFavorite: PropTypes.bool.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number)
-  })).isRequired
+  })).isRequired,
+  mapService: PropTypes.shape({
+    render: PropTypes.func
+  }).isRequired
 };

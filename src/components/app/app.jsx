@@ -4,13 +4,15 @@ import React from "react";
 import {MainScreen} from "../main-screen/main-screen";
 
 export const App = (props) => {
-  const {offers} = props;
+  const {offers, mapService} = props;
 
   return <MainScreen
     offers={offers}
+    mapService={mapService}
   />;
 };
 
 App.propTypes = {
-  offers: PropTypes.array.isRequired
+  offers: PropTypes.array.isRequired,
+  mapService: PropTypes.object.isRequired
 };
