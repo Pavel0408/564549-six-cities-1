@@ -36,7 +36,7 @@ export class OffersMap extends PureComponent {
         }
       }
     };
-    this.props.mapService.render(mapConfig);
+    this.props.mapService.createMap(mapConfig);
   }
 }
 
@@ -51,6 +51,6 @@ OffersMap.propTypes = {
     coordinates: PropTypes.arrayOf(PropTypes.number)
   })).isRequired,
   mapService: PropTypes.shape({
-    render: PropTypes.func
+    createMap: PropTypes.func
   }).isRequired
 };

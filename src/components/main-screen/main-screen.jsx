@@ -166,6 +166,6 @@ MainScreen.propTypes = {
     coordinates: PropTypes.arrayOf(PropTypes.number)
   })).isRequired,
   mapService: PropTypes.shape({
-    render: PropTypes.func
+    createMap: PropTypes.func
   }).isRequired
 };

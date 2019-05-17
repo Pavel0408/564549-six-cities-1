@@ -25,7 +25,7 @@ const offersMock = [
 ];
 
 const mapService = {
-  render() {
+  createMap() {
   }
 };
 

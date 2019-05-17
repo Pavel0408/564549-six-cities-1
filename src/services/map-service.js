@@ -4,7 +4,7 @@ class MapService {
   constructor() {
   }
 
-  render(props) {
+  createMap(props) {
     const {offers, city, icon, zoom, settings} = props;
 
 
