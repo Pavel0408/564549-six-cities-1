@@ -7,7 +7,6 @@ class MapService {
   createMap(props) {
     const {offers, city, icon, zoom, settings} = props;
 
-
     const map = leaflet.map(settings.id, settings.options);
     map.setView(city, zoom);
 
