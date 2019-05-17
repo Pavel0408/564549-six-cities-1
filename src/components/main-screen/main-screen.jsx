@@ -3,6 +3,7 @@ import React from "react";
 
 import {OffersList} from "../offers-list/offers-list";
 import {OffersMap} from "../offers-map/offers-map";
+import {mapService} from "../../services/map-service";
 
 export const MainScreen = (props) => {
   const {offers} = props;
@@ -143,7 +144,10 @@ export const MainScreen = (props) => {
           </section>
           <div className="cities__right-section">
             <section className="cities__map map">
-              <OffersMap offers={offers}/>
+              <OffersMap
+                offers={offers}
+                service={mapService}
+              />
             </section>
           </div>
         </div>
