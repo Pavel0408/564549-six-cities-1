@@ -35,7 +35,7 @@ function Offer(index) {
   this.rating = getRandomNumber(0, 10);
   this.isPremium = getRandomBoolValue();
   this.isFavorite = getRandomBoolValue();
-  this.coordinate = cardСoordinates[index];
+  this.coordinates = cardСoordinates[index];
 }
 
 export const offers = cardTitles.map((it, index) => {

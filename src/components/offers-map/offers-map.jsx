@@ -2,7 +2,7 @@ import leaflet from "leaflet";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
-export class Map extends PureComponent {
+export class OffersMap extends PureComponent {
   constructor(props) {
     super(props);
   }
@@ -36,7 +36,7 @@ export class Map extends PureComponent {
         .addTo(map);
 
       offers.map((offer) => {
-        const offerCords = offer.coordinate;
+        const offerCords = offer.coordinates;
         return leaflet
           .marker(offerCords, {icon})
           .addTo(map);
@@ -47,6 +47,6 @@ export class Map extends PureComponent {
   }
 }
 
-Map.propTypes = {
+OffersMap.propTypes = {
   offers: PropTypes.array.isRequired
 };

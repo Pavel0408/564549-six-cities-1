@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {Map} from "./map";
+import {OffersMap} from "./offers-map";
 
 const offersMock = [
   {
@@ -11,7 +11,7 @@ const offersMock = [
     rating: 5,
     isPremium: false,
     isFavorite: true,
-    coordinate: [52.3909553943508, 4.85309666406198]
+    coordinates: [52.3909553943508, 4.85309666406198]
   },
   {
     name: `Wood and stone place`,
@@ -24,9 +24,9 @@ const offersMock = [
   }
 ];
 
-describe(`testing Map render`, () => {
-  it(`Map is render correctly`, () => {
-    const tree = renderer.create(<Map
+describe(`testing OffersMap render`, () => {
+  it(`OffersMap is render correctly`, () => {
+    const tree = renderer.create(<OffersMap
       offers={offersMock}
     />).toJSON();
 
