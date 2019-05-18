@@ -3,9 +3,10 @@ import React from "react";
 
 import {OffersList} from "../offers-list/offers-list";
 import {OffersMap} from "../offers-map/offers-map";
+import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 
 export const MainScreen = (props) => {
-  const {offers, mapService} = props;
+  const {offers} = props;
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -143,10 +144,8 @@ export const MainScreen = (props) => {
           </section>
           <div className="cities__right-section">
             <section className="cities__map map">
-              <OffersMap
-                offers={offers}
-                mapService={mapService}
-              />
+              <WithLeafletMap
+                render={(data) => <OffersMap mapMethods={data} offers={offers} />}/>
             </section>
           </div>
         </div>
@@ -164,8 +163,5 @@ MainScreen.propTypes = {
     isPremium: PropTypes.bool.isRequired,
     isFavorite: PropTypes.bool.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number)
-  })).isRequired,
-  mapService: PropTypes.shape({
-    createMap: PropTypes.func
-  }).isRequired
+  })).isRequired
 };

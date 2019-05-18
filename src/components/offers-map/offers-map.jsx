@@ -1,4 +1,3 @@
-// import leaflet from "leaflet";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 import leaflet from "leaflet";
@@ -13,13 +12,15 @@ export class OffersMap extends PureComponent {
   }
 
   componentDidMount() {
+    if (!document.querySelector(`#map`)) {
+      return;
+    }
     const {offers} = this.props;
     const city = [52.38333, 4.9];
     const icon = leaflet.icon({
       iconUrl: `img/pin-map.svg`,
       iconSize: [30, 30]
     });
-
     const zoom = 12;
     const mapConfig = {
       offers,
@@ -36,7 +37,9 @@ export class OffersMap extends PureComponent {
         }
       }
     };
-    this.props.mapService.createMap(mapConfig);
+
+    const mapOffers = this.props.mapMethods.createMap(mapConfig);
+    this.props.mapMethods.addOffersPins({offers, mapOffers, icon});
   }
 }
 
@@ -50,7 +53,8 @@ OffersMap.propTypes = {
     isFavorite: PropTypes.bool.isRequired,
     coordinates: PropTypes.arrayOf(PropTypes.number)
   })).isRequired,
-  mapService: PropTypes.shape({
-    createMap: PropTypes.func
+  mapMethods: PropTypes.shape({
+    createMap: PropTypes.func,
+    addOffersPins: PropTypes.func
   }).isRequired
 };
