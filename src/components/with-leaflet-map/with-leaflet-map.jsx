@@ -6,7 +6,7 @@ export class WithLeafletMap extends PureComponent {
 
 
   render() {
-    return this.props.render({createMap: this.createMap, addOffersPins: this.addOffersPins});
+    return this.props.render({createMap: this.createMap, addPin: this.addPin});
   }
 
   createMap(props) {
@@ -25,13 +25,10 @@ export class WithLeafletMap extends PureComponent {
     return map;
   }
 
-  addOffersPins({offers, mapOffers, icon}) {
-    offers.map((offer) => {
-      const offerCords = offer.coordinates;
-      return leaflet
-        .marker(offerCords, {icon})
-        .addTo(mapOffers);
-    });
+  addPin({coordinates, mapItem, icon}) {
+    leaflet
+        .marker(coordinates, {icon})
+        .addTo(mapItem);
   }
 }
 

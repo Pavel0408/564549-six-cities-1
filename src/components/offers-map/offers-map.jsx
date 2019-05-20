@@ -38,8 +38,12 @@ export class OffersMap extends PureComponent {
       }
     };
 
-    const mapOffers = this.props.mapMethods.createMap(mapConfig);
-    this.props.mapMethods.addOffersPins({offers, mapOffers, icon});
+    const mapItem = this.props.mapMethods.createMap(mapConfig);
+
+    offers.map((offfer) => this.props.mapMethods.addPin({
+      coordinates: offfer.coordinates,
+      mapItem,
+      icon}));
   }
 }
 
@@ -55,6 +59,6 @@ OffersMap.propTypes = {
   })).isRequired,
   mapMethods: PropTypes.shape({
     createMap: PropTypes.func,
-    addOffersPins: PropTypes.func
+    addPin: PropTypes.func
   }).isRequired
 };
