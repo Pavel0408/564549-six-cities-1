@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
-import leaflet from "leaflet";
 
 export class OffersMap extends PureComponent {
   constructor(props) {
@@ -17,15 +16,12 @@ export class OffersMap extends PureComponent {
     }
     const {offers} = this.props;
     const city = [52.38333, 4.9];
-    const icon = leaflet.icon({
-      iconUrl: `img/pin-map.svg`,
-      iconSize: [30, 30]
-    });
+    const iconUrl = `img/pin-map.svg`;
+    const iconSize = [30, 30];
     const zoom = 12;
     const mapConfig = {
       offers,
       city,
-      icon,
       zoom,
       settings: {
         id: `map`,
@@ -43,7 +39,9 @@ export class OffersMap extends PureComponent {
     offers.map((offfer) => this.props.mapMethods.addPin({
       coordinates: offfer.coordinates,
       mapItem,
-      icon}));
+      iconUrl,
+      iconSize
+    }));
   }
 }
 

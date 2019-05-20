@@ -25,7 +25,11 @@ export class WithLeafletMap extends PureComponent {
     return map;
   }
 
-  addPin({coordinates, mapItem, icon}) {
+  addPin({coordinates, mapItem, iconUrl, iconSize}) {
+    const icon = leaflet.icon({
+      iconUrl,
+      iconSize
+    });
     leaflet
         .marker(coordinates, {icon})
         .addTo(mapItem);
