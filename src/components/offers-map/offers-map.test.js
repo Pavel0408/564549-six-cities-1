@@ -27,7 +27,6 @@ const offersMock = [
 const mapMethods = {
   createMap() {},
   addOffersPins() {}
-
 };
 
 describe(`testing OffersMap render`, () => {

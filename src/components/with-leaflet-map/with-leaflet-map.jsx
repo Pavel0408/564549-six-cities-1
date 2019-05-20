@@ -4,13 +4,11 @@ import PropTypes from "prop-types";
 
 export class WithLeafletMap extends PureComponent {
 
-
   render() {
     return this.props.render({createMap: this.createMap, addPin: this.addPin});
   }
 
   createMap(props) {
-
     const {city, zoom, settings} = props;
 
     const map = leaflet.map(settings.id, settings.options);
