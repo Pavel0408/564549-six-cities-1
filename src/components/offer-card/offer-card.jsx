@@ -7,23 +7,22 @@ export class OfferCard extends PureComponent {
 
     const {offer} = props;
     this._offer = offer;
-    this._titleClickHandler = this._titleClickHandler.bind(this);
-    this._imgHoverHandler = this._imgHoverHandler.bind(this);
+    this.titleClickHandler = this.titleClickHandler.bind(this);
+    this.imgHoverHandler = this.imgHoverHandler.bind(this);
   }
 
-  _titleClickHandler(evt) {
+  titleClickHandler(evt) {
     const {titleOnClick} = this.props;
     evt.preventDefault();
     titleOnClick(this._offer);
   }
 
-  _imgHoverHandler() {
+  imgHoverHandler() {
     const {imgOnHover} = this.props;
     imgOnHover(this._offer);
   }
 
   render() {
-
     return <article className="cities__place-card place-card">
       {this._offer.isPremium && <div className="place-card__mark">
         <span>Premium</span>
@@ -36,7 +35,7 @@ export class OfferCard extends PureComponent {
             width={260}
             height={200}
             alt="Place image"
-            onMouseOver={this._imgHoverHandler}
+            onMouseOver={this.imgHoverHandler}
           />
         </a>
       </div>
@@ -71,7 +70,7 @@ export class OfferCard extends PureComponent {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={this._titleClickHandler}>{this._offer.name}</a>
+          <a href="#" onClick={this.titleClickHandler}>{this._offer.name}</a>
         </h2>
         <p className="place-card__type">Private room</p>
       </div>

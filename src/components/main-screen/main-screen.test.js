@@ -4,12 +4,14 @@ import renderer from 'react-test-renderer';
 import {MainScreen} from './main-screen';
 
 const offersMock = [
-  {name: `Beautiful & luxurious apartment at great location`,
+  {
+    name: `Beautiful & luxurious apartment at great location`,
     image: `img/apartment-01.jpg`,
     price: 120,
     rating: 5,
     isPremium: false,
-    isFavorite: true
+    isFavorite: true,
+    coordinates: [52.3909553943508, 4.85309666406198]
   },
   {
     name: `Wood and stone place`,
@@ -17,7 +19,8 @@ const offersMock = [
     price: 80,
     rating: 10,
     isPremium: true,
-    isFavorite: false
+    isFavorite: false,
+    coordinates: [52.369553943508, 4.85309666406198]
   }
 ];
 

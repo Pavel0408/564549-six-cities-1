@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import {OffersList} from "../offers-list/offers-list";
+import {OffersMap} from "../offers-map/offers-map";
+import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 
 export const MainScreen = (props) => {
   const {offers} = props;
@@ -141,7 +143,10 @@ export const MainScreen = (props) => {
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"/>
+            <section className="cities__map map">
+              <WithLeafletMap
+                render={(data) => <OffersMap mapMethods={data} offers={offers} />}/>
+            </section>
           </div>
         </div>
       </div>
@@ -156,6 +161,7 @@ MainScreen.propTypes = {
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     isPremium: PropTypes.bool.isRequired,
-    isFavorite: PropTypes.bool.isRequired
+    isFavorite: PropTypes.bool.isRequired,
+    coordinates: PropTypes.arrayOf(PropTypes.number)
   })).isRequired
 };

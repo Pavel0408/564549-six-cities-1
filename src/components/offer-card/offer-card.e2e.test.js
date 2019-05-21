@@ -6,7 +6,8 @@ import {OfferCard} from "./offer-card";
 
 configure({adapter: new Adapter()});
 
-const offerMock = {name: `Beautiful & luxurious apartment at great location`,
+const offerMock = {
+  name: `Beautiful & luxurious apartment at great location`,
   image: `img/apartment-01.jpg`,
   price: 120,
   rating: 5,

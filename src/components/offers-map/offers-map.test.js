@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {App} from './app.jsx';
+import {OffersMap} from "./offers-map";
 
 const offersMock = [
   {
@@ -20,14 +20,20 @@ const offersMock = [
     rating: 10,
     isPremium: true,
     isFavorite: false,
-    coordinates: [52.369553943508, 4.85309666406198]
+    coordinate: [52.369553943508, 4.85309666406198]
   }
 ];
 
-describe(`testing App render`, () => {
-  it(`App is render correctly`, () => {
-    const tree = renderer.create(<App
+const mapMethods = {
+  createMap() {},
+  addOffersPins() {}
+};
+
+describe(`testing OffersMap render`, () => {
+  it(`OffersMap is render correctly`, () => {
+    const tree = renderer.create(<OffersMap
       offers={offersMock}
+      mapMethods={mapMethods}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();
