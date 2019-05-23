@@ -50,7 +50,7 @@ export class OffersMap extends PureComponent {
 
     const mapItem = this.props.mapMethods.createMap(mapConfig);
 
-    offers.map((offfer) => this.props.mapMethods.addPin({
+    this.pins = offers.map((offfer) => this.props.mapMethods.addPin({
       coordinates: offfer.coordinates,
       mapItem,
       iconUrl,
@@ -65,6 +65,10 @@ export class OffersMap extends PureComponent {
     console.log(activeCity);
     const city = CitiesCoordinates[activeCity];
     this.mapItem.setView(city);
+    console.log(this.pins);
+    this.pins.forEach((pin) => {
+      pin.remove();
+    });
   }
 }
 
