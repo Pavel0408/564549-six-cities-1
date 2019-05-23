@@ -28,6 +28,8 @@ const cardСoordinates = [
   [52.3809553943508, 4.939309666406198]
 ];
 
+const city = `Amsterdam`;
+
 function Offer(index) {
   this.name = cardTitles[index];
   this.image = cardImages[index];
@@ -36,6 +38,7 @@ function Offer(index) {
   this.isPremium = getRandomBoolValue();
   this.isFavorite = getRandomBoolValue();
   this.coordinates = cardСoordinates[index];
+  this.city = city;
 }
 
 export const offers = cardTitles.map((it, index) => {
