@@ -1,21 +1,34 @@
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
+const CitiesCoordinates = {
+  Paris: [48.85341, 2.3488],
+  Brussels: [50.85045, 4.34878],
+  Amsterdam: [52.38333, 4.9],
+  Hamburg: [53.57532, 10.01534],
+  Dusseldorf: [51.2217, 6.77616]
+};
+
 export class OffersMap extends PureComponent {
   constructor(props) {
     super(props);
   }
 
   render() {
-    return <div id="map" style={{height: 823}}></div>;
+    return <div id="map" style={{height: 823}} data-id={this.props.activeCity}></div>;
   }
 
   componentDidMount() {
     if (!document.querySelector(`#map`)) {
       return;
     }
-    const {offers} = this.props;
-    const city = [52.38333, 4.9];
+    this.renderMap();
+  }
+
+  renderMap() {
+    const {offers, activeCity} = this.props;
+    console.log(activeCity);
+    const city = CitiesCoordinates[activeCity];
     const iconUrl = `img/pin-map.svg`;
     const iconSize = [30, 30];
     const zoom = 12;
@@ -34,6 +47,7 @@ export class OffersMap extends PureComponent {
       }
     };
 
+
     const mapItem = this.props.mapMethods.createMap(mapConfig);
 
     offers.map((offfer) => this.props.mapMethods.addPin({
@@ -42,8 +56,18 @@ export class OffersMap extends PureComponent {
       iconUrl,
       iconSize
     }));
+
+    this.mapItem = mapItem;
+  }
+
+  componentDidUpdate() {
+    const {activeCity} = this.props;
+    console.log(activeCity);
+    const city = CitiesCoordinates[activeCity];
+    this.mapItem.setView(city);
   }
 }
+
 
 OffersMap.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.shape({
