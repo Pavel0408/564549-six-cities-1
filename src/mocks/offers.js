@@ -28,9 +28,16 @@ const cardСoordinates = [
   [52.3809553943508, 4.939309666406198]
 ];
 
-const city = `Amsterdam`;
+const cities = [
+  `Paris`,
+  `Brussels`,
+  `Amsterdam`,
+  `Hamburg`,
+  `Dusseldorf`
+];
 
-function Offer(index) {
+
+function Offer(city, index) {
   this.name = cardTitles[index];
   this.image = cardImages[index];
   this.price = cardPrices[index];
@@ -41,7 +48,16 @@ function Offer(index) {
   this.city = city;
 }
 
-export const offers = cardTitles.map((it, index) => {
-  return new Offer(index);
-});
+const generateOffers = () => {
+  let offers = [];
+  cities.forEach((city)=>{
+    const newOffers = cardTitles.map((it, index) => {
+      return new Offer(city, index);
+    });
+    offers.push(...newOffers);
+  });
+
+  return offers;
+};
+export const offers = generateOffers();
 

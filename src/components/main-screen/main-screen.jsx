@@ -4,10 +4,11 @@ import React from "react";
 import {OffersList} from "../offers-list/offers-list";
 import {OffersMap} from "../offers-map/offers-map";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
+import {CitiesList} from "../cities-list/cities-list";
 
 export const MainScreen = (props) => {
-  const {offers} = props;
-
+  const {offers, activeCity, cityClickHandler, cities} = props;
+  console.log(cities);
   return <React.Fragment>
     <div style={{display: `none`}}>
       <svg xmlns="http://www.w3.org/2000/svg">
@@ -67,38 +68,43 @@ export const MainScreen = (props) => {
       <h1 className="visually-hidden">Cities</h1>
       <div className="cities tabs">
         <section className="locations container">
-          <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
+          {/*<ul className="locations__list tabs__list">*/}
+          {/*  <li className="locations__item">*/}
+          {/*    <a className="locations__item-link tabs__item" href="#">*/}
+          {/*      <span>Paris</span>*/}
+          {/*    </a>*/}
+          {/*  </li>*/}
+          {/*  <li className="locations__item">*/}
+          {/*    <a className="locations__item-link tabs__item" href="#">*/}
+          {/*      <span>Cologne</span>*/}
+          {/*    </a>*/}
+          {/*  </li>*/}
+          {/*  <li className="locations__item">*/}
+          {/*    <a className="locations__item-link tabs__item" href="#">*/}
+          {/*      <span>Brussels</span>*/}
+          {/*    </a>*/}
+          {/*  </li>*/}
+          {/*  <li className="locations__item">*/}
+          {/*    <a className="locations__item-link tabs__item tabs__item--active">*/}
+          {/*      <span>Amsterdam</span>*/}
+          {/*    </a>*/}
+          {/*  </li>*/}
+          {/*  <li className="locations__item">*/}
+          {/*    <a className="locations__item-link tabs__item" href="#">*/}
+          {/*      <span>Hamburg</span>*/}
+          {/*    </a>*/}
+          {/*  </li>*/}
+          {/*  <li className="locations__item">*/}
+          {/*    <a className="locations__item-link tabs__item" href="#">*/}
+          {/*      <span>Dusseldorf</span>*/}
+          {/*    </a>*/}
+          {/*  </li>*/}
+          {/*</ul>*/}
+          <CitiesList
+            cities={cities}
+            cityClickHandler={cityClickHandler}
+            activeCity={activeCity}
+          />
         </section>
       </div>
       <div className="cities__places-wrapper">
