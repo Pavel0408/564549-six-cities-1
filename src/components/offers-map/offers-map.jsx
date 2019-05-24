@@ -23,14 +23,14 @@ export class OffersMap extends PureComponent {
       return;
     }
     this.renderMap();
+    this.renderPins();
   }
 
   renderMap() {
     const {offers, activeCity} = this.props;
     console.log(activeCity);
     const city = CitiesCoordinates[activeCity];
-    const iconUrl = `img/pin-map.svg`;
-    const iconSize = [30, 30];
+
     const zoom = 12;
     const mapConfig = {
       offers,
@@ -47,17 +47,20 @@ export class OffersMap extends PureComponent {
       }
     };
 
+    this.mapItem = this.props.mapMethods.createMap(mapConfig);
+  }
 
-    const mapItem = this.props.mapMethods.createMap(mapConfig);
-
+  renderPins() {
+    const {offers} = this.props;
+    const iconUrl = `img/pin-map.svg`;
+    const iconSize = [30, 30];
+    const mapItem = this.mapItem;
     this.pins = offers.map((offfer) => this.props.mapMethods.addPin({
       coordinates: offfer.coordinates,
       mapItem,
       iconUrl,
       iconSize
     }));
-
-    this.mapItem = mapItem;
   }
 
   componentDidUpdate() {
@@ -69,6 +72,8 @@ export class OffersMap extends PureComponent {
     this.pins.forEach((pin) => {
       pin.remove();
     });
+
+    this.renderPins();
   }
 }
 
