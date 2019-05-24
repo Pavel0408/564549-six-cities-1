@@ -8,7 +8,7 @@ import {CitiesList} from "../cities-list/cities-list";
 
 export const MainScreen = (props) => {
   const {offers, activeCity, cityClickHandler, cities} = props;
-  console.log(cities);
+
   return <React.Fragment>
     <div style={{display: `none`}}>
       <svg xmlns="http://www.w3.org/2000/svg">
@@ -66,53 +66,17 @@ export const MainScreen = (props) => {
     </header>
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
-      <div className="cities tabs">
-        <section className="locations container">
-          {/*<ul className="locations__list tabs__list">*/}
-          {/*  <li className="locations__item">*/}
-          {/*    <a className="locations__item-link tabs__item" href="#">*/}
-          {/*      <span>Paris</span>*/}
-          {/*    </a>*/}
-          {/*  </li>*/}
-          {/*  <li className="locations__item">*/}
-          {/*    <a className="locations__item-link tabs__item" href="#">*/}
-          {/*      <span>Cologne</span>*/}
-          {/*    </a>*/}
-          {/*  </li>*/}
-          {/*  <li className="locations__item">*/}
-          {/*    <a className="locations__item-link tabs__item" href="#">*/}
-          {/*      <span>Brussels</span>*/}
-          {/*    </a>*/}
-          {/*  </li>*/}
-          {/*  <li className="locations__item">*/}
-          {/*    <a className="locations__item-link tabs__item tabs__item--active">*/}
-          {/*      <span>Amsterdam</span>*/}
-          {/*    </a>*/}
-          {/*  </li>*/}
-          {/*  <li className="locations__item">*/}
-          {/*    <a className="locations__item-link tabs__item" href="#">*/}
-          {/*      <span>Hamburg</span>*/}
-          {/*    </a>*/}
-          {/*  </li>*/}
-          {/*  <li className="locations__item">*/}
-          {/*    <a className="locations__item-link tabs__item" href="#">*/}
-          {/*      <span>Dusseldorf</span>*/}
-          {/*    </a>*/}
-          {/*  </li>*/}
-          {/*</ul>*/}
-          <CitiesList
-            cities={cities}
-            cityClickHandler={cityClickHandler}
-            activeCity={activeCity}
-          />
-        </section>
-      </div>
+      <CitiesList
+        cities={cities}
+        cityClickHandler={cityClickHandler}
+        activeCity={activeCity}
+      />
       <div className="cities__places-wrapper">
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
             <b className="places__found">
-              312 places to stay in Amsterdam
+              {offers.length} places to stay in {activeCity}
             </b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
@@ -168,6 +132,10 @@ MainScreen.propTypes = {
     rating: PropTypes.number.isRequired,
     isPremium: PropTypes.bool.isRequired,
     isFavorite: PropTypes.bool.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number)
-  })).isRequired
+    coordinates: PropTypes.arrayOf(PropTypes.number),
+    city: PropTypes.string.isRequired
+  })).isRequired,
+  activeCity: PropTypes.string.isRequired,
+  cityClickHandler: PropTypes.func.isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired
 };

@@ -20,8 +20,6 @@ const ActionType = {
 
 export const ActionCreator = {
   changeActiveCity: (changedCity) => {
-
-    console.log(999, changedCity);
     return {
       type: ActionType.CHANGE_CITY,
       payload: changedCity
@@ -30,7 +28,6 @@ export const ActionCreator = {
 
   changeActiveOffers: (changedCity) => {
     const filteredOffers = offers.filter((offer) => offer.city === changedCity);
-    console.log(filteredOffers);
     return {
       type: ActionType.CHANGE_OFFERS,
       payload: filteredOffers
@@ -39,16 +36,15 @@ export const ActionCreator = {
 };
 
 export const reducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case ActionType.CHANGE_CITY:
-      console.log(555, action.payload);
+
       return Object.assign({}, state, {
         activeCity: action.payload
       });
 
     case ActionType.CHANGE_OFFERS:
-      console.log(777777, action.payload);
+
       return Object.assign({}, state, {
         activeOffers: action.payload
       });

@@ -8,7 +8,7 @@ import {ActionCreator} from "../../reducer";
 export const App = (props) => {
   const {allOffers, offers, activeCity, cityClickHandler} = props;
   const cities = [...new Set(allOffers.map((offer) => offer.city))];
-  console.log(offers, `---`, activeCity);
+
   return <MainScreen
     offers={offers}
     cities={cities}
@@ -18,7 +18,10 @@ export const App = (props) => {
 };
 
 App.propTypes = {
-  offers: PropTypes.array.isRequired
+  offers: PropTypes.array.isRequired,
+  allOffers: PropTypes.array.isRequired,
+  activeCity: PropTypes.string.isRequired,
+  cityClickHandler: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -31,7 +34,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  console.log(dispatch);
   return {
     cityClickHandler: (changedCity) => {
       dispatch(ActionCreator.changeActiveOffers(changedCity));

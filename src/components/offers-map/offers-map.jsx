@@ -22,15 +22,14 @@ export class OffersMap extends PureComponent {
     if (!document.querySelector(`#map`)) {
       return;
     }
+    const {offers} = this.props;
     this.renderMap();
-    this.renderPins();
+    this.renderPins(offers);
   }
 
   renderMap() {
     const {offers, activeCity} = this.props;
-    console.log(activeCity);
     const city = CitiesCoordinates[activeCity];
-
     const zoom = 12;
     const mapConfig = {
       offers,
@@ -50,8 +49,7 @@ export class OffersMap extends PureComponent {
     this.mapItem = this.props.mapMethods.createMap(mapConfig);
   }
 
-  renderPins() {
-    const {offers} = this.props;
+  renderPins(offers) {
     const iconUrl = `img/pin-map.svg`;
     const iconSize = [30, 30];
     const mapItem = this.mapItem;
@@ -64,19 +62,15 @@ export class OffersMap extends PureComponent {
   }
 
   componentDidUpdate() {
-    const {activeCity} = this.props;
-    console.log(activeCity);
+    const {offers, activeCity} = this.props;
     const city = CitiesCoordinates[activeCity];
     this.mapItem.setView(city);
-    console.log(this.pins);
     this.pins.forEach((pin) => {
       pin.remove();
     });
-
-    this.renderPins();
+    this.renderPins(offers);
   }
 }
-
 
 OffersMap.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.shape({
@@ -91,5 +85,6 @@ OffersMap.propTypes = {
   mapMethods: PropTypes.shape({
     createMap: PropTypes.func,
     addPin: PropTypes.func
-  }).isRequired
+  }).isRequired,
+  activeCity: PropTypes.string.isRequired
 };
