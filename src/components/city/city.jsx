@@ -28,4 +28,4 @@ City.propTypes = {
   cityClickHandler: PropTypes.func,
   city: PropTypes.string,
   isActive: PropTypes.bool
-}
+};

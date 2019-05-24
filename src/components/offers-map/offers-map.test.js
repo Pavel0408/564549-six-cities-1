@@ -11,7 +11,8 @@ const offersMock = [
     rating: 5,
     isPremium: false,
     isFavorite: true,
-    coordinates: [52.3909553943508, 4.85309666406198]
+    coordinates: [52.3909553943508, 4.85309666406198],
+    city: `Amsterdam`
   },
   {
     name: `Wood and stone place`,
@@ -20,9 +21,12 @@ const offersMock = [
     rating: 10,
     isPremium: true,
     isFavorite: false,
-    coordinate: [52.369553943508, 4.85309666406198]
+    coordinates: [52.369553943508, 4.85309666406198],
+    city: `Amsterdam`
   }
 ];
+
+const activeCity = `Amsterdam`;
 
 const mapMethods = {
   createMap() {},
@@ -34,6 +38,7 @@ describe(`testing OffersMap render`, () => {
     const tree = renderer.create(<OffersMap
       offers={offersMock}
       mapMethods={mapMethods}
+      activeCity={activeCity}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -27,5 +27,5 @@ CitiesList.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string),
   cityClickHandler: PropTypes.func,
   activeCity: PropTypes.string
-}
+};
 

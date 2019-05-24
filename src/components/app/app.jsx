@@ -2,8 +2,6 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import {MainScreen} from "../main-screen/main-screen";
-import connect from "react-redux/es/connect/connect";
-import {ActionCreator} from "../../reducer";
 
 export const App = (props) => {
   const {allOffers, offers, activeCity, cityClickHandler} = props;
@@ -24,23 +22,3 @@ App.propTypes = {
   cityClickHandler: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return Object.assign({},
-      ownProps, {
-        activeCity: state.activeCity,
-        offers: state.activeOffers,
-        allOffers: state.offers
-      });
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    cityClickHandler: (changedCity) => {
-      dispatch(ActionCreator.changeActiveOffers(changedCity));
-      dispatch(ActionCreator.changeActiveCity(changedCity));
-
-    }
-  };
-};
-
-export const AppConnected = connect(mapStateToProps, mapDispatchToProps)(App);

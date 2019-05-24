@@ -3,7 +3,7 @@ import {Provider} from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom";
 
-import {AppConnected} from "./components/app/app";
+import {AppConnected} from "./components/app/app-connected";
 import {offers} from "./mocks/offers";
 import {reducer} from "./reducer";
 
