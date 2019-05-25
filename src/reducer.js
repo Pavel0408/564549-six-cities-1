@@ -1,16 +1,10 @@
 import {offers} from "./mocks/offers";
 
-const getCitiesOffers = (offersArr, activeCity) => {
-  return offersArr.filter((offer) => offer.city === activeCity);
-};
-
 const activeCity = `Amsterdam`;
-const activeOffers = getCitiesOffers(offers, activeCity);
 
 const initialState = {
   activeCity,
-  offers,
-  activeOffers
+  offers
 };
 
 const ActionType = {

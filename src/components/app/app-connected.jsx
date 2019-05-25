@@ -3,11 +3,14 @@ import {App} from "./app";
 import {ActionCreator} from "../../reducer";
 
 const mapStateToProps = (state, ownProps) => {
+  const cities = [...new Set(state.offers.map((offer) => offer.city))];
+  const offers = state.offers.filter((offer) => offer.city === state.activeCity);
+
   return Object.assign({},
       ownProps, {
         activeCity: state.activeCity,
-        offers: state.activeOffers,
-        allOffers: state.offers
+        offers,
+        cities
       });
 };
 
