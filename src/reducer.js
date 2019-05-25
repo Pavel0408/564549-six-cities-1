@@ -20,11 +20,10 @@ export const ActionCreator = {
     };
   },
 
-  changeActiveOffers: (changedCity) => {
-    const filteredOffers = offers.filter((offer) => offer.city === changedCity);
+  changeActiveOffers: (newOffers) => {
     return {
       type: ActionType.CHANGE_OFFERS,
-      payload: filteredOffers
+      payload: newOffers
     };
   }
 };
