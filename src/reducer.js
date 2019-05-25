@@ -45,5 +45,3 @@ export const reducer = (state = initialState, action) => {
 
   return state;
 };
-
-reducer.state = initialState;
