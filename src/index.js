@@ -23,9 +23,4 @@ const init = () => {
   );
 };
 
-
 init();
-reducer(undefined, {
-  type: `CHANGE_CITY`,
-  payload: `Paris`
-});
