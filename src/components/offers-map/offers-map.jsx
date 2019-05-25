@@ -1,13 +1,7 @@
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
-const CitiesCoordinates = {
-  Paris: [48.85341, 2.3488],
-  Brussels: [50.85045, 4.34878],
-  Amsterdam: [52.38333, 4.9],
-  Hamburg: [53.57532, 10.01534],
-  Dusseldorf: [51.2217, 6.77616]
-};
+import {CityLocation} from "../../constants/city-location";
 
 export class OffersMap extends PureComponent {
   constructor(props) {
@@ -29,7 +23,7 @@ export class OffersMap extends PureComponent {
 
   renderMap() {
     const {offers, activeCity} = this.props;
-    const city = CitiesCoordinates[activeCity];
+    const city = CityLocation[activeCity];
     const zoom = 12;
     const mapConfig = {
       offers,
@@ -63,7 +57,7 @@ export class OffersMap extends PureComponent {
 
   componentDidUpdate() {
     const {offers, activeCity} = this.props;
-    const city = CitiesCoordinates[activeCity];
+    const city = CityLocation[activeCity];
     this.mapItem.setView(city);
     this.pins.forEach((pin) => {
       pin.remove();
