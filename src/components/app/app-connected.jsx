@@ -1,6 +1,7 @@
 import connect from "react-redux/es/connect/connect";
+
+import {ActionCreator} from "../../action-creator";
 import {App} from "./app";
-import {ActionCreator} from "../../reducer";
 
 const mapStateToProps = (state, ownProps) => {
   const cities = [...new Set(state.offers.map((offer) => offer.city))];
