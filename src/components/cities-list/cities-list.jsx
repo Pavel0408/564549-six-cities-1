@@ -4,7 +4,7 @@ import {City} from "../city/city";
 
 export class CitiesList extends PureComponent {
   render() {
-    const {cities, cityClickHandler, activeCity} = this.props;
+    const {cities, cityClickHandler, cityName} = this.props;
     return <div className="cities tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
@@ -12,7 +12,7 @@ export class CitiesList extends PureComponent {
             return <City
               key={`city-` + i}
               city = {cityItem}
-              isActive = {cityItem === activeCity}
+              isActive = {cityItem === cityName}
               cityClickHandler = {cityClickHandler}
             />;
           })
@@ -26,6 +26,6 @@ export class CitiesList extends PureComponent {
 CitiesList.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string),
   cityClickHandler: PropTypes.func,
-  activeCity: PropTypes.string
+  cityName: PropTypes.string
 };
 

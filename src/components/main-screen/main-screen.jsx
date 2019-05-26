@@ -7,7 +7,7 @@ import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {CitiesList} from "../cities-list/cities-list";
 
 export const MainScreen = (props) => {
-  const {offers, activeCity, cityClickHandler, cities} = props;
+  const {offers, cityName, cityClickHandler, cities} = props;
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -69,14 +69,14 @@ export const MainScreen = (props) => {
       <CitiesList
         cities={cities}
         cityClickHandler={cityClickHandler}
-        activeCity={activeCity}
+        activeCity={cityName}
       />
       <div className="cities__places-wrapper">
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
             <b className="places__found">
-              {offers.length} places to stay in {activeCity}
+              {offers.length} places to stay in {cityName}
             </b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
@@ -115,7 +115,7 @@ export const MainScreen = (props) => {
           <div className="cities__right-section">
             <section className="cities__map map">
               <WithLeafletMap
-                render={(data) => <OffersMap mapMethods={data} offers={offers} activeCity={activeCity}/>}/>
+                render={(data) => <OffersMap mapMethods={data} offers={offers} cityName={cityName}/>}/>
             </section>
           </div>
         </div>
@@ -135,7 +135,7 @@ MainScreen.propTypes = {
     coordinates: PropTypes.arrayOf(PropTypes.number),
     city: PropTypes.string.isRequired
   })).isRequired,
-  activeCity: PropTypes.string.isRequired,
+  cityName: PropTypes.string.isRequired,
   cityClickHandler: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired
 };

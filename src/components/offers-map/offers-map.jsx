@@ -9,7 +9,7 @@ export class OffersMap extends PureComponent {
   }
 
   render() {
-    return <div id="map" style={{height: 823}} data-id={this.props.activeCity}></div>;
+    return <div id="map" style={{height: 823}} data-id={this.props.cityName}></div>;
   }
 
   componentDidMount() {
@@ -22,8 +22,8 @@ export class OffersMap extends PureComponent {
   }
 
   renderMap() {
-    const {offers, activeCity} = this.props;
-    const city = CityLocation[activeCity];
+    const {offers, cityName} = this.props;
+    const city = CityLocation[cityName];
     const zoom = 12;
     const mapConfig = {
       offers,
@@ -56,8 +56,8 @@ export class OffersMap extends PureComponent {
   }
 
   componentDidUpdate() {
-    const {offers, activeCity} = this.props;
-    const city = CityLocation[activeCity];
+    const {offers, cityName} = this.props;
+    const city = CityLocation[cityName];
     this.mapItem.setView(city);
     this.pins.forEach((pin) => {
       pin.remove();
@@ -80,5 +80,5 @@ OffersMap.propTypes = {
     createMap: PropTypes.func,
     addPin: PropTypes.func
   }).isRequired,
-  activeCity: PropTypes.string.isRequired
+  cityName: PropTypes.string.isRequired
 };
