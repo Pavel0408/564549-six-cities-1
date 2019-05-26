@@ -11,16 +11,8 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_CITY:
-
-      return Object.assign({}, state, {
-        activeCity: action.payload
-      });
-
     case ActionType.CHANGE_OFFERS:
-
-      return Object.assign({}, state, {
-        activeOffers: action.payload
-      });
+      return Object.assign({}, state, action.payload);
   }
 
   return state;
