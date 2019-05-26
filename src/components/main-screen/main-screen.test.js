@@ -37,14 +37,14 @@ const cities = [
 const cityClickHandler = () => {
 };
 
-const activeCity = `Amsterdam`;
+const cityName = `Amsterdam`;
 
 describe(`testing MainScreen render`, () => {
   it(`MainScreen is render correctly`, () => {
     const tree = renderer.create(<MainScreen
       offers={offersMock}
       cities={cities}
-      activeCity={activeCity}
+      cityName={cityName}
       cityClickHandler={cityClickHandler}
     />).toJSON();
 

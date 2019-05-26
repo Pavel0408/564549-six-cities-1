@@ -25,17 +25,25 @@ const offersMock = [
   }
 ];
 
-const activeCity = `Amsterdam`;
+const cityName = `Amsterdam`;
 
 const cityClickHandler = () => {
 };
+
+const cities = [
+  `Paris`,
+  `Brussels`,
+  `Amsterdam`,
+  `Hamburg`,
+  `Dusseldorf`
+];
 
 describe(`testing App render`, () => {
   it(`App is render correctly`, () => {
     const tree = renderer.create(<App
       offers={offersMock}
-      allOffers={offersMock}
-      activeCity={activeCity}
+      cityName={cityName}
+      cities={cities}
       cityClickHandler={cityClickHandler}
     />).toJSON();
 

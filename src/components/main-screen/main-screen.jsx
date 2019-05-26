@@ -69,7 +69,7 @@ export const MainScreen = (props) => {
       <CitiesList
         cities={cities}
         cityClickHandler={cityClickHandler}
-        activeCity={cityName}
+        cityName={cityName}
       />
       <div className="cities__places-wrapper">
         <div className="cities__places-container container">

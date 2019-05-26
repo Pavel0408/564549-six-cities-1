@@ -38,7 +38,7 @@ exports[`testing CitiesList render CitiesList is render correctly 1`] = `
         className="locations__item"
       >
         <a
-          className="locations__item-link tabs__item tabs__item tabs__item--active"
+          className="locations__item-link tabs__item tabs__item"
           onClick={[Function]}
         >
           <span>

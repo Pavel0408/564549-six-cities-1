@@ -26,7 +26,7 @@ const offersMock = [
   }
 ];
 
-const activeCity = `Amsterdam`;
+const cityName = `Amsterdam`;
 
 const mapMethods = {
   createMap() {},
@@ -38,7 +38,7 @@ describe(`testing OffersMap render`, () => {
     const tree = renderer.create(<OffersMap
       offers={offersMock}
       mapMethods={mapMethods}
-      activeCity={activeCity}
+      cityName={cityName}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();
