@@ -9,7 +9,7 @@ export class OffersMap extends PureComponent {
   }
 
   render() {
-    return <div id="map" style={{height: 823}} data-id={this.props.cityName}></div>;
+    return <div id="map" style={{height: 850}} data-id={this.props.cityName}></div>;
   }
 
   componentDidMount() {

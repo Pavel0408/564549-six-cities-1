@@ -113,7 +113,7 @@ export const MainScreen = (props) => {
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map">
+            <section className="cities__map map" style={{backgroundImage: `none`}}>
               <WithLeafletMap
                 render={(data) => <OffersMap mapMethods={data} offers={offers} cityName={cityName}/>}/>
             </section>

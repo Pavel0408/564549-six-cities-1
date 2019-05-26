@@ -1,5 +1,5 @@
 import {reducer} from './reducer';
-import {offers} from "./mocks/offers";
+import {randomOffers as offers} from "./mocks/offers";
 
 describe(`Reducer is correct`, () => {
   it(`returns initial state without parameters`, () => {

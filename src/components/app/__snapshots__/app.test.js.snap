@@ -460,13 +460,18 @@ Array [
         >
           <section
             className="cities__map map"
+            style={
+              Object {
+                "backgroundImage": "none",
+              }
+            }
           >
             <div
               data-id="Amsterdam"
               id="map"
               style={
                 Object {
-                  "height": 823,
+                  "height": 850,
                 }
               }
             />

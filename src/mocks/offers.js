@@ -1,4 +1,5 @@
-import {getRandomBoolValue, getRandomNumber} from "../utils";
+import {getRandomBoolValue, getRandomCoordinates, getRandomValue, getRandomNumber} from "../utils";
+import {CityLocation} from "../constants/city-location";
 
 const cardTitles = [
   `Beautiful & luxurious apartment at great location`,
@@ -48,6 +49,18 @@ function Offer(city, index) {
   this.city = city;
 }
 
+function OfferRandom() {
+  const city = getRandomValue(cities);
+  this.name = getRandomValue(cardTitles);
+  this.image = getRandomValue(cardImages);
+  this.price = getRandomNumber(10, 500);
+  this.rating = getRandomNumber(0, 10);
+  this.isPremium = getRandomBoolValue();
+  this.isFavorite = getRandomBoolValue();
+  this.coordinates = getRandomCoordinates(CityLocation[city]);
+  this.city = city;
+}
+
 const generateOffers = () => {
   let offers = [];
   cities.forEach((city)=>{
@@ -60,4 +73,6 @@ const generateOffers = () => {
   return offers;
 };
 export const offers = generateOffers();
-
+export const randomOffers = new Array(30).fill(``).map(() => {
+  return new OfferRandom();
+});

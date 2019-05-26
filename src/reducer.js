@@ -1,11 +1,11 @@
 import {ActionType} from "./action-type";
-import {offers} from "./mocks/offers";
+import {randomOffers} from "./mocks/offers";
 
 const cityName = `Amsterdam`;
 
 const initialState = {
   cityName,
-  offers
+  offers: randomOffers
 };
 
 export const reducer = (state = initialState, action) => {
