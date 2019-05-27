@@ -16,7 +16,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-
   return {
     cityClickHandler: (changedCity) => {
       dispatch(ActionCreator.changeActiveCity(changedCity));
