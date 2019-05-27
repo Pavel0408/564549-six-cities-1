@@ -5,6 +5,7 @@ import {OffersList} from "../offers-list/offers-list";
 import {OffersMap} from "../offers-map/offers-map";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {CitiesList} from "../cities-list/cities-list";
+import {offersPropTypes} from "../../prop-types/offers-prop-types";
 
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities} = props;
@@ -125,16 +126,7 @@ export const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number),
-    city: PropTypes.string.isRequired
-  })).isRequired,
+  offers: offersPropTypes,
   cityName: PropTypes.string.isRequired,
   cityClickHandler: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired
