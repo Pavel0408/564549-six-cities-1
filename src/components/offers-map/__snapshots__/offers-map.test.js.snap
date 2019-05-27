@@ -2,7 +2,6 @@
 
 exports[`testing OffersMap render OffersMap is render correctly 1`] = `
 <div
-  data-id="Amsterdam"
   id="map"
   style={
     Object {

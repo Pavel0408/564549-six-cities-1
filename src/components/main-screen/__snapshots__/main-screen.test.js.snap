@@ -467,7 +467,6 @@ Array [
             }
           >
             <div
-              data-id="Amsterdam"
               id="map"
               style={
                 Object {

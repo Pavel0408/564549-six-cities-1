@@ -9,7 +9,7 @@ const cityClickHandler = () => {
 describe(`testing City render`, () => {
   it(`City is render correctly`, () => {
     const tree = renderer.create(<City
-      key={`city-` + 1}
+      key={`city-${1}`}
       city = {activeCity}
       isActive = {true}
       cityClickHandler={cityClickHandler}
