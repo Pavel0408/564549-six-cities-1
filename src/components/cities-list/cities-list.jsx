@@ -10,7 +10,7 @@ export class CitiesList extends PureComponent {
         <ul className="locations__list tabs__list">
           {cities.map((cityItem, i) => {
             return <City
-              key={`city-` + i}
+              key={`city-${i}`}
               city = {cityItem}
               isActive = {cityItem === cityName}
               cityClickHandler = {cityClickHandler}
