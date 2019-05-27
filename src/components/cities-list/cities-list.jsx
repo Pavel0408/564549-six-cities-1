@@ -11,9 +11,9 @@ export class CitiesList extends PureComponent {
           {cities.map((cityItem, i) => {
             return <City
               key={`city-${i}`}
-              city = {cityItem}
-              isActive = {cityItem === cityName}
-              cityClickHandler = {cityClickHandler}
+              city={cityItem}
+              isActive={cityItem === cityName}
+              cityClickHandler={cityClickHandler}
             />;
           })
           }
