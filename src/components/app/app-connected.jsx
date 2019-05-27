@@ -7,11 +7,11 @@ const mapStateToProps = (state) => {
   const cities = [...new Set(state.offers.map((offer) => offer.city))];
   const offers = state.offers.filter((offer) => offer.city === state.cityName);
 
-  return Object.assign({}, {
+  return {
     cityName: state.cityName,
     offers,
     cities
-  });
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
