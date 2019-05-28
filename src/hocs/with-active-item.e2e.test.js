@@ -32,10 +32,8 @@ const offersMock = [
 
 const OffersListWrapped = withActiveItem(OffersList);
 
-describe(`testing the OfferCard work`, () => {
-
-
-  it(`click on title return offers element`, () => {
+describe(`testing the withActiveItem work`, () => {
+  it(`call callback correctly change state`, () => {
     const offersList = mount(<OffersListWrapped
       offers={offersMock}
     />);

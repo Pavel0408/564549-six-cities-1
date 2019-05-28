@@ -35,7 +35,7 @@ export class OfferCard extends PureComponent {
             width={260}
             height={200}
             alt="Place image"
-            onMouseOver={this.imgHoverHandler}
+            onClick={this.imgClickHandler}
           />
         </a>
       </div>

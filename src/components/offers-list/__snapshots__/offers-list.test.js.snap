@@ -15,7 +15,7 @@ Array [
           alt="Place image"
           className="place-card__image"
           height={200}
-          onMouseOver={[Function]}
+          onClick={[Function]}
           src="img/apartment-01.jpg"
           width={260}
         />
@@ -119,7 +119,7 @@ Array [
           alt="Place image"
           className="place-card__image"
           height={200}
-          onMouseOver={[Function]}
+          onClick={[Function]}
           src="img/room.jpg"
           width={260}
         />
