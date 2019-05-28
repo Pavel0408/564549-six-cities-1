@@ -6,9 +6,11 @@ import {OffersMap} from "../offers-map/offers-map";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {CitiesList} from "../cities-list/cities-list";
 import {offersPropTypes} from "../../prop-types/offers-prop-types";
+import {withActiveItem} from "../../hocs/with-active-item";
 
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities} = props;
+  const OffersListWrapped = withActiveItem(OffersList);
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -110,7 +112,7 @@ export const MainScreen = (props) => {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <OffersList offers={offers}/>
+              <OffersListWrapped offers={offers}/>
             </div>
           </section>
           <div className="cities__right-section">
