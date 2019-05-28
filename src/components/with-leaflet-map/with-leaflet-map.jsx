@@ -28,7 +28,7 @@ export class WithLeafletMap extends PureComponent {
       iconUrl,
       iconSize
     });
-    leaflet
+    return leaflet
         .marker(coordinates, {icon})
         .addTo(mapItem);
   }

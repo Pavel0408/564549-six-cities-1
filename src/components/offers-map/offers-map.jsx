@@ -1,13 +1,16 @@
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
+import {CityLocation} from "../../constants/city-location";
+import {offersPropTypes} from "../../prop-types/offers-prop-types";
+
 export class OffersMap extends PureComponent {
   constructor(props) {
     super(props);
   }
 
   render() {
-    return <div id="map" style={{height: 823}}></div>;
+    return <div id="map" style={{height: 850}}></div>;
   }
 
   componentDidMount() {
@@ -15,9 +18,13 @@ export class OffersMap extends PureComponent {
       return;
     }
     const {offers} = this.props;
-    const city = [52.38333, 4.9];
-    const iconUrl = `img/pin-map.svg`;
-    const iconSize = [30, 30];
+    this.renderMap();
+    this.renderPins(offers);
+  }
+
+  renderMap() {
+    const {offers, cityName} = this.props;
+    const city = CityLocation[cityName];
     const zoom = 12;
     const mapConfig = {
       offers,
@@ -34,29 +41,37 @@ export class OffersMap extends PureComponent {
       }
     };
 
-    const mapItem = this.props.mapMethods.createMap(mapConfig);
+    this.mapItem = this.props.mapMethods.createMap(mapConfig);
+  }
 
-    offers.map((offfer) => this.props.mapMethods.addPin({
+  renderPins(offers) {
+    const iconUrl = `img/pin-map.svg`;
+    const iconSize = [30, 30];
+    const mapItem = this.mapItem;
+    this.pins = offers.map((offfer) => this.props.mapMethods.addPin({
       coordinates: offfer.coordinates,
       mapItem,
       iconUrl,
       iconSize
     }));
   }
+
+  componentDidUpdate() {
+    const {offers, cityName} = this.props;
+    const city = CityLocation[cityName];
+    this.mapItem.setView(city);
+    this.pins.forEach((pin) => {
+      pin.remove();
+    });
+    this.renderPins(offers);
+  }
 }
 
 OffersMap.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number)
-  })).isRequired,
+  offers: offersPropTypes,
   mapMethods: PropTypes.shape({
     createMap: PropTypes.func,
     addPin: PropTypes.func
-  }).isRequired
+  }).isRequired,
+  cityName: PropTypes.string.isRequired
 };

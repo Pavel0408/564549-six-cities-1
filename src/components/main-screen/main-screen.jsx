@@ -4,9 +4,11 @@ import React from "react";
 import {OffersList} from "../offers-list/offers-list";
 import {OffersMap} from "../offers-map/offers-map";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
+import {CitiesList} from "../cities-list/cities-list";
+import {offersPropTypes} from "../../prop-types/offers-prop-types";
 
 export const MainScreen = (props) => {
-  const {offers} = props;
+  const {offers, cityName, cityClickHandler, cities} = props;
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -65,48 +67,17 @@ export const MainScreen = (props) => {
     </header>
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
-      <div className="cities tabs">
-        <section className="locations container">
-          <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
-        </section>
-      </div>
+      <CitiesList
+        cities={cities}
+        cityClickHandler={cityClickHandler}
+        cityName={cityName}
+      />
       <div className="cities__places-wrapper">
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
             <b className="places__found">
-              312 places to stay in Amsterdam
+              {offers.length} places to stay in {cityName}
             </b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
@@ -143,9 +114,9 @@ export const MainScreen = (props) => {
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map">
+            <section className="cities__map map" style={{backgroundImage: `none`}}>
               <WithLeafletMap
-                render={(data) => <OffersMap mapMethods={data} offers={offers} />}/>
+                render={(data) => <OffersMap mapMethods={data} offers={offers} cityName={cityName}/>}/>
             </section>
           </div>
         </div>
@@ -155,13 +126,8 @@ export const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    coordinates: PropTypes.arrayOf(PropTypes.number)
-  })).isRequired
+  offers: offersPropTypes,
+  cityName: PropTypes.string.isRequired,
+  cityClickHandler: PropTypes.func.isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired
 };

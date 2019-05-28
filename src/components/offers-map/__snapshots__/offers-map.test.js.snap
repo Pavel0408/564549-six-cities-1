@@ -5,7 +5,7 @@ exports[`testing OffersMap render OffersMap is render correctly 1`] = `
   id="map"
   style={
     Object {
-      "height": 823,
+      "height": 850,
     }
   }
 />
