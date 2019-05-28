@@ -8,7 +8,7 @@ export class OfferCard extends PureComponent {
     const {offer} = props;
     this._offer = offer;
     this.titleClickHandler = this.titleClickHandler.bind(this);
-    this.imgHoverHandler = this.imgHoverHandler.bind(this);
+    this.imgClickHandler = this.imgClickHandler.bind(this);
   }
 
   titleClickHandler(evt) {
@@ -17,9 +17,9 @@ export class OfferCard extends PureComponent {
     titleOnClick(this._offer);
   }
 
-  imgHoverHandler() {
-    const {imgOnHover} = this.props;
-    imgOnHover(this._offer);
+  imgClickHandler() {
+    const {imgOnClick} = this.props;
+    imgOnClick(this._offer);
   }
 
   render() {
@@ -88,5 +88,5 @@ OfferCard.propTypes = {
     isFavorite: PropTypes.bool.isRequired
   }).isRequired,
   titleOnClick: PropTypes.func.isRequired,
-  imgOnHover: PropTypes.func.isRequired
+  imgOnClick: PropTypes.func.isRequired
 };

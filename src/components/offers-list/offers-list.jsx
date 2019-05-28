@@ -8,10 +8,7 @@ export class OffersList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeCard: null
-    };
-    this.imgOnHover = props.onChange;
+    this.imgOnClick = props.onChange;
     this.titleOnClick = this.titleOnClick.bind(this);
   }
 
@@ -26,7 +23,7 @@ export class OffersList extends PureComponent {
         key={i}
         offer={offer}
         titleOnClick={this.titleOnClick}
-        imgOnHover={this.imgOnHover}
+        imgOnClick={this.imgOnClick}
       />;
     });
   }
