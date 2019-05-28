@@ -18,12 +18,12 @@ export const getRandomValue = (arr) => {
 };
 
 export const getRandomCoordinates = (coordinates) => {
-  const getRundomCoordinate = (number) => {
+  const getRandomCoordinate = (number) => {
     number = number * 100;
     const first = number - 5;
     const second = number + 5;
     return getRandomNumber(first, second) / 100;
   };
 
-  return coordinates.map(getRundomCoordinate);
+  return coordinates.map(getRandomCoordinate);
 };
