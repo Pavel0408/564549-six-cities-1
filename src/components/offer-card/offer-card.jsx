@@ -17,8 +17,9 @@ export class OfferCard extends PureComponent {
     titleOnClick(this._offer);
   }
 
-  imgClickHandler() {
+  imgClickHandler(evt) {
     const {imgOnClick} = this.props;
+    evt.preventDefault();
     imgOnClick(this._offer);
   }
 
