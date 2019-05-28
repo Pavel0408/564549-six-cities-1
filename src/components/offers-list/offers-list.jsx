@@ -9,6 +9,7 @@ export class OffersList extends PureComponent {
     super(props);
 
     this.imgOnClick = props.onChange;
+    this.activeCard = props.activeItem;
     this.titleOnClick = this.titleOnClick.bind(this);
   }
 
@@ -31,5 +32,6 @@ export class OffersList extends PureComponent {
 
 OffersList.propTypes = {
   offers: offersPropTypes,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  activeItem: PropTypes.object
 };

@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
+import {offerCardPropTypes} from "../../prop-types/offer-card-prop-types";
 
 export class OfferCard extends PureComponent {
   constructor(props) {
@@ -78,15 +78,4 @@ export class OfferCard extends PureComponent {
   }
 }
 
-OfferCard.propTypes = {
-  offer: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    isFavorite: PropTypes.bool.isRequired
-  }).isRequired,
-  titleOnClick: PropTypes.func.isRequired,
-  imgOnClick: PropTypes.func.isRequired
-};
+OfferCard.propTypes = offerCardPropTypes;
