@@ -1,30 +1,31 @@
-import React, {PureComponent} from "react";
+import {PureComponent} from "react";
+import PropTypes from "prop-types";
 
-export const withActiveItem = (Component) => {
-  class WithActiveItem extends PureComponent {
-    constructor(props) {
-      super(props);
+export class WithActiveItem extends PureComponent {
+  constructor(props) {
+    super(props);
 
-      this.state = {
-        activeItem: null
-      };
-      this.onChange = this.onChange.bind(this);
-    }
-
-    render() {
-      return <Component
-        {...this.props}
-        onChange={this.onChange}
-        activeItem={this.state.activeItem}
-      />;
-    }
-
-    onChange(activeItem) {
-      this.setState({
-        activeItem
-      });
-    }
+    this.state = {
+      activeItem: null
+    };
+    this.onChange = this.onChange.bind(this);
   }
 
-  return WithActiveItem;
+  render() {
+    return this.props.render({
+      onChange: this.onChange,
+      activeItem: this.state.activeItem
+    });
+  }
+
+  onChange(activeItem) {
+    this.setState({
+      activeItem
+    });
+  }
+}
+
+WithActiveItem.propTypes = {
+  render: PropTypes.func.isRequired
 };
+
