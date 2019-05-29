@@ -2,7 +2,7 @@ import Adapter from "enzyme-adapter-react-16";
 import React from "react";
 import {configure, mount} from "enzyme";
 
-import {withActiveItem} from "./with-active-item";
+import {WithActiveItem} from "./with-active-item";
 import {OffersList} from "../components/offers-list/offers-list";
 
 configure({adapter: new Adapter()});
@@ -30,16 +30,16 @@ const offersMock = [
   }
 ];
 
-const OffersListWrapped = withActiveItem(OffersList);
+const OffersListWithActiveItem = <WithActiveItem
+  render={(data) => <OffersList {...data} offers={offersMock}/>}
+/>;
 
 describe(`testing the withActiveItem work`, () => {
   it(`call callback correctly change state`, () => {
-    const offersList = mount(<OffersListWrapped
-      offers={offersMock}
-    />);
+    const offersList = mount(OffersListWithActiveItem);
 
     const title = offersList.find(`.place-card__name a`).first();
     title.simulate(`click`);
-    expect(OffersListWrapped.activeItem === offersMock[0]);
+    expect(OffersListWithActiveItem.activeItem === offersMock[0]);
   });
 });
