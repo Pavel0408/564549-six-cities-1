@@ -10,7 +10,7 @@ import {WithActiveItem} from "../../hocs/with-active-item";
 
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities} = props;
-  const OffersListWrapped = <WithActiveItem
+  const OffersListWithActiveItem = <WithActiveItem
     render={(data) => <OffersList {...data} offers={offers}/>}
   />;
 
@@ -114,7 +114,7 @@ export const MainScreen = (props) => {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {OffersListWrapped}
+              {OffersListWithActiveItem}
             </div>
           </section>
           <div className="cities__right-section">
