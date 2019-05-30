@@ -11,7 +11,7 @@ import {WithActiveItem} from "../../hocs/with-active-item";
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities} = props;
   const OffersListWithActiveItem = <WithActiveItem
-    render={(data) => <OffersList {...data} offers={offers}/>}
+    render={(childProps) => <OffersList {...childProps} offers={offers}/>}
   />;
 
   return <React.Fragment>
