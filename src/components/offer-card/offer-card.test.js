@@ -15,7 +15,7 @@ const offerMock = {
 const titleOnClick = () => {
 };
 
-const imgOnHover = () => {
+const imgOnClick = () => {
 };
 
 describe(`testing OfferCard render`, () => {
@@ -23,7 +23,7 @@ describe(`testing OfferCard render`, () => {
     const tree = renderer.create(<OfferCard
       offer={offerMock}
       titleOnClick={titleOnClick}
-      imgOnHover={imgOnHover}
+      imgOnClick={imgOnClick}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -29,10 +29,14 @@ const offersMock = [
 const titleClickHandler = () => {
 };
 
+const imgOnClick = () => {
+};
+
 describe(`testing OffersList render`, () => {
   it(`OffersList is render correctly`, () => {
     const tree = renderer.create(<OffersList
       offers={offersMock}
+      onChange={imgOnClick}
       titleClickHandler={titleClickHandler}
     />).toJSON();
 

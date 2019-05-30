@@ -18,25 +18,25 @@ const offerMock = {
 describe(`testing the OfferCard work`, () => {
   it(`over on image return offers element`, () => {
     const titleOnClick = () => {};
-    const imgOnHover = jest.fn();
+    const imgOnClick = jest.fn();
     const card = mount(<OfferCard
-      imgOnHover={imgOnHover}
+      imgOnClick={imgOnClick}
       titleOnClick={titleOnClick}
       offer={offerMock}
     />);
 
     const image = card.find(`img`);
-    image.simulate(`mouseOver`);
+    image.simulate(`click`);
 
-    expect(imgOnHover).toHaveBeenCalledTimes(1);
-    expect(imgOnHover).toHaveBeenCalledWith(offerMock);
+    expect(imgOnClick).toHaveBeenCalledTimes(1);
+    expect(imgOnClick).toHaveBeenCalledWith(offerMock);
   });
 
   it(`click on title return offers element`, () => {
     const titleOnClick = jest.fn();
-    const imgOnHover = () => {};
+    const imgOnClick = () => {};
     const card = mount(<OfferCard
-      imgOnHover={imgOnHover}
+      imgOnClick={imgOnClick}
       titleOnClick={titleOnClick}
       offer={offerMock}
     />);

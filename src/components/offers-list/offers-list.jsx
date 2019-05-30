@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
 import {OfferCard} from "../offer-card/offer-card";
@@ -7,17 +8,9 @@ export class OffersList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeCard: null
-    };
-    this.imgOnHover = this.imgOnHover.bind(this);
+    this.imgOnClick = props.onChange;
+    this.activeCard = props.activeItem;
     this.titleOnClick = this.titleOnClick.bind(this);
-  }
-
-  imgOnHover(offer) {
-    this.setState({
-      activeCard: offer
-    });
   }
 
   titleOnClick(offer) {
@@ -31,12 +24,14 @@ export class OffersList extends PureComponent {
         key={i}
         offer={offer}
         titleOnClick={this.titleOnClick}
-        imgOnHover={this.imgOnHover}
+        imgOnClick={this.imgOnClick}
       />;
     });
   }
 }
 
 OffersList.propTypes = {
-  offers: offersPropTypes
+  offers: offersPropTypes,
+  onChange: PropTypes.func,
+  activeItem: PropTypes.object
 };
