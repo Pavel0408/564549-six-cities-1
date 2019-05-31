@@ -19,7 +19,7 @@ export class OfferModel {
       name: data.host.name,
       avatar: data.host.avatar
     };
-    this.description = data.descritption;
+    this.description = data.description;
     this.zoom = data.zoom;
     this.id = data.id;
   }
@@ -29,7 +29,7 @@ export class OfferModel {
       name: data[`title`],
       image: data[`preview_image`],
       price: data[`price`],
-      rating: Math.random(data[`rating`] * 2),
+      rating: Math.round(data[`rating`] * 2),
       isPremium: data[`is_premium`],
       isFavorite: data[`is_favorite`],
       coordinates: [data[`location`][`latitude`], data[`location`][`longitude`]],
@@ -46,13 +46,12 @@ export class OfferModel {
         avatar: data[`host`][`avatar_url`]
       },
       description: data[`description`],
-      zoom: data[`zoom`],
+      zoom: data[`location`][`zoom`],
       id: data[`id`]
     });
   }
 
   static parseServerData(response) {
-    console.log(response);
     return response.data.map(OfferModel.parse);
   }
 }

@@ -9,4 +9,5 @@ export const Operation = {
         dispatch(ActionCreator.changeActiveOffers(offers));
       });
   },
-}
+};
+
