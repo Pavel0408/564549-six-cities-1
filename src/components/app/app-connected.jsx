@@ -4,6 +4,7 @@ import {ActionCreator} from "../../action-creator";
 import {App} from "./app";
 
 const mapStateToProps = (state) => {
+  console.log(state.offers);
   const cities = [...new Set(state.offers.map((offer) => offer.city))];
   const offers = state.offers.filter((offer) => offer.city === state.cityName);
 

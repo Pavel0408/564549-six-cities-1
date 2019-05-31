@@ -19,9 +19,10 @@ export class OffersList extends PureComponent {
 
   render() {
     const {offers} = this.props;
+    console.log(offers);
     return offers.map((offer, i) => {
       return <OfferCard
-        key={i}
+        key={`offer-${offer.id}`}
         offer={offer}
         titleOnClick={this.titleOnClick}
         imgOnClick={this.imgOnClick}
