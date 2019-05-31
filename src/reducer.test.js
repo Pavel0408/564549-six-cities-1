@@ -5,7 +5,7 @@ describe(`Reducer is correct`, () => {
   it(`returns initial state without parameters`, () => {
     expect(reducer(undefined, {})).toEqual({
       cityName: `Amsterdam`,
-      offers
+      offers: []
     });
   });
   it(`correctly change city`, () => {
@@ -39,7 +39,8 @@ describe(`Reducer is correct`, () => {
         isPremium: false,
         isFavorite: true,
         coordinates: [52.3909553943508, 4.85309666406198],
-        city: `Amsterdam`
+        city: `Amsterdam`,
+        id: 0
       },
       {
         name: `Wood and stone place`,
@@ -49,7 +50,8 @@ describe(`Reducer is correct`, () => {
         isPremium: true,
         isFavorite: false,
         coordinates: [52.369553943508, 4.85309666406198],
-        city: `Amsterdam`
+        city: `Amsterdam`,
+        id: 1
       }
     ];
 

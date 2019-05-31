@@ -9,7 +9,8 @@ const offerMock = {
   price: 120,
   rating: 5,
   isPremium: false,
-  isFavorite: true
+  isFavorite: true,
+  id: 0
 };
 
 const titleOnClick = () => {
