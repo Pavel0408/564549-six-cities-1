@@ -1,10 +1,14 @@
 import {createSelector} from 'reselect';
-
 import connect from "react-redux/es/connect/connect";
 
 import {ActionCreator} from "../../action-creator";
 import {App} from "./app";
-import {getCityName, getOffers} from "../../reducer/selectors";
+import {
+  getCityName,
+  getOffers,
+  getOffersIsLoading,
+  getOffersLoadError,
+} from "../../reducer/selectors";
 
 const mapStateToProps = (state) => {
 
@@ -19,7 +23,9 @@ const mapStateToProps = (state) => {
   return {
     cityName: getCityName(state),
     offers,
-    cities: getCities()
+    cities: getCities(),
+    isLoading: getOffersIsLoading(state),
+    error: getOffersLoadError(state)
   };
 };
 

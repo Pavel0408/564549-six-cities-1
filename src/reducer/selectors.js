@@ -22,3 +22,7 @@ export const getOffersIsLoaded = (state) => {
 export const getOffersIsFailed = (state) => {
   return state[fetchOffers].isFailed;
 };
+
+export const getOffersLoadError = (state) => {
+  return state[fetchOffers].error;
+};
