@@ -23,7 +23,8 @@ export const ActionCreator = {
       payload: {
         isLoading: true,
         isFailed: false,
-        isLoaded: false
+        isLoaded: false,
+        error: null
       }
     };
   },
@@ -33,7 +34,8 @@ export const ActionCreator = {
       payload: {
         isLoading: false,
         isFailed: false,
-        isLoaded: true
+        isLoaded: true,
+        error: null
       }
     };
   },
