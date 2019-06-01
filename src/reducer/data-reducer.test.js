@@ -1,9 +1,9 @@
-import {reducer} from './reducer';
-import {randomOffers as offers} from "./mocks/offers";
+import {dataReducer} from './data-reducer';
+import {randomOffers as offers} from "../mocks/offers";
 
 describe(`Reducer is correct`, () => {
   it(`returns initial state without parameters`, () => {
-    expect(reducer(undefined, {})).toEqual({
+    expect(dataReducer(undefined, {})).toEqual({
       cityName: `Amsterdam`,
       offers: []
     });
@@ -20,7 +20,7 @@ describe(`Reducer is correct`, () => {
         cityName: `Brussels`
       }
     };
-    expect(reducer(state, cityChangeAction)).toEqual({
+    expect(dataReducer(state, cityChangeAction)).toEqual({
       cityName: `Brussels`,
       offers
     });
@@ -61,7 +61,7 @@ describe(`Reducer is correct`, () => {
         offers: offersMock
       }
     };
-    expect(reducer(state, offersChangeAction)).toEqual({
+    expect(dataReducer(state, offersChangeAction)).toEqual({
       cityName: `Amsterdam`,
       offers: offersMock
     });
@@ -101,6 +101,6 @@ describe(`Reducer is correct`, () => {
         offers: offersMock
       }
     };
-    expect(reducer(state, incorrectAction)).toEqual(state);
+    expect(dataReducer(state, incorrectAction)).toEqual(state);
   });
 });

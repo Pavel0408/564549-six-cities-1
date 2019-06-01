@@ -59,12 +59,11 @@ describe(`Operation work correctly`, () => {
 
     return loadOffers(dispatch, jest.fn(), api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
+        expect(dispatch).toHaveBeenCalledTimes(3);
+        expect(dispatch).toHaveBeenNthCalledWith(3, {
           type: ActionType.CHANGE_OFFERS,
           payload: {
             offers: OfferModel.parseServerData(mockResponse)
-
           }
         }
         );
