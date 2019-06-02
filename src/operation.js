@@ -1,10 +1,11 @@
 import {ActionCreator} from "./action-creator";
 import {OfferModel} from "./models/offer-model";
+import {ServerPath} from "./constants/server-path";
 
 export const Operation = {
   loadOffers: () => (dispatch, getState, api) => {
     dispatch(ActionCreator.loadingOffers(true));
-    return api.get(`/hotels`)
+    return api.get(ServerPath.hotels)
       .then(OfferModel.parseServerData)
       .then((offers) => {
         dispatch(ActionCreator.fetchOffersReceived(offers));
