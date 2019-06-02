@@ -1,7 +1,7 @@
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "./api";
 
-import {OfferModel} from "./parse-server-response/parse-server-response-offers";
+import {parseServerResponseOffers} from "./parse-server-response/parse-server-response-offers";
 import {Operation} from "./operation";
 import {ActionType} from "./action-type";
 
@@ -59,11 +59,11 @@ describe(`Operation work correctly`, () => {
 
     return loadOffers(dispatch, jest.fn(), api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(3);
-        expect(dispatch).toHaveBeenNthCalledWith(3, {
-          type: ActionType.CHANGE_OFFERS,
+        expect(dispatch).toHaveBeenCalledTimes(4);
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.FETCH_OFFERS_RECEIVED,
           payload: {
-            offers: OfferModel.parseServerData(mockResponse)
+            offers: parseServerResponseOffers(mockResponse)
           }
         }
         );

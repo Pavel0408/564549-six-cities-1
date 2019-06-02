@@ -13,29 +13,18 @@ describe(`ActionCreator is correct`, () => {
   });
 
   it(`Return correctly action on offers changing`, () => {
-    expect(ActionCreator.changeActiveOffers(offers)).toEqual({
-      type: `CHANGE_OFFERS`,
+    expect(ActionCreator.fetchOffersReceived(offers)).toEqual({
+      type: `FETCH_OFFERS_RECEIVED`,
       payload: {
         offers
       }
     });
   });
-  it(`Return correctly action on fetchOffers`, () => {
-    expect(ActionCreator.loadingOffers()).toEqual({
+  it(`Return correctly action on fetchingOffers`, () => {
+    expect(ActionCreator.loadingOffers(true)).toEqual({
       type: ActionType.FETCH_OFFERS_LOADING,
       payload: {
         isLoading: true
-      }
-    });
-  });
-  it(`Return correctly action on fetchOffersReceived`, () => {
-    expect(ActionCreator.fetchOffersReceived()).toEqual({
-      type: ActionType.FETCH_OFFERS_RECEIVED,
-      payload: {
-        isLoading: false,
-        isFailed: false,
-        isLoaded: true,
-        error: null
       }
     });
   });
@@ -43,9 +32,6 @@ describe(`ActionCreator is correct`, () => {
     expect(ActionCreator.fetchOffersFailed(`error`)).toEqual({
       type: ActionType.FETCH_OFFERS_FAILED,
       payload: {
-        isLoading: false,
-        isLoaded: false,
-        isFailed: true,
         error: `error`
       }
     });
