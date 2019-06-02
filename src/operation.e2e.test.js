@@ -1,7 +1,7 @@
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "./api";
 
-import {OfferModel} from "./models/offer-model";
+import {OfferModel} from "./parse-server-response/parse-server-response-offers";
 import {Operation} from "./operation";
 import {ActionType} from "./action-type";
 
