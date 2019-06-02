@@ -14,8 +14,7 @@ import {Operation} from "../../operation";
 const mapStateToProps = (state) => {
 
   const offers = getOffers(state).filter((offer) => offer.city === getCityName(state));
-  const getOffersItems = () => getOffers(state);
-  const getCities = createSelector(getOffersItems,
+  const getCities = createSelector([getOffers],
       (offersItems) => {
         return [...new Set(offersItems.map((offer) => offer.city))];
       });
@@ -23,7 +22,7 @@ const mapStateToProps = (state) => {
   return {
     cityName: getCityName(state),
     offers,
-    cities: getCities(),
+    cities: getCities(state),
     isLoading: getOffersIsLoading(state),
     error: getOffersLoadError(state)
   };
