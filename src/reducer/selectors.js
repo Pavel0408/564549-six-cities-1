@@ -2,23 +2,20 @@ import {createSelector} from "reselect";
 
 import {NameSpace} from "./name-space";
 
-const data = NameSpace.DATA;
-const fetchOffers = NameSpace.FETCH_OFFERS;
-
 export const getOffers = (state) => {
-  return state[fetchOffers].offers;
+  return state[NameSpace.FETCH_OFFERS].offers;
 };
 
 export const getCityName = (state) => {
-  return state[data].cityName;
+  return state[NameSpace.DATA].cityName;
 };
 
 export const getOffersIsLoading = (state) => {
-  return state[fetchOffers].isLoading;
+  return state[NameSpace.FETCH_OFFERS].isLoading;
 };
 
 export const getOffersLoadError = (state) => {
-  return state[fetchOffers].error;
+  return state[NameSpace.FETCH_OFFERS].error;
 };
 
 export const getCities = createSelector([getOffers],
