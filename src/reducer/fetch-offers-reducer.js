@@ -2,9 +2,8 @@ import {ActionType} from "../action-type";
 
 const initialState = {
   isLoading: false,
-  isFailed: false,
-  isLoaded: false,
-  error: null
+  error: null,
+  offers: []
 };
 
 export const fetchOffersReducer = (state = initialState, action) => {

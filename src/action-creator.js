@@ -9,33 +9,19 @@ export const ActionCreator = {
       }
     };
   },
-  changeActiveOffers: (offers) => {
+  loadingOffers: (bool) => {
     return {
-      type: ActionType.CHANGE_OFFERS,
+      type: ActionType.FETCH_OFFERS_LOADING,
       payload: {
-        offers
+        isLoading: bool
       }
     };
   },
-  fetchOffers: () => {
-    return {
-      type: ActionType.FETCH_OFFERS,
-      payload: {
-        isLoading: true,
-        isFailed: false,
-        isLoaded: false,
-        error: null
-      }
-    };
-  },
-  fetchOffersReceived: () => {
+  fetchOffersReceived: (fetchedOffers) => {
     return {
       type: ActionType.FETCH_OFFERS_RECEIVED,
       payload: {
-        isLoading: false,
-        isFailed: false,
-        isLoaded: true,
-        error: null
+        offers: fetchedOffers
       }
     };
   },
@@ -43,9 +29,6 @@ export const ActionCreator = {
     return {
       type: ActionType.FETCH_OFFERS_FAILED,
       payload: {
-        isLoading: false,
-        isLoaded: false,
-        isFailed: true,
         error: err
       }
     };

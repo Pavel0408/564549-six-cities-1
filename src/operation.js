@@ -3,14 +3,16 @@ import {OfferModel} from "./models/offer-model";
 
 export const Operation = {
   loadOffers: () => (dispatch, getState, api) => {
-    dispatch(ActionCreator.fetchOffers());
+    dispatch(ActionCreator.loadingOffers(true));
     return api.get(`/hotels`)
       .then(OfferModel.parseServerData)
       .then((offers) => {
-        dispatch(ActionCreator.fetchOffersReceived());
-        dispatch(ActionCreator.changeActiveOffers(offers));
+        dispatch(ActionCreator.fetchOffersReceived(offers));
+        dispatch(ActionCreator.loadingOffers(false));
+        dispatch(ActionCreator.fetchOffersFailed(null));
       }).catch((e) => {
-        ActionCreator.fetchOffersFailed(e);
+        dispatch(ActionCreator.fetchOffersFailed(e));
+        dispatch(ActionCreator.loadingOffers(false));
       });
   },
 };

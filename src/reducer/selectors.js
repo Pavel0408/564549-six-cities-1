@@ -4,7 +4,8 @@ const data = NameSpace.DATA;
 const fetchOffers = NameSpace.FETCH_OFFERS;
 
 export const getOffers = (state) => {
-  return state[data].offers;
+  console.log(state);
+  return state[fetchOffers].offers;
 };
 
 export const getCityName = (state) => {
