@@ -1,3 +1,5 @@
+import {createSelector} from "reselect";
+
 import {NameSpace} from "./name-space";
 
 const data = NameSpace.DATA;
@@ -18,3 +20,8 @@ export const getOffersIsLoading = (state) => {
 export const getOffersLoadError = (state) => {
   return state[fetchOffers].error;
 };
+
+export const getCities = createSelector([getOffers],
+    (offers) => {
+      return [...new Set(offers.map((offer) => offer.city))];
+    });

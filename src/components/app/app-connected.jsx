@@ -1,9 +1,9 @@
-import {createSelector} from 'reselect';
 import connect from "react-redux/es/connect/connect";
 
 import {ActionCreator} from "../../action-creator";
 import {App} from "./app";
 import {
+  getCities,
   getCityName,
   getOffers,
   getOffersIsLoading,
@@ -14,10 +14,6 @@ import {Operation} from "../../operation";
 const mapStateToProps = (state) => {
 
   const offers = getOffers(state).filter((offer) => offer.city === getCityName(state));
-  const getCities = createSelector([getOffers],
-      (offersItems) => {
-        return [...new Set(offersItems.map((offer) => offer.city))];
-      });
 
   return {
     cityName: getCityName(state),
