@@ -9,7 +9,6 @@ import {AppConnected} from "./components/app/app-connected";
 import {offers} from "./mocks/offers";
 import {reducer} from "./reducer/reducer";
 import {createAPI} from "./api";
-import {Operation} from "./operation";
 
 /* eslint-disable no-underscore-dangle */
 const init = () => {
@@ -22,7 +21,6 @@ const init = () => {
       )
   );
   /* eslint-enable */
-  store.dispatch(Operation.loadOffers());
 
   ReactDOM.render(<Provider store={store}>
     <AppConnected

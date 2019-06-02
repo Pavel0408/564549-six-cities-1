@@ -9,6 +9,7 @@ import {
   getOffersIsLoading,
   getOffersLoadError,
 } from "../../reducer/selectors";
+import {Operation} from "../../operation";
 
 const mapStateToProps = (state) => {
 
@@ -18,7 +19,6 @@ const mapStateToProps = (state) => {
       (offersItems) => {
         return [...new Set(offersItems.map((offer) => offer.city))];
       });
-
 
   return {
     cityName: getCityName(state),
@@ -30,6 +30,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
+  dispatch(Operation.loadOffers());
   return {
     cityClickHandler: (changedCity) => {
       dispatch(ActionCreator.changeActiveCity(changedCity));
