@@ -9,12 +9,9 @@ export const ActionCreator = {
       }
     };
   },
-  loadingOffers: (bool) => {
+  loadingOffers: () => {
     return {
-      type: ActionType.FETCH_OFFERS_LOADING,
-      payload: {
-        isLoading: bool
-      }
+      type: ActionType.FETCH_OFFERS_LOADING
     };
   },
   fetchOffersReceived: (fetchedOffers) => {

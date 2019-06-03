@@ -8,10 +8,22 @@ const initialState = {
 
 export const fetchOffersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.FETCH_OFFERS_LOADING:
-    case ActionType.FETCH_OFFERS_RECEIVED:
+    case ActionType.FETCH_OFFERS_LOADING: {
+      return Object.assign({}, state, {
+        isLoading: true,
+        error: null
+      });
+    }
+    case ActionType.FETCH_OFFERS_RECEIVED: {
+      return Object.assign({}, state, action.payload, {
+        isLoading: false,
+        error: null
+      });
+    }
     case ActionType.FETCH_OFFERS_FAILED: {
-      return Object.assign({}, state, action.payload);
+      return Object.assign({}, state, action.payload, {
+        isLoading: false
+      });
     }
   }
 
