@@ -22,11 +22,11 @@ export const ActionCreator = {
       }
     };
   },
-  fetchOffersFailed: (err) => {
+  fetchOffersFailed: (error) => {
     return {
       type: ActionType.FETCH_OFFERS_FAILED,
       payload: {
-        error: err
+        error
       }
     };
   }
