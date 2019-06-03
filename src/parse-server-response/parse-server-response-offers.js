@@ -1,32 +1,5 @@
-const ParseServerResponseOffers = (data) => {
-  return {
-    name: data.name,
-    image: data.image,
-    price: data.price,
-    rating: data.rating,
-    isPremium: data.isPremium,
-    isFavorite: data.isFavorite,
-    coordinates: data.coordinates,
-    city: data.city,
-    allImages: data.allImages,
-    type: data.type,
-    bedrooms: data.bedrooms,
-    maxAdults: data.maxAdults,
-    goods: data.goods,
-    host: {
-      id: data.host.id,
-      isPro: data.host.isPro,
-      name: data.host.name,
-      avatar: data.host.avatar
-    },
-    description: data.description,
-    zoom: data.zoom,
-    id: data.id
-  };
-};
-
 const parseOfferFromServer = (data) => {
-  return new ParseServerResponseOffers({
+  return {
     name: data[`title`],
     image: data[`preview_image`],
     price: data[`price`],
@@ -49,7 +22,7 @@ const parseOfferFromServer = (data) => {
     description: data[`description`],
     zoom: data[`location`][`zoom`],
     id: data[`id`]
-  });
+  };
 };
 
 export const parseServerResponseOffers = (response) => {
