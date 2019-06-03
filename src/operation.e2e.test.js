@@ -59,7 +59,7 @@ describe(`Operation work correctly`, () => {
 
     return loadOffers(dispatch, jest.fn(), api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(4);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.FETCH_OFFERS_RECEIVED,
           payload: {
