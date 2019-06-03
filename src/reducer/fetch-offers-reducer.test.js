@@ -18,7 +18,8 @@ describe(`fetchOffersReducer is correct`, () => {
       }
     };
     expect(fetchOffersReducer({}, offersLoadingActon)).toEqual({
-      isLoading: true
+      isLoading: true,
+      error: null
     });
   });
   it(`correctly change state when offers loaded with error`, () => {
@@ -29,7 +30,8 @@ describe(`fetchOffersReducer is correct`, () => {
       }
     };
     expect(fetchOffersReducer({}, offersErrorAction)).toEqual({
-      error: `error`
+      error: `error`,
+      isLoading: false
     });
   });
   it(`correctly change offers`, () => {
@@ -68,7 +70,9 @@ describe(`fetchOffersReducer is correct`, () => {
       }
     };
     expect(fetchOffersReducer(state, offersChangeAction)).toEqual({
-      offers: offersMock
+      offers: offersMock,
+      isLoading: false,
+      error: null
     });
   });
 });

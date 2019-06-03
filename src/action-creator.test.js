@@ -22,10 +22,7 @@ describe(`ActionCreator is correct`, () => {
   });
   it(`Return correctly action on fetchingOffers`, () => {
     expect(ActionCreator.loadingOffers(true)).toEqual({
-      type: ActionType.FETCH_OFFERS_LOADING,
-      payload: {
-        isLoading: true
-      }
+      type: ActionType.FETCH_OFFERS_LOADING
     });
   });
   it(`Return correctly action on fetchOffersFailed`, () => {
