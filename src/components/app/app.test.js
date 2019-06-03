@@ -40,6 +40,9 @@ const cities = [
   `Dusseldorf`
 ];
 
+const loadOffers = () => {
+};
+
 describe(`testing App render`, () => {
   it(`App is render correctly`, () => {
     const tree = renderer.create(<App
@@ -47,6 +50,7 @@ describe(`testing App render`, () => {
       cityName={cityName}
       cities={cities}
       cityClickHandler={cityClickHandler}
+      loadOffers={loadOffers}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -22,10 +22,12 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  dispatch(Operation.loadOffers());
   return {
     cityClickHandler: (changedCity) => {
       dispatch(ActionCreator.changeActiveCity(changedCity));
+    },
+    loadOffers: () => {
+      dispatch(Operation.loadOffers());
     }
   };
 };
