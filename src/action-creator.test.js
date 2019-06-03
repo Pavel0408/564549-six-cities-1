@@ -5,7 +5,7 @@ import {ActionType} from "./action-type";
 describe(`ActionCreator is correct`, () => {
   it(`Return correctly action on city changing`, () => {
     expect(ActionCreator.changeActiveCity(`Brussels`)).toEqual({
-      type: `CHANGE_CITY`,
+      type: ActionType.CHANGE_CITY,
       payload: {
         cityName: `Brussels`
       }
@@ -14,7 +14,7 @@ describe(`ActionCreator is correct`, () => {
 
   it(`Return correctly action on offers changing`, () => {
     expect(ActionCreator.fetchOffersReceived(offers)).toEqual({
-      type: `FETCH_OFFERS_RECEIVED`,
+      type: ActionType.FETCH_OFFERS_RECEIVED,
       payload: {
         offers
       }
