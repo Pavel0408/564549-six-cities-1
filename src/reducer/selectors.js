@@ -22,3 +22,7 @@ export const getCities = createSelector([getOffers],
     (offers) => {
       return [...new Set(offers.map((offer) => offer.city))];
     });
+
+export const getActiveOffers = createSelector([getOffers, getCityName], (offers, cityName) => {
+  return offers.filter((offer) => offer.city === cityName);
+});

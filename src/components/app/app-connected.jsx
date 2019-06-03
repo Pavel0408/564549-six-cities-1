@@ -3,21 +3,18 @@ import connect from "react-redux/es/connect/connect";
 import {ActionCreator} from "../../action-creator";
 import {App} from "./app";
 import {
+  getActiveOffers,
   getCities,
   getCityName,
-  getOffers,
   getOffersIsLoading,
   getOffersLoadError,
 } from "../../reducer/selectors";
 import {Operation} from "../../operation";
 
 const mapStateToProps = (state) => {
-
-  const offers = getOffers(state).filter((offer) => offer.city === getCityName(state));
-
   return {
     cityName: getCityName(state),
-    offers,
+    offers: getActiveOffers(state),
     cities: getCities(state),
     isLoading: getOffersIsLoading(state),
     error: getOffersLoadError(state)
