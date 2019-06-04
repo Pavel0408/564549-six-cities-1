@@ -9,12 +9,24 @@ export const ActionCreator = {
       }
     };
   },
-
-  changeActiveOffers: (offers) => {
+  loadingOffers: () => {
     return {
-      type: ActionType.CHANGE_OFFERS,
+      type: ActionType.FETCH_OFFERS_LOADING
+    };
+  },
+  fetchOffersReceived: (fetchedOffers) => {
+    return {
+      type: ActionType.FETCH_OFFERS_RECEIVED,
       payload: {
-        offers
+        offers: fetchedOffers
+      }
+    };
+  },
+  fetchOffersFailed: (error) => {
+    return {
+      type: ActionType.FETCH_OFFERS_FAILED,
+      payload: {
+        error
       }
     };
   }

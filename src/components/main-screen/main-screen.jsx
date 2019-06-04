@@ -9,9 +9,9 @@ import {offersPropTypes} from "../../prop-types/offers-prop-types";
 import {WithActiveItem} from "../../hocs/with-active-item";
 
 export const MainScreen = (props) => {
-  const {offers, cityName, cityClickHandler, cities} = props;
+  const {offers, cityName, cityClickHandler, cities, isLoading, error} = props;
   const OffersListWithActiveItem = <WithActiveItem
-    render={(data) => <OffersList {...data} offers={offers}/>}
+    render={(childProps) => <OffersList {...childProps} offers={offers}/>}
   />;
 
   return <React.Fragment>
@@ -114,6 +114,8 @@ export const MainScreen = (props) => {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
+              {isLoading && <h3>Offers is loading</h3>}
+              {error && <h3>Download failed {error.message}</h3>}
               {OffersListWithActiveItem}
             </div>
           </section>
@@ -133,5 +135,7 @@ MainScreen.propTypes = {
   offers: offersPropTypes,
   cityName: PropTypes.string.isRequired,
   cityClickHandler: PropTypes.func.isRequired,
-  cities: PropTypes.arrayOf(PropTypes.string).isRequired
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isLoading: PropTypes.bool,
+  error: PropTypes.object
 };

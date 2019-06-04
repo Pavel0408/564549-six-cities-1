@@ -1,10 +1,11 @@
 import {ActionCreator} from "./action-creator";
 import {offers} from "./mocks/offers";
+import {ActionType} from "./action-type";
 
 describe(`ActionCreator is correct`, () => {
   it(`Return correctly action on city changing`, () => {
     expect(ActionCreator.changeActiveCity(`Brussels`)).toEqual({
-      type: `CHANGE_CITY`,
+      type: ActionType.CHANGE_CITY,
       payload: {
         cityName: `Brussels`
       }
@@ -12,10 +13,23 @@ describe(`ActionCreator is correct`, () => {
   });
 
   it(`Return correctly action on offers changing`, () => {
-    expect(ActionCreator.changeActiveOffers(offers)).toEqual({
-      type: `CHANGE_OFFERS`,
+    expect(ActionCreator.fetchOffersReceived(offers)).toEqual({
+      type: ActionType.FETCH_OFFERS_RECEIVED,
       payload: {
         offers
+      }
+    });
+  });
+  it(`Return correctly action on fetchingOffers`, () => {
+    expect(ActionCreator.loadingOffers(true)).toEqual({
+      type: ActionType.FETCH_OFFERS_LOADING
+    });
+  });
+  it(`Return correctly action on fetchOffersFailed`, () => {
+    expect(ActionCreator.fetchOffersFailed(`error`)).toEqual({
+      type: ActionType.FETCH_OFFERS_FAILED,
+      payload: {
+        error: `error`
       }
     });
   });

@@ -11,7 +11,8 @@ const offersMock = [
     isPremium: false,
     isFavorite: true,
     coordinates: [52.3909553943508, 4.85309666406198],
-    city: `Amsterdam`
+    city: `Amsterdam`,
+    id: 0
   },
   {
     name: `Wood and stone place`,
@@ -21,7 +22,8 @@ const offersMock = [
     isPremium: true,
     isFavorite: false,
     coordinates: [52.369553943508, 4.85309666406198],
-    city: `Amsterdam`
+    city: `Amsterdam`,
+    id: 1
   }
 ];
 
@@ -38,6 +40,9 @@ const cities = [
   `Dusseldorf`
 ];
 
+const loadOffers = () => {
+};
+
 describe(`testing App render`, () => {
   it(`App is render correctly`, () => {
     const tree = renderer.create(<App
@@ -45,6 +50,7 @@ describe(`testing App render`, () => {
       cityName={cityName}
       cities={cities}
       cityClickHandler={cityClickHandler}
+      loadOffers={loadOffers}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();
