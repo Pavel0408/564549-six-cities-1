@@ -14,9 +14,10 @@ export class App extends PureComponent {
 
   render() {
     if (!this.props.isAuthorizationRequired) {
-      return <SignIn/>;
+      const {authorize} = this.props;
+      return <SignIn authorize={authorize}/>;
     }
-    const {cities, offers, cityName, cityClickHandler, isLoading, error} = this.props;
+    const {cities, offers, cityName, cityClickHandler, isLoading, error, user} = this.props;
 
     return <MainScreen
       offers={offers}
@@ -25,6 +26,7 @@ export class App extends PureComponent {
       isLoading={isLoading}
       error={error}
       cityClickHandler={cityClickHandler}
+      user={user}
     />;
   }
 

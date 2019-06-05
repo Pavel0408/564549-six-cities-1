@@ -9,7 +9,7 @@ import {offersPropTypes} from "../../prop-types/offers-prop-types";
 import {WithActiveItem} from "../../hocs/with-active-item";
 
 export const MainScreen = (props) => {
-  const {offers, cityName, cityClickHandler, cities, isLoading, error} = props;
+  const {offers, cityName, cityClickHandler, cities, isLoading, error, user} = props;
   const OffersListWithActiveItem = <WithActiveItem
     render={(childProps) => <OffersList {...childProps} offers={offers}/>}
   />;
@@ -58,10 +58,7 @@ export const MainScreen = (props) => {
                   className="header__nav-link header__nav-link--profile"
                   href="#"
                 >
-                  <div className="header__avatar-wrapper user__avatar-wrapper"/>
-                  <span className="header__user-name user__name">
-                  Oliver.conner@gmail.com
-                  </span>
+                  {user && <div className="header__avatar-wrapper user__avatar-wrapper"> <img src={`https://es31-server.appspot.com/six-cities${user.avatar_url}`} alt={`---`}></img></div>}
                 </a>
               </li>
             </ul>

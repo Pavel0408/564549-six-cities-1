@@ -19,7 +19,7 @@ export const Operation = {
       password: authorizationData.password
     })
       .then((response) =>{
-        dispatch(ActionCreator.authorizationSuccess(response));
+        dispatch(ActionCreator.authorizationSuccess(response.data));
       }).catch((e) =>{
         dispatch(ActionCreator.authorizationFailed(e));
       });
@@ -27,7 +27,7 @@ export const Operation = {
   isAuthorized: () => (dispatch, getState, api) => {
     return api.get(ServerPath.authorization)
       .then((response) => {
-        dispatch(ActionCreator.authorizationSuccess(response));
+        dispatch(ActionCreator.authorizationSuccess(response.data));
       }).catch((e) => {
         dispatch(ActionCreator.authorizationFailed(e));
       });
