@@ -10,7 +10,18 @@ import {WithActiveItem} from "../../hocs/with-active-item";
 
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities, isLoading, error, user, signOut} = props;
-  console.log(user);
+  const userElementSwitch = () => {
+    return user ? <a
+      className="header__nav-link header__nav-link--profile"
+      href="#" onClick={signOut}> <div className="header__avatar-wrapper user__avatar-wrapper">
+        <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
+      </div>
+    </a> : <a className="header__nav-link header__nav-link--profile" href="#" onClick={signOut}>
+      <div className="header__avatar-wrapper user__avatar-wrapper">
+      </div>
+      <span className="header__login">Sign in</span>
+    </a>;
+  };
   const OffersListWithActiveItem = <WithActiveItem
     render={(childProps) => <OffersList {...childProps} offers={offers}/>}
   />;
@@ -55,12 +66,7 @@ export const MainScreen = (props) => {
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <a
-                  className="header__nav-link header__nav-link--profile"
-                  href="#" onClick={signOut}
-                >
-                  {user && <div className="header__avatar-wrapper user__avatar-wrapper"> <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`} alt={`---`}></img></div>}
-                </a>
+                {userElementSwitch()}
               </li>
             </ul>
           </nav>
