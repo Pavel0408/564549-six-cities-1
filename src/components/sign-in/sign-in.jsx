@@ -1,4 +1,5 @@
 import React, {Fragment, PureComponent} from "react";
+import PropTypes from "prop-types";
 
 export class SignIn extends PureComponent {
   render() {
@@ -59,3 +60,7 @@ export class SignIn extends PureComponent {
     </Fragment>;
   }
 }
+
+SignIn.propTypes = {
+  authorize: PropTypes.func
+};
