@@ -9,7 +9,8 @@ import {offersPropTypes} from "../../prop-types/offers-prop-types";
 import {WithActiveItem} from "../../hocs/with-active-item";
 
 export const MainScreen = (props) => {
-  const {offers, cityName, cityClickHandler, cities, isLoading, error, user} = props;
+  const {offers, cityName, cityClickHandler, cities, isLoading, error, user, signOut} = props;
+  console.log(user);
   const OffersListWithActiveItem = <WithActiveItem
     render={(childProps) => <OffersList {...childProps} offers={offers}/>}
   />;
@@ -56,9 +57,9 @@ export const MainScreen = (props) => {
               <li className="header__nav-item user">
                 <a
                   className="header__nav-link header__nav-link--profile"
-                  href="#"
+                  href="#" onClick={signOut}
                 >
-                  {user && <div className="header__avatar-wrapper user__avatar-wrapper"> <img src={`https://es31-server.appspot.com/six-cities${user.avatar_url}`} alt={`---`}></img></div>}
+                  {user && <div className="header__avatar-wrapper user__avatar-wrapper"> <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`} alt={`---`}></img></div>}
                 </a>
               </li>
             </ul>

@@ -17,7 +17,7 @@ export class App extends PureComponent {
       const {authorize} = this.props;
       return <SignIn authorize={authorize}/>;
     }
-    const {cities, offers, cityName, cityClickHandler, isLoading, error, user} = this.props;
+    const {cities, offers, cityName, cityClickHandler, isLoading, error, user, signOut} = this.props;
 
     return <MainScreen
       offers={offers}
@@ -27,6 +27,7 @@ export class App extends PureComponent {
       error={error}
       cityClickHandler={cityClickHandler}
       user={user}
+      signOut={signOut}
     />;
   }
 

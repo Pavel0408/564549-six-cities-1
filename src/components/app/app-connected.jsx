@@ -43,6 +43,10 @@ const mapDispatchToProps = (dispatch) => {
         email,
         password
       }));
+    },
+    signOut: (evt) => {
+      evt.preventDefault();
+      dispatch(ActionCreator.authorizationFailed());
     }
   };
 };
