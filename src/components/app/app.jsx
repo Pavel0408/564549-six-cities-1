@@ -44,6 +44,10 @@ App.propTypes = {
   isLoading: PropTypes.bool,
   error: PropTypes.object,
   loadOffers: PropTypes.func,
-  isAuthorized: PropTypes.func
+  isAuthorized: PropTypes.func,
+  isAuthorizationRequired: PropTypes.bool,
+  authorize: PropTypes.func,
+  user: PropTypes.object,
+  signOut: PropTypes.func
 };
 

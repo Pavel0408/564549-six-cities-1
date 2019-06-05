@@ -141,5 +141,7 @@ MainScreen.propTypes = {
   cityClickHandler: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   isLoading: PropTypes.bool,
-  error: PropTypes.object
+  error: PropTypes.object,
+  user: PropTypes.object,
+  signOut: PropTypes.func
 };
