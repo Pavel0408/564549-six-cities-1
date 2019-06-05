@@ -13,5 +13,24 @@ export const Operation = {
         dispatch(ActionCreator.fetchOffersFailed(e));
       });
   },
+  authorize: (authorizationData) => (dispatch, getState, api) => {
+    return api.post(ServerPath.authorization, {
+      email: authorizationData.email,
+      password: authorizationData.password
+    })
+      .then((response) =>{
+        dispatch(ActionCreator.authorizationSuccess(response));
+      }).catch((e) =>{
+        dispatch(ActionCreator.authorizationFailed(e));
+      });
+  },
+  isAuthorized: () => (dispatch, getState, api) => {
+    return api.get(ServerPath.authorization)
+      .then((response) => {
+        dispatch(ActionCreator.authorizationSuccess(response));
+      }).catch((e) => {
+        dispatch(ActionCreator.authorizationFailed(e));
+      });
+  }
 };
 

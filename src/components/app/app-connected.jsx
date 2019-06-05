@@ -5,7 +5,7 @@ import {App} from "./app";
 import {
   getActiveOffers,
   getCities,
-  getCityName,
+  getCityName, getIsAuthorizationRequired,
   getOffersIsLoading,
   getOffersLoadError,
 } from "../../reducer/selectors";
@@ -17,7 +17,8 @@ const mapStateToProps = (state) => {
     offers: getActiveOffers(state),
     cities: getCities(state),
     isLoading: getOffersIsLoading(state),
-    error: getOffersLoadError(state)
+    error: getOffersLoadError(state),
+    isAuthorizationRequired: getIsAuthorizationRequired(state)
   };
 };
 
@@ -28,6 +29,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     loadOffers: () => {
       dispatch(Operation.loadOffers());
+    },
+    isAuthorized: () => {
+      dispatch(Operation.isAuthorized());
     }
   };
 };

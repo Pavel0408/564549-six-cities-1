@@ -26,3 +26,11 @@ export const getCities = createSelector([getOffers],
 export const getActiveOffers = createSelector([getOffers, getCityName], (offers, cityName) => {
   return offers.filter((offer) => offer.city === cityName);
 });
+
+export const getIsAuthorizationRequired = (state) => {
+  return state[NameSpace.AUTHORIZATION].isAuthorizationRequired;
+};
+
+export const getUser = (state) => {
+  return state[NameSpace.AUTHORIZATION].user;
+};

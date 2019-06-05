@@ -3,10 +3,19 @@ import React, {PureComponent} from "react";
 
 import {MainScreen} from "../main-screen/main-screen";
 import {offersPropTypes} from "../../prop-types/offers-prop-types";
+import {SignIn} from "../sign-in/sign-in";
 
 export class App extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    props.isAuthorized();
+  }
 
   render() {
+    if (!this.props.isAuthorizationRequired) {
+      return <SignIn/>;
+    }
     const {cities, offers, cityName, cityClickHandler, isLoading, error} = this.props;
 
     return <MainScreen
@@ -31,6 +40,7 @@ App.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string),
   isLoading: PropTypes.bool,
   error: PropTypes.object,
-  loadOffers: PropTypes.func
+  loadOffers: PropTypes.func,
+  isAuthorized: PropTypes.func
 };
 
