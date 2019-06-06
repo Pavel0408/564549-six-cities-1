@@ -5,6 +5,7 @@ import {MainScreen} from "../main-screen/main-screen";
 import {offersPropTypes} from "../../prop-types/offers-prop-types";
 import {SignIn} from "../sign-in/sign-in";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {Favorite} from "../favorite/favorite";
 
 export class App extends PureComponent {
   constructor(props) {
@@ -35,6 +36,10 @@ export class App extends PureComponent {
           return <SignIn authorize={authorize}/>;
         }}
         />
+        <Route path="/favorites" exact render={() => {
+          return <Favorite/>;
+        }
+        }/>
       </Switch>
     </BrowserRouter>;
 
