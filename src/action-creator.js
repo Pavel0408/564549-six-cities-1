@@ -29,5 +29,21 @@ export const ActionCreator = {
         error
       }
     };
+  },
+  authorizationSuccess: (data) => {
+    return {
+      type: ActionType.AUTHORIZATION_SUCCESS,
+      payload: {
+        user: data
+      }
+    };
+  },
+  authorizationFailed: (error) => {
+    return {
+      type: ActionType.AUTHORIZATION_FAILED,
+      payload: {
+        user: error
+      }
+    };
   }
 };

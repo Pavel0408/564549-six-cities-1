@@ -11,7 +11,7 @@ export const createAPI = (dispatch) => {
   const onSuccess = (response) => response;
   const onFail = (err) => {
     if (err.response.status === 403) {
-      dispatch(ActionCreator.requireAuthorization(true));
+      dispatch(ActionCreator.authorizationFailed());
     }
     throw new Error(err);
   };

@@ -5,9 +5,9 @@ import {App} from "./app";
 import {
   getActiveOffers,
   getCities,
-  getCityName,
+  getCityName, getIsAuthorizationRequired,
   getOffersIsLoading,
-  getOffersLoadError,
+  getOffersLoadError, getUser,
 } from "../../reducer/selectors";
 import {Operation} from "../../operation";
 
@@ -17,7 +17,9 @@ const mapStateToProps = (state) => {
     offers: getActiveOffers(state),
     cities: getCities(state),
     isLoading: getOffersIsLoading(state),
-    error: getOffersLoadError(state)
+    error: getOffersLoadError(state),
+    isAuthorizationRequired: getIsAuthorizationRequired(state),
+    user: getUser(state)
   };
 };
 
@@ -28,6 +30,23 @@ const mapDispatchToProps = (dispatch) => {
     },
     loadOffers: () => {
       dispatch(Operation.loadOffers());
+    },
+    isAuthorized: () => {
+      dispatch(Operation.isAuthorized());
+    },
+    authorize: (evt) => {
+      evt.preventDefault();
+      const authorizationFormData = new FormData(evt.target);
+      const email = authorizationFormData.get(`email`);
+      const password = authorizationFormData.get(`password`);
+      dispatch(Operation.authorize({
+        email,
+        password
+      }));
+    },
+    signOut: (evt) => {
+      evt.preventDefault();
+      dispatch(ActionCreator.authorizationFailed());
     }
   };
 };

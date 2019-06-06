@@ -9,7 +9,19 @@ import {offersPropTypes} from "../../prop-types/offers-prop-types";
 import {WithActiveItem} from "../../hocs/with-active-item";
 
 export const MainScreen = (props) => {
-  const {offers, cityName, cityClickHandler, cities, isLoading, error} = props;
+  const {offers, cityName, cityClickHandler, cities, isLoading, error, user, signOut} = props;
+  const userElementSwitch = () => {
+    return user ? <a
+      className="header__nav-link header__nav-link--profile"
+      href="#" onClick={signOut}> <div className="header__avatar-wrapper user__avatar-wrapper">
+        <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
+      </div>
+    </a> : <a className="header__nav-link header__nav-link--profile" href="#" onClick={signOut}>
+      <div className="header__avatar-wrapper user__avatar-wrapper">
+      </div>
+      <span className="header__login">Sign in</span>
+    </a>;
+  };
   const OffersListWithActiveItem = <WithActiveItem
     render={(childProps) => <OffersList {...childProps} offers={offers}/>}
   />;
@@ -54,15 +66,7 @@ export const MainScreen = (props) => {
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <a
-                  className="header__nav-link header__nav-link--profile"
-                  href="#"
-                >
-                  <div className="header__avatar-wrapper user__avatar-wrapper"/>
-                  <span className="header__user-name user__name">
-                  Oliver.conner@gmail.com
-                  </span>
-                </a>
+                {userElementSwitch()}
               </li>
             </ul>
           </nav>
@@ -137,5 +141,7 @@ MainScreen.propTypes = {
   cityClickHandler: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   isLoading: PropTypes.bool,
-  error: PropTypes.object
+  error: PropTypes.object,
+  user: PropTypes.object,
+  signOut: PropTypes.func
 };

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`testing App render App is render correctly 1`] = `
+exports[`testing SignIn render SignIn is render correctly 1`] = `
 <div>
   <div
     style={
@@ -113,6 +113,7 @@ exports[`testing App render App is render correctly 1`] = `
           action="#"
           className="login__form form"
           method="post"
+          onSubmit={[Function]}
         >
           <div
             className="login__input-wrapper form__input-wrapper"
