@@ -33,4 +33,20 @@ describe(`ActionCreator is correct`, () => {
       }
     });
   });
+  it(`Return correctly action on success authorization`, () => {
+    expect(ActionCreator.authorizationSuccess(`user`)).toEqual({
+      type: ActionType.AUTHORIZATION_SUCCESS,
+      payload: {
+        user: `user`
+      }
+    });
+  });
+  it(`Return correctly action on authorization failed`, () => {
+    expect(ActionCreator.authorizationFailed(`error`)).toEqual({
+      type: ActionType.AUTHORIZATION_FAILED,
+      payload: {
+        user: `error`
+      }
+    });
+  });
 });
