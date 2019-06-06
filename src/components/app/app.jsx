@@ -4,6 +4,7 @@ import React, {PureComponent} from "react";
 import {MainScreen} from "../main-screen/main-screen";
 import {offersPropTypes} from "../../prop-types/offers-prop-types";
 import {SignIn} from "../sign-in/sign-in";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 export class App extends PureComponent {
   constructor(props) {
@@ -13,6 +14,30 @@ export class App extends PureComponent {
   }
 
   render() {
+    return <BrowserRouter>
+      <Switch>
+        <Route path="/" exact render={() => {
+          const {cities, offers, cityName, cityClickHandler, isLoading, error, user, signOut} = this.props;
+          return <MainScreen
+            offers={offers}
+            cities={cities}
+            cityName={cityName}
+            isLoading={isLoading}
+            error={error}
+            cityClickHandler={cityClickHandler}
+            user={user}
+            signOut={signOut}
+          />;
+        }
+        }/>
+        <Route path="/login" exact render={() => {
+          const {authorize} = this.props;
+          return <SignIn authorize={authorize}/>;
+        }}
+        />
+      </Switch>
+    </BrowserRouter>;
+
     if (!this.props.isAuthorizationRequired) {
       const {authorize} = this.props;
       return <SignIn authorize={authorize}/>;
