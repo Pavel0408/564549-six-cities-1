@@ -1,38 +1,17 @@
 import PropTypes from "prop-types";
-import React, {PureComponent} from "react";
-
-import {MainScreen} from "../main-screen/main-screen";
+import {PureComponent} from "react";
 import {offersPropTypes} from "../../prop-types/offers-prop-types";
-import {SignIn} from "../sign-in/sign-in";
 
 export class App extends PureComponent {
   constructor(props) {
     super(props);
 
     props.isAuthorized();
+    this.props.loadOffers();
   }
 
   render() {
-    if (!this.props.isAuthorizationRequired) {
-      const {authorize} = this.props;
-      return <SignIn authorize={authorize}/>;
-    }
-    const {cities, offers, cityName, cityClickHandler, isLoading, error, user, signOut} = this.props;
-
-    return <MainScreen
-      offers={offers}
-      cities={cities}
-      cityName={cityName}
-      isLoading={isLoading}
-      error={error}
-      cityClickHandler={cityClickHandler}
-      user={user}
-      signOut={signOut}
-    />;
-  }
-
-  componentDidMount() {
-    this.props.loadOffers();
+    return this.props.screenSwitch(this.props);
   }
 }
 
@@ -48,6 +27,7 @@ App.propTypes = {
   isAuthorizationRequired: PropTypes.bool,
   authorize: PropTypes.func,
   user: PropTypes.object,
-  signOut: PropTypes.func
+  signOut: PropTypes.func,
+  screenSwitch: PropTypes.func
 };
 

@@ -10,6 +10,9 @@ import {
   getOffersLoadError, getUser,
 } from "../../reducer/selectors";
 import {Operation} from "../../operation";
+import {withScreenSwitch} from "../../hocs/with-screen-switch";
+import {ScreenSwitch} from "../../hocs/screen-switch";
+
 
 const mapStateToProps = (state) => {
   return {
@@ -51,4 +54,10 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export const AppConnected = connect(mapStateToProps, mapDispatchToProps)(App);
+const AppWithScreenSwitch = withScreenSwitch({
+  Component: App,
+  ScreenSwitch
+});
+
+export const AppConnected = connect(mapStateToProps, mapDispatchToProps)(AppWithScreenSwitch);
+

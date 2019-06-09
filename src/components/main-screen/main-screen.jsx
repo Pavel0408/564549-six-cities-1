@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import {BrowserRouter, Link, Switch} from "react-router-dom";
 
 import {OffersList} from "../offers-list/offers-list";
 import {OffersMap} from "../offers-map/offers-map";
@@ -8,19 +9,30 @@ import {CitiesList} from "../cities-list/cities-list";
 import {offersPropTypes} from "../../prop-types/offers-prop-types";
 import {WithActiveItem} from "../../hocs/with-active-item";
 
+
 export const MainScreen = (props) => {
-  const {offers, cityName, cityClickHandler, cities, isLoading, error, user, signOut} = props;
+  const {offers, cityName, cityClickHandler, cities, isLoading, error, user,
+    isAuthorizationRequired} = props;
   const userElementSwitch = () => {
-    return user ? <a
-      className="header__nav-link header__nav-link--profile"
-      href="#" onClick={signOut}> <div className="header__avatar-wrapper user__avatar-wrapper">
-        <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
-      </div>
-    </a> : <a className="header__nav-link header__nav-link--profile" href="#" onClick={signOut}>
-      <div className="header__avatar-wrapper user__avatar-wrapper">
-      </div>
-      <span className="header__login">Sign in</span>
-    </a>;
+    return isAuthorizationRequired && user ? <BrowserRouter>
+      <Switch>
+        <Link
+          className="header__nav-link header__nav-link--profile"
+          to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">
+            <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
+            <span className="header__user-name user__name">{user.email}</span>
+          </div>
+        </Link>
+      </Switch>
+    </BrowserRouter> : <BrowserRouter>
+      <Switch>
+        <Link className="header__nav-link header__nav-link--profile" to={`/login`}>
+          <div className="header__avatar-wrapper user__avatar-wrapper">
+          </div>
+          <span className="header__login">Sign in</span>
+        </Link>
+      </Switch>
+    </BrowserRouter>;
   };
   const OffersListWithActiveItem = <WithActiveItem
     render={(childProps) => <OffersList {...childProps} offers={offers}/>}
@@ -143,5 +155,6 @@ MainScreen.propTypes = {
   isLoading: PropTypes.bool,
   error: PropTypes.object,
   user: PropTypes.object,
-  signOut: PropTypes.func
+  signOut: PropTypes.func,
+  isAuthorizationRequired: PropTypes.bool
 };

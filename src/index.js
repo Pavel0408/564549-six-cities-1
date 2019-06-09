@@ -6,9 +6,9 @@ import {createStore, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
 
 import {AppConnected} from "./components/app/app-connected";
-import {offers} from "./mocks/offers";
 import {reducer} from "./reducer/reducer";
 import {createAPI} from "./api";
+import {BrowserRouter} from "react-router-dom";
 
 /* eslint-disable no-underscore-dangle */
 const init = () => {
@@ -23,9 +23,9 @@ const init = () => {
   /* eslint-enable */
 
   ReactDOM.render(<Provider store={store}>
-    <AppConnected
-      offers={offers}
-    />
+    <BrowserRouter>
+      <AppConnected/>
+    </BrowserRouter>
   </Provider>,
   document.querySelector(`#root`)
   );

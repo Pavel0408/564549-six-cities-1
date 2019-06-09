@@ -46,6 +46,10 @@ const loadOffers = () => {
 const isAuthorized = () => {
 };
 
+const screenSwitch = () => {
+  return <div></div>;
+};
+
 describe(`testing App render`, () => {
   it(`App is render correctly`, () => {
     const tree = renderer.create(<App
@@ -55,6 +59,7 @@ describe(`testing App render`, () => {
       cityClickHandler={cityClickHandler}
       loadOffers={loadOffers}
       isAuthorized={isAuthorized}
+      screenSwitch={screenSwitch}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();
