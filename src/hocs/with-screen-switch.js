@@ -1,8 +1,8 @@
 import React from "react";
 
-export const withScreenSwitch = ({Component, screenSwitch}) => {
+export const withScreenSwitch = ({Component, ScreenSwitch}) => {
   const WithScrieenSwitch = (props) => {
-    return <Component {...props} screenSwitch={screenSwitch}/>;
+    return <Component {...props} screenSwitch={ScreenSwitch}/>;
   };
 
   return WithScrieenSwitch;

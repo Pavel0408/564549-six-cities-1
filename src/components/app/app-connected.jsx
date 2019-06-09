@@ -11,7 +11,7 @@ import {
 } from "../../reducer/selectors";
 import {Operation} from "../../operation";
 import {withScreenSwitch} from "../../hocs/with-screen-switch";
-import {screenSwitch} from "../../hocs/screen-switch";
+import {ScreenSwitch} from "../../hocs/screen-switch";
 
 
 const mapStateToProps = (state) => {
@@ -56,7 +56,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const AppWithScreenSwitch = withScreenSwitch({
   Component: App,
-  screenSwitch
+  ScreenSwitch
 });
 
 export const AppConnected = connect(mapStateToProps, mapDispatchToProps)(AppWithScreenSwitch);

@@ -4,7 +4,7 @@ import {SignIn} from "../components/sign-in/sign-in";
 import {Favorite} from "../components/favorite/favorite";
 import React from "react";
 
-export const screenSwitch = (props) => {
+export const ScreenSwitch = (props) => {
 
   return <BrowserRouter>
     <Switch>
@@ -20,11 +20,19 @@ export const screenSwitch = (props) => {
         />;
       }}
       />
+
       <Route path="/favorites" exact render={() => {
-        return <Favorite/>;
-      }
-      }/>
+        if (props.isAuthorizationRequired) {
+          console.log(props);
+          return <Favorite/>;
+        } else {
+          return <SignIn
+            {...props}
+          />;
+        }
+      }}
+      />
+
     </Switch>
   </BrowserRouter>;
-
 };
