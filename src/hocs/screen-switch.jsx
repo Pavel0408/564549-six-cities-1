@@ -3,6 +3,7 @@ import {MainScreen} from "../components/main-screen/main-screen";
 import {SignIn} from "../components/sign-in/sign-in";
 import {Favorite} from "../components/favorite/favorite";
 import React from "react";
+import PropTypes from "prop-types";
 
 export const ScreenSwitch = (props) => {
 
@@ -23,7 +24,6 @@ export const ScreenSwitch = (props) => {
 
       <Route path="/favorites" exact render={() => {
         if (props.isAuthorizationRequired) {
-          console.log(props);
           return <Favorite/>;
         } else {
           return <SignIn
@@ -36,3 +36,7 @@ export const ScreenSwitch = (props) => {
     </Switch>
   </BrowserRouter>;
 };
+
+ScreenSwitch.propTypes = {
+  isAuthorizationRequired: PropTypes.bool
+}
