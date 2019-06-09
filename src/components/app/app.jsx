@@ -15,6 +15,8 @@ export class App extends PureComponent {
   }
 
   render() {
+
+    return this.props.screenSwitch(this.props);
     return <BrowserRouter>
       <Switch>
         <Route path="/" exact render={() => {

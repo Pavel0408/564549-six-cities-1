@@ -10,6 +10,13 @@ import {
   getOffersLoadError, getUser,
 } from "../../reducer/selectors";
 import {Operation} from "../../operation";
+import {withScreenSwitch, WithScreenSwitch} from "../../hocs/with-screen-switch";
+import React from "react";
+import {OffersList} from "../offers-list/offers-list";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {MainScreen} from "../main-screen/main-screen";
+import {SignIn} from "../sign-in/sign-in";
+import {Favorite} from "../favorite/favorite";
 
 const mapStateToProps = (state) => {
   return {
@@ -51,4 +58,35 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export const AppConnected = connect(mapStateToProps, mapDispatchToProps)(App);
+const screenSwitch = (props) => {
+
+  return <BrowserRouter>
+    <Switch>
+      <Route path="/" exact render={() => {
+        return <MainScreen
+          {...props}
+        />;
+      }
+      }/>
+      <Route path="/login" exact render={() => {
+        return <SignIn
+          {...props}
+        />;
+      }}
+      />
+      <Route path="/favorites" exact render={() => {
+        return <Favorite/>;
+      }
+      }/>
+    </Switch>
+  </BrowserRouter>;
+
+};
+
+export const AppWithScreenSwitch = withScreenSwitch({
+  Component: App,
+  screenSwitch
+});
+console.log(<AppWithScreenSwitch/>);
+export const AppConnected = connect(mapStateToProps, mapDispatchToProps)(AppWithScreenSwitch);
+console.log(3);
