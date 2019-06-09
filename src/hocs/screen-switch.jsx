@@ -16,7 +16,12 @@ export const ScreenSwitch = (props) => {
       }
       }/>
       <Route path="/login" exact render={() => {
-        return <SignIn
+        if (!props.isAuthorizationRequired) {
+          return <SignIn
+            {...props}
+          />;
+        }
+        return <MainScreen
           {...props}
         />;
       }}

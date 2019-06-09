@@ -13,12 +13,12 @@ import {WithActiveItem} from "../../hocs/with-active-item";
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities, isLoading, error, user,
     isAuthorizationRequired} = props;
-  console.log(isAuthorizationRequired);
   const userElementSwitch = () => {
     return isAuthorizationRequired && user ? <Link
       className="header__nav-link header__nav-link--profile"
       to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">
         <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
+        <span className="header__user-name user__name">{user.email}</span>
       </div>
     </Link> : <Link className="header__nav-link header__nav-link--profile" to={`/login`}>
       <div className="header__avatar-wrapper user__avatar-wrapper">
@@ -147,5 +147,6 @@ MainScreen.propTypes = {
   isLoading: PropTypes.bool,
   error: PropTypes.object,
   user: PropTypes.object,
-  signOut: PropTypes.func
+  signOut: PropTypes.func,
+  isAuthorizationRequired: PropTypes.bool
 };
