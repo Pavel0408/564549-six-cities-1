@@ -6,7 +6,6 @@ import {createStore, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
 
 import {AppConnected} from "./components/app/app-connected";
-import {offers} from "./mocks/offers";
 import {reducer} from "./reducer/reducer";
 import {createAPI} from "./api";
 import {BrowserRouter} from "react-router-dom";

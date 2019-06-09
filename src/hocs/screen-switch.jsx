@@ -44,4 +44,4 @@ export const ScreenSwitch = (props) => {
 
 ScreenSwitch.propTypes = {
   isAuthorizationRequired: PropTypes.bool
-}
+};
