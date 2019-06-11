@@ -14,25 +14,25 @@ export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities, isLoading, error, user,
     isAuthorizationRequired} = props;
   const userElementSwitch = () => {
-    return isAuthorizationRequired && user ? <BrowserRouter>
-      <Switch>
-        <Link
-          className="header__nav-link header__nav-link--profile"
-          to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">
-            <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
-            <span className="header__user-name user__name">{user.email}</span>
-          </div>
-        </Link>
-      </Switch>
-    </BrowserRouter> : <BrowserRouter>
-      <Switch>
-        <Link className="header__nav-link header__nav-link--profile" to={`/login`}>
-          <div className="header__avatar-wrapper user__avatar-wrapper">
-          </div>
-          <span className="header__login">Sign in</span>
-        </Link>
-      </Switch>
-    </BrowserRouter>;
+    return isAuthorizationRequired && user ?
+
+      <Link
+        className="header__nav-link header__nav-link--profile"
+        to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">
+          <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
+          <span className="header__user-name user__name">{user.email}</span>
+        </div>
+      </Link>
+
+      :
+
+      <Link className="header__nav-link header__nav-link--profile" to={`/login`}>
+        <div className="header__avatar-wrapper user__avatar-wrapper">
+        </div>
+        <span className="header__login">Sign in</span>
+      </Link>;
+
+
   };
   const OffersListWithActiveItem = <WithActiveItem
     render={(childProps) => <OffersList {...childProps} offers={offers}/>}
