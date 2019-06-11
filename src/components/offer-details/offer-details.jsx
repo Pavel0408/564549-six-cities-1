@@ -12,7 +12,7 @@ export class OfferDetails extends PureComponent {
             <div className="header__wrapper">
               <div className="header__left">
                 <a className="header__logo-link" href="main.html">
-                  <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width={81} height={41} />
+                  <img className="header__logo" src="/img/logo.svg" alt="6 cities logo" width={81} height={41} />
                 </a>
               </div>
               <nav className="header__nav">
@@ -34,10 +34,10 @@ export class OfferDetails extends PureComponent {
             <div className="property__gallery-container container">
               <div className="property__gallery">
                 <div className="property__image-wrapper">
-                  <img className="property__image" src="img/room.jpg" alt="Photo studio" />
+                  <img className="property__image" src="/img/room.jpg" alt="Photo studio" />
                 </div>
                 <div className="property__image-wrapper">
-                  <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
+                  <img className="property__image" src="/img/apartment-01.jpg" alt="Photo studio" />
                 </div>
                 <div className="property__image-wrapper">
                   <img className="property__image" src="img/apartment-02.jpg" alt="Photo studio" />
@@ -88,7 +88,7 @@ export class OfferDetails extends PureComponent {
                   </li>
                 </ul>
                 <div className="property__price">
-                  <b className="property__price-value">€120</b>
+                  <b className="property__price-value">€{this.props.activeOffer.price}</b>
                   <span className="property__price-text">&nbsp;night</span>
                 </div>
                 <div className="property__inside">

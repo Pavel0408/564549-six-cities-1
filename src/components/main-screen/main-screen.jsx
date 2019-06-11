@@ -12,7 +12,7 @@ import {WithActiveItem} from "../../hocs/with-active-item";
 
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities, isLoading, error, user,
-    isAuthorizationRequired} = props;
+    isAuthorizationRequired, changeActiveOffer} = props;
   const userElementSwitch = () => {
     return isAuthorizationRequired && user ?
       <Link
@@ -30,7 +30,7 @@ export const MainScreen = (props) => {
       </Link>;
   };
   const OffersListWithActiveItem = <WithActiveItem
-    render={(childProps) => <OffersList {...childProps} offers={offers}/>}
+    render={(childProps) => <OffersList {...childProps} offers={offers} changeActiveOffer={changeActiveOffer}/>}
   />;
 
   return <React.Fragment>

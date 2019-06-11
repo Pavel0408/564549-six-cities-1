@@ -3,6 +3,7 @@ import connect from "react-redux/es/connect/connect";
 import {ActionCreator} from "../../action-creator";
 import {App} from "./app";
 import {
+  getActiveOffer,
   getActiveOffers,
   getCities,
   getCityName, getIsAuthorizationRequired,
@@ -22,7 +23,8 @@ const mapStateToProps = (state) => {
     isLoading: getOffersIsLoading(state),
     error: getOffersLoadError(state),
     isAuthorizationRequired: getIsAuthorizationRequired(state),
-    user: getUser(state)
+    user: getUser(state),
+    activeOffer: getActiveOffer(state)
   };
 };
 
@@ -50,6 +52,9 @@ const mapDispatchToProps = (dispatch) => {
     signOut: (evt) => {
       evt.preventDefault();
       dispatch(ActionCreator.authorizationFailed());
+    },
+    changeActiveOffer: (offer) => {
+      dispatch(ActionCreator.setActiveOffer(offer));
     }
   };
 };

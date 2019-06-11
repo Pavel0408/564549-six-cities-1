@@ -45,5 +45,13 @@ export const ActionCreator = {
         user: error
       }
     };
+  },
+  setActiveOffer: (offer) => {
+    return {
+      type: ActionType.ACTIVE_OFFER,
+      payload: {
+        activeOffer: offer
+      }
+    };
   }
 };

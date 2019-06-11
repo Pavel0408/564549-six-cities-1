@@ -34,3 +34,7 @@ export const getIsAuthorizationRequired = (state) => {
 export const getUser = (state) => {
   return state[NameSpace.AUTHORIZATION].user;
 };
+
+export const getActiveOffer = (state) => {
+  return state[NameSpace.DATA].activeOffer;
+}

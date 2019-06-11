@@ -27,7 +27,10 @@ export const ScreenSwitch = (props) => {
       }}
       />
 
-      <Route path="/offer/:id" component={OfferDetails} />
+      <Route path="/offer/:id" render={() => {
+        return <OfferDetails {...props}/>;
+      }}
+      />
 
       <Route path="/favorites" exact render={() => {
         if (props.isAuthorizationRequired) {
