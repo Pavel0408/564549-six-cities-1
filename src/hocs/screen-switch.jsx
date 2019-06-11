@@ -4,9 +4,9 @@ import {SignIn} from "../components/sign-in/sign-in";
 import {Favorite} from "../components/favorite/favorite";
 import React from "react";
 import PropTypes from "prop-types";
+import {OfferDetails} from "../components/offer-details/offer-details";
 
 export const ScreenSwitch = (props) => {
-
   return <BrowserRouter>
     <Switch>
       <Route path="/" exact render={() => {
@@ -27,6 +27,8 @@ export const ScreenSwitch = (props) => {
       }}
       />
 
+      <Route path="/offer/:id" component={OfferDetails} />
+
       <Route path="/favorites" exact render={() => {
         if (props.isAuthorizationRequired) {
           return <Favorite/>;
@@ -37,7 +39,6 @@ export const ScreenSwitch = (props) => {
         }
       }}
       />
-
     </Switch>
   </BrowserRouter>;
 };

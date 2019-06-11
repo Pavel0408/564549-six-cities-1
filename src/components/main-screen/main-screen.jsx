@@ -15,7 +15,6 @@ export const MainScreen = (props) => {
     isAuthorizationRequired} = props;
   const userElementSwitch = () => {
     return isAuthorizationRequired && user ?
-
       <Link
         className="header__nav-link header__nav-link--profile"
         to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">
@@ -23,16 +22,12 @@ export const MainScreen = (props) => {
           <span className="header__user-name user__name">{user.email}</span>
         </div>
       </Link>
-
       :
-
       <Link className="header__nav-link header__nav-link--profile" to={`/login`}>
         <div className="header__avatar-wrapper user__avatar-wrapper">
         </div>
         <span className="header__login">Sign in</span>
       </Link>;
-
-
   };
   const OffersListWithActiveItem = <WithActiveItem
     render={(childProps) => <OffersList {...childProps} offers={offers}/>}
@@ -65,7 +60,7 @@ export const MainScreen = (props) => {
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <a className="header__logo-link header__logo-link--active">
+            <Link to="/" className="header__logo-link header__logo-link--active">
               <img
                 className="header__logo"
                 src="img/logo.svg"
@@ -73,7 +68,7 @@ export const MainScreen = (props) => {
                 width="81"
                 height="41"
               />
-            </a>
+            </Link>
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
