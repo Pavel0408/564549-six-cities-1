@@ -1,7 +1,27 @@
 import React, {PureComponent} from "react";
+import {Link} from "react-router-dom";
 
 export class OfferDetails extends PureComponent {
+
   render() {
+    const {isAuthorizationRequired, user} = this.props;
+    const userElementSwitch = () => {
+      return isAuthorizationRequired && user ?
+        <Link
+          className="header__nav-link header__nav-link--profile"
+          to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">
+            <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
+            <span className="header__user-name user__name">{user.email}</span>
+          </div>
+        </Link>
+        :
+        <Link className="header__nav-link header__nav-link--profile" to={`/login`}>
+          <div className="header__avatar-wrapper user__avatar-wrapper">
+          </div>
+          <span className="header__login">Sign in</span>
+        </Link>;
+    };
+
     return <React.Fragment>
       <div>
         <div style={{display: `none`}}>
@@ -18,11 +38,7 @@ export class OfferDetails extends PureComponent {
               <nav className="header__nav">
                 <ul className="header__nav-list">
                   <li className="header__nav-item user">
-                    <a className="header__nav-link header__nav-link--profile" href="#">
-                      <div className="header__avatar-wrapper user__avatar-wrapper">
-                      </div>
-                      <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                    </a>
+                    {userElementSwitch()}
                   </li>
                 </ul>
               </nav>
@@ -32,32 +48,24 @@ export class OfferDetails extends PureComponent {
         <main className="page__main page__main--property">
           <section className="property">
             <div className="property__gallery-container container">
+
               <div className="property__gallery">
                 <div className="property__image-wrapper">
                   <img className="property__image" src="/img/room.jpg" alt="Photo studio" />
                 </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="/img/apartment-01.jpg" alt="Photo studio" />
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/apartment-02.jpg" alt="Photo studio" />
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/apartment-03.jpg" alt="Photo studio" />
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/studio-01.jpg" alt="Photo studio" />
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
-                </div>
+                {this.props.activeOffer.allImages.slice(0, 5).map((image, i) =>{
+                  return <div key={i.toString() + this.props.activeOffer.id} className="property__image-wrapper">
+                    <img className="property__image" src={image} alt="Photo studio" />
+                  </div>;
+                })
+                }
               </div>
             </div>
             <div className="property__container container">
               <div className="property__wrapper">
-                <div className="property__mark">
+                {this.props.activeOffer.isPremium && <div className="property__mark">
                   <span>Premium</span>
-                </div>
+                </div>}
                 <div className="property__name-wrapper">
                   <h1 className="property__name">
                     Beautiful &amp; luxurious studio at great location
@@ -81,7 +89,7 @@ export class OfferDetails extends PureComponent {
                     Entire place
                   </li>
                   <li className="property__feature property__feature--bedrooms">
-                    3 Bedrooms
+                    {this.props.activeOffer.bedrooms} Bedrooms
                   </li>
                   <li className="property__feature property__feature--adults">
                     Max 4 adults
