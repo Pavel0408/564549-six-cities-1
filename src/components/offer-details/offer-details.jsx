@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 export class OfferDetails extends PureComponent {
 
   render() {
+    const offer = this.props.activeOffer;
     const {isAuthorizationRequired, user} = this.props;
     const userElementSwitch = () => {
       return isAuthorizationRequired && user ?
@@ -50,10 +51,7 @@ export class OfferDetails extends PureComponent {
             <div className="property__gallery-container container">
 
               <div className="property__gallery">
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="/img/room.jpg" alt="Photo studio" />
-                </div>
-                {this.props.activeOffer.allImages.slice(0, 5).map((image, i) =>{
+                {this.props.activeOffer.allImages.slice(0, 6).map((image, i) =>{
                   return <div key={i.toString() + this.props.activeOffer.id} className="property__image-wrapper">
                     <img className="property__image" src={image} alt="Photo studio" />
                   </div>;
@@ -68,9 +66,9 @@ export class OfferDetails extends PureComponent {
                 </div>}
                 <div className="property__name-wrapper">
                   <h1 className="property__name">
-                    Beautiful &amp; luxurious studio at great location
+                    {offer.name}
                   </h1>
-                  <button className="property__bookmark-button button" type="button">
+                  <button className={offer.isFavorite ? `property__bookmark-button  property__bookmark-button--active button` : `property__bookmark-button button`} type="button">
                     <svg className="property__bookmark-icon" width={31} height={33}>
                       <use xlinkHref="#icon-bookmark" />
                     </svg>
@@ -79,10 +77,10 @@ export class OfferDetails extends PureComponent {
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
-                    <span style={{width: `96%`}} />
+                    <span style={{width: `${offer.rating * 10}%`}} />
                     <span className="visually-hidden">Rating</span>
                   </div>
-                  <span className="property__rating-value rating__value">4.8</span>
+                  <span className="property__rating-value rating__value">{offer.rating / 2}</span>
                 </div>
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
@@ -102,36 +100,11 @@ export class OfferDetails extends PureComponent {
                 <div className="property__inside">
                   <h2 className="property__inside-title">What&apos;s inside</h2>
                   <ul className="property__inside-list">
-                    <li className="property__inside-item">
-                      Wi-Fi
-                    </li>
-                    <li className="property__inside-item">
-                      Washing machine
-                    </li>
-                    <li className="property__inside-item">
-                      Towels
-                    </li>
-                    <li className="property__inside-item">
-                      Heating
-                    </li>
-                    <li className="property__inside-item">
-                      Coffee machine
-                    </li>
-                    <li className="property__inside-item">
-                      Baby seat
-                    </li>
-                    <li className="property__inside-item">
-                      Kitchen
-                    </li>
-                    <li className="property__inside-item">
-                      Dishwasher
-                    </li>
-                    <li className="property__inside-item">
-                      Cabel TV
-                    </li>
-                    <li className="property__inside-item">
-                      Fridge
-                    </li>
+                    {offer.goods.map((item, i)=>{
+                      return <li key={i.toString() + offer.id} className="property__inside-item">
+                        {item}
+                      </li>;
+                    })}
                   </ul>
                 </div>
                 <div className="property__host">
