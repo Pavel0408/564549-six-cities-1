@@ -1,7 +1,6 @@
 import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import {offerCardPropTypes} from "../../prop-types/offer-card-prop-types";
 
 export class OfferDetails extends PureComponent {
 
@@ -309,7 +308,7 @@ export class OfferDetails extends PureComponent {
 }
 
 OfferDetails.propTypes = {
-  activeOffer: offerCardPropTypes,
+  activeOffer: PropTypes.object,
   isAuthorizationRequired: PropTypes.bool,
   user: PropTypes.object
 };
