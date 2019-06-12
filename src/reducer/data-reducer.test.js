@@ -4,7 +4,8 @@ import {randomOffers as offers} from "../mocks/offers";
 describe(`Data reducer is correct`, () => {
   it(`returns initial state without parameters`, () => {
     expect(dataReducer(undefined, {})).toEqual({
-      cityName: `Amsterdam`
+      cityName: `Amsterdam`,
+      activeOffer: null
     });
   });
   it(`correctly change city`, () => {

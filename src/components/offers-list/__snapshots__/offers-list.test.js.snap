@@ -86,7 +86,7 @@ Array [
         className="place-card__name"
       >
         <a
-          href="#"
+          href="/offer/0"
           onClick={[Function]}
         >
           Beautiful & luxurious apartment at great location
@@ -190,7 +190,7 @@ Array [
         className="place-card__name"
       >
         <a
-          href="#"
+          href="/offer/1"
           onClick={[Function]}
         >
           Wood and stone place

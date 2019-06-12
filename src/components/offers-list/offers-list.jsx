@@ -33,5 +33,6 @@ export class OffersList extends PureComponent {
 OffersList.propTypes = {
   offers: offersPropTypes,
   onChange: PropTypes.func,
-  activeItem: PropTypes.object
+  activeItem: PropTypes.object,
+  changeActiveOffer: PropTypes.func
 };

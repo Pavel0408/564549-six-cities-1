@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import {BrowserRouter, Link, Switch} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import {OffersList} from "../offers-list/offers-list";
 import {OffersMap} from "../offers-map/offers-map";
@@ -151,5 +151,6 @@ MainScreen.propTypes = {
   error: PropTypes.object,
   user: PropTypes.object,
   signOut: PropTypes.func,
-  isAuthorizationRequired: PropTypes.bool
+  isAuthorizationRequired: PropTypes.bool,
+  changeActiveOffer: PropTypes.func
 };

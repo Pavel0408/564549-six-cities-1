@@ -1,5 +1,7 @@
 import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
+import {offerCardPropTypes} from "../../prop-types/offer-card-prop-types";
 
 export class OfferDetails extends PureComponent {
 
@@ -51,8 +53,8 @@ export class OfferDetails extends PureComponent {
             <div className="property__gallery-container container">
 
               <div className="property__gallery">
-                {this.props.activeOffer.allImages.slice(0, 6).map((image, i) =>{
-                  return <div key={i.toString() + this.props.activeOffer.id} className="property__image-wrapper">
+                {offer.allImages.slice(0, 6).map((image, i) =>{
+                  return <div key={i.toString() + offer.id} className="property__image-wrapper">
                     <img className="property__image" src={image} alt="Photo studio" />
                   </div>;
                 })
@@ -61,7 +63,7 @@ export class OfferDetails extends PureComponent {
             </div>
             <div className="property__container container">
               <div className="property__wrapper">
-                {this.props.activeOffer.isPremium && <div className="property__mark">
+                {offer.isPremium && <div className="property__mark">
                   <span>Premium</span>
                 </div>}
                 <div className="property__name-wrapper">
@@ -87,10 +89,10 @@ export class OfferDetails extends PureComponent {
                     Entire place
                   </li>
                   <li className="property__feature property__feature--bedrooms">
-                    {this.props.activeOffer.bedrooms} Bedrooms
+                    {offer.bedrooms} Bedrooms
                   </li>
                   <li className="property__feature property__feature--adults">
-                    Max 4 adults
+                    Max {offer.maxAdults} adults
                   </li>
                 </ul>
                 <div className="property__price">
@@ -111,21 +113,18 @@ export class OfferDetails extends PureComponent {
                   <h2 className="property__host-title">Meet the host</h2>
                   <div className="property__host-user user">
                     <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                      <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width={74} height={74} alt="Host avatar" />
+                      <img className="property__avatar user__avatar" src={`/${offer.host.avatar}`} width={74} height={74} alt="Host avatar" />
                     </div>
                     <span className="property__user-name">
-                Angelina
+                      {offer.host.name}
                     </span>
                     <span className="property__user-status">
-                Pro
+                      {offer.host.isPro && `Pro`}
                     </span>
                   </div>
                   <div className="property__description">
                     <p className="property__text">
-                      A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                    </p>
-                    <p className="property__text">
-                      An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
+                      {offer.description}
                     </p>
                   </div>
                 </div>
@@ -135,7 +134,7 @@ export class OfferDetails extends PureComponent {
                     <li className="reviews__item">
                       <div className="reviews__user user">
                         <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                          <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width={54} height={54} alt="Reviews avatar" />
+                          <img className="reviews__avatar user__avatar" src="/img/avatar-max.jpg" width={54} height={54} alt="Reviews avatar" />
                         </div>
                         <span className="reviews__user-name">
                     Max
@@ -308,3 +307,11 @@ export class OfferDetails extends PureComponent {
     </React.Fragment>;
   }
 }
+
+OfferDetails.propTypes = {
+  activeOffer: offerCardPropTypes,
+  isAuthorizationRequired: PropTypes.bool,
+  user: PropTypes.object
+};
+
+

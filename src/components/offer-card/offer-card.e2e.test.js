@@ -3,6 +3,7 @@ import React from "react";
 import {configure, mount} from "enzyme";
 
 import {OfferCard} from "./offer-card";
+import {BrowserRouter} from "react-router-dom";
 
 configure({adapter: new Adapter()});
 
@@ -16,14 +17,17 @@ const offerMock = {
 };
 
 describe(`testing the OfferCard work`, () => {
-  it(`over on image return offers element`, () => {
+  it(`click on image return offers element`, () => {
     const titleOnClick = () => {};
     const imgOnClick = jest.fn();
-    const card = mount(<OfferCard
-      imgOnClick={imgOnClick}
-      titleOnClick={titleOnClick}
-      offer={offerMock}
-    />);
+    const card = mount(
+        <BrowserRouter>
+          <OfferCard
+            imgOnClick={imgOnClick}
+            titleOnClick={titleOnClick}
+            offer={offerMock}
+          />
+        </BrowserRouter>);
 
     const image = card.find(`img`);
     image.simulate(`click`);
@@ -35,11 +39,14 @@ describe(`testing the OfferCard work`, () => {
   it(`click on title return offers element`, () => {
     const titleOnClick = jest.fn();
     const imgOnClick = () => {};
-    const card = mount(<OfferCard
-      imgOnClick={imgOnClick}
-      titleOnClick={titleOnClick}
-      offer={offerMock}
-    />);
+    const card = mount(
+        <BrowserRouter>
+          <OfferCard
+            imgOnClick={imgOnClick}
+            titleOnClick={titleOnClick}
+            offer={offerMock}
+          />
+        </BrowserRouter>);
 
     const title = card.find(`.place-card__name a`);
     title.simulate(`click`);

@@ -9,6 +9,6 @@ export const offerCardPropTypes = {
     isPremium: PropTypes.bool.isRequired,
     isFavorite: PropTypes.bool.isRequired
   }).isRequired,
-  titleOnClick: PropTypes.func.isRequired,
-  imgOnClick: PropTypes.func.isRequired
+  titleOnClick: PropTypes.func,
+  imgOnClick: PropTypes.func
 };

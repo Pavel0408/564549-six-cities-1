@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import {MainScreen} from './main-screen';
+import {BrowserRouter} from "react-router-dom";
 
 const offersMock = [
   {
@@ -43,12 +44,15 @@ const cityName = `Amsterdam`;
 
 describe(`testing MainScreen render`, () => {
   it(`MainScreen is render correctly`, () => {
-    const tree = renderer.create(<MainScreen
-      offers={offersMock}
-      cities={cities}
-      cityName={cityName}
-      cityClickHandler={cityClickHandler}
-    />).toJSON();
+    const tree = renderer.create(
+        <BrowserRouter>
+          <MainScreen
+            offers={offersMock}
+            cities={cities}
+            cityName={cityName}
+            cityClickHandler={cityClickHandler}
+          />
+        </BrowserRouter>).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

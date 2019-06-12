@@ -37,4 +37,4 @@ export const getUser = (state) => {
 
 export const getActiveOffer = (state) => {
   return state[NameSpace.DATA].activeOffer;
-}
+};
