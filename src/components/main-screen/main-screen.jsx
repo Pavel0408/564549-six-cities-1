@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import {BrowserRouter, Link, Switch} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import {OffersList} from "../offers-list/offers-list";
 import {OffersMap} from "../offers-map/offers-map";
@@ -12,30 +12,25 @@ import {WithActiveItem} from "../../hocs/with-active-item";
 
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities, isLoading, error, user,
-    isAuthorizationRequired} = props;
+    isAuthorizationRequired, changeActiveOffer} = props;
   const userElementSwitch = () => {
-    return isAuthorizationRequired && user ? <BrowserRouter>
-      <Switch>
-        <Link
-          className="header__nav-link header__nav-link--profile"
-          to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">
-            <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
-            <span className="header__user-name user__name">{user.email}</span>
-          </div>
-        </Link>
-      </Switch>
-    </BrowserRouter> : <BrowserRouter>
-      <Switch>
-        <Link className="header__nav-link header__nav-link--profile" to={`/login`}>
-          <div className="header__avatar-wrapper user__avatar-wrapper">
-          </div>
-          <span className="header__login">Sign in</span>
-        </Link>
-      </Switch>
-    </BrowserRouter>;
+    return isAuthorizationRequired && user ?
+      <Link
+        className="header__nav-link header__nav-link--profile"
+        to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">
+          <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
+          <span className="header__user-name user__name">{user.email}</span>
+        </div>
+      </Link>
+      :
+      <Link className="header__nav-link header__nav-link--profile" to={`/login`}>
+        <div className="header__avatar-wrapper user__avatar-wrapper">
+        </div>
+        <span className="header__login">Sign in</span>
+      </Link>;
   };
   const OffersListWithActiveItem = <WithActiveItem
-    render={(childProps) => <OffersList {...childProps} offers={offers}/>}
+    render={(childProps) => <OffersList {...childProps} offers={offers} changeActiveOffer={changeActiveOffer}/>}
   />;
 
   return <React.Fragment>
@@ -65,7 +60,7 @@ export const MainScreen = (props) => {
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <a className="header__logo-link header__logo-link--active">
+            <Link to="/" className="header__logo-link header__logo-link--active">
               <img
                 className="header__logo"
                 src="img/logo.svg"
@@ -73,7 +68,7 @@ export const MainScreen = (props) => {
                 width="81"
                 height="41"
               />
-            </a>
+            </Link>
           </div>
           <nav className="header__nav">
             <ul className="header__nav-list">
@@ -156,5 +151,6 @@ MainScreen.propTypes = {
   error: PropTypes.object,
   user: PropTypes.object,
   signOut: PropTypes.func,
-  isAuthorizationRequired: PropTypes.bool
+  isAuthorizationRequired: PropTypes.bool,
+  changeActiveOffer: PropTypes.func
 };

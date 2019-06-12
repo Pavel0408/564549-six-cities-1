@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import {OfferCard} from "./offer-card";
+import {BrowserRouter} from "react-router-dom";
 
 const offerMock = {
   name: `Beautiful & luxurious apartment at great location`,
@@ -21,11 +22,14 @@ const imgOnClick = () => {
 
 describe(`testing OfferCard render`, () => {
   it(`OfferCard is render correctly`, () => {
-    const tree = renderer.create(<OfferCard
-      offer={offerMock}
-      titleOnClick={titleOnClick}
-      imgOnClick={imgOnClick}
-    />).toJSON();
+    const tree = renderer.create(
+        <BrowserRouter>
+          <OfferCard
+            offer={offerMock}
+            titleOnClick={titleOnClick}
+            imgOnClick={imgOnClick}
+          />
+        </BrowserRouter>).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

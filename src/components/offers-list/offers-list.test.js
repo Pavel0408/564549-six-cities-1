@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import {OffersList} from './offers-list';
+import {BrowserRouter} from "react-router-dom";
 
 const offersMock = [
   {
@@ -36,11 +37,14 @@ const imgOnClick = () => {
 
 describe(`testing OffersList render`, () => {
   it(`OffersList is render correctly`, () => {
-    const tree = renderer.create(<OffersList
-      offers={offersMock}
-      onChange={imgOnClick}
-      titleClickHandler={titleClickHandler}
-    />).toJSON();
+    const tree = renderer.create(
+        <BrowserRouter>
+          <OffersList
+            offers={offersMock}
+            onChange={imgOnClick}
+            titleClickHandler={titleClickHandler}
+          />
+        </BrowserRouter>).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

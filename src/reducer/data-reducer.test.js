@@ -1,10 +1,12 @@
 import {dataReducer} from './data-reducer';
 import {randomOffers as offers} from "../mocks/offers";
+import {ActionType} from "../action-type";
 
 describe(`Data reducer is correct`, () => {
   it(`returns initial state without parameters`, () => {
     expect(dataReducer(undefined, {})).toEqual({
-      cityName: `Amsterdam`
+      cityName: `Amsterdam`,
+      activeOffer: null
     });
   });
   it(`correctly change city`, () => {
@@ -14,7 +16,7 @@ describe(`Data reducer is correct`, () => {
     };
 
     const cityChangeAction = {
-      type: `CHANGE_CITY`,
+      type: ActionType.CHANGE_CITY,
       payload: {
         cityName: `Brussels`
       }
@@ -24,6 +26,23 @@ describe(`Data reducer is correct`, () => {
       offers
     });
   });
+  it(`correctly change activeOffer`, () => {
+    const state = {
+      activeOffer: null
+    };
+
+    const activeOfferChangeAction = {
+      type: ActionType.ACTIVE_OFFER,
+      payload: {
+        activeOffer: `newOffer`
+      }
+    };
+
+    expect(dataReducer(state, activeOfferChangeAction)).toEqual({
+      activeOffer: `newOffer`
+    });
+  });
+
   it(`returns state on incorrect action`, () => {
     const offersMock = [
       {

@@ -4,6 +4,7 @@ import {configure, mount} from "enzyme";
 
 import {WithActiveItem} from "./with-active-item";
 import {OffersList} from "../components/offers-list/offers-list";
+import {BrowserRouter} from "react-router-dom";
 
 configure({adapter: new Adapter()});
 
@@ -32,16 +33,18 @@ const offersMock = [
   }
 ];
 
-const OffersListWithActiveItem = <WithActiveItem
-  render={(data) => <OffersList {...data} offers={offersMock}/>}
-/>;
+const OffersListWithActiveItem = <BrowserRouter>
+  <WithActiveItem
+    render={(data) => <OffersList {...data} offers={offersMock}/>}
+  />
+</BrowserRouter>;
 
 describe(`testing the withActiveItem work`, () => {
   it(`call callback correctly change state`, () => {
     const offersList = mount(OffersListWithActiveItem);
 
-    const title = offersList.find(`.place-card__name a`).first();
-    title.simulate(`click`);
+    const image = offersList.find(`.place-card__image`).first();
+    image.simulate(`click`);
     expect(OffersListWithActiveItem.activeItem === offersMock[0]);
   });
 });

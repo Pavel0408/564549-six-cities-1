@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import {offerCardPropTypes} from "../../prop-types/offer-card-prop-types";
+import {Link} from "react-router-dom";
 
 export class OfferCard extends PureComponent {
   constructor(props) {
@@ -11,9 +12,8 @@ export class OfferCard extends PureComponent {
     this.imgClickHandler = this.imgClickHandler.bind(this);
   }
 
-  titleClickHandler(evt) {
+  titleClickHandler() {
     const {titleOnClick} = this.props;
-    evt.preventDefault();
     titleOnClick(this._offer);
   }
 
@@ -71,7 +71,7 @@ export class OfferCard extends PureComponent {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={this.titleClickHandler}>{this._offer.name}</a>
+          <Link to={`/offer/${this._offer.id}`} href="#" onClick={this.titleClickHandler}>{this._offer.name}</Link>
         </h2>
         <p className="place-card__type">Private room</p>
       </div>

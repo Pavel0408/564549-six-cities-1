@@ -56,6 +56,8 @@ Array [
         >
           <a
             className="header__logo-link header__logo-link--active"
+            href="/"
+            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
@@ -77,23 +79,7 @@ Array [
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                computedMatch={
-                  Object {
-                    "isExact": true,
-                    "params": Object {},
-                    "path": "/",
-                    "url": "/",
-                  }
-                }
                 href="/login"
-                location={
-                  Object {
-                    "hash": "",
-                    "pathname": "/",
-                    "search": "",
-                    "state": undefined,
-                  }
-                }
                 onClick={[Function]}
               >
                 <div
@@ -353,7 +339,7 @@ Array [
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    href="/offer/0"
                     onClick={[Function]}
                   >
                     Beautiful & luxurious apartment at great location
@@ -457,7 +443,7 @@ Array [
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    href="/offer/1"
                     onClick={[Function]}
                   >
                     Wood and stone place

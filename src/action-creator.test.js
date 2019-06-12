@@ -49,4 +49,12 @@ describe(`ActionCreator is correct`, () => {
       }
     });
   });
+  it(`Return correctly action on active offer change`, () => {
+    expect(ActionCreator.setActiveOffer(`newOffer`)).toEqual({
+      type: ActionType.ACTIVE_OFFER,
+      payload: {
+        activeOffer: `newOffer`
+      }
+    });
+  });
 });

@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {App} from './app.jsx';
+import {BrowserRouter} from "react-router-dom";
 
 const offersMock = [
   {
@@ -52,15 +53,18 @@ const screenSwitch = () => {
 
 describe(`testing App render`, () => {
   it(`App is render correctly`, () => {
-    const tree = renderer.create(<App
-      offers={offersMock}
-      cityName={cityName}
-      cities={cities}
-      cityClickHandler={cityClickHandler}
-      loadOffers={loadOffers}
-      isAuthorized={isAuthorized}
-      screenSwitch={screenSwitch}
-    />).toJSON();
+    const tree = renderer.create(
+        <BrowserRouter>
+          <App
+            offers={offersMock}
+            cityName={cityName}
+            cities={cities}
+            cityClickHandler={cityClickHandler}
+            loadOffers={loadOffers}
+            isAuthorized={isAuthorized}
+            screenSwitch={screenSwitch}
+          />
+        </BrowserRouter>).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
