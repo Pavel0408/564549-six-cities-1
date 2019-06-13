@@ -4,14 +4,13 @@ const parseReview = (data) => {
     userId: data[`user`][`id`],
     userIsPro: data[`user`][`is_pro`],
     userName: data[`user`][`name`],
-    userAvatar: data[`user`][`avatar`],
+    userAvatar: data[`user`][`avatar_url`],
     rating: data[`rating`],
-    comment: data[`comment`],
+    message: data[`comment`],
     date: new Date(data[`date`])
   };
 };
 
 export const parseServerResponseReviews = (response) => {
-  console.log(response.data);
- return  response.data.map(parseReview);
+  return response.data.map(parseReview);
 };
