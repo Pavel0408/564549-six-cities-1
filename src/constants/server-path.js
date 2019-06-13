@@ -1,4 +1,5 @@
 export const ServerPath = {
   hotels: `/hotels`,
-  authorization: `/login`
+  authorization: `/login`,
+  comments: `/comments/`
 };

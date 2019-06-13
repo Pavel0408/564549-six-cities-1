@@ -2,6 +2,7 @@ import {ActionCreator} from "./action-creator";
 import {parseServerResponseOffers} from "./parse-server-response/parse-server-response-offers";
 import {ServerPath} from "./constants/server-path";
 import {parseAuthorizationResponse} from "./parse-server-response/parse-server-response-authorization";
+import {parseServerResponseReviews} from "./parse-server-response/parse-server-response-reviews";
 
 export const Operation = {
   loadOffers: () => (dispatch, getState, api) => {
@@ -39,6 +40,18 @@ export const Operation = {
       })
       .catch((e) => {
         dispatch(ActionCreator.authorizationFailed(e));
+      });
+  },
+  fetchReviews: (id) => (dispatch, getState, api) => {
+    return api.get(ServerPath.comments + id)
+      .then((response) => {
+        return parseServerResponseReviews(response);
+      })
+      .then((reviews) => {
+        dispatch(ActionCreator.fetchReviewsSuccess(reviews));
+      })
+      .catch((e) => {
+        dispatch(ActionCreator.fetchReviewsFailed(e));
       });
   }
 };

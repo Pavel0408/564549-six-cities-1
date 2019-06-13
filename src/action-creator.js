@@ -53,5 +53,21 @@ export const ActionCreator = {
         activeOffer: offer
       }
     };
+  },
+  fetchReviewsSuccess: (reviews) => {
+    return {
+      type: ActionType.FETCH_REVIEWS_SUCCESS,
+      payload: {
+        reviews
+      }
+    };
+  },
+  fetchReviewsFailed: (error) => {
+    return {
+      type: ActionType.FETCH_REVIEWS_FAILED,
+      payload: {
+        error
+      }
+    };
   }
 };

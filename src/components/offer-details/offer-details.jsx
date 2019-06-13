@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
+import {ReviewsList} from "../reviews-list/reviews-list";
 
 export class OfferDetails extends PureComponent {
 
@@ -127,6 +128,7 @@ export class OfferDetails extends PureComponent {
                     </p>
                   </div>
                 </div>
+                <ReviewsList {...this.props}/>
                 <section className="property__reviews reviews">
                   <h2 className="reviews__title">Reviews · <span className="reviews__amount">1</span></h2>
                   <ul className="reviews__list">
