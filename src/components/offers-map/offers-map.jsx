@@ -10,7 +10,7 @@ export class OffersMap extends PureComponent {
   }
 
   render() {
-    return <div id="map" style={{height: 850}}></div>;
+    return <div id="map" style={{backgroundImage: `none`, height: `100%`}}></div>;
   }
 
   componentDidMount() {
