@@ -144,7 +144,7 @@ export class OfferDetails extends PureComponent {
               <WithLeafletMap
                 render={(data) => <OffersMap mapMethods={data} offers={this.props.offers} cityName={this.props.cityName}/>}/>
             </section>
-
+            {console.log(this.props.offers)}
           </section>
           <div className="container">
             <section className="near-places places">
