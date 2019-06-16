@@ -124,14 +124,14 @@ export const MainScreen = (props) => {
                 </li>
               </ul>
             </form>
-            <div className="cities__places-list places__list tabs__content">
+            <div className="cities__places-list places__list tabs__content" style={{overflow: `auto`, height: `calc(100vh - 350px)`}}>
               {isLoading && <h3>Offers is loading</h3>}
               {error && <h3>Download failed {error.message}</h3>}
               {OffersListWithActiveItem}
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map" style={{backgroundImage: `none`}}>
+            <section className="cities__map map" style={{backgroundImage: `none`, height: `calc(100vh - 200px)`}}>
               <WithLeafletMap
                 render={(data) => <OffersMap mapMethods={data} offers={offers} cityName={cityName}/>}/>
             </section>

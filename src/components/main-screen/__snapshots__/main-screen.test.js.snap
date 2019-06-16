@@ -254,6 +254,12 @@ Array [
           </form>
           <div
             className="cities__places-list places__list tabs__content"
+            style={
+              Object {
+                "height": "calc(100vh - 350px)",
+                "overflow": "auto",
+              }
+            }
           >
             <article
               className="cities__place-card place-card"
@@ -466,6 +472,7 @@ Array [
             style={
               Object {
                 "backgroundImage": "none",
+                "height": "calc(100vh - 200px)",
               }
             }
           >
@@ -473,7 +480,8 @@ Array [
               id="map"
               style={
                 Object {
-                  "height": 850,
+                  "backgroundImage": "none",
+                  "height": "100%",
                 }
               }
             />

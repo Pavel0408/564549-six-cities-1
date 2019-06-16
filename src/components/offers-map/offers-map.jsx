@@ -10,7 +10,7 @@ export class OffersMap extends PureComponent {
   }
 
   render() {
-    return <div id="map" style={{height: 850}}></div>;
+    return <div id="map" style={{backgroundImage: `none`, height: `100%`}}></div>;
   }
 
   componentDidMount() {
@@ -45,15 +45,18 @@ export class OffersMap extends PureComponent {
   }
 
   renderPins(offers) {
-    const iconUrl = `img/pin-map.svg`;
+    const iconUrl = `/img/pin-map.svg`;
     const iconSize = [30, 30];
     const mapItem = this.mapItem;
-    this.pins = offers.map((offfer) => this.props.mapMethods.addPin({
-      coordinates: offfer.coordinates,
-      mapItem,
-      iconUrl,
-      iconSize
-    }));
+
+    this.pins = offers.map((offer) =>{
+      return this.props.mapMethods.addPin({
+        coordinates: offer.coordinates,
+        mapItem,
+        iconUrl,
+        iconSize
+      });
+    });
   }
 
   componentDidUpdate() {

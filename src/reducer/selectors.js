@@ -38,3 +38,11 @@ export const getUser = (state) => {
 export const getActiveOffer = (state) => {
   return state[NameSpace.DATA].activeOffer;
 };
+
+export const getReviews = (state) => {
+  return state[NameSpace.REVIEWS].reviews;
+};
+
+export const getReviewsError = (state) => {
+  return state[NameSpace.REVIEWS].error;
+};

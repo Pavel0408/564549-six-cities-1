@@ -8,7 +8,7 @@ import {
   getCities,
   getCityName, getIsAuthorizationRequired,
   getOffersIsLoading,
-  getOffersLoadError, getUser,
+  getOffersLoadError, getReviews, getReviewsError, getUser,
 } from "../../reducer/selectors";
 import {Operation} from "../../operation";
 import {withScreenSwitch} from "../../hocs/with-screen-switch";
@@ -24,7 +24,9 @@ const mapStateToProps = (state) => {
     error: getOffersLoadError(state),
     isAuthorizationRequired: getIsAuthorizationRequired(state),
     user: getUser(state),
-    activeOffer: getActiveOffer(state)
+    activeOffer: getActiveOffer(state),
+    reviews: getReviews(state),
+    reviewsError: getReviewsError(state)
   };
 };
 
@@ -55,6 +57,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     changeActiveOffer: (offer) => {
       dispatch(ActionCreator.setActiveOffer(offer));
+    },
+    fetchReviews: (id) => {
+      dispatch(Operation.fetchReviews(id));
     }
   };
 };
