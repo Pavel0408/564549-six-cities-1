@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import {Review} from "../review/review";
-
+import PropTypes from "prop-types";
 
 export class ReviewsList extends PureComponent {
   constructor(props) {
@@ -70,3 +70,10 @@ export class ReviewsList extends PureComponent {
     </section>;
   }
 }
+
+ReviewsList.propTypes = {
+  activeOffer: PropTypes.object,
+  reviewsError: PropTypes.object,
+  reviews: PropTypes.array,
+  fetchReviews: PropTypes.func
+};

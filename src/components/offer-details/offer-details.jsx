@@ -176,7 +176,10 @@ export class OfferDetails extends PureComponent {
 OfferDetails.propTypes = {
   activeOffer: PropTypes.object,
   isAuthorizationRequired: PropTypes.bool,
-  user: PropTypes.object
+  user: PropTypes.object,
+  cityName: PropTypes.string,
+  changeActiveOffer: PropTypes.func,
+  offers: PropTypes.array
 };
 
 

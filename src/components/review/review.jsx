@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 
 export class Review extends PureComponent {
   render() {
@@ -32,5 +33,8 @@ export class Review extends PureComponent {
       </li>
     </React.Fragment>;
   }
-
 }
+
+Review.propTypes = {
+  comment: PropTypes.object
+};

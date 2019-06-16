@@ -47,6 +47,7 @@ const mockServerOffers = {
 };
 
 const offerMock = parseServerResponseOffers(mockServerOffers);
+const fetchReviews = () => {};
 
 describe(`testing OfferDetails render`, () => {
   it(`OfferDetails is render correctly`, () => {
@@ -56,6 +57,10 @@ describe(`testing OfferDetails render`, () => {
             activeOffer={offerMock[0]}
             isAuthorizationRequired={false}
             user={null}
+            offers={offerMock}
+            fetchReviews={fetchReviews}
+            cityName={`Amsterdam`}
+            reviews={[]}
           />
         </BrowserRouter>
     ).toJSON();

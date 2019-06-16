@@ -45,4 +45,4 @@ export const getReviews = (state) => {
 
 export const getReviewsError = (state) => {
   return state[NameSpace.REVIEWS].error;
-}
+};
