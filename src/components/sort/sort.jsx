@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import {SortName, SortText} from "../../sort-functions";
 
 export class Sort extends PureComponent {
   constructor(props) {
@@ -18,11 +19,21 @@ export class Sort extends PureComponent {
     });
   }
 
+  generateChangeSort(sort) {
+    return () => {
+      return this.props.changeSort(sort);
+    };
+  }
+
+  changeSortPopular() {
+    return this.props.changeSort(SortName.popular);
+  }
+
   render() {
     return <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by </span>
       <span className="places__sorting-type" tabIndex="0" onClick={this.togglelList}>
-              Popular
+        {SortText[this.props.sort]}
         <svg
           className="places__sorting-arrow"
           width="7"
@@ -35,16 +46,23 @@ export class Sort extends PureComponent {
         <li
           className="places__option places__option--active"
           tabIndex="0"
+          onClick={this.generateChangeSort(SortName.popular)}
         >
           Popular
         </li>
-        <li className="places__option" tabIndex="0">
+        <li className="places__option" tabIndex="0"
+          onClick={this.generateChangeSort(SortName.priceLow)}
+        >
           Price: low to high
         </li>
-        <li className="places__option" tabIndex="0">
+        <li className="places__option" tabIndex="0"
+          onClick={this.generateChangeSort(SortName.priceHigh)}
+        >
           Price: high to low
         </li>
-        <li className="places__option" tabIndex="0">
+        <li className="places__option" tabIndex="0"
+          onClick={this.generateChangeSort(SortName.topRated)}
+        >
           Top rated first
         </li>
       </ul>

@@ -21,7 +21,7 @@ export class OffersList extends PureComponent {
     const {offers, changeActiveOffer} = this.props;
     return offers.map((offer) => {
       return <OfferCard
-        key={offer.id}
+        key={`${offer.id}${this.props.sort}`}
         offer={offer}
         titleOnClick={changeActiveOffer}
         imgOnClick={this.imgOnClick}

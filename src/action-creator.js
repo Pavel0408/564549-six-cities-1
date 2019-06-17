@@ -69,5 +69,13 @@ export const ActionCreator = {
         error
       }
     };
+  },
+  changeSort: (sort) => {
+    return {
+      type: ActionType.CHANGE_SORT,
+      payload: {
+        sort
+      }
+    };
   }
 };

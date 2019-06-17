@@ -8,17 +8,20 @@ import {
   getCities,
   getCityName, getIsAuthorizationRequired,
   getOffersIsLoading,
-  getOffersLoadError, getReviews, getReviewsError, getUser,
+  getOffersLoadError, getReviews, getReviewsError, getSort, getUser,
 } from "../../reducer/selectors";
 import {Operation} from "../../operation";
 import {withScreenSwitch} from "../../hocs/with-screen-switch";
 import {ScreenSwitch} from "../../hocs/screen-switch";
+import {SortFunctions} from "../../sort-functions";
 
 
 const mapStateToProps = (state) => {
+  const sortFunction = SortFunctions[getSort(state)];
+
   return {
     cityName: getCityName(state),
-    offers: getActiveOffers(state),
+    offers: getActiveOffers(state).sort(sortFunction),
     cities: getCities(state),
     isLoading: getOffersIsLoading(state),
     error: getOffersLoadError(state),
@@ -26,7 +29,8 @@ const mapStateToProps = (state) => {
     user: getUser(state),
     activeOffer: getActiveOffer(state),
     reviews: getReviews(state),
-    reviewsError: getReviewsError(state)
+    reviewsError: getReviewsError(state),
+    sort: getSort(state)
   };
 };
 
@@ -60,6 +64,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     fetchReviews: (id) => {
       dispatch(Operation.fetchReviews(id));
+    },
+    changeSort: (sort) => {
+      dispatch(ActionCreator.changeSort(sort));
     }
   };
 };

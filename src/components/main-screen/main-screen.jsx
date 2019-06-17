@@ -13,7 +13,7 @@ import {Sort} from "../sort/sort";
 
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities, isLoading, error, user,
-    isAuthorizationRequired, changeActiveOffer} = props;
+    isAuthorizationRequired, changeActiveOffer, changeSort, sort} = props;
   const userElementSwitch = () => {
     return isAuthorizationRequired && user ?
       <Link
@@ -31,7 +31,7 @@ export const MainScreen = (props) => {
       </Link>;
   };
   const OffersListWithActiveItem = <WithActiveItem
-    render={(childProps) => <OffersList {...childProps} offers={offers} changeActiveOffer={changeActiveOffer}/>}
+    render={(childProps) => <OffersList {...childProps} offers={offers} changeActiveOffer={changeActiveOffer} sort={sort}/>}
   />;
 
   return <React.Fragment>
@@ -95,7 +95,10 @@ export const MainScreen = (props) => {
             <b className="places__found">
               {offers.length} places to stay in {cityName}
             </b>
-            <Sort/>
+            <Sort
+              changeSort={changeSort}
+              sort={sort}
+            />
 
             <div className="cities__places-list places__list tabs__content" style={{overflow: `auto`, height: `calc(100vh - 350px)`}}>
               {isLoading && <h3>Offers is loading</h3>}
