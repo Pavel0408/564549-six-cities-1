@@ -181,7 +181,9 @@ OfferDetails.propTypes = {
   user: PropTypes.object,
   cityName: PropTypes.string,
   changeActiveOffer: PropTypes.func,
-  offers: PropTypes.array
+  offers: PropTypes.array,
+  changeActivePinOffer: PropTypes.func,
+  activePinOffer: PropTypes.object
 };
 
 

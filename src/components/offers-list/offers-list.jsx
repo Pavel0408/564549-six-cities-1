@@ -34,5 +34,7 @@ OffersList.propTypes = {
   offers: offersPropTypes,
   onChange: PropTypes.func,
   activeItem: PropTypes.object,
-  changeActiveOffer: PropTypes.func
+  changeActiveOffer: PropTypes.func,
+  sort: PropTypes.string,
+  changeActivePinOffer: PropTypes.func
 };

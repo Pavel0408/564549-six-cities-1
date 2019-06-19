@@ -1,5 +1,7 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 import {SortName, SortText} from "../../sort-functions";
+
 
 export class Sort extends PureComponent {
   constructor(props) {
@@ -69,3 +71,8 @@ export class Sort extends PureComponent {
     </form>;
   }
 }
+
+Sort.propTypes = {
+  changeSort: PropTypes.func,
+  sort: PropTypes.string
+};

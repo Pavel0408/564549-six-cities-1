@@ -128,5 +128,9 @@ MainScreen.propTypes = {
   user: PropTypes.object,
   signOut: PropTypes.func,
   isAuthorizationRequired: PropTypes.bool,
-  changeActiveOffer: PropTypes.func
+  changeActiveOffer: PropTypes.func,
+  changeSort: PropTypes.func,
+  sort: PropTypes.string,
+  changeActivePinOffer: PropTypes.func,
+  activePinOffer: PropTypes.object
 };

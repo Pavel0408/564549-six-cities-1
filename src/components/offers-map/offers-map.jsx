@@ -81,5 +81,6 @@ OffersMap.propTypes = {
     createMap: PropTypes.func,
     addPin: PropTypes.func
   }).isRequired,
-  cityName: PropTypes.string.isRequired
+  cityName: PropTypes.string.isRequired,
+  activePinOffer: PropTypes.object
 };
