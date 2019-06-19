@@ -7,12 +7,11 @@ import {OffersMap} from "../offers-map/offers-map";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {CitiesList} from "../cities-list/cities-list";
 import {offersPropTypes} from "../../prop-types/offers-prop-types";
-import {WithActiveItem} from "../../hocs/with-active-item";
-
+import {Sort} from "../sort/sort";
 
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities, isLoading, error, user,
-    isAuthorizationRequired, changeActiveOffer} = props;
+    isAuthorizationRequired, changeActiveOffer, changeSort, sort, changeActivePinOffer, activePinOffer, fetchReviews} = props;
   const userElementSwitch = () => {
     return isAuthorizationRequired && user ?
       <Link
@@ -29,9 +28,6 @@ export const MainScreen = (props) => {
         <span className="header__login">Sign in</span>
       </Link>;
   };
-  const OffersListWithActiveItem = <WithActiveItem
-    render={(childProps) => <OffersList {...childProps} offers={offers} changeActiveOffer={changeActiveOffer}/>}
-  />;
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -94,46 +90,26 @@ export const MainScreen = (props) => {
             <b className="places__found">
               {offers.length} places to stay in {cityName}
             </b>
-            <form className="places__sorting" action="#" method="get">
-              <span className="places__sorting-caption">Sort by</span>
-              <span className="places__sorting-type" tabIndex="0">
-              Popular
-                <svg
-                  className="places__sorting-arrow"
-                  width="7"
-                  height="4"
-                >
-                  <use xlinkHref="#icon-arrow-select"/>
-                </svg>
-              </span>
-              <ul className="places__options places__options--custom">
-                <li
-                  className="places__option places__option--active"
-                  tabIndex="0"
-                >
-                  Popular
-                </li>
-                <li className="places__option" tabIndex="0">
-                  Price: low to high
-                </li>
-                <li className="places__option" tabIndex="0">
-                  Price: high to low
-                </li>
-                <li className="places__option" tabIndex="0">
-                  Top rated first
-                </li>
-              </ul>
-            </form>
+            <Sort
+              changeSort={changeSort}
+              sort={sort}
+            />
+
             <div className="cities__places-list places__list tabs__content" style={{overflow: `auto`, height: `calc(100vh - 350px)`}}>
               {isLoading && <h3>Offers is loading</h3>}
               {error && <h3>Download failed {error.message}</h3>}
-              {OffersListWithActiveItem}
+              <OffersList offers={offers}
+                changeActiveOffer={changeActiveOffer}
+                sort={sort}
+                changeActivePinOffer={changeActivePinOffer}
+                fetchReviews={fetchReviews}
+              />
             </div>
           </section>
           <div className="cities__right-section">
             <section className="cities__map map" style={{backgroundImage: `none`, height: `calc(100vh - 200px)`}}>
               <WithLeafletMap
-                render={(data) => <OffersMap mapMethods={data} offers={offers} cityName={cityName}/>}/>
+                render={(data) => <OffersMap mapMethods={data} offers={offers} cityName={cityName} activePinOffer={activePinOffer}/>}/>
             </section>
           </div>
         </div>
@@ -152,5 +128,10 @@ MainScreen.propTypes = {
   user: PropTypes.object,
   signOut: PropTypes.func,
   isAuthorizationRequired: PropTypes.bool,
-  changeActiveOffer: PropTypes.func
+  changeActiveOffer: PropTypes.func,
+  changeSort: PropTypes.func,
+  sort: PropTypes.string,
+  changeActivePinOffer: PropTypes.func,
+  activePinOffer: PropTypes.object,
+  fetchReviews: PropTypes.func
 };

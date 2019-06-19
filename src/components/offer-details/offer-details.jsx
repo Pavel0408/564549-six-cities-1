@@ -2,12 +2,10 @@ import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {ReviewsList} from "../reviews-list/reviews-list";
-import {WithActiveItem} from "../../hocs/with-active-item";
 import {OffersList} from "../offers-list/offers-list";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {OffersMap} from "../offers-map/offers-map";
 import {getDistanceFromCoords} from "../../utils";
-
 
 export class OfferDetails extends PureComponent {
 
@@ -24,11 +22,8 @@ export class OfferDetails extends PureComponent {
       .sort((a, b) => {
         return this.getDistanceFromActiveOffer(a) - this.getDistanceFromActiveOffer(b);
       }).slice(0, 3);
-
-    const OffersListWithActiveItem = <WithActiveItem
-      render={(childProps) => <OffersList {...childProps} offers={offers} changeActiveOffer={this.props.changeActiveOffer}/>}
-    />;
-
+    const offersOnMap = offers.slice();
+    offersOnMap.push(offer);
     const {isAuthorizationRequired, user} = this.props;
     const userElementSwitch = () => {
       return isAuthorizationRequired && user ?
@@ -155,14 +150,19 @@ export class OfferDetails extends PureComponent {
             </div>
             <section className="property__map map" style={{backgroundImage: `none`}}>
               <WithLeafletMap
-                render={(data) => <OffersMap mapMethods={data} offers={offers} cityName={this.props.cityName}/>}/>
+                render={(data) => <OffersMap mapMethods={data} offers={offersOnMap} cityName={this.props.cityName} activePinOffer={this.props.activePinOffer}/>}/>
             </section>
           </section>
           <div className="container">
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
-                {OffersListWithActiveItem}
+                <OffersList
+                  offers={offers}
+                  changeActiveOffer={this.props.changeActiveOffer}
+                  changeActivePinOffer={this.props.changeActivePinOffer}
+                  fetchReviews={this.props.fetchReviews}
+                />
               </div>
             </section>
           </div>
@@ -179,7 +179,10 @@ OfferDetails.propTypes = {
   user: PropTypes.object,
   cityName: PropTypes.string,
   changeActiveOffer: PropTypes.func,
-  offers: PropTypes.array
+  offers: PropTypes.array,
+  changeActivePinOffer: PropTypes.func,
+  activePinOffer: PropTypes.object,
+  fetchReviews: PropTypes.func
 };
 
 

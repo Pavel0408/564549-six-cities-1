@@ -46,3 +46,11 @@ export const getReviews = (state) => {
 export const getReviewsError = (state) => {
   return state[NameSpace.REVIEWS].error;
 };
+
+export const getSort = (state) => {
+  return state[NameSpace.DATA].sort;
+};
+
+export const getActivePinOffer = (state) => {
+  return state[NameSpace.DATA].activePinOffer;
+};

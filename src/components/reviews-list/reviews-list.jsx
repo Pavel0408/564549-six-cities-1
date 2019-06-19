@@ -5,11 +5,10 @@ import PropTypes from "prop-types";
 export class ReviewsList extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.props.fetchReviews(this.props.activeOffer.id);
   }
 
   render() {
+
     const {reviewsError, reviews} = this.props;
     if (reviewsError && reviewsError.message) {
       return <h2>{reviewsError.message}</h2>;

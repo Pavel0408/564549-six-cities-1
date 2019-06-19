@@ -69,5 +69,21 @@ export const ActionCreator = {
         error
       }
     };
+  },
+  changeSort: (sort) => {
+    return {
+      type: ActionType.CHANGE_SORT,
+      payload: {
+        sort
+      }
+    };
+  },
+  changeActivePinOffer: (offer) => {
+    return {
+      type: ActionType.ACTIVE_PIN_OFFER_CHANGE,
+      payload: {
+        activePinOffer: offer
+      }
+    };
   }
 };

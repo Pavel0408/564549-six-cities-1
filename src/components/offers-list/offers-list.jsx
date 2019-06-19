@@ -21,10 +21,11 @@ export class OffersList extends PureComponent {
     const {offers, changeActiveOffer} = this.props;
     return offers.map((offer) => {
       return <OfferCard
-        key={offer.id}
+        key={`${offer.id}${this.props.sort}`}
         offer={offer}
         titleOnClick={changeActiveOffer}
-        imgOnClick={this.imgOnClick}
+        changeActivePinOffer={this.props.changeActivePinOffer}
+        fetchReviews={this.props.fetchReviews}
       />;
     });
   }
@@ -34,5 +35,8 @@ OffersList.propTypes = {
   offers: offersPropTypes,
   onChange: PropTypes.func,
   activeItem: PropTypes.object,
-  changeActiveOffer: PropTypes.func
+  changeActiveOffer: PropTypes.func,
+  sort: PropTypes.string,
+  changeActivePinOffer: PropTypes.func,
+  fetchReviews: PropTypes.func
 };
