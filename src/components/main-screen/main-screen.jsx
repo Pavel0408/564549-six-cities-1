@@ -7,9 +7,7 @@ import {OffersMap} from "../offers-map/offers-map";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {CitiesList} from "../cities-list/cities-list";
 import {offersPropTypes} from "../../prop-types/offers-prop-types";
-import {WithActiveItem} from "../../hocs/with-active-item";
 import {Sort} from "../sort/sort";
-
 
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities, isLoading, error, user,
@@ -30,9 +28,6 @@ export const MainScreen = (props) => {
         <span className="header__login">Sign in</span>
       </Link>;
   };
-  const OffersListWithActiveItem = <WithActiveItem
-    render={(childProps) => <OffersList {...childProps} offers={offers} changeActiveOffer={changeActiveOffer} sort={sort} changeActivePinOffer={changeActivePinOffer}/>}
-  />;
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -103,7 +98,10 @@ export const MainScreen = (props) => {
             <div className="cities__places-list places__list tabs__content" style={{overflow: `auto`, height: `calc(100vh - 350px)`}}>
               {isLoading && <h3>Offers is loading</h3>}
               {error && <h3>Download failed {error.message}</h3>}
-              {OffersListWithActiveItem}
+              <OffersList offers={offers}
+                changeActiveOffer={changeActiveOffer}
+                sort={sort}
+                changeActivePinOffer={changeActivePinOffer}/>
             </div>
           </section>
           <div className="cities__right-section">

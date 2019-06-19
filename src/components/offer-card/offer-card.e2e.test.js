@@ -23,7 +23,7 @@ describe(`testing the OfferCard work`, () => {
     const card = mount(
         <BrowserRouter>
           <OfferCard
-            imgOnClick={imgOnClick}
+            changeActivePinOffer={imgOnClick}
             titleOnClick={titleOnClick}
             offer={offerMock}
           />
@@ -42,7 +42,7 @@ describe(`testing the OfferCard work`, () => {
     const card = mount(
         <BrowserRouter>
           <OfferCard
-            imgOnClick={imgOnClick}
+            changeActivePinOffer={imgOnClick}
             titleOnClick={titleOnClick}
             offer={offerMock}
           />

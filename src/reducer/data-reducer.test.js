@@ -1,12 +1,15 @@
 import {dataReducer} from './data-reducer';
 import {randomOffers as offers} from "../mocks/offers";
 import {ActionType} from "../action-type";
+import {SortName} from "../sort-functions";
 
 describe(`Data reducer is correct`, () => {
   it(`returns initial state without parameters`, () => {
     expect(dataReducer(undefined, {})).toEqual({
       cityName: `Amsterdam`,
-      activeOffer: null
+      activeOffer: null,
+      sort: SortName.popular,
+      activePinOffer: null
     });
   });
   it(`correctly change city`, () => {

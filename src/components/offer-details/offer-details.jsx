@@ -2,7 +2,6 @@ import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {ReviewsList} from "../reviews-list/reviews-list";
-import {WithActiveItem} from "../../hocs/with-active-item";
 import {OffersList} from "../offers-list/offers-list";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {OffersMap} from "../offers-map/offers-map";
@@ -26,11 +25,6 @@ export class OfferDetails extends PureComponent {
       }).slice(0, 3);
     const offersOnMap = offers.slice();
     offersOnMap.push(offer);
-
-    const OffersListWithActiveItem = <WithActiveItem
-      render={(childProps) => <OffersList {...childProps} offers={offers} changeActiveOffer={this.props.changeActiveOffer} changeActivePinOffer={this.props.changeActivePinOffer}/>}
-    />;
-
     const {isAuthorizationRequired, user} = this.props;
     const userElementSwitch = () => {
       return isAuthorizationRequired && user ?
@@ -164,7 +158,11 @@ export class OfferDetails extends PureComponent {
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
-                {OffersListWithActiveItem}
+                <OffersList
+                  offers={offers}
+                  changeActiveOffer={this.props.changeActiveOffer}
+                  changeActivePinOffer={this.props.changeActivePinOffer}
+                />
               </div>
             </section>
           </div>
