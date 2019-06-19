@@ -7,7 +7,6 @@ import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {OffersMap} from "../offers-map/offers-map";
 import {getDistanceFromCoords} from "../../utils";
 
-
 export class OfferDetails extends PureComponent {
 
   getDistanceFromActiveOffer(offer) {
@@ -162,6 +161,7 @@ export class OfferDetails extends PureComponent {
                   offers={offers}
                   changeActiveOffer={this.props.changeActiveOffer}
                   changeActivePinOffer={this.props.changeActivePinOffer}
+                  fetchReviews={this.props.fetchReviews}
                 />
               </div>
             </section>
@@ -181,7 +181,8 @@ OfferDetails.propTypes = {
   changeActiveOffer: PropTypes.func,
   offers: PropTypes.array,
   changeActivePinOffer: PropTypes.func,
-  activePinOffer: PropTypes.object
+  activePinOffer: PropTypes.object,
+  fetchReviews: PropTypes.func
 };
 
 

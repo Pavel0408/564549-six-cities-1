@@ -20,12 +20,14 @@ describe(`testing the OfferCard work`, () => {
   it(`click on image return offers element`, () => {
     const titleOnClick = () => {};
     const imgOnClick = jest.fn();
+    const fetchReviews = () => {};
     const card = mount(
         <BrowserRouter>
           <OfferCard
             changeActivePinOffer={imgOnClick}
             titleOnClick={titleOnClick}
             offer={offerMock}
+            fetchReviews={fetchReviews}
           />
         </BrowserRouter>);
 
@@ -39,12 +41,14 @@ describe(`testing the OfferCard work`, () => {
   it(`click on title return offers element`, () => {
     const titleOnClick = jest.fn();
     const imgOnClick = () => {};
+    const fetchReviews = () => {};
     const card = mount(
         <BrowserRouter>
           <OfferCard
             changeActivePinOffer={imgOnClick}
             titleOnClick={titleOnClick}
             offer={offerMock}
+            fetchReviews={fetchReviews}
           />
         </BrowserRouter>);
 

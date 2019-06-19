@@ -25,6 +25,7 @@ export class OffersList extends PureComponent {
         offer={offer}
         titleOnClick={changeActiveOffer}
         changeActivePinOffer={this.props.changeActivePinOffer}
+        fetchReviews={this.props.fetchReviews}
       />;
     });
   }
@@ -36,5 +37,6 @@ OffersList.propTypes = {
   activeItem: PropTypes.object,
   changeActiveOffer: PropTypes.func,
   sort: PropTypes.string,
-  changeActivePinOffer: PropTypes.func
+  changeActivePinOffer: PropTypes.func,
+  fetchReviews: PropTypes.func
 };

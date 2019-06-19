@@ -17,6 +17,7 @@ export class OfferCard extends PureComponent {
   titleClickHandler() {
     this.titleOnClick(this._offer);
     this.changeActivePinOffer(this._offer);
+    this.props.fetchReviews(this._offer.id);
   }
 
   imgClickHandler(evt) {

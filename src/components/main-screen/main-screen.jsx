@@ -11,7 +11,7 @@ import {Sort} from "../sort/sort";
 
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities, isLoading, error, user,
-    isAuthorizationRequired, changeActiveOffer, changeSort, sort, changeActivePinOffer, activePinOffer} = props;
+    isAuthorizationRequired, changeActiveOffer, changeSort, sort, changeActivePinOffer, activePinOffer, fetchReviews} = props;
   const userElementSwitch = () => {
     return isAuthorizationRequired && user ?
       <Link
@@ -101,7 +101,9 @@ export const MainScreen = (props) => {
               <OffersList offers={offers}
                 changeActiveOffer={changeActiveOffer}
                 sort={sort}
-                changeActivePinOffer={changeActivePinOffer}/>
+                changeActivePinOffer={changeActivePinOffer}
+                fetchReviews={fetchReviews}
+              />
             </div>
           </section>
           <div className="cities__right-section">
@@ -130,5 +132,6 @@ MainScreen.propTypes = {
   changeSort: PropTypes.func,
   sort: PropTypes.string,
   changeActivePinOffer: PropTypes.func,
-  activePinOffer: PropTypes.object
+  activePinOffer: PropTypes.object,
+  fetchReviews: PropTypes.func
 };
