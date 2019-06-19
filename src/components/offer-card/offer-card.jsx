@@ -6,21 +6,22 @@ export class OfferCard extends PureComponent {
   constructor(props) {
     super(props);
 
-    const {offer} = props;
+    const {offer, changeActivePinOffer, titleOnClick} = props;
     this._offer = offer;
     this.titleClickHandler = this.titleClickHandler.bind(this);
     this.imgClickHandler = this.imgClickHandler.bind(this);
+    this.changeActivePinOffer = changeActivePinOffer;
+    this.titleOnClick = titleOnClick;
   }
 
   titleClickHandler() {
-    const {titleOnClick} = this.props;
-    titleOnClick(this._offer);
+    this.titleOnClick(this._offer);
+    this.changeActivePinOffer(this._offer);
   }
 
   imgClickHandler(evt) {
-    const {imgOnClick} = this.props;
     evt.preventDefault();
-    imgOnClick(this._offer);
+    this.changeActivePinOffer(this._offer);
   }
 
   render() {

@@ -24,9 +24,11 @@ export class OfferDetails extends PureComponent {
       .sort((a, b) => {
         return this.getDistanceFromActiveOffer(a) - this.getDistanceFromActiveOffer(b);
       }).slice(0, 3);
+    const offersOnMap = offers.slice();
+    offersOnMap.push(offer);
 
     const OffersListWithActiveItem = <WithActiveItem
-      render={(childProps) => <OffersList {...childProps} offers={offers} changeActiveOffer={this.props.changeActiveOffer}/>}
+      render={(childProps) => <OffersList {...childProps} offers={offers} changeActiveOffer={this.props.changeActiveOffer} changeActivePinOffer={this.props.changeActivePinOffer}/>}
     />;
 
     const {isAuthorizationRequired, user} = this.props;
@@ -155,7 +157,7 @@ export class OfferDetails extends PureComponent {
             </div>
             <section className="property__map map" style={{backgroundImage: `none`}}>
               <WithLeafletMap
-                render={(data) => <OffersMap mapMethods={data} offers={offers} cityName={this.props.cityName}/>}/>
+                render={(data) => <OffersMap mapMethods={data} offers={offersOnMap} cityName={this.props.cityName} activePinOffer={this.props.activePinOffer}/>}/>
             </section>
           </section>
           <div className="container">

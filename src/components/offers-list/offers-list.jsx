@@ -24,7 +24,7 @@ export class OffersList extends PureComponent {
         key={`${offer.id}${this.props.sort}`}
         offer={offer}
         titleOnClick={changeActiveOffer}
-        imgOnClick={this.props.changeActivePinOffer}
+        changeActivePinOffer={this.props.changeActivePinOffer}
       />;
     });
   }
