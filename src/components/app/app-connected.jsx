@@ -4,7 +4,7 @@ import {ActionCreator} from "../../action-creator";
 import {App} from "./app";
 import {
   getActiveOffer,
-  getActiveOffers,
+  getActiveOffers, getActivePinOffer,
   getCities,
   getCityName, getIsAuthorizationRequired,
   getOffersIsLoading,
@@ -30,7 +30,8 @@ const mapStateToProps = (state) => {
     activeOffer: getActiveOffer(state),
     reviews: getReviews(state),
     reviewsError: getReviewsError(state),
-    sort: getSort(state)
+    sort: getSort(state),
+    activePinOffer: getActivePinOffer(state)
   };
 };
 
@@ -67,6 +68,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     changeSort: (sort) => {
       dispatch(ActionCreator.changeSort(sort));
+    },
+    changeActivePinOffer: (offer) => {
+      dispatch(ActionCreator.changeActivePinOffer(offer));
     }
   };
 };

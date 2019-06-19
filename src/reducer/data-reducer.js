@@ -6,7 +6,8 @@ const cityName = `Amsterdam`;
 const initialState = {
   cityName,
   activeOffer: null,
-  sort: SortName.popular
+  sort: SortName.popular,
+  activePinOffer: null
 };
 
 export const dataReducer = (state = initialState, action) => {
@@ -14,6 +15,7 @@ export const dataReducer = (state = initialState, action) => {
     case ActionType.CHANGE_CITY:
     case ActionType.ACTIVE_OFFER:
     case ActionType.CHANGE_SORT:
+    case ActionType.ACTIVE_PIN_OFFER_CHANGE:
       return Object.assign({}, state, action.payload);
   }
 

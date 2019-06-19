@@ -13,7 +13,7 @@ import {Sort} from "../sort/sort";
 
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities, isLoading, error, user,
-    isAuthorizationRequired, changeActiveOffer, changeSort, sort} = props;
+    isAuthorizationRequired, changeActiveOffer, changeSort, sort, changeActivePinOffer, activePinOffer} = props;
   const userElementSwitch = () => {
     return isAuthorizationRequired && user ?
       <Link
@@ -31,7 +31,7 @@ export const MainScreen = (props) => {
       </Link>;
   };
   const OffersListWithActiveItem = <WithActiveItem
-    render={(childProps) => <OffersList {...childProps} offers={offers} changeActiveOffer={changeActiveOffer} sort={sort}/>}
+    render={(childProps) => <OffersList {...childProps} offers={offers} changeActiveOffer={changeActiveOffer} sort={sort} changeActivePinOffer={changeActivePinOffer}/>}
   />;
 
   return <React.Fragment>
@@ -109,7 +109,7 @@ export const MainScreen = (props) => {
           <div className="cities__right-section">
             <section className="cities__map map" style={{backgroundImage: `none`, height: `calc(100vh - 200px)`}}>
               <WithLeafletMap
-                render={(data) => <OffersMap mapMethods={data} offers={offers} cityName={cityName}/>}/>
+                render={(data) => <OffersMap mapMethods={data} offers={offers} cityName={cityName} activePinOffer={activePinOffer}/>}/>
             </section>
           </div>
         </div>

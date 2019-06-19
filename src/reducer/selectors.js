@@ -50,3 +50,7 @@ export const getReviewsError = (state) => {
 export const getSort = (state) => {
   return state[NameSpace.DATA].sort;
 };
+
+export const getActivePinOffer = (state) => {
+  return state[NameSpace.DATA].activePinOffer;
+};

@@ -77,5 +77,13 @@ export const ActionCreator = {
         sort
       }
     };
+  },
+  changeActivePinOffer: (offer) => {
+    return {
+      type: ActionType.ACTIVE_PIN_OFFER_CHANGE,
+      payload: {
+        activePinOffer: offer
+      }
+    };
   }
 };

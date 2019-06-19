@@ -45,11 +45,16 @@ export class OffersMap extends PureComponent {
   }
 
   renderPins(offers) {
-    const iconUrl = `/img/pin-map.svg`;
+    const {activePinOffer} = this.props;
     const iconSize = [30, 30];
     const mapItem = this.mapItem;
 
     this.pins = offers.map((offer) =>{
+      let iconUrl = `/img/pin-map.svg`;
+      if (activePinOffer && offer.id === activePinOffer.id) {
+        iconUrl = `/img/pin-map-orange.svg`;
+      }
+
       return this.props.mapMethods.addPin({
         coordinates: offer.coordinates,
         mapItem,
