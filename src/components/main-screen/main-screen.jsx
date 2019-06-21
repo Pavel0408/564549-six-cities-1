@@ -9,6 +9,7 @@ import {CitiesList} from "../cities-list/cities-list";
 import {offersPropTypes} from "../../prop-types/offers-prop-types";
 import {Sort} from "../sort/sort";
 import {CitiesPlaces} from "../cities-places/cities-places";
+import {CitiesPlacesEmpty} from "../cities-places-empty/cities-places-empty";
 
 export const MainScreen = (props) => {
   const {offers, cityName, cityClickHandler, cities, isLoading, error, user,
@@ -85,7 +86,7 @@ export const MainScreen = (props) => {
         cityName={cityName}
       />
       <div className="cities__places-wrapper">
-        <CitiesPlaces {...props}/>
+        {offers && offers.length > 0 ? <CitiesPlaces {...props}/> : <CitiesPlacesEmpty {...props}/>}
       </div>
     </main>
   </React.Fragment>;

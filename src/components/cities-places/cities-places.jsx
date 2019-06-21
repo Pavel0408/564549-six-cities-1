@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
+
 import {Sort} from "../sort/sort";
 import {OffersList} from "../offers-list/offers-list";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
