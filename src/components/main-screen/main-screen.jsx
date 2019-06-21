@@ -2,12 +2,8 @@ import PropTypes from "prop-types";
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {OffersList} from "../offers-list/offers-list";
-import {OffersMap} from "../offers-map/offers-map";
-import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {CitiesList} from "../cities-list/cities-list";
 import {offersPropTypes} from "../../prop-types/offers-prop-types";
-import {Sort} from "../sort/sort";
 import {CitiesPlaces} from "../cities-places/cities-places";
 import {CitiesPlacesEmpty} from "../cities-places-empty/cities-places-empty";
 
