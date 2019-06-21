@@ -12,8 +12,8 @@ import {CitiesPlaces} from "../cities-places/cities-places";
 import {CitiesPlacesEmpty} from "../cities-places-empty/cities-places-empty";
 
 export const MainScreen = (props) => {
-  const {offers, cityName, cityClickHandler, cities, isLoading, error, user,
-    isAuthorizationRequired, changeActiveOffer, changeSort, sort, changeActivePinOffer, activePinOffer, fetchReviews} = props;
+  const {offers, cityName, cityClickHandler, cities, user,
+    isAuthorizationRequired} = props;
   const userElementSwitch = () => {
     return isAuthorizationRequired && user ?
       <Link
@@ -97,15 +97,7 @@ MainScreen.propTypes = {
   cityName: PropTypes.string.isRequired,
   cityClickHandler: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
-  isLoading: PropTypes.bool,
-  error: PropTypes.object,
   user: PropTypes.object,
   signOut: PropTypes.func,
-  isAuthorizationRequired: PropTypes.bool,
-  changeActiveOffer: PropTypes.func,
-  changeSort: PropTypes.func,
-  sort: PropTypes.string,
-  changeActivePinOffer: PropTypes.func,
-  activePinOffer: PropTypes.object,
-  fetchReviews: PropTypes.func
+  isAuthorizationRequired: PropTypes.bool
 };

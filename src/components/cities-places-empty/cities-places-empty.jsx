@@ -20,3 +20,9 @@ export class CitiesPlacesEmpty extends PureComponent {
     </React.Fragment>;
   }
 }
+
+CitiesPlacesEmpty.propTypes = {
+  isLoading: PropTypes.bool,
+  error: PropTypes.object,
+  cityName: PropTypes.string
+};

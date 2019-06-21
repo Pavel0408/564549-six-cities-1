@@ -5,9 +5,9 @@ import {Sort} from "../sort/sort";
 import {OffersList} from "../offers-list/offers-list";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {OffersMap} from "../offers-map/offers-map";
+import {offersPropTypes} from "../../prop-types/offers-prop-types";
 
 export class CitiesPlaces extends PureComponent {
-
   render() {
     const {offers, cityName, changeSort, sort, isLoading, error, changeActiveOffer, changeActivePinOffer, fetchReviews, activePinOffer} = this.props;
     return <React.Fragment>
@@ -42,3 +42,16 @@ export class CitiesPlaces extends PureComponent {
     </React.Fragment>;
   }
 }
+
+CitiesPlaces.propTypes = {
+  offers: offersPropTypes,
+  cityName: PropTypes.string,
+  changeSort: PropTypes.func,
+  sort: PropTypes.string,
+  isLoading: PropTypes.bool,
+  error: PropTypes.object,
+  changeActiveOffer: PropTypes.func,
+  changeActivePinOffer: PropTypes.func,
+  fetchReviews: PropTypes.func,
+  activePinOffer: PropTypes.object
+};
