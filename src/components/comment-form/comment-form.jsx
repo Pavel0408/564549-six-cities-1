@@ -8,6 +8,7 @@ export class CommentForm extends PureComponent {
 
     this.ratingIschecked = false;
     this.textAreaIsCompleted = false;
+    this.formRef = React.createRef();
     this.state = {
       formIsValid: false
     };
@@ -48,7 +49,7 @@ export class CommentForm extends PureComponent {
   }
 
   render() {
-    return <form className="reviews__form form" action="#" method="post" onSubmit={this.props.sendReview}>
+    return <form className="reviews__form form" action="#" method="post" onSubmit={this.props.sendReview} ref={this.formRef}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       {this.props.sendingError && <h3>Review is not sent to the server. Error: {this.props.sendingError.message}</h3>}
       <div className="reviews__rating-form form__rating">
@@ -77,7 +78,7 @@ export class CommentForm extends PureComponent {
 
   componentDidUpdate(prevProps) {
     if (this.props.activeOffer !== prevProps.activeOffer || this.props.reviews.length !== prevProps.reviews.length) {
-      document.querySelector(`.reviews__form`).reset();
+      this.formRef.current.reset();
       this.setState(() => {
         return {
           formIsValid: false
