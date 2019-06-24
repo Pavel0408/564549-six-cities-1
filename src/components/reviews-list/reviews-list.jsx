@@ -25,7 +25,7 @@ export class ReviewsList extends PureComponent {
           />;
         })}
       </ul>
-      {isAuthorizationRequired && user &&<CommentForm/>}
+      {isAuthorizationRequired && user && <CommentForm activeOffer={this.props.activeOffer} key={this.props.activeOffer}/>}
     </section>;
   }
 }
