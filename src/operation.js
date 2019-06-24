@@ -53,6 +53,20 @@ export const Operation = {
       .catch((e) => {
         dispatch(ActionCreator.fetchReviewsFailed(e));
       });
+  },
+  sendReviews: (review) => (dispatch, getState, api) => {
+    dispatch(ActionCreator.sendingReviews());
+    return api.post(ServerPath.comments + review.id, {
+      rating: review.rating,
+      comment: review.comment
+    }).then((response) => {
+      return parseServerResponseReviews(response);
+    })
+      .then((reviews) => {
+        dispatch(ActionCreator.fetchReviewsSuccess(reviews));
+      }).catch((e) => {
+        dispatch(ActionCreator.sendingReviewsError(e));
+      });
   }
 };
 

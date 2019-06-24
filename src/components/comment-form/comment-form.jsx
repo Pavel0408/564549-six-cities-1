@@ -48,8 +48,9 @@ export class CommentForm extends PureComponent {
   }
 
   render() {
-    return <form className="reviews__form form" action="#" method="post">
+    return <form className="reviews__form form" action="#" method="post" onSubmit={this.props.sendReview}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
+      {this.props.sendingError && <h3>Review is not sent to the server. Error: {this.props.sendingError.message}</h3>}
       <div className="reviews__rating-form form__rating">
         {new Array(5).fill(``).map((it, i) =>{
           const index = 5 - i;
@@ -68,13 +69,14 @@ export class CommentForm extends PureComponent {
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
+        <input type="hidden" name="activeOfferId" value={this.props.activeOffer.id}/>
         <button className="reviews__submit form__submit button" type="submit" disabled={!this.state.formIsValid}>Submit</button>
       </div>
     </form>;
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.activeOffer !== prevProps.activeOffer) {
+    if (this.props.activeOffer !== prevProps.activeOffer || this.props.reviews.length !== prevProps.reviews.length) {
       document.querySelector(`.reviews__form`).reset();
       this.setState(() => {
         return {
