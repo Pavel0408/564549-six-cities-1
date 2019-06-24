@@ -73,8 +73,16 @@ export class CommentForm extends PureComponent {
     </form>;
   }
 
-  componentDidMount() {
-    console.log(1);
-    document.querySelector(`.reviews__form`).reset();
+  componentDidUpdate(prevProps) {
+    if (this.props.activeOffer !== prevProps.activeOffer) {
+      document.querySelector(`.reviews__form`).reset();
+      this.setState(() => {
+        return {
+          formIsValid: false
+        };
+      });
+      this.ratingIschecked = false;
+      this.textAreaIsCompleted = false;
+    }
   }
 }
