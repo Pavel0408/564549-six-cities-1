@@ -85,5 +85,18 @@ export const ActionCreator = {
         activePinOffer: offer
       }
     };
+  },
+  sendingReviews: () => {
+    return {
+      type: ActionType.SENDING_REVIEWS
+    };
+  },
+  sendingReviewsError: (sendingError) => {
+    return {
+      type: ActionType.SENDING_REVIEWS_ERROR,
+      payload: {
+        sendingError
+      }
+    };
   }
 };

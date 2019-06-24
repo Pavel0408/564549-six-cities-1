@@ -54,3 +54,11 @@ export const getSort = (state) => {
 export const getActivePinOffer = (state) => {
   return state[NameSpace.DATA].activePinOffer;
 };
+
+export const getSendingError = (state) => {
+  return state[NameSpace.REVIEWS].sendingError;
+};
+
+export const getIsSending = (state) => {
+  return state[NameSpace.REVIEWS].isSending;
+};

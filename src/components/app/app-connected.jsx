@@ -6,9 +6,9 @@ import {
   getActiveOffer,
   getActiveOffers, getActivePinOffer,
   getCities,
-  getCityName, getIsAuthorizationRequired,
+  getCityName, getIsAuthorizationRequired, getIsSending,
   getOffersIsLoading,
-  getOffersLoadError, getReviews, getReviewsError, getSort, getUser,
+  getOffersLoadError, getReviews, getReviewsError, getSendingError, getSort, getUser,
 } from "../../reducer/selectors";
 import {Operation} from "../../operation";
 import {withScreenSwitch} from "../../hocs/with-screen-switch";
@@ -31,7 +31,9 @@ const mapStateToProps = (state) => {
     reviews: getReviews(state),
     reviewsError: getReviewsError(state),
     sort: getSort(state),
-    activePinOffer: getActivePinOffer(state)
+    activePinOffer: getActivePinOffer(state),
+    sendingError: getSendingError(state),
+    isSending: getIsSending(state)
   };
 };
 
@@ -54,6 +56,18 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(Operation.authorize({
         email,
         password
+      }));
+    },
+    sendReview: (evt) => {
+      evt.preventDefault();
+      const sendReviewsFormData = new FormData(evt.target);
+      const id = sendReviewsFormData.get(`activeOfferId`);
+      const rating = sendReviewsFormData.get(`rating`);
+      const comment = sendReviewsFormData.get(`review`);
+      dispatch(Operation.sendReviews({
+        id,
+        rating,
+        comment
       }));
     },
     signOut: (evt) => {
