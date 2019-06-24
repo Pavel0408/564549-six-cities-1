@@ -24,7 +24,7 @@ export const reviewsReducer = (state = initialState, action) => {
     case ActionType.SENDING_REVIEWS: {
       return Object.assign({}, state, {
         isSending: true,
-        sendingError: false
+        sendingError: null
       });
     }
     case ActionType.SENDING_REVIEWS_ERROR: {

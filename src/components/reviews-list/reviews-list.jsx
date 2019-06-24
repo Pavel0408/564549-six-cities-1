@@ -9,8 +9,7 @@ export class ReviewsList extends PureComponent {
   }
 
   render() {
-
-    const {reviewsError, reviews, isAuthorizationRequired, user} = this.props;
+    const {reviewsError, reviews, isAuthorizationRequired, user, sendReview, sendingError, isSending, activeOffer} = this.props;
     if (reviewsError && reviewsError.message) {
       return <h2>{reviewsError.message}</h2>;
     }
@@ -25,7 +24,12 @@ export class ReviewsList extends PureComponent {
           />;
         })}
       </ul>
-      {isAuthorizationRequired && user && <CommentForm activeOffer={this.props.activeOffer} sendingError={this.props.sendingError} sendReview={this.props.sendReview} reviews={reviews} sendingError={this.props.sendingError} isSending={this.props.isSending}/>}
+      {isAuthorizationRequired && user && <CommentForm
+        activeOffer={activeOffer}
+        sendingError={sendingError}
+        sendReview={sendReview}
+        reviews={reviews}
+        isSending={isSending}/>}
     </section>;
   }
 }
@@ -34,5 +38,10 @@ ReviewsList.propTypes = {
   activeOffer: PropTypes.object,
   reviewsError: PropTypes.object,
   reviews: PropTypes.array,
-  fetchReviews: PropTypes.func
+  fetchReviews: PropTypes.func,
+  isAuthorizationRequired: PropTypes.bool,
+  user: PropTypes.object,
+  sendReview: PropTypes.func,
+  sendingError: PropTypes.object,
+  isSending: PropTypes.bool
 };
