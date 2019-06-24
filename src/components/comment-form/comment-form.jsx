@@ -70,7 +70,7 @@ export class CommentForm extends PureComponent {
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
         <input type="hidden" name="activeOfferId" value={this.props.activeOffer.id}/>
-        <button className="reviews__submit form__submit button" type="submit" disabled={!this.state.formIsValid}>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={!this.state.formIsValid || this.props.isSending}>Submit</button>
       </div>
     </form>;
   }

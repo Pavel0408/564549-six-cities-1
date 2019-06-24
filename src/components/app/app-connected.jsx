@@ -6,7 +6,7 @@ import {
   getActiveOffer,
   getActiveOffers, getActivePinOffer,
   getCities,
-  getCityName, getIsAuthorizationRequired,
+  getCityName, getIsAuthorizationRequired, getIsSending,
   getOffersIsLoading,
   getOffersLoadError, getReviews, getReviewsError, getSendingError, getSort, getUser,
 } from "../../reducer/selectors";
@@ -32,7 +32,8 @@ const mapStateToProps = (state) => {
     reviewsError: getReviewsError(state),
     sort: getSort(state),
     activePinOffer: getActivePinOffer(state),
-    sendingError: getSendingError(state)
+    sendingError: getSendingError(state),
+    isSending: getIsSending(state)
   };
 };
 

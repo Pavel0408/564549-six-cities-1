@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 import {MainScreen} from "../components/main-screen/main-screen";
 import {SignIn} from "../components/sign-in/sign-in";
 import {Favorite} from "../components/favorite/favorite";
@@ -21,14 +21,15 @@ export const ScreenSwitch = (props) => {
             {...props}
           />;
         }
-        return <MainScreen
-          {...props}
-        />;
+        return <Redirect to="/" />;
       }}
       />
 
       <Route path="/offer/:id" render={() => {
-        return <OfferDetails {...props}/>;
+        if (props.activeOffer) {
+          return <OfferDetails {...props}/>;
+        }
+        return <Redirect to="/" />;
       }}
       />
 

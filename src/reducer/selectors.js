@@ -58,3 +58,7 @@ export const getActivePinOffer = (state) => {
 export const getSendingError = (state) => {
   return state[NameSpace.REVIEWS].sendingError;
 };
+
+export const getIsSending = (state) => {
+  return state[NameSpace.REVIEWS].isSending;
+};
