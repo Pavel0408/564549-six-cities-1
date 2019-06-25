@@ -31,6 +31,11 @@ export const ScreenSwitch = (props) => {
       }}
       />
       <Route path="/offer/:id" render={() => {
+        if (props.isAuthorizationRequired) {
+          return <SignIn
+            {...props}
+          />;
+        }
         if (props.activeOffer) {
           return <OfferDetails {...props}/>;
         }

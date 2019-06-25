@@ -8,11 +8,26 @@ import {OffersMap} from "../offers-map/offers-map";
 import {getDistanceFromCoords} from "../../utils";
 
 export class OfferDetails extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.favoriteClickHandler = this.favoriteClickHandler.bind(this);
+  }
 
   getDistanceFromActiveOffer(offer) {
     return getDistanceFromCoords({
       coordinateFirst: this.props.activeOffer.coordinates,
       coordinateSecond: offer.coordinates
+    });
+  }
+
+  favoriteClickHandler(evt) {
+    evt.preventDefault();
+    const {changeFavorite} = this.props;
+    const status = (this.props.activeOffer.isFavorite) ? 0 : 1;
+    changeFavorite({
+      id: this.props.activeOffer.id,
+      status
     });
   }
 
@@ -87,8 +102,8 @@ export class OfferDetails extends PureComponent {
                   <h1 className="property__name">
                     {offer.name}
                   </h1>
-                  <button className={offer.isFavorite ? `property__bookmark-button  property__bookmark-button--active button` : `property__bookmark-button button`} type="button">
-                    <svg className="property__bookmark-icon" width={31} height={33} style={offer.isFavorite ? {stroke: `#4481c3`, fill: ` #4481c3`} : {}}>
+                  <button className={offer.isFavorite ? `property__bookmark-button  property__bookmark-button--active button` : `property__bookmark-button button`} type="button" onClick={this.favoriteClickHandler}>
+                    <svg className="property__bookmark-icon" width={31} height={33}>
                       <use xlinkHref="#icon-bookmark" />
                     </svg>
                     <span className="visually-hidden">To bookmarks</span>
@@ -162,6 +177,7 @@ export class OfferDetails extends PureComponent {
                   changeActiveOffer={this.props.changeActiveOffer}
                   changeActivePinOffer={this.props.changeActivePinOffer}
                   fetchReviews={this.props.fetchReviews}
+                  changeFavorite={this.props.changeFavorite}
                 />
               </div>
             </section>

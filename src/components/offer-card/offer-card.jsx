@@ -35,9 +35,6 @@ export class OfferCard extends PureComponent {
       id: this._offer.id,
       status
     });
-
-    return <Redirect to="/login" />;
-
   }
 
   render() {
