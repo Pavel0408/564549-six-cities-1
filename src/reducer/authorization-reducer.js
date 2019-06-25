@@ -1,20 +1,20 @@
 import {ActionType} from "../action-type";
 
 const initialState = {
-  isAuthorizationRequired: true,
-  user: null
+  user: null,
+  isAuthorizationRequired: false
 };
 
 export const authorizationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.AUTHORIZATION_SUCCESS: {
+    case ActionType.AUTHORIZATION: {
       return Object.assign({}, state, action.payload, {
-        isAuthorizationRequired: true
+        isAuthorizationRequired: false
       });
     }
     case ActionType.AUTHORIZATION_FAILED: {
       return Object.assign({}, state, action.payload, {
-        isAuthorizationRequired: false
+        isAuthorizationRequired: true
       });
     }
   }

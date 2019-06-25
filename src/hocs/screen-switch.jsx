@@ -10,18 +10,21 @@ export const ScreenSwitch = (props) => {
   return <BrowserRouter>
     <Switch>
       <Route path="/" exact render={() => {
+        if (props.isAuthorizationRequired) {
+          return <SignIn
+            {...props}
+          />;
+        }
         return <MainScreen
           {...props}
         />;
       }
       }/>
       <Route path="/login" exact render={() => {
-        if (!props.isAuthorizationRequired) {
-          return <SignIn
-            {...props}
-          />;
-        }
-        return <Redirect to="/" />;
+
+        return <SignIn
+          {...props}
+        />;
       }}
       />
 
@@ -34,7 +37,9 @@ export const ScreenSwitch = (props) => {
       />
 
       <Route path="/favorites" exact render={() => {
-        if (props.isAuthorizationRequired) {
+        console.log(props.user);
+        if (props.user && props.user.avatar) {
+          console.log(props.user.name);
           return <Favorite/>;
         } else {
           return <SignIn

@@ -24,9 +24,9 @@ export class OfferDetails extends PureComponent {
       }).slice(0, 3);
     const offersOnMap = offers.slice();
     offersOnMap.push(offer);
-    const {isAuthorizationRequired, user} = this.props;
+    const {user} = this.props;
     const userElementSwitch = () => {
-      return isAuthorizationRequired && user ?
+      return user && !user.message ?
         <Link
           className="header__nav-link header__nav-link--profile"
           to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">

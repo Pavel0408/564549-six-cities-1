@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import {offerCardPropTypes} from "../../prop-types/offer-card-prop-types";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
 export class OfferCard extends PureComponent {
   constructor(props) {
@@ -28,13 +28,16 @@ export class OfferCard extends PureComponent {
   }
 
   favoriteClickHandler(evt) {
-    evt.preventDefault;
+    evt.preventDefault();
     const {changeFavorite} = this.props;
     const status = (this._offer.isFavorite) ? 0 : 1;
     changeFavorite({
       id: this._offer.id,
       status
     });
+
+    return <Redirect to="/login" />;
+
   }
 
   render() {

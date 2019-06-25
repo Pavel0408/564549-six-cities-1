@@ -8,10 +8,10 @@ import {CitiesPlaces} from "../cities-places/cities-places";
 import {CitiesPlacesEmpty} from "../cities-places-empty/cities-places-empty";
 
 export const MainScreen = (props) => {
-  const {offers, cityName, cityClickHandler, cities, user,
-    isAuthorizationRequired} = props;
+  const {offers, cityName, cityClickHandler, cities, user
+  } = props;
   const userElementSwitch = () => {
-    return isAuthorizationRequired && user ?
+    return user && !user.message ?
       <Link
         className="header__nav-link header__nav-link--profile"
         to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">

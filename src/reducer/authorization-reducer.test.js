@@ -4,7 +4,7 @@ import {ActionType} from "../action-type";
 describe(`authorizationReducer is correct`, () => {
   it(`returns initial state without parameters`, () => {
     expect(authorizationReducer(undefined, {})).toEqual({
-      isAuthorizationRequired: true,
+      isAuthorized: true,
       user: null
     });
   });
@@ -16,7 +16,7 @@ describe(`authorizationReducer is correct`, () => {
       }
     };
     expect(authorizationReducer({}, successAuthorizationAction)).toEqual({
-      isAuthorizationRequired: true,
+      isAuthorized: true,
       user: `user`
     });
   });
@@ -28,7 +28,7 @@ describe(`authorizationReducer is correct`, () => {
       }
     };
     expect(authorizationReducer({}, failAuthorizationActionj)).toEqual({
-      isAuthorizationRequired: false,
+      isAuthorized: false,
       user: `error`
     });
   });

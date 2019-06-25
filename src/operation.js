@@ -3,6 +3,8 @@ import {parseServerResponseOffers} from "./parse-server-response/parse-server-re
 import {ServerPath} from "./constants/server-path";
 import {parseAuthorizationResponse} from "./parse-server-response/parse-server-response-authorization";
 import {parseServerResponseReviews} from "./parse-server-response/parse-server-response-reviews";
+import React from "react";
+import {Redirect} from "react-router-dom";
 
 export const Operation = {
   loadOffers: () => (dispatch, getState, api) => {
@@ -24,10 +26,10 @@ export const Operation = {
         return parseAuthorizationResponse(response);
       })
       .then((user) => {
-        dispatch(ActionCreator.authorizationSuccess(user));
+        dispatch(ActionCreator.authorization(user));
       })
       .catch((e) =>{
-        dispatch(ActionCreator.authorizationFailed(e));
+        dispatch(ActionCreator.authorization(e));
       });
   },
   isAuthorized: () => (dispatch, getState, api) => {
@@ -36,10 +38,10 @@ export const Operation = {
         return parseAuthorizationResponse(response);
       })
       .then((user) => {
-        dispatch(ActionCreator.authorizationSuccess(user));
+        dispatch(ActionCreator.authorization(user));
       })
       .catch((e) => {
-        dispatch(ActionCreator.authorizationFailed(e));
+        dispatch(ActionCreator.authorization(e));
       });
   },
   fetchReviews: (id) => (dispatch, getState, api) => {
@@ -70,7 +72,6 @@ export const Operation = {
   },
   changeFavorite: (favoriteItem) => (dispatch, getState, api) => {
     return api.post(`${ServerPath.favorite}${favoriteItem.id}/${favoriteItem.status}`)
-
       .catch((e) => {
         dispatch(ActionCreator.authorizationFailed(e));
       });
@@ -80,10 +81,7 @@ export const Operation = {
       .then(parseServerResponseOffers)
       .then((offers) => {
         dispatch(ActionCreator.fetchOffersReceived(offers));
-      }).catch((e) => {
-        dispatch(ActionCreator.fetchOffersFailed(e));
       });
   },
-
 };
 
