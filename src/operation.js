@@ -3,8 +3,6 @@ import {parseServerResponseOffers} from "./parse-server-response/parse-server-re
 import {ServerPath} from "./constants/server-path";
 import {parseAuthorizationResponse} from "./parse-server-response/parse-server-response-authorization";
 import {parseServerResponseReviews} from "./parse-server-response/parse-server-response-reviews";
-import React from "react";
-import {Redirect} from "react-router-dom";
 
 export const Operation = {
   loadOffers: () => (dispatch, getState, api) => {
@@ -40,8 +38,8 @@ export const Operation = {
       .then((user) => {
         dispatch(ActionCreator.authorization(user));
       })
-      .catch((e) => {
-        dispatch(ActionCreator.authorization(e));
+      .catch(() => {
+        dispatch(ActionCreator.authorization(null));
       });
   },
   fetchReviews: (id) => (dispatch, getState, api) => {

@@ -95,13 +95,6 @@ export class OfferCard extends PureComponent {
       </div>
     </article>;
   }
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.offer.isFavorite !== this.props.offer.isFavorite) {
-  //     console.log(prevProps.offer.isFavorite, 999);
-  //     this.render();
-  //   }
-  // }
 }
-
 
 OfferCard.propTypes = offerCardPropTypes;

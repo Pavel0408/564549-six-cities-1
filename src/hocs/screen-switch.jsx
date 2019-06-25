@@ -1,4 +1,5 @@
 import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
+
 import {MainScreen} from "../components/main-screen/main-screen";
 import {SignIn} from "../components/sign-in/sign-in";
 import {Favorite} from "../components/favorite/favorite";
@@ -21,13 +22,14 @@ export const ScreenSwitch = (props) => {
       }
       }/>
       <Route path="/login" exact render={() => {
-
+        if (props.user) {
+          return <Redirect to="/" />;
+        }
         return <SignIn
           {...props}
         />;
       }}
       />
-
       <Route path="/offer/:id" render={() => {
         if (props.activeOffer) {
           return <OfferDetails {...props}/>;
@@ -35,11 +37,8 @@ export const ScreenSwitch = (props) => {
         return <Redirect to="/" />;
       }}
       />
-
       <Route path="/favorites" exact render={() => {
-        console.log(props.user);
-        if (props.user && props.user.avatar) {
-          console.log(props.user.name);
+        if (props.user) {
           return <Favorite/>;
         } else {
           return <SignIn
@@ -54,5 +53,6 @@ export const ScreenSwitch = (props) => {
 
 ScreenSwitch.propTypes = {
   isAuthorizationRequired: PropTypes.bool,
-  activeOffer: PropTypes.object
+  activeOffer: PropTypes.object,
+  user: PropTypes.object
 };

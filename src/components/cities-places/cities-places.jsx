@@ -54,5 +54,6 @@ CitiesPlaces.propTypes = {
   changeActiveOffer: PropTypes.func,
   changeActivePinOffer: PropTypes.func,
   fetchReviews: PropTypes.func,
-  activePinOffer: PropTypes.object
+  activePinOffer: PropTypes.object,
+  changeFavorite: PropTypes.func
 };

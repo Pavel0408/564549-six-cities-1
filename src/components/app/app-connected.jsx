@@ -14,9 +14,6 @@ import {Operation} from "../../operation";
 import {withScreenSwitch} from "../../hocs/with-screen-switch";
 import {ScreenSwitch} from "../../hocs/screen-switch";
 import {SortFunctions} from "../../sort-functions";
-import React from "react";
-import {Redirect, Switch} from "react-router-dom";
-
 
 const mapStateToProps = (state) => {
   const sortFunction = SortFunctions[getSort(state)];

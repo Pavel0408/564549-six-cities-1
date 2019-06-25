@@ -26,7 +26,7 @@ export class OfferDetails extends PureComponent {
     offersOnMap.push(offer);
     const {user} = this.props;
     const userElementSwitch = () => {
-      return user && !user.message ?
+      return user ?
         <Link
           className="header__nav-link header__nav-link--profile"
           to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">
@@ -88,7 +88,7 @@ export class OfferDetails extends PureComponent {
                     {offer.name}
                   </h1>
                   <button className={offer.isFavorite ? `property__bookmark-button  property__bookmark-button--active button` : `property__bookmark-button button`} type="button">
-                    <svg className="property__bookmark-icon" width={31} height={33}>
+                    <svg className="property__bookmark-icon" width={31} height={33} style={offer.isFavorite ? {stroke: `#4481c3`, fill: ` #4481c3`} : {}}>
                       <use xlinkHref="#icon-bookmark" />
                     </svg>
                     <span className="visually-hidden">To bookmarks</span>

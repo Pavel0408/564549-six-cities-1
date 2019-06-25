@@ -28,7 +28,6 @@ export const getActiveOffers = createSelector([getOffers, getCityName], (offers,
 });
 
 export const getIsAuthorizationRequired = (state) => {
-  console.log(1, state[NameSpace.AUTHORIZATION].isAuthorizationRequired);
   return state[NameSpace.AUTHORIZATION].isAuthorizationRequired;
 };
 
