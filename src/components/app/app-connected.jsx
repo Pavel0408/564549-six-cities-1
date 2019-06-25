@@ -85,6 +85,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     changeActivePinOffer: (offer) => {
       dispatch(ActionCreator.changeActivePinOffer(offer));
+    },
+    changeFavorite: (favoriteItem) => {
+      dispatch(Operation.changeFavorite(favoriteItem))
+        .then(dispatch(Operation.updateOffers()));
     }
   };
 };

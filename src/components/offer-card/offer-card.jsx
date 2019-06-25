@@ -12,6 +12,8 @@ export class OfferCard extends PureComponent {
     this.imgClickHandler = this.imgClickHandler.bind(this);
     this.changeActivePinOffer = changeActivePinOffer;
     this.titleOnClick = titleOnClick;
+    this.favoriteClickHandler = this.favoriteClickHandler.bind(this);
+    this.favoriteRef = React.createRef();
   }
 
   titleClickHandler() {
@@ -23,6 +25,16 @@ export class OfferCard extends PureComponent {
   imgClickHandler(evt) {
     evt.preventDefault();
     this.changeActivePinOffer(this._offer);
+  }
+
+  favoriteClickHandler(evt) {
+    evt.preventDefault;
+    const {changeFavorite} = this.props;
+    const status = (this._offer.isFavorite) ? 0 : 1;
+    changeFavorite({
+      id: this._offer.id,
+      status
+    });
   }
 
   render() {
@@ -52,7 +64,8 @@ export class OfferCard extends PureComponent {
           </div>
           <button
             className={this._offer.isFavorite ? `place-card__bookmark-button  place-card__bookmark-button--active button` : `place-card__bookmark-button button`}
-            type="button"
+            type="button" onClick={this.favoriteClickHandler}
+            ref={this.favoriteRef}
           >
             <svg
               className="place-card__bookmark-icon"
@@ -79,6 +92,13 @@ export class OfferCard extends PureComponent {
       </div>
     </article>;
   }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.offer.isFavorite !== this.props.offer.isFavorite) {
+  //     console.log(prevProps.offer.isFavorite, 999);
+  //     this.render();
+  //   }
+  // }
 }
+
 
 OfferCard.propTypes = offerCardPropTypes;

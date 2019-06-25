@@ -67,6 +67,23 @@ export const Operation = {
       }).catch((e) => {
         dispatch(ActionCreator.sendingReviewsError(e));
       });
-  }
+  },
+  changeFavorite: (favoriteItem) => (dispatch, getState, api) => {
+    return api.post(`${ServerPath.favorite}${favoriteItem.id}/${favoriteItem.status}`)
+
+      .catch((e) => {
+        dispatch(ActionCreator.authorizationFailed(e));
+      });
+  },
+  updateOffers: () => (dispatch, getState, api) => {
+    return api.get(ServerPath.hotels)
+      .then(parseServerResponseOffers)
+      .then((offers) => {
+        dispatch(ActionCreator.fetchOffersReceived(offers));
+      }).catch((e) => {
+        dispatch(ActionCreator.fetchOffersFailed(e));
+      });
+  },
+
 };
 

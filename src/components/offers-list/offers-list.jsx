@@ -18,14 +18,16 @@ export class OffersList extends PureComponent {
   }
 
   render() {
-    const {offers, changeActiveOffer} = this.props;
+    const {offers, changeActiveOffer, changeFavorite} = this.props;
     return offers.map((offer) => {
       return <OfferCard
-        key={`${offer.id}${this.props.sort}`}
+        key={`${offer.id}${this.props.sort}${offer.isFavorite}`}
         offer={offer}
         titleOnClick={changeActiveOffer}
         changeActivePinOffer={this.props.changeActivePinOffer}
         fetchReviews={this.props.fetchReviews}
+        changeFavorite={changeFavorite}
+        isFavorite={offer.isFavorite}
       />;
     });
   }
@@ -38,5 +40,6 @@ OffersList.propTypes = {
   changeActiveOffer: PropTypes.func,
   sort: PropTypes.string,
   changeActivePinOffer: PropTypes.func,
-  fetchReviews: PropTypes.func
+  fetchReviews: PropTypes.func,
+  changeFavorite: PropTypes.func
 };
