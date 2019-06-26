@@ -24,7 +24,7 @@ export class ReviewsList extends PureComponent {
           />;
         })}
       </ul>
-      {isAuthorizationRequired && user && <CommentForm
+      {user && <CommentForm
         activeOffer={activeOffer}
         sendingError={sendingError}
         sendReview={sendReview}
