@@ -7,6 +7,7 @@ export class FavoriteCard extends PureComponent {
     super(props);
 
     this.titleClickHandler = this.titleClickHandler.bind(this);
+    this.favoriteClickHandler = this.favoriteClickHandler.bind(this);
   }
 
   titleClickHandler() {
@@ -25,6 +26,15 @@ export class FavoriteCard extends PureComponent {
     });
   }
 
+  favoriteClickHandler(evt) {
+    evt.preventDefault();
+    const {changeFavorite, offer} = this.props;
+    changeFavorite({
+      id: offer.id,
+      status: 0
+    });
+  }
+
   render() {
     const {offer} = this.props;
     return <article className="favorites__card place-card">
@@ -39,7 +49,7 @@ export class FavoriteCard extends PureComponent {
             <b className="place-card__price-value">€{offer.price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
+          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button" onClick={this.favoriteClickHandler}>
             <svg className="place-card__bookmark-icon" width={18} height={19}>
               <use xlinkHref="#icon-bookmark"/>
             </svg>
