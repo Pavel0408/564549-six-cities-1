@@ -48,7 +48,7 @@ export const ScreenSwitch = (props) => {
         if (user) {
           if (props.favoriteOffers && props.favoriteOffers.length > 0) {
             return <Favorite
-              fetchFavorite={fetchFavorite}
+              {...props}
             />;
           } else {
             return <FavoriteEmpty
