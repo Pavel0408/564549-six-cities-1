@@ -66,3 +66,15 @@ export const getIsSending = (state) => {
 export const getIsNeedAuthorization = (state) => {
   return state[NameSpace.AUTHORIZATION].isNeedAuthorization;
 };
+
+export const getFavoriteIsLoading = (state) => {
+  return state[NameSpace.FAVORITE].isLoading;
+};
+
+export const getFavoriteLoadingError = (state) => {
+  return state[NameSpace.FAVORITE].error;
+};
+
+export const getFavoriteOffers = (state) => {
+  return state[NameSpace.FAVORITE].favoriteOffers;
+};

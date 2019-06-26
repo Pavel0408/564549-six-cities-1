@@ -81,5 +81,15 @@ export const Operation = {
         dispatch(ActionCreator.fetchOffersReceived(offers));
       });
   },
+  getFavorite: () => (dispatch, getState, api) => {
+    dispatch(ActionCreator.loadingFavorite());
+    return api.get(ServerPath.favorite)
+      .then(parseServerResponseOffers)
+      .then((offers) => {
+        dispatch(ActionCreator.fetchFavoriteReceived(offers));
+      }).catch((e) => {
+        dispatch(ActionCreator.fetchFavoriteFailed(e));
+      });
+  }
 };
 

@@ -6,6 +6,7 @@ import {Favorite} from "../components/favorite/favorite";
 import React from "react";
 import PropTypes from "prop-types";
 import {OfferDetails} from "../components/offer-details/offer-details";
+import {FavoriteEmpty} from "../components/favorte-empty/favorite-empty";
 
 export const ScreenSwitch = (props) => {
   return <BrowserRouter>
@@ -43,8 +44,17 @@ export const ScreenSwitch = (props) => {
       }}
       />
       <Route path="/favorites" exact render={() => {
-        if (props.user) {
-          return <Favorite/>;
+        const {fetchFavorite, user, favoriteOffers} = props;
+        if (user) {
+          if (props.favoriteOffers && props.favoriteOffers.length > 0) {
+            return <Favorite
+              fetchFavorite={fetchFavorite}
+            />;
+          } else {
+            return <FavoriteEmpty
+              fetchFavorite={fetchFavorite}
+            />;
+          }
         } else {
           return <SignIn
             {...props}

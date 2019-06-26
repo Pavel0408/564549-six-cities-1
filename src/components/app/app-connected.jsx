@@ -4,11 +4,22 @@ import {ActionCreator} from "../../action-creator";
 import {App} from "./app";
 import {
   getActiveOffer,
-  getActiveOffers, getActivePinOffer,
+  getActiveOffers,
+  getActivePinOffer,
   getCities,
-  getCityName, getIsAuthorizationRequired, getIsSending,
+  getCityName,
+  getFavoriteIsLoading,
+  getFavoriteLoadingError,
+  getFavoriteOffers,
+  getIsAuthorizationRequired,
+  getIsSending,
   getOffersIsLoading,
-  getOffersLoadError, getReviews, getReviewsError, getSendingError, getSort, getUser,
+  getOffersLoadError,
+  getReviews,
+  getReviewsError,
+  getSendingError,
+  getSort,
+  getUser,
 } from "../../reducer/selectors";
 import {Operation} from "../../operation";
 import {withScreenSwitch} from "../../hocs/with-screen-switch";
@@ -32,7 +43,10 @@ const mapStateToProps = (state) => {
     sort: getSort(state),
     activePinOffer: getActivePinOffer(state),
     sendingError: getSendingError(state),
-    isSending: getIsSending(state)
+    isSending: getIsSending(state),
+    favoriteIsLoading: getFavoriteIsLoading(state),
+    favoriteLoadingError: getFavoriteLoadingError(state),
+    favoriteOffers: getFavoriteOffers(state)
   };
 };
 
@@ -88,7 +102,9 @@ const mapDispatchToProps = (dispatch) => {
     changeFavorite: (favoriteItem) => {
       dispatch(Operation.changeFavorite(favoriteItem))
         .then(dispatch(Operation.updateOffers()));
-
+    },
+    fetchFavorite: () => {
+      dispatch(Operation.getFavorite());
     }
   };
 };

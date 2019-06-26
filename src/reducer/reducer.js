@@ -5,10 +5,12 @@ import {dataReducer} from "./data-reducer";
 import {fetchOffersReducer} from "./fetch-offers-reducer";
 import {authorizationReducer} from "./authorization-reducer";
 import {reviewsReducer} from "./reviews-reducer";
+import {favoriteReducer} from "./favorite-reducer";
 
 export const reducer = combineReducers({
   [NameSpace.DATA]: dataReducer,
   [NameSpace.FETCH_OFFERS]: fetchOffersReducer,
   [NameSpace.AUTHORIZATION]: authorizationReducer,
-  [NameSpace.REVIEWS]: reviewsReducer
+  [NameSpace.REVIEWS]: reviewsReducer,
+  [NameSpace.FAVORITE]: favoriteReducer
 });

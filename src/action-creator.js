@@ -14,6 +14,11 @@ export const ActionCreator = {
       type: ActionType.FETCH_OFFERS_LOADING
     };
   },
+  loadingFavorite: () => {
+    return {
+      type: ActionType.FAVORITE_LOADING
+    };
+  },
   fetchOffersReceived: (fetchedOffers) => {
     return {
       type: ActionType.FETCH_OFFERS_RECEIVED,
@@ -22,9 +27,25 @@ export const ActionCreator = {
       }
     };
   },
+  fetchFavoriteReceived: (fetchedOffers) => {
+    return {
+      type: ActionType.FAVORITE_RECEIVED,
+      payload: {
+        favoriteOffers: fetchedOffers
+      }
+    };
+  },
   fetchOffersFailed: (error) => {
     return {
       type: ActionType.FETCH_OFFERS_FAILED,
+      payload: {
+        error
+      }
+    };
+  },
+  fetchFavoriteFailed: (error) => {
+    return {
+      type: ActionType.FETCH_FAVORITE_FAILED,
       payload: {
         error
       }
