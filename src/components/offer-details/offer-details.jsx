@@ -12,6 +12,9 @@ export class OfferDetails extends PureComponent {
     super(props);
 
     this.favoriteClickHandler = this.favoriteClickHandler.bind(this);
+    this.state = {
+      isFavorite: props.activeOffer.isFavorite
+    };
   }
 
   getDistanceFromActiveOffer(offer) {
@@ -28,6 +31,12 @@ export class OfferDetails extends PureComponent {
     changeFavorite({
       id: this.props.activeOffer.id,
       status
+    });
+
+    this.setState((state) => {
+      return {
+        isFavorite: !state.isFavorite
+      };
     });
   }
 
@@ -103,7 +112,7 @@ export class OfferDetails extends PureComponent {
                     {offer.name}
                   </h1>
                   <button className={offer.isFavorite ? `property__bookmark-button  property__bookmark-button--active button` : `property__bookmark-button button`} type="button" onClick={this.favoriteClickHandler}>
-                    <svg className="property__bookmark-icon" width={31} height={33}>
+                    <svg className="property__bookmark-icon" width={31} style={this.state.isFavorite ? {fill: `#4481c3`, stroke: `#4481c3`} : {}} height={33}>
                       <use xlinkHref="#icon-bookmark" />
                     </svg>
                     <span className="visually-hidden">To bookmarks</span>
