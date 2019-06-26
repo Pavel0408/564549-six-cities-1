@@ -207,7 +207,8 @@ OfferDetails.propTypes = {
   offers: PropTypes.array,
   changeActivePinOffer: PropTypes.func,
   activePinOffer: PropTypes.object,
-  fetchReviews: PropTypes.func
+  fetchReviews: PropTypes.func,
+  changeFavorite: PropTypes.func
 };
 
 

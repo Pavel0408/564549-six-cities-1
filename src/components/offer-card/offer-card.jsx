@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
+import {Link} from "react-router-dom";
+
 import {offerCardPropTypes} from "../../prop-types/offer-card-prop-types";
-import {Link, Redirect} from "react-router-dom";
 
 export class OfferCard extends PureComponent {
   constructor(props) {
