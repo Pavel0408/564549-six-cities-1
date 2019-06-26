@@ -6,7 +6,23 @@ export class FavoriteCard extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.titleClickHandler = this.titleClickHandler.bind(this);
+  }
 
+  titleClickHandler() {
+    const {titleOnClick, fetchReviews, offer} = this.props;
+    titleOnClick(offer);
+    fetchReviews(offer.id);
+  }
+
+  favoriteClickHandler(evt) {
+    evt.preventDefault();
+    const {changeFavorite} = this.props;
+    const status = (this._offer.isFavorite) ? 0 : 1;
+    changeFavorite({
+      id: this._offer.id,
+      status
+    });
   }
 
   render() {
@@ -37,7 +53,7 @@ export class FavoriteCard extends PureComponent {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${offer.id}`} href="#">{offer.name}</Link>
+          <Link to={`/offer/${offer.id}`} href="#" onClick={this.titleClickHandler}>{offer.name}</Link>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>

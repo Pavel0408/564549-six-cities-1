@@ -1,5 +1,8 @@
+import {Link} from "react-router-dom";
 import React, {Fragment, PureComponent} from "react";
 import {FavoriteCity} from "../favorite-city/favorite-city";
+import {OfferCard} from "../offer-card/offer-card";
+
 
 export class Favorite extends PureComponent {
   constructor(props) {
@@ -9,7 +12,7 @@ export class Favorite extends PureComponent {
   }
 
   render() {
-    const {favoriteOffers, cityClickHandler} = this.props;
+    const {favoriteOffers, cityClickHandler, changeActiveOffer, fetchReviews, changeFavorite} = this.props;
     const favoriteCityNames = [...new Set(favoriteOffers.map((offer) => offer.city))];
     console.log(favoriteCityNames);
     return <Fragment>
@@ -21,9 +24,9 @@ export class Favorite extends PureComponent {
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <a className="header__logo-link" href="#">
+                <Link to="/" className="header__logo-link" href="#">
                   <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width={81} height={41} />
-                </a>
+                </Link>
               </div>
               <nav className="header__nav">
                 <ul className="header__nav-list">
@@ -53,6 +56,9 @@ export class Favorite extends PureComponent {
                     favoriteOffers={offers}
                     key={`${favoriteCityName}${i}`}
                     cityClickHandler={cityClickHandler}
+                    titleOnClick={changeActiveOffer}
+                    fetchReviews={fetchReviews}
+                    changeFavorite={changeFavorite}
                   />;
                 })
                 }

@@ -101,7 +101,8 @@ const mapDispatchToProps = (dispatch) => {
     },
     changeFavorite: (favoriteItem) => {
       dispatch(Operation.changeFavorite(favoriteItem))
-        .then(dispatch(Operation.updateOffers()));
+        .then(dispatch(Operation.updateOffers())
+          .then(dispatch(Operation.getFavorite())));
     },
     fetchFavorite: () => {
       dispatch(Operation.getFavorite());
