@@ -2,8 +2,14 @@ import React, {Fragment, PureComponent} from "react";
 import {FavoriteCity} from "../favorite-city/favorite-city";
 
 export class Favorite extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    props.fetchFavorite();
+  }
+
   render() {
-    const {favoriteOffers} = this.props;
+    const {favoriteOffers, cityClickHandler} = this.props;
     const favoriteCityNames = [...new Set(favoriteOffers.map((offer) => offer.city))];
     console.log(favoriteCityNames);
     return <Fragment>
@@ -39,14 +45,14 @@ export class Favorite extends PureComponent {
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">
                 {favoriteCityNames.map((favoriteCityName, i) => {
-                  console.log(favoriteCityNames.length);
                   const offers = favoriteOffers.filter((offer) => {
                     return offer.city === favoriteCityName;
-                  })
+                  });
                   return <FavoriteCity
                     favoriteCityName={favoriteCityName}
                     favoriteOffers={offers}
                     key={`${favoriteCityName}${i}`}
+                    cityClickHandler={cityClickHandler}
                   />;
                 })
                 }

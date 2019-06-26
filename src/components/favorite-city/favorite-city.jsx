@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 import React, {PureComponent} from "react";
+
 import {FavoriteCard} from "../favorite-card/faforite-card";
 
 export class FavoriteCity extends PureComponent {
@@ -9,9 +11,8 @@ export class FavoriteCity extends PureComponent {
     this.cityClickHandler = this.cityClickHandler.bind(this);
   }
 
-  cityClickHandler(evt) {
-    evt.preventDefault();
-    this.props.cityClickHandler(this.props.city);
+  cityClickHandler() {
+    this.props.cityClickHandler(this.props.favoriteCityName);
   }
 
   render() {
@@ -21,9 +22,9 @@ export class FavoriteCity extends PureComponent {
       <li className="favorites__locations-items">
         <div className="favorites__locations locations locations--current">
           <div className="locations__item">
-            <a className="locations__item-link" href="#">
+            <Link to="/" className="locations__item-link" href="#" onClick={this.cityClickHandler}>
               <span>{favoriteCityName}</span>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="favorites__places">
