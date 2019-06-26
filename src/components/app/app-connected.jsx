@@ -15,7 +15,6 @@ import {withScreenSwitch} from "../../hocs/with-screen-switch";
 import {ScreenSwitch} from "../../hocs/screen-switch";
 import {SortFunctions} from "../../sort-functions";
 
-
 const mapStateToProps = (state) => {
   const sortFunction = SortFunctions[getSort(state)];
 
@@ -85,6 +84,11 @@ const mapDispatchToProps = (dispatch) => {
     },
     changeActivePinOffer: (offer) => {
       dispatch(ActionCreator.changeActivePinOffer(offer));
+    },
+    changeFavorite: (favoriteItem) => {
+      dispatch(Operation.changeFavorite(favoriteItem))
+        .then(dispatch(Operation.updateOffers()));
+
     }
   };
 };

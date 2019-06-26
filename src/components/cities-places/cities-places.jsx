@@ -9,7 +9,7 @@ import {offersPropTypes} from "../../prop-types/offers-prop-types";
 
 export class CitiesPlaces extends PureComponent {
   render() {
-    const {offers, cityName, changeSort, sort, isLoading, error, changeActiveOffer, changeActivePinOffer, fetchReviews, activePinOffer} = this.props;
+    const {offers, cityName, changeSort, sort, isLoading, error, changeActiveOffer, changeActivePinOffer, fetchReviews, activePinOffer, changeFavorite} = this.props;
     return <React.Fragment>
       <div className="cities__places-container container">
         <section className="cities__places places">
@@ -29,6 +29,7 @@ export class CitiesPlaces extends PureComponent {
               sort={sort}
               changeActivePinOffer={changeActivePinOffer}
               fetchReviews={fetchReviews}
+              changeFavorite={changeFavorite}
             />
           </div>
         </section>
@@ -53,5 +54,6 @@ CitiesPlaces.propTypes = {
   changeActiveOffer: PropTypes.func,
   changeActivePinOffer: PropTypes.func,
   fetchReviews: PropTypes.func,
-  activePinOffer: PropTypes.object
+  activePinOffer: PropTypes.object,
+  changeFavorite: PropTypes.func
 };

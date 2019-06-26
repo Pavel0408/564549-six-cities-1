@@ -9,7 +9,7 @@ export class ReviewsList extends PureComponent {
   }
 
   render() {
-    const {reviewsError, reviews, isAuthorizationRequired, user, sendReview, sendingError, isSending, activeOffer} = this.props;
+    const {reviewsError, reviews, user, sendReview, sendingError, isSending, activeOffer} = this.props;
     if (reviewsError && reviewsError.message) {
       return <h2>{reviewsError.message}</h2>;
     }
@@ -24,7 +24,7 @@ export class ReviewsList extends PureComponent {
           />;
         })}
       </ul>
-      {isAuthorizationRequired && user && <CommentForm
+      {user && <CommentForm
         activeOffer={activeOffer}
         sendingError={sendingError}
         sendReview={sendReview}

@@ -34,8 +34,8 @@ describe(`ActionCreator is correct`, () => {
     });
   });
   it(`Return correctly action on success authorization`, () => {
-    expect(ActionCreator.authorizationSuccess(`user`)).toEqual({
-      type: ActionType.AUTHORIZATION_SUCCESS,
+    expect(ActionCreator.authorization(`user`)).toEqual({
+      type: ActionType.AUTHORIZATION,
       payload: {
         user: `user`
       }

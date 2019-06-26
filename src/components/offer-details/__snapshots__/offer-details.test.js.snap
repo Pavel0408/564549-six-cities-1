@@ -144,11 +144,13 @@ exports[`testing OfferDetails render OfferDetails is render correctly 1`] = `
             </h1>
             <button
               className="property__bookmark-button button"
+              onClick={[Function]}
               type="button"
             >
               <svg
                 className="property__bookmark-icon"
                 height={33}
+                style={Object {}}
                 width={31}
               >
                 <use

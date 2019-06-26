@@ -62,3 +62,7 @@ export const getSendingError = (state) => {
 export const getIsSending = (state) => {
   return state[NameSpace.REVIEWS].isSending;
 };
+
+export const getIsNeedAuthorization = (state) => {
+  return state[NameSpace.AUTHORIZATION].isNeedAuthorization;
+};
