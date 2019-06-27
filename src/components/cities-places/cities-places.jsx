@@ -5,7 +5,7 @@ import {Sort} from "../sort/sort";
 import {OffersList} from "../offers-list/offers-list";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {OffersMap} from "../offers-map/offers-map";
-import {offersPropTypes} from "../../prop-types/offers-prop-types";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
 
 export class CitiesPlaces extends PureComponent {
   render() {
@@ -45,7 +45,7 @@ export class CitiesPlaces extends PureComponent {
 }
 
 CitiesPlaces.propTypes = {
-  offers: offersPropTypes,
+  offers: PropTypes.arrayOf(offerPropTypes),
   cityName: PropTypes.string,
   changeSort: PropTypes.func,
   sort: PropTypes.string,
@@ -54,6 +54,6 @@ CitiesPlaces.propTypes = {
   changeActiveOffer: PropTypes.func,
   changeActivePinOffer: PropTypes.func,
   fetchReviews: PropTypes.func,
-  activePinOffer: PropTypes.object,
+  activePinOffer: offerPropTypes,
   changeFavorite: PropTypes.func
 };

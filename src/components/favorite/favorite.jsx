@@ -1,7 +1,11 @@
 import {Link} from "react-router-dom";
 import React, {PureComponent, Fragment} from "react";
+import PropTypes from "prop-types";
+
 import {FavoriteCity} from "../favorite-city/favorite-city";
 import {UserElementSwitch} from "../../hocs/user-element-switch";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
+import {userPropTypes} from "../../prop-types/user-prop-types";
 
 export class Favorite extends PureComponent {
   constructor(props) {
@@ -85,3 +89,14 @@ export class Favorite extends PureComponent {
     </Fragment>;
   }
 }
+
+Favorite.propTypes = {
+  fetchFavorite: PropTypes.func,
+  favoriteOffers: PropTypes.arrayOf(offerPropTypes),
+  cityClickHandler: PropTypes.func,
+  changeActiveOffer: PropTypes.func,
+  fetchReviews: PropTypes.func,
+  changeFavorite: PropTypes.func,
+  user: userPropTypes
+};
+

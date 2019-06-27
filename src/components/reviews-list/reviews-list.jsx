@@ -2,6 +2,9 @@ import React, {PureComponent} from "react";
 import {Review} from "../review/review";
 import PropTypes from "prop-types";
 import {CommentForm} from "../comment-form/comment-form";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
+import {reviewPropTypes} from "../../prop-types/review-prop-type";
+import {userPropTypes} from "../../prop-types/user-prop-types";
 
 export class ReviewsList extends PureComponent {
   constructor(props) {
@@ -35,12 +38,12 @@ export class ReviewsList extends PureComponent {
 }
 
 ReviewsList.propTypes = {
-  activeOffer: PropTypes.object,
+  activeOffer: offerPropTypes,
   reviewsError: PropTypes.object,
-  reviews: PropTypes.array,
+  reviews: PropTypes.arrayOf(reviewPropTypes),
   fetchReviews: PropTypes.func,
   isAuthorizationRequired: PropTypes.bool,
-  user: PropTypes.object,
+  user: userPropTypes,
   sendReview: PropTypes.func,
   sendingError: PropTypes.object,
   isSending: PropTypes.bool

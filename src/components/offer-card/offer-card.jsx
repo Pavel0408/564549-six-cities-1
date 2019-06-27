@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
 
-import {offerCardPropTypes} from "../../prop-types/offer-card-prop-types";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
 
 export class OfferCard extends PureComponent {
   constructor(props) {
@@ -89,10 +89,12 @@ export class OfferCard extends PureComponent {
         <h2 className="place-card__name">
           <Link to={`/offer/${this._offer.id}`} href="#" onClick={this.titleClickHandler}>{this._offer.name}</Link>
         </h2>
-        <p className="place-card__type">Private room</p>
+        <p className="place-card__type">{this._offer.type}</p>
       </div>
     </article>;
   }
 }
 
-OfferCard.propTypes = offerCardPropTypes;
+OfferCard.propTypes = {
+  offer: offerPropTypes
+};

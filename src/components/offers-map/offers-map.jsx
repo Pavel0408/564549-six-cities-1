@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
 import {CityLocation} from "../../constants/city-location";
-import {offersPropTypes} from "../../prop-types/offers-prop-types";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
 
 export class OffersMap extends PureComponent {
   constructor(props) {
@@ -76,11 +76,11 @@ export class OffersMap extends PureComponent {
 }
 
 OffersMap.propTypes = {
-  offers: offersPropTypes,
+  offers: PropTypes.arrayOf(offerPropTypes),
   mapMethods: PropTypes.shape({
     createMap: PropTypes.func,
     addPin: PropTypes.func
   }).isRequired,
   cityName: PropTypes.string.isRequired,
-  activePinOffer: PropTypes.object
+  activePinOffer: offerPropTypes
 };

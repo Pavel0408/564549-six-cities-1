@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 import {UserElementSwitch} from "../../hocs/user-element-switch";
+import {userPropTypes} from "../../prop-types/user-prop-types";
 
 
 export class SignIn extends PureComponent {
@@ -65,5 +66,6 @@ export class SignIn extends PureComponent {
 }
 
 SignIn.propTypes = {
-  authorize: PropTypes.func
+  authorize: PropTypes.func,
+  user: userPropTypes
 };

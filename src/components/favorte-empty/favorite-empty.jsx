@@ -1,6 +1,9 @@
+import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
+
 import {UserElementSwitch} from "../../hocs/user-element-switch";
+import {userPropTypes} from "../../prop-types/user-prop-types";
 
 export class FavoriteEmpty extends PureComponent {
   constructor(props) {
@@ -52,3 +55,8 @@ export class FavoriteEmpty extends PureComponent {
     </React.Fragment>;
   }
 }
+
+FavoriteEmpty.propTypes = {
+  fetchFavorite: PropTypes.func,
+  user: userPropTypes
+};

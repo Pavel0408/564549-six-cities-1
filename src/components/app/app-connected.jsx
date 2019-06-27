@@ -83,10 +83,6 @@ const mapDispatchToProps = (dispatch) => {
         comment
       }));
     },
-    signOut: (evt) => {
-      evt.preventDefault();
-      dispatch(ActionCreator.authorizationFailed());
-    },
     changeActiveOffer: (offer) => {
       dispatch(ActionCreator.setActiveOffer(offer));
     },

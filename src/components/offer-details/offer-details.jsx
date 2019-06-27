@@ -7,6 +7,8 @@ import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {OffersMap} from "../offers-map/offers-map";
 import {getDistanceFromCoords} from "../../utils";
 import {UserElementSwitch} from "../../hocs/user-element-switch";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
+import {userPropTypes} from "../../prop-types/user-prop-types";
 
 export class OfferDetails extends PureComponent {
   constructor(props) {
@@ -202,14 +204,14 @@ export class OfferDetails extends PureComponent {
 }
 
 OfferDetails.propTypes = {
-  activeOffer: PropTypes.object,
+  activeOffer: offerPropTypes,
   isAuthorizationRequired: PropTypes.bool,
-  user: PropTypes.object,
+  user: userPropTypes,
   cityName: PropTypes.string,
   changeActiveOffer: PropTypes.func,
-  offers: PropTypes.array,
+  offers: PropTypes.arrayOf(offerPropTypes),
   changeActivePinOffer: PropTypes.func,
-  activePinOffer: PropTypes.object,
+  activePinOffer: offerPropTypes,
   fetchReviews: PropTypes.func,
   changeFavorite: PropTypes.func
 };

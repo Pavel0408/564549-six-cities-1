@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import React, {PureComponent} from "react";
 
 import {FavoriteCard} from "../favorite-card/faforite-card";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
 
 export class FavoriteCity extends PureComponent {
   constructor(props) {
@@ -41,6 +42,15 @@ export class FavoriteCity extends PureComponent {
       </li>
     </React.Fragment>;
   }
+}
+
+FavoriteCity.propTypes = {
+  cityClickHandler: PropTypes.func,
+  favoriteCityName: PropTypes.string,
+  favoriteOffers: PropTypes.arrayOf(offerPropTypes),
+  titleOnClick: PropTypes.func,
+  fetchReviews: PropTypes.func,
+  changeFavorite: PropTypes.func
 }
 
 

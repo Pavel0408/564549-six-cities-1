@@ -1,5 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
+import {userPropTypes} from "../../prop-types/user-prop-types";
 
 export const UserElement = (props) => {
   const {fetchFavorite, user} = props;
@@ -11,3 +13,8 @@ export const UserElement = (props) => {
     </div>
   </Link>;
 };
+
+UserElement.propTypes = {
+  fetchFavorite: PropTypes.func,
+  user: userPropTypes
+}

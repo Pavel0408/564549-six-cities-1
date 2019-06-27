@@ -1,6 +1,8 @@
 import React, {PureComponent} from "react";
 import {RatingName} from "../../constants/rating-names";
 import PropTypes from "prop-types";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
+import {reviewPropTypes} from "../../prop-types/review-prop-type";
 
 export class CommentForm extends PureComponent {
   constructor(props) {
@@ -91,8 +93,8 @@ export class CommentForm extends PureComponent {
 CommentForm.propTypes = {
   sendReview: PropTypes.func,
   sendingError: PropTypes.object,
-  activeOffer: PropTypes.object,
+  activeOffer: offerPropTypes,
   isSending: PropTypes.bool,
-  reviews: PropTypes.array
+  reviews: PropTypes.arrayOf(reviewPropTypes)
 };
 

@@ -3,30 +3,15 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 import {CitiesList} from "../cities-list/cities-list";
-import {offersPropTypes} from "../../prop-types/offers-prop-types";
 import {CitiesPlaces} from "../cities-places/cities-places";
 import {CitiesPlacesEmpty} from "../cities-places-empty/cities-places-empty";
 import {UserElementSwitch} from "../../hocs/user-element-switch";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
+import {userPropTypes} from "../../prop-types/user-prop-types";
 
 export const MainScreen = (props) => {
-  const {offers, cityName, cityClickHandler, cities, user, fetchFavorite
+  const {offers, cityName, cityClickHandler, cities, user
   } = props;
-  const userElementSwitch = () => {
-    return user && !user.message ?
-      <Link
-        className="header__nav-link header__nav-link--profile"
-        to={`/favorites`} onClick={fetchFavorite}> <div className="header__avatar-wrapper user__avatar-wrapper">
-          <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
-          <span className="header__user-name user__name">{user.email}</span>
-        </div>
-      </Link>
-      :
-      <Link className="header__nav-link header__nav-link--profile" to={`/login`}>
-        <div className="header__avatar-wrapper user__avatar-wrapper">
-        </div>
-        <span className="header__login">Sign in</span>
-      </Link>;
-  };
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -92,11 +77,11 @@ export const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  offers: offersPropTypes,
+  offers: PropTypes.arrayOf(offerPropTypes),
   cityName: PropTypes.string.isRequired,
   cityClickHandler: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
-  user: PropTypes.object,
+  user: userPropTypes,
   signOut: PropTypes.func,
   isAuthorizationRequired: PropTypes.bool
 };

@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
+import {reviewPropTypes} from "../../prop-types/review-prop-type";
 
 export class Review extends PureComponent {
   render() {
@@ -36,5 +36,5 @@ export class Review extends PureComponent {
 }
 
 Review.propTypes = {
-  comment: PropTypes.object
+  comment: reviewPropTypes
 };

@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
 
 export class FavoriteCard extends PureComponent {
   constructor(props) {
@@ -65,8 +66,15 @@ export class FavoriteCard extends PureComponent {
         <h2 className="place-card__name">
           <Link to={`/offer/${offer.id}`} href="#" onClick={this.titleClickHandler}>{offer.name}</Link>
         </h2>
-        <p className="place-card__type">Apartment</p>
+        <p className="place-card__type">{offer.type}</p>
       </div>
     </article>;
   }
 }
+
+FavoriteCard.propTypes = {
+  titleOnClick: PropTypes.func,
+  fetchReviews: PropTypes.func,
+  offer: offerPropTypes,
+  changeFavorite: PropTypes.func
+};
