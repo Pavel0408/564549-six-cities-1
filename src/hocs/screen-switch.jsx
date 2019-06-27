@@ -53,6 +53,7 @@ export const ScreenSwitch = (props) => {
           } else {
             return <FavoriteEmpty
               fetchFavorite={fetchFavorite}
+              user={user}
             />;
           }
         } else {

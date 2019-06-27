@@ -1,9 +1,14 @@
 import React, {Fragment, PureComponent} from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
+
+import {UserElementSwitch} from "../../hocs/user-element-switch";
+
 
 export class SignIn extends PureComponent {
+
   render() {
-    const {authorize} = this.props;
+    const {authorize, user} = this.props;
     return <Fragment>
       <div>
         <div style={{display: `none`}}>
@@ -13,18 +18,16 @@ export class SignIn extends PureComponent {
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <a className="header__logo-link" href="main.html">
+                <Link to="/" className="header__logo-link" href="main.html">
                   <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width={81} height={41} />
-                </a>
+                </Link>
               </div>
               <nav className="header__nav">
                 <ul className="header__nav-list">
                   <li className="header__nav-item user">
-                    <a className="header__nav-link header__nav-link--profile" href="#">
-                      <div className="header__avatar-wrapper user__avatar-wrapper">
-                      </div>
-                      <span className="header__login">Sign in</span>
-                    </a>
+                    <UserElementSwitch
+                      user={user}
+                    />
                   </li>
                 </ul>
               </nav>

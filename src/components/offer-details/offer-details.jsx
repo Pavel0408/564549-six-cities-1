@@ -6,6 +6,7 @@ import {OffersList} from "../offers-list/offers-list";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {OffersMap} from "../offers-map/offers-map";
 import {getDistanceFromCoords} from "../../utils";
+import {UserElementSwitch} from "../../hocs/user-element-switch";
 
 export class OfferDetails extends PureComponent {
   constructor(props) {
@@ -75,14 +76,16 @@ export class OfferDetails extends PureComponent {
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <a className="header__logo-link" href="main.html">
+                <Link to="/" className="header__logo-link">
                   <img className="header__logo" src="/img/logo.svg" alt="6 cities logo" width={81} height={41} />
-                </a>
+                </Link>
               </div>
               <nav className="header__nav">
                 <ul className="header__nav-list">
                   <li className="header__nav-item user">
-                    {userElementSwitch()}
+                    <UserElementSwitch
+                      user={user}
+                    />
                   </li>
                 </ul>
               </nav>

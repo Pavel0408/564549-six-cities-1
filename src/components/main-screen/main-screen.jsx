@@ -6,15 +6,16 @@ import {CitiesList} from "../cities-list/cities-list";
 import {offersPropTypes} from "../../prop-types/offers-prop-types";
 import {CitiesPlaces} from "../cities-places/cities-places";
 import {CitiesPlacesEmpty} from "../cities-places-empty/cities-places-empty";
+import {UserElementSwitch} from "../../hocs/user-element-switch";
 
 export const MainScreen = (props) => {
-  const {offers, cityName, cityClickHandler, cities, user
+  const {offers, cityName, cityClickHandler, cities, user, fetchFavorite
   } = props;
   const userElementSwitch = () => {
     return user && !user.message ?
       <Link
         className="header__nav-link header__nav-link--profile"
-        to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">
+        to={`/favorites`} onClick={fetchFavorite}> <div className="header__avatar-wrapper user__avatar-wrapper">
           <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
           <span className="header__user-name user__name">{user.email}</span>
         </div>
@@ -67,7 +68,9 @@ export const MainScreen = (props) => {
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                {userElementSwitch()}
+                <UserElementSwitch
+                  user={user}
+                />
               </li>
             </ul>
           </nav>
