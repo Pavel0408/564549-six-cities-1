@@ -52,22 +52,6 @@ export class OfferDetails extends PureComponent {
     const offersOnMap = offers.slice();
     offersOnMap.push(offer);
     const {user} = this.props;
-    const userElementSwitch = () => {
-      return user ?
-        <Link
-          className="header__nav-link header__nav-link--profile"
-          to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">
-            <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
-            <span className="header__user-name user__name">{user.email}</span>
-          </div>
-        </Link>
-        :
-        <Link className="header__nav-link header__nav-link--profile" to={`/login`}>
-          <div className="header__avatar-wrapper user__avatar-wrapper">
-          </div>
-          <span className="header__login">Sign in</span>
-        </Link>;
-    };
 
     return <React.Fragment>
       <div>
