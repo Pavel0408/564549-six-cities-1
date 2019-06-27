@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
+
 import {ReviewsList} from "../reviews-list/reviews-list";
 import {OffersList} from "../offers-list/offers-list";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";

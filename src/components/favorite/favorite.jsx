@@ -91,7 +91,7 @@ export class Favorite extends PureComponent {
 }
 
 Favorite.propTypes = {
-  fetchFavorite: PropTypes.func,
+  fetchFavorite: PropTypes.func.isRequired,
   favoriteOffers: PropTypes.arrayOf(offerPropTypes),
   cityClickHandler: PropTypes.func,
   changeActiveOffer: PropTypes.func,

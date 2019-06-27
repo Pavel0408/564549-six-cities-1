@@ -95,9 +95,7 @@ Array [
       </h2>
       <p
         className="place-card__type"
-      >
-        Private room
-      </p>
+      />
     </div>
   </article>,
   <article
@@ -200,9 +198,7 @@ Array [
       </h2>
       <p
         className="place-card__type"
-      >
-        Private room
-      </p>
+      />
     </div>
   </article>,
 ]

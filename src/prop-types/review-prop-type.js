@@ -8,4 +8,4 @@ export const reviewPropTypes = PropTypes.shape({
   rating: PropTypes.number,
   message: PropTypes.string,
   date: PropTypes.date
-})
+});

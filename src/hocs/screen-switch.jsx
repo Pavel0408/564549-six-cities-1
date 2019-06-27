@@ -7,6 +7,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import {OfferDetails} from "../components/offer-details/offer-details";
 import {FavoriteEmpty} from "../components/favorte-empty/favorite-empty";
+import {offerPropTypes} from "../prop-types/offer-prop-types";
+import {userPropTypes} from "../prop-types/user-prop-types";
 
 export const ScreenSwitch = (props) => {
   return <BrowserRouter>
@@ -46,7 +48,7 @@ export const ScreenSwitch = (props) => {
       <Route path="/favorites" exact render={() => {
         const {fetchFavorite, user, favoriteOffers} = props;
         if (user) {
-          if (props.favoriteOffers && props.favoriteOffers.length > 0) {
+          if (favoriteOffers && favoriteOffers.length > 0) {
             return <Favorite
               {...props}
             />;
@@ -69,6 +71,8 @@ export const ScreenSwitch = (props) => {
 
 ScreenSwitch.propTypes = {
   isAuthorizationRequired: PropTypes.bool,
-  activeOffer: PropTypes.object,
-  user: PropTypes.object
+  activeOffer: PropTypes.offerPropTypes,
+  user: userPropTypes,
+  fetchFavorite: PropTypes.func,
+  favoriteOffers: PropTypes.arrayOf(offerPropTypes)
 };

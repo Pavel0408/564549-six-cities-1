@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
 import {offerPropTypes} from "../../prop-types/offer-prop-types";
 
@@ -96,5 +97,9 @@ export class OfferCard extends PureComponent {
 }
 
 OfferCard.propTypes = {
-  offer: offerPropTypes
+  offer: offerPropTypes,
+  changeActivePinOffer: PropTypes.func,
+  titleOnClick: PropTypes.func,
+  fetchReviews: PropTypes.func,
+  changeFavorite: PropTypes.func
 };

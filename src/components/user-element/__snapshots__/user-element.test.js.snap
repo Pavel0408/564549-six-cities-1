@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing UserElement render UserElement is render correctly 1`] = `
+<a
+  className="header__nav-link header__nav-link--profile"
+  href="/favorites"
+  onClick={[Function]}
+>
+   
+  <div
+    className="header__avatar-wrapper user__avatar-wrapper"
+  >
+    <img
+      src="https://es31-server.appspot.com/six-citiesimg/1.png"
+    />
+    <span
+      className="header__user-name user__name"
+    >
+      Oliver.conner@gmail.com
+    </span>
+  </div>
+</a>
+`;

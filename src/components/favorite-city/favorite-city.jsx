@@ -51,6 +51,6 @@ FavoriteCity.propTypes = {
   titleOnClick: PropTypes.func,
   fetchReviews: PropTypes.func,
   changeFavorite: PropTypes.func
-}
+};
 
 

@@ -17,4 +17,4 @@ export const UserElement = (props) => {
 UserElement.propTypes = {
   fetchFavorite: PropTypes.func,
   user: userPropTypes
-}
+};
