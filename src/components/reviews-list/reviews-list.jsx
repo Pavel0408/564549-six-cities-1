@@ -1,7 +1,7 @@
 import React from "react";
 import {Review} from "../review/review";
 import PropTypes from "prop-types";
-import {CommentForm} from "../comment-form/comment-form";
+import {CommentFormWithActiveItem} from "../comment-form/comment-form";
 import {offerPropTypes} from "../../prop-types/offer-prop-types";
 import {reviewPropTypes} from "../../prop-types/review-prop-type";
 import {userPropTypes} from "../../prop-types/user-prop-types";
@@ -22,7 +22,7 @@ export const ReviewsList = (props) => {
         />;
       })}
     </ul>
-    {user && <CommentForm
+    {user && <CommentFormWithActiveItem
       activeOffer={activeOffer}
       sendingError={sendingError}
       sendReview={sendReview}
