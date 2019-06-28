@@ -7,7 +7,7 @@ import {parseServerResponseReviews} from "./parse-server-response/parse-server-r
 export const Operation = {
   loadOffers: () => (dispatch, getState, api) => {
     dispatch(ActionCreator.loadingOffers());
-    return api.get(ServerPath.hotels)
+    return api.get(ServerPath.HOTELS)
       .then(parseServerResponseOffers)
       .then((offers) => {
         dispatch(ActionCreator.fetchOffersReceived(offers));
@@ -16,7 +16,7 @@ export const Operation = {
       });
   },
   authorize: (authorizationData) => (dispatch, getState, api) => {
-    return api.post(ServerPath.authorization, {
+    return api.post(ServerPath.AUTHORIZATION, {
       email: authorizationData.email,
       password: authorizationData.password
     })
@@ -31,7 +31,7 @@ export const Operation = {
       });
   },
   isAuthorized: () => (dispatch, getState, api) => {
-    return api.get(ServerPath.authorization)
+    return api.get(ServerPath.AUTHORIZATION)
       .then((response) => {
         return parseAuthorizationResponse(response);
       })
@@ -43,7 +43,7 @@ export const Operation = {
       });
   },
   fetchReviews: (id) => (dispatch, getState, api) => {
-    return api.get(ServerPath.comments + id)
+    return api.get(ServerPath.COMMENTS + id)
       .then((response) => {
         return parseServerResponseReviews(response);
       })
@@ -56,7 +56,7 @@ export const Operation = {
   },
   sendReviews: (review) => (dispatch, getState, api) => {
     dispatch(ActionCreator.sendingReviews());
-    return api.post(ServerPath.comments + review.id, {
+    return api.post(ServerPath.COMMENTS + review.id, {
       rating: review.rating,
       comment: review.comment
     }).then((response) => {
@@ -69,13 +69,13 @@ export const Operation = {
       });
   },
   changeFavorite: (favoriteItem) => (dispatch, getState, api) => {
-    return api.post(`${ServerPath.favorite}${favoriteItem.id}/${favoriteItem.status}`)
+    return api.post(`${ServerPath.FAVORITE}${favoriteItem.id}/${favoriteItem.status}`)
       .catch((e) => {
         dispatch(ActionCreator.authorizationFailed(e));
       });
   },
   updateOffers: () => (dispatch, getState, api) => {
-    return api.get(ServerPath.hotels)
+    return api.get(ServerPath.HOTELS)
       .then(parseServerResponseOffers)
       .then((offers) => {
         dispatch(ActionCreator.fetchOffersReceived(offers));
@@ -83,7 +83,7 @@ export const Operation = {
   },
   getFavorite: () => (dispatch, getState, api) => {
     dispatch(ActionCreator.loadingFavorite());
-    return api.get(ServerPath.favorite)
+    return api.get(ServerPath.FAVORITE)
       .then(parseServerResponseOffers)
       .then((offers) => {
         dispatch(ActionCreator.fetchFavoriteReceived(offers));
