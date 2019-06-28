@@ -20,7 +20,7 @@ export class App extends PureComponent {
 App.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   cityName: PropTypes.string.isRequired,
-  cityClickHandle: PropTypes.func.isRequired,
+  onCityClick: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string),
   isLoading: PropTypes.bool,
   error: PropTypes.object,

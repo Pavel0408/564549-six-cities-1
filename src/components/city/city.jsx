@@ -10,7 +10,7 @@ export class City extends PureComponent {
 
   cityClickHandle(evt) {
     evt.preventDefault();
-    this.props.cityClickHandle(this.props.city);
+    this.props.onCityClick(this.props.city);
   }
 
   render() {
@@ -25,7 +25,7 @@ export class City extends PureComponent {
 }
 
 City.propTypes = {
-  cityClickHandle: PropTypes.func,
+  onCityClick: PropTypes.func,
   city: PropTypes.string,
   isActive: PropTypes.bool
 };

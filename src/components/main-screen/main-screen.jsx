@@ -10,7 +10,7 @@ import {offerPropTypes} from "../../prop-types/offer-prop-types";
 import {userPropTypes} from "../../prop-types/user-prop-types";
 
 export const MainScreen = (props) => {
-  const {offers, cityName, cityClickHandle, cities, user
+  const {offers, cityName, onCityClick, cities, user
   } = props;
 
   return <React.Fragment>
@@ -66,7 +66,7 @@ export const MainScreen = (props) => {
       <h1 className="visually-hidden">Cities</h1>
       <CitiesList
         cities={cities}
-        cityClickHandle={cityClickHandle}
+        onCityClick={onCityClick}
         cityName={cityName}
       />
       <div className="cities__places-wrapper">
@@ -79,7 +79,7 @@ export const MainScreen = (props) => {
 MainScreen.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   cityName: PropTypes.string.isRequired,
-  cityClickHandle: PropTypes.func.isRequired,
+  onCityClick: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   user: userPropTypes,
   signOut: PropTypes.func,

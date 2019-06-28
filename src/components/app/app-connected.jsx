@@ -52,7 +52,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    cityClickHandle: (changedCity) => {
+    onCityClick: (changedCity) => {
       dispatch(ActionCreator.changeActiveCity(changedCity));
     },
     loadOffers: () => {
