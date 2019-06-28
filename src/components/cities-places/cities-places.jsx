@@ -3,7 +3,7 @@ import React, {PureComponent} from "react";
 
 import {SortWithActiveItem} from "../sort/sort";
 import {OffersList} from "../offers-list/offers-list";
-import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
+import {WithLeafletMap} from "../../hocs/with-leaflet-map";
 import {OffersMap} from "../offers-map/offers-map";
 import {offerPropTypes} from "../../prop-types/offer-prop-types";
 

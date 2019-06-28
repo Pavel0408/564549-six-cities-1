@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import {ReviewsList} from "../reviews-list/reviews-list";
 import {OffersList} from "../offers-list/offers-list";
-import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
+import {WithLeafletMap} from "../../hocs/with-leaflet-map";
 import {OffersMap} from "../offers-map/offers-map";
 import {getDistanceFromCoords} from "../../utils";
 import {UserElementSwitch} from "../../hocs/user-element-switch";
