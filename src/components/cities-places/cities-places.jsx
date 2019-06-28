@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
-import {Sort} from "../sort/sort";
+import {SortWithActiveItem} from "../sort/sort";
 import {OffersList} from "../offers-list/offers-list";
 import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
 import {OffersMap} from "../offers-map/offers-map";
@@ -17,7 +17,7 @@ export class CitiesPlaces extends PureComponent {
           <b className="places__found">
             {offers.length} places to stay in {cityName}
           </b>
-          <Sort
+          <SortWithActiveItem
             changeSort={changeSort}
             sort={sort}
           />

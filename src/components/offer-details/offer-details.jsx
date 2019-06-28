@@ -10,15 +10,14 @@ import {getDistanceFromCoords} from "../../utils";
 import {UserElementSwitch} from "../../hocs/user-element-switch";
 import {offerPropTypes} from "../../prop-types/offer-prop-types";
 import {userPropTypes} from "../../prop-types/user-prop-types";
+import {WithActiveItem} from "../../hocs/with-active-item";
 
 export class OfferDetails extends PureComponent {
   constructor(props) {
     super(props);
 
+    props.changeBookmarkIsActive(props.activeOffer.isFavorite);
     this.favoriteClickHandler = this.favoriteClickHandler.bind(this);
-    this.state = {
-      isFavorite: props.activeOffer.isFavorite
-    };
   }
 
   getDistanceFromActiveOffer(offer) {
@@ -30,18 +29,14 @@ export class OfferDetails extends PureComponent {
 
   favoriteClickHandler(evt) {
     evt.preventDefault();
-    const {changeFavorite} = this.props;
+    const {changeFavorite, changeBookmarkIsActive, bookmarkIsActive} = this.props;
     const status = (this.props.activeOffer.isFavorite) ? 0 : 1;
     changeFavorite({
       id: this.props.activeOffer.id,
       status
     });
 
-    this.setState((state) => {
-      return {
-        isFavorite: !state.isFavorite
-      };
-    });
+    changeBookmarkIsActive(!bookmarkIsActive);
   }
 
   render() {
@@ -52,7 +47,7 @@ export class OfferDetails extends PureComponent {
       }).slice(0, 3);
     const offersOnMap = offers.slice();
     offersOnMap.push(offer);
-    const {user} = this.props;
+    const {user, bookmarkIsActive} = this.props;
 
     return <React.Fragment>
       <div>
@@ -102,7 +97,7 @@ export class OfferDetails extends PureComponent {
                     {offer.name}
                   </h1>
                   <button className={offer.isFavorite ? `property__bookmark-button  property__bookmark-button--active button` : `property__bookmark-button button`} type="button" onClick={this.favoriteClickHandler}>
-                    <svg className="property__bookmark-icon" width={31} style={this.state.isFavorite ? {fill: `#4481c3`, stroke: `#4481c3`} : {}} height={33}>
+                    <svg className="property__bookmark-icon" width={31} style={bookmarkIsActive ? {fill: `#4481c3`, stroke: `#4481c3`} : {}} height={33}>
                       <use xlinkHref="#icon-bookmark" />
                     </svg>
                     <span className="visually-hidden">To bookmarks</span>
@@ -198,7 +193,21 @@ OfferDetails.propTypes = {
   changeActivePinOffer: PropTypes.func,
   activePinOffer: offerPropTypes,
   fetchReviews: PropTypes.func,
-  changeFavorite: PropTypes.func
+  changeFavorite: PropTypes.func,
+  changeBookmarkIsActive: PropTypes.func,
+  bookmarkIsActive: PropTypes.bool
 };
 
+export const OfferDetailsWithActiveItem = (props) => {
+  return <WithActiveItem render={(data) => {
+    const {activeItem, onChange} = data;
+
+    return <OfferDetails {...props}
+      bookmarkIsActive={activeItem}
+      changeBookmarkIsActive={onChange}
+    />;
+  }
+  }
+  />;
+};
 
