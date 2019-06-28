@@ -3,7 +3,7 @@ import React from "react";
 import {City} from "../city/city";
 
 export const CitiesList = (props) => {
-  const {cities, cityClickHandler, cityName} = props;
+  const {cities, cityClickHandle, cityName} = props;
   return <div className="cities tabs">
     <section className="locations container">
       <ul className="locations__list tabs__list">
@@ -12,7 +12,7 @@ export const CitiesList = (props) => {
             key={`city-${i}`}
             city={cityItem}
             isActive={cityItem === cityName}
-            cityClickHandler={cityClickHandler}
+            cityClickHandle={cityClickHandle}
           />;
         })
         }
@@ -23,7 +23,7 @@ export const CitiesList = (props) => {
 
 CitiesList.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string),
-  cityClickHandler: PropTypes.func,
+  cityClickHandle: PropTypes.func,
   cityName: PropTypes.string
 };
 

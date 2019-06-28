@@ -13,8 +13,8 @@ export class CommentForm extends PureComponent {
     this.textAreaIsCompleted = false;
     this.formRef = React.createRef();
     props.changeFormIsValid(false);
-    this.changeRatingHandler = this.changeRatingHandler.bind(this);
-    this.textareaChangeHandler = this.textareaChangeHandler.bind(this);
+    this.changeRatingHandle = this.changeRatingHandle.bind(this);
+    this.textareaChangeHandle = this.textareaChangeHandle.bind(this);
     this.changeRatingChecked = this.changeRatingChecked.bind(this);
     this.changeTextAreaIsCompleted = this.changeTextAreaIsCompleted.bind(this);
   }
@@ -33,11 +33,11 @@ export class CommentForm extends PureComponent {
       this.textAreaIsCompleted = true;
     }
   }
-  changeRatingHandler() {
+  changeRatingHandle() {
     this.changeRatingChecked();
     this.checkForm();
   }
-  textareaChangeHandler(evt) {
+  textareaChangeHandle(evt) {
     this.changeTextAreaIsCompleted(evt);
     this.checkForm();
   }
@@ -52,7 +52,7 @@ export class CommentForm extends PureComponent {
         {new Array(5).fill(``).map((it, i) =>{
           const index = 5 - i;
           return <React.Fragment key={`${activeOffer.id}${i}`}>
-            <input className="form__rating-input visually-hidden" name="rating" defaultValue={index} id={`${index}-stars`} type="radio" onChange={this.changeRatingHandler} />
+            <input className="form__rating-input visually-hidden" name="rating" defaultValue={index} id={`${index}-stars`} type="radio" onChange={this.changeRatingHandle} />
             <label htmlFor={`${index}-stars`} className="reviews__rating-label form__rating-label" title={RatingName[index]}>
               <svg className="form__star-image" width={37} height={33}>
                 <use xlinkHref="#icon-star" />
@@ -61,7 +61,7 @@ export class CommentForm extends PureComponent {
           </React.Fragment>;
         })}
       </div>
-      <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" defaultValue={``} onChange={this.textareaChangeHandler}/>
+      <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" defaultValue={``} onChange={this.textareaChangeHandle}/>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.

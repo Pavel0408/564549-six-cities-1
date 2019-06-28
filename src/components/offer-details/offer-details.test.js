@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-
 import {parseServerResponseOffers} from "../../parse-server-response/parse-server-response-offers";
 import {BrowserRouter} from "react-router-dom";
 import {OfferDetails} from "./offer-details";

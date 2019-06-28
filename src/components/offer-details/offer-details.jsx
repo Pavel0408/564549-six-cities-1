@@ -17,7 +17,7 @@ export class OfferDetails extends PureComponent {
     super(props);
 
     props.changeBookmarkIsActive(props.activeOffer.isFavorite);
-    this.favoriteClickHandler = this.favoriteClickHandler.bind(this);
+    this.favoriteClickHandle = this.favoriteClickHandle.bind(this);
   }
 
   getDistanceFromActiveOffer(offer) {
@@ -27,7 +27,7 @@ export class OfferDetails extends PureComponent {
     });
   }
 
-  favoriteClickHandler(evt) {
+  favoriteClickHandle(evt) {
     evt.preventDefault();
     const {changeFavorite, changeBookmarkIsActive, bookmarkIsActive} = this.props;
     const status = (this.props.activeOffer.isFavorite) ? 0 : 1;
@@ -96,7 +96,7 @@ export class OfferDetails extends PureComponent {
                   <h1 className="property__name">
                     {offer.name}
                   </h1>
-                  <button className={offer.isFavorite ? `property__bookmark-button  property__bookmark-button--active button` : `property__bookmark-button button`} type="button" onClick={this.favoriteClickHandler}>
+                  <button className={offer.isFavorite ? `property__bookmark-button  property__bookmark-button--active button` : `property__bookmark-button button`} type="button" onClick={this.favoriteClickHandle}>
                     <svg className="property__bookmark-icon" width={31} style={bookmarkIsActive ? {fill: `#4481c3`, stroke: `#4481c3`} : {}} height={33}>
                       <use xlinkHref="#icon-bookmark" />
                     </svg>

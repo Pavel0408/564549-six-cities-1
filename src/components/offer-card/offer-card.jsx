@@ -10,26 +10,26 @@ export class OfferCard extends PureComponent {
 
     const {offer, changeActivePinOffer, titleOnClick} = props;
     this._offer = offer;
-    this.titleClickHandler = this.titleClickHandler.bind(this);
-    this.imgClickHandler = this.imgClickHandler.bind(this);
+    this.titleClickHandle = this.titleClickHandle.bind(this);
+    this.imgClickHandle = this.imgClickHandle.bind(this);
     this.changeActivePinOffer = changeActivePinOffer;
     this.titleOnClick = titleOnClick;
-    this.favoriteClickHandler = this.favoriteClickHandler.bind(this);
+    this.favoriteClickHandle = this.favoriteClickHandle.bind(this);
     this.favoriteRef = React.createRef();
   }
 
-  titleClickHandler() {
+  titleClickHandle() {
     this.titleOnClick(this._offer);
     this.changeActivePinOffer(this._offer);
     this.props.fetchReviews(this._offer.id);
   }
 
-  imgClickHandler(evt) {
+  imgClickHandle(evt) {
     evt.preventDefault();
     this.changeActivePinOffer(this._offer);
   }
 
-  favoriteClickHandler(evt) {
+  favoriteClickHandle(evt) {
     evt.preventDefault();
     const {changeFavorite} = this.props;
     const status = (this._offer.isFavorite) ? 0 : 1;
@@ -52,7 +52,7 @@ export class OfferCard extends PureComponent {
             width={260}
             height={200}
             alt="Place image"
-            onClick={this.imgClickHandler}
+            onClick={this.imgClickHandle}
           />
         </a>
       </div>
@@ -66,7 +66,7 @@ export class OfferCard extends PureComponent {
           </div>
           <button
             className={this._offer.isFavorite ? `place-card__bookmark-button  place-card__bookmark-button--active button` : `place-card__bookmark-button button`}
-            type="button" onClick={this.favoriteClickHandler}
+            type="button" onClick={this.favoriteClickHandle}
             ref={this.favoriteRef}
           >
             <svg
@@ -88,7 +88,7 @@ export class OfferCard extends PureComponent {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${this._offer.id}`} href="#" onClick={this.titleClickHandler}>{this._offer.name}</Link>
+          <Link to={`/offer/${this._offer.id}`} href="#" onClick={this.titleClickHandle}>{this._offer.name}</Link>
         </h2>
         <p className="place-card__type">{this._offer.type}</p>
       </div>
