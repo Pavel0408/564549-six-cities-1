@@ -24,7 +24,9 @@ export class OffersMap extends PureComponent {
 
   renderMap() {
     const {offers, cityName} = this.props;
-    const city = CityLocation[cityName];
+    console.log(cityName.toUpperCase())
+    const city = CityLocation[cityName.toUpperCase()];
+
     const zoom = 12;
     const mapConfig = {
       offers,
@@ -66,7 +68,7 @@ export class OffersMap extends PureComponent {
 
   componentDidUpdate() {
     const {offers, cityName} = this.props;
-    const city = CityLocation[cityName];
+    const city = CityLocation[cityName.toUpperCase()];
     this.mapItem.setView(city);
     this.pins.forEach((pin) => {
       pin.remove();

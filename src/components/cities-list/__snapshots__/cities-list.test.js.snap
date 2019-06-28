@@ -18,7 +18,7 @@ exports[`testing CitiesList render CitiesList is render correctly 1`] = `
           onClick={[Function]}
         >
           <span>
-            Paris
+            PARIS
           </span>
         </a>
       </li>
