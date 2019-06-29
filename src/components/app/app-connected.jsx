@@ -21,10 +21,18 @@ import {
   getSort,
   getUser,
 } from "../../reducer/selectors";
-import {Operation} from "../../operation";
 import {withScreenSwitch} from "../../hocs/with-screen-switch";
 import {ScreenSwitch} from "../../hocs/screen-switch";
 import {SortFunctions} from "../../sort-functions";
+import {
+  authorize, changeFavorite,
+  fetchReviews,
+  getFavorite,
+  isAuthorized,
+  loadOffers,
+  sendReviews,
+  updateOffers
+} from "../../operation";
 
 const mapStateToProps = (state) => {
   const sortFunction = SortFunctions[getSort(state)];
@@ -56,17 +64,17 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(ActionCreator.changeActiveCity(changedCity));
     },
     loadOffers: () => {
-      dispatch(Operation.loadOffers());
+      dispatch(loadOffers());
     },
     isAuthorized: () => {
-      dispatch(Operation.isAuthorized());
+      dispatch(isAuthorized());
     },
     authorize: (evt) => {
       evt.preventDefault();
       const authorizationFormData = new FormData(evt.target);
       const email = authorizationFormData.get(`email`);
       const password = authorizationFormData.get(`password`);
-      dispatch(Operation.authorize({
+      dispatch(authorize({
         email,
         password
       }));
@@ -77,7 +85,7 @@ const mapDispatchToProps = (dispatch) => {
       const id = sendReviewsFormData.get(`activeOfferId`);
       const rating = sendReviewsFormData.get(`rating`);
       const comment = sendReviewsFormData.get(`review`);
-      dispatch(Operation.sendReviews({
+      dispatch(sendReviews({
         id,
         rating,
         comment
@@ -87,7 +95,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(ActionCreator.setActiveOffer(offer));
     },
     fetchReviews: (id) => {
-      dispatch(Operation.fetchReviews(id));
+      dispatch(fetchReviews(id));
     },
     changeSort: (sort) => {
       dispatch(ActionCreator.changeSort(sort));
@@ -96,12 +104,12 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(ActionCreator.changeActivePinOffer(offer));
     },
     changeFavorite: (favoriteItem) => {
-      dispatch(Operation.changeFavorite(favoriteItem))
-        .then(dispatch(Operation.updateOffers())
-          .then(dispatch(Operation.getFavorite())));
+      dispatch(changeFavorite(favoriteItem))
+        .then(dispatch(updateOffers())
+          .then(dispatch(getFavorite())));
     },
     fetchFavorite: () => {
-      dispatch(Operation.getFavorite());
+      dispatch(getFavorite());
     }
   };
 };
