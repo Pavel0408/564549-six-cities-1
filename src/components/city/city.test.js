@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import {City} from './city';
 
 const activeCity = `Amsterdam`;
-const cityClickHandler = () => {
+const cityClickHandle = () => {
 };
 
 describe(`testing City render`, () => {
@@ -12,7 +12,7 @@ describe(`testing City render`, () => {
       key={`city-${1}`}
       city = {activeCity}
       isActive = {true}
-      cityClickHandler={cityClickHandler}
+      cityClickHandle={cityClickHandle}
     />).toJSON();
 
     expect(tree).toMatchSnapshot();

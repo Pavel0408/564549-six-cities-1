@@ -5,19 +5,19 @@ export class City extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.cityClickHandler = this.cityClickHandler.bind(this);
+    this.cityClickHandle = this.cityClickHandle.bind(this);
   }
 
-  cityClickHandler(evt) {
+  cityClickHandle(evt) {
     evt.preventDefault();
-    this.props.cityClickHandler(this.props.city);
+    this.props.onCityClick(this.props.city);
   }
 
   render() {
     const isActive = this.props.isActive;
 
     return <li className="locations__item">
-      <a className={isActive ? `locations__item-link tabs__item tabs__item tabs__item--active` : `locations__item-link tabs__item tabs__item`} onClick={this.cityClickHandler}>
+      <a className={isActive ? `locations__item-link tabs__item tabs__item tabs__item--active` : `locations__item-link tabs__item tabs__item`} onClick={this.cityClickHandle}>
         <span>{this.props.city}</span>
       </a>
     </li>;
@@ -25,7 +25,7 @@ export class City extends PureComponent {
 }
 
 City.propTypes = {
-  cityClickHandler: PropTypes.func,
+  onCityClick: PropTypes.func,
   city: PropTypes.string,
   isActive: PropTypes.bool
 };

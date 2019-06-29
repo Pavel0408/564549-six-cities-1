@@ -20,6 +20,22 @@ describe(`authorizationReducer is correct`, () => {
       isAuthorizationRequired: false
     });
   });
+  it(`returns correctly state on incorrect action`, () => {
+    const successAuthorizationAction = {
+      type: ActionType.SENDING_REVIEWS,
+      payload: {
+        user: `something`
+      }
+    };
+    const state = {
+      user: `user`,
+      isAuthorizationRequired: false
+    };
+    expect(authorizationReducer(state, successAuthorizationAction)).toEqual({
+      user: `user`,
+      isAuthorizationRequired: false
+    });
+  });
   it(`returns correctly state when authorization failed`, () => {
     const failAuthorizationAction = {
       type: ActionType.AUTHORIZATION_FAILED,

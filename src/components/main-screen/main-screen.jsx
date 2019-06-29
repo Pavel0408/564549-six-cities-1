@@ -3,29 +3,15 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 import {CitiesList} from "../cities-list/cities-list";
-import {offersPropTypes} from "../../prop-types/offers-prop-types";
 import {CitiesPlaces} from "../cities-places/cities-places";
 import {CitiesPlacesEmpty} from "../cities-places-empty/cities-places-empty";
+import {UserElementSwitch} from "../../hocs/user-element-switch";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
+import {userPropTypes} from "../../prop-types/user-prop-types";
 
 export const MainScreen = (props) => {
-  const {offers, cityName, cityClickHandler, cities, user
+  const {offers, cityName, onCityClick, cities, user
   } = props;
-  const userElementSwitch = () => {
-    return user && !user.message ?
-      <Link
-        className="header__nav-link header__nav-link--profile"
-        to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">
-          <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
-          <span className="header__user-name user__name">{user.email}</span>
-        </div>
-      </Link>
-      :
-      <Link className="header__nav-link header__nav-link--profile" to={`/login`}>
-        <div className="header__avatar-wrapper user__avatar-wrapper">
-        </div>
-        <span className="header__login">Sign in</span>
-      </Link>;
-  };
 
   return <React.Fragment>
     <div style={{display: `none`}}>
@@ -67,7 +53,9 @@ export const MainScreen = (props) => {
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                {userElementSwitch()}
+                <UserElementSwitch
+                  user={user}
+                />
               </li>
             </ul>
           </nav>
@@ -78,7 +66,7 @@ export const MainScreen = (props) => {
       <h1 className="visually-hidden">Cities</h1>
       <CitiesList
         cities={cities}
-        cityClickHandler={cityClickHandler}
+        onCityClick={onCityClick}
         cityName={cityName}
       />
       <div className="cities__places-wrapper">
@@ -89,11 +77,11 @@ export const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  offers: offersPropTypes,
+  offers: PropTypes.arrayOf(offerPropTypes),
   cityName: PropTypes.string.isRequired,
-  cityClickHandler: PropTypes.func.isRequired,
+  onCityClick: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
-  user: PropTypes.object,
+  user: userPropTypes,
   signOut: PropTypes.func,
   isAuthorizationRequired: PropTypes.bool
 };

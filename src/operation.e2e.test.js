@@ -2,7 +2,7 @@ import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "./api";
 
 import {parseServerResponseOffers} from "./parse-server-response/parse-server-response-offers";
-import {Operation} from "./operation";
+import {loadOffers} from "./operation";
 import {ActionType} from "./action-type";
 
 describe(`Operation work correctly`, () => {
@@ -10,7 +10,8 @@ describe(`Operation work correctly`, () => {
     const dispatch = jest.fn();
     const api = createAPI(dispatch);
     const apiMock = new MockAdapter(api);
-    const loadOffers = Operation.loadOffers();
+
+    const loadOffersOperation = loadOffers();
 
     const mockServerOffers = [
       {
@@ -57,7 +58,7 @@ describe(`Operation work correctly`, () => {
       .onGet(`/hotels`)
       .reply(200, mockServerOffers);
 
-    return loadOffers(dispatch, jest.fn(), api)
+    return loadOffersOperation(dispatch, jest.fn(), api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(2, {

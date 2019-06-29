@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-
 import {parseServerResponseOffers} from "../../parse-server-response/parse-server-response-offers";
 import {BrowserRouter} from "react-router-dom";
 import {OfferDetails} from "./offer-details";
@@ -48,6 +47,7 @@ const mockServerOffers = {
 
 const offerMock = parseServerResponseOffers(mockServerOffers);
 const fetchReviews = () => {};
+const changeBookmarkIsActive = () => {};
 
 describe(`testing OfferDetails render`, () => {
   it(`OfferDetails is render correctly`, () => {
@@ -61,6 +61,7 @@ describe(`testing OfferDetails render`, () => {
             fetchReviews={fetchReviews}
             cityName={`Amsterdam`}
             reviews={[]}
+            changeBookmarkIsActive={changeBookmarkIsActive}
           />
         </BrowserRouter>
     ).toJSON();

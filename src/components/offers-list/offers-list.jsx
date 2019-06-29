@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
 import {OfferCard} from "../offer-card/offer-card";
-import {offersPropTypes} from "../../prop-types/offers-prop-types";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
 
 export class OffersList extends PureComponent {
   constructor(props) {
@@ -34,9 +34,9 @@ export class OffersList extends PureComponent {
 }
 
 OffersList.propTypes = {
-  offers: offersPropTypes,
+  offers: PropTypes.arrayOf(offerPropTypes),
   onChange: PropTypes.func,
-  activeItem: PropTypes.object,
+  activeItem: offerPropTypes,
   changeActiveOffer: PropTypes.func,
   sort: PropTypes.string,
   changeActivePinOffer: PropTypes.func,

@@ -94,9 +94,7 @@ exports[`testing OfferCard render OfferCard is render correctly 1`] = `
     </h2>
     <p
       className="place-card__type"
-    >
-      Private room
-    </p>
+    />
   </div>
 </article>
 `;

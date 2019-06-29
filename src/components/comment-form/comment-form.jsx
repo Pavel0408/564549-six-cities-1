@@ -1,6 +1,9 @@
 import React, {PureComponent} from "react";
 import {RatingName} from "../../constants/rating-names";
 import PropTypes from "prop-types";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
+import {reviewPropTypes} from "../../prop-types/review-prop-type";
+import {WithActiveItem} from "../../hocs/with-active-item";
 
 export class CommentForm extends PureComponent {
   constructor(props) {
@@ -9,22 +12,17 @@ export class CommentForm extends PureComponent {
     this.ratingIschecked = false;
     this.textAreaIsCompleted = false;
     this.formRef = React.createRef();
-    this.state = {
-      formIsValid: false
-    };
-    this.changeRatingHandler = this.changeRatingHandler.bind(this);
-    this.textareaChangeHandler = this.textareaChangeHandler.bind(this);
+    props.changeFormIsValid(false);
+    this.changeRatingHandle = this.changeRatingHandle.bind(this);
+    this.textareaChangeHandle = this.textareaChangeHandle.bind(this);
     this.changeRatingChecked = this.changeRatingChecked.bind(this);
     this.changeTextAreaIsCompleted = this.changeTextAreaIsCompleted.bind(this);
   }
 
   checkForm() {
+    const {changeFormIsValid} = this.props;
     if (this.ratingIschecked && this.textAreaIsCompleted) {
-      this.setState(() => {
-        return {
-          formIsValid: true
-        };
-      });
+      changeFormIsValid(true);
     }
   }
   changeRatingChecked() {
@@ -35,17 +33,17 @@ export class CommentForm extends PureComponent {
       this.textAreaIsCompleted = true;
     }
   }
-  changeRatingHandler() {
+  changeRatingHandle() {
     this.changeRatingChecked();
     this.checkForm();
   }
-  textareaChangeHandler(evt) {
+  textareaChangeHandle(evt) {
     this.changeTextAreaIsCompleted(evt);
     this.checkForm();
   }
 
   render() {
-    const {sendReview, sendingError, activeOffer, isSending} = this.props;
+    const {sendReview, sendingError, activeOffer, isSending, formIsValid} = this.props;
 
     return <form className="reviews__form form" action="#" method="post" onSubmit={sendReview} ref={this.formRef}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
@@ -54,7 +52,7 @@ export class CommentForm extends PureComponent {
         {new Array(5).fill(``).map((it, i) =>{
           const index = 5 - i;
           return <React.Fragment key={`${activeOffer.id}${i}`}>
-            <input className="form__rating-input visually-hidden" name="rating" defaultValue={index} id={`${index}-stars`} type="radio" onChange={this.changeRatingHandler} />
+            <input className="form__rating-input visually-hidden" name="rating" defaultValue={index} id={`${index}-stars`} type="radio" onChange={this.changeRatingHandle} />
             <label htmlFor={`${index}-stars`} className="reviews__rating-label form__rating-label" title={RatingName[index]}>
               <svg className="form__star-image" width={37} height={33}>
                 <use xlinkHref="#icon-star" />
@@ -63,25 +61,22 @@ export class CommentForm extends PureComponent {
           </React.Fragment>;
         })}
       </div>
-      <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" defaultValue={``} onChange={this.textareaChangeHandler}/>
+      <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved" defaultValue={``} onChange={this.textareaChangeHandle}/>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
         <input type="hidden" name="activeOfferId" value={activeOffer.id}/>
-        <button className="reviews__submit form__submit button" type="submit" disabled={!this.state.formIsValid || isSending}>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={!formIsValid || isSending}>Submit</button>
       </div>
     </form>;
   }
 
   componentDidUpdate(prevProps) {
+    const {changeFormIsValid} = this.props;
     if (this.props.activeOffer !== prevProps.activeOffer || this.props.reviews.length !== prevProps.reviews.length) {
       this.formRef.current.reset();
-      this.setState(() => {
-        return {
-          formIsValid: false
-        };
-      });
+      changeFormIsValid(false);
       this.ratingIschecked = false;
       this.textAreaIsCompleted = false;
     }
@@ -91,8 +86,24 @@ export class CommentForm extends PureComponent {
 CommentForm.propTypes = {
   sendReview: PropTypes.func,
   sendingError: PropTypes.object,
-  activeOffer: PropTypes.object,
+  activeOffer: offerPropTypes,
   isSending: PropTypes.bool,
-  reviews: PropTypes.array
+  reviews: PropTypes.arrayOf(reviewPropTypes),
+  changeFormIsValid: PropTypes.func,
+  formIsValid: PropTypes.bool
 };
+
+export const CommentFormWithActiveItem = (props) => {
+  return <WithActiveItem render={(data) => {
+    const {activeItem, onChange} = data;
+
+    return <CommentForm {...props}
+      formIsValid={activeItem}
+      changeFormIsValid={onChange}
+    />;
+  }
+  }
+  />;
+};
+
 

@@ -1,5 +1,4 @@
 import {dataReducer} from './data-reducer';
-import {randomOffers as offers} from "../mocks/offers";
 import {ActionType} from "../action-type";
 import {SortName} from "../sort-functions";
 
@@ -15,7 +14,7 @@ describe(`Data reducer is correct`, () => {
   it(`correctly change city`, () => {
     const state = {
       cityName: `Amsterdam`,
-      offers
+      offers: []
     };
 
     const cityChangeAction = {
@@ -26,7 +25,7 @@ describe(`Data reducer is correct`, () => {
     };
     expect(dataReducer(state, cityChangeAction)).toEqual({
       cityName: `Brussels`,
-      offers
+      offers: []
     });
   });
   it(`correctly change activeOffer`, () => {
@@ -43,6 +42,40 @@ describe(`Data reducer is correct`, () => {
 
     expect(dataReducer(state, activeOfferChangeAction)).toEqual({
       activeOffer: `newOffer`
+    });
+  });
+
+  it(`correctly change activePinOffer`, () => {
+    const state = {
+      activePinOffer: null
+    };
+
+    const activeOfferChangeAction = {
+      type: ActionType.ACTIVE_PIN_OFFER_CHANGE,
+      payload: {
+        activePinOffer: `newOffer`
+      }
+    };
+
+    expect(dataReducer(state, activeOfferChangeAction)).toEqual({
+      activePinOffer: `newOffer`
+    });
+  });
+
+  it(`correctly change sort`, () => {
+    const state = {
+      sort: SortName.popular
+    };
+
+    const activeOfferChangeAction = {
+      type: ActionType.CHANGE_SORT,
+      payload: {
+        sort: SortName.topRated
+      }
+    };
+
+    expect(dataReducer(state, activeOfferChangeAction)).toEqual({
+      sort: SortName.topRated
     });
   });
 

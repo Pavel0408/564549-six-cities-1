@@ -1,24 +1,20 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {SortName, SortText} from "../../sort-functions";
+import {WithActiveItem} from "../../hocs/with-active-item";
 
 
 export class Sort extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      listOpen: false
-    };
     this.togglelList = this.togglelList.bind(this);
+    props.changeListOpen(false);
   }
 
   togglelList() {
-    this.setState((state) => {
-      return {
-        listOpen: !state.listOpen
-      };
-    });
+    const {changeListOpen, listOpen} = this.props;
+    changeListOpen(!listOpen);
   }
 
   generateChangeSort(sort) {
@@ -32,6 +28,7 @@ export class Sort extends PureComponent {
   }
 
   render() {
+    const {listOpen} = this.props;
     return <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by </span>
       <span className="places__sorting-type" tabIndex="0" onClick={this.togglelList}>
@@ -44,7 +41,7 @@ export class Sort extends PureComponent {
           <use xlinkHref="#icon-arrow-select"/>
         </svg>
       </span>
-      <ul className={`places__options places__options--custom ${this.state.listOpen && `places__options--opened`}`} onClick={this.togglelList}>
+      <ul className={`places__options places__options--custom ${listOpen && `places__options--opened`}`} onClick={this.togglelList}>
         <li
           className="places__option places__option--active"
           tabIndex="0"
@@ -74,5 +71,20 @@ export class Sort extends PureComponent {
 
 Sort.propTypes = {
   changeSort: PropTypes.func,
-  sort: PropTypes.string
+  sort: PropTypes.string,
+  changeListOpen: PropTypes.func,
+  listOpen: PropTypes.bool
+};
+
+export const SortWithActiveItem = (props) => {
+  return <WithActiveItem render={(data) => {
+    const {activeItem, onChange} = data;
+
+    return <Sort {...props}
+      listOpen={activeItem}
+      changeListOpen={onChange}
+    />;
+  }
+  }
+  />;
 };

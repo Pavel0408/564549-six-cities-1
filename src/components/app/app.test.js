@@ -47,6 +47,8 @@ const loadOffers = () => {
 const isAuthorized = () => {
 };
 
+const onCityClick = () => {};
+
 const screenSwitch = () => {
   return <div></div>;
 };
@@ -63,6 +65,7 @@ describe(`testing App render`, () => {
             loadOffers={loadOffers}
             isAuthorized={isAuthorized}
             screenSwitch={screenSwitch}
+            onCityClick={onCityClick}
           />
         </BrowserRouter>).toJSON();
 

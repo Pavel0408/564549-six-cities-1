@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
 import {PureComponent} from "react";
-import {offersPropTypes} from "../../prop-types/offers-prop-types";
+
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
+import {userPropTypes} from "../../prop-types/user-prop-types";
+import {reviewPropTypes} from "../../prop-types/review-prop-type";
 
 export class App extends PureComponent {
   constructor(props) {
     super(props);
-
     props.isAuthorized();
     this.props.loadOffers();
   }
@@ -16,9 +18,9 @@ export class App extends PureComponent {
 }
 
 App.propTypes = {
-  offers: offersPropTypes,
+  offers: PropTypes.arrayOf(offerPropTypes),
   cityName: PropTypes.string.isRequired,
-  cityClickHandler: PropTypes.func.isRequired,
+  onCityClick: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string),
   isLoading: PropTypes.bool,
   error: PropTypes.object,
@@ -26,8 +28,25 @@ App.propTypes = {
   isAuthorized: PropTypes.func,
   isAuthorizationRequired: PropTypes.bool,
   authorize: PropTypes.func,
-  user: PropTypes.object,
+  user: userPropTypes,
   signOut: PropTypes.func,
-  screenSwitch: PropTypes.func
+  screenSwitch: PropTypes.func,
+  activeOffer: offerPropTypes,
+  reviews: PropTypes.arrayOf(reviewPropTypes),
+  reviewsError: PropTypes.object,
+  sort: PropTypes.string,
+  activePinOffer: offerPropTypes,
+  sendingError: PropTypes.object,
+  isSending: PropTypes.bool,
+  favoriteIsLoading: PropTypes.bool,
+  favoriteLoadingError: PropTypes.object,
+  favoriteOffers: PropTypes.arrayOf(offerPropTypes),
+  sendReview: PropTypes.func,
+  changeActiveOffer: PropTypes.func,
+  fetchReviews: PropTypes.func,
+  changeSort: PropTypes.func,
+  changeActivePinOffer: PropTypes.func,
+  changeFavorite: PropTypes.func,
+  fetchFavorite: PropTypes.func
 };
 

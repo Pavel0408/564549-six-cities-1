@@ -1,19 +1,38 @@
 import connect from "react-redux/es/connect/connect";
 
-import {ActionCreator} from "../../action-creator";
+import {changeActiveCity, changeActivePinOffer, changeSort, setActiveOffer} from "../../action-creator";
 import {App} from "./app";
 import {
   getActiveOffer,
-  getActiveOffers, getActivePinOffer,
+  getActiveOffers,
+  getActivePinOffer,
   getCities,
-  getCityName, getIsAuthorizationRequired, getIsSending,
+  getCityName,
+  getFavoriteIsLoading,
+  getFavoriteLoadingError,
+  getFavoriteOffers,
+  getIsAuthorizationRequired,
+  getIsSending,
   getOffersIsLoading,
-  getOffersLoadError, getReviews, getReviewsError, getSendingError, getSort, getUser,
+  getOffersLoadError,
+  getReviews,
+  getReviewsError,
+  getSendingError,
+  getSort,
+  getUser,
 } from "../../reducer/selectors";
-import {Operation} from "../../operation";
 import {withScreenSwitch} from "../../hocs/with-screen-switch";
 import {ScreenSwitch} from "../../hocs/screen-switch";
 import {SortFunctions} from "../../sort-functions";
+import {
+  authorize, changeFavorite,
+  fetchReviews,
+  getFavorite,
+  isAuthorized,
+  loadOffers,
+  sendReviews,
+  updateOffers
+} from "../../operation";
 
 const mapStateToProps = (state) => {
   const sortFunction = SortFunctions[getSort(state)];
@@ -32,27 +51,30 @@ const mapStateToProps = (state) => {
     sort: getSort(state),
     activePinOffer: getActivePinOffer(state),
     sendingError: getSendingError(state),
-    isSending: getIsSending(state)
+    isSending: getIsSending(state),
+    favoriteIsLoading: getFavoriteIsLoading(state),
+    favoriteLoadingError: getFavoriteLoadingError(state),
+    favoriteOffers: getFavoriteOffers(state)
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    cityClickHandler: (changedCity) => {
-      dispatch(ActionCreator.changeActiveCity(changedCity));
+    onCityClick: (changedCity) => {
+      dispatch(changeActiveCity(changedCity));
     },
     loadOffers: () => {
-      dispatch(Operation.loadOffers());
+      dispatch(loadOffers());
     },
     isAuthorized: () => {
-      dispatch(Operation.isAuthorized());
+      dispatch(isAuthorized());
     },
     authorize: (evt) => {
       evt.preventDefault();
       const authorizationFormData = new FormData(evt.target);
       const email = authorizationFormData.get(`email`);
       const password = authorizationFormData.get(`password`);
-      dispatch(Operation.authorize({
+      dispatch(authorize({
         email,
         password
       }));
@@ -63,32 +85,31 @@ const mapDispatchToProps = (dispatch) => {
       const id = sendReviewsFormData.get(`activeOfferId`);
       const rating = sendReviewsFormData.get(`rating`);
       const comment = sendReviewsFormData.get(`review`);
-      dispatch(Operation.sendReviews({
+      dispatch(sendReviews({
         id,
         rating,
         comment
       }));
     },
-    signOut: (evt) => {
-      evt.preventDefault();
-      dispatch(ActionCreator.authorizationFailed());
-    },
     changeActiveOffer: (offer) => {
-      dispatch(ActionCreator.setActiveOffer(offer));
+      dispatch(setActiveOffer(offer));
     },
     fetchReviews: (id) => {
-      dispatch(Operation.fetchReviews(id));
+      dispatch(fetchReviews(id));
     },
     changeSort: (sort) => {
-      dispatch(ActionCreator.changeSort(sort));
+      dispatch(changeSort(sort));
     },
     changeActivePinOffer: (offer) => {
-      dispatch(ActionCreator.changeActivePinOffer(offer));
+      dispatch(changeActivePinOffer(offer));
     },
     changeFavorite: (favoriteItem) => {
-      dispatch(Operation.changeFavorite(favoriteItem))
-        .then(dispatch(Operation.updateOffers()));
-
+      dispatch(changeFavorite(favoriteItem))
+        .then(dispatch(updateOffers())
+          .then(dispatch(getFavorite())));
+    },
+    fetchFavorite: () => {
+      dispatch(getFavorite());
     }
   };
 };

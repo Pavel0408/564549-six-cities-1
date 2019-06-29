@@ -1,20 +1,23 @@
 import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
+
 import {ReviewsList} from "../reviews-list/reviews-list";
 import {OffersList} from "../offers-list/offers-list";
-import {WithLeafletMap} from "../with-leaflet-map/with-leaflet-map";
+import {WithLeafletMap} from "../../hocs/with-leaflet-map";
 import {OffersMap} from "../offers-map/offers-map";
 import {getDistanceFromCoords} from "../../utils";
+import {UserElementSwitch} from "../../hocs/user-element-switch";
+import {offerPropTypes} from "../../prop-types/offer-prop-types";
+import {userPropTypes} from "../../prop-types/user-prop-types";
+import {WithActiveItem} from "../../hocs/with-active-item";
 
 export class OfferDetails extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.favoriteClickHandler = this.favoriteClickHandler.bind(this);
-    this.state = {
-      isFavorite: props.activeOffer.isFavorite
-    };
+    props.changeBookmarkIsActive(props.activeOffer.isFavorite);
+    this.favoriteClickHandle = this.favoriteClickHandle.bind(this);
   }
 
   getDistanceFromActiveOffer(offer) {
@@ -24,20 +27,16 @@ export class OfferDetails extends PureComponent {
     });
   }
 
-  favoriteClickHandler(evt) {
+  favoriteClickHandle(evt) {
     evt.preventDefault();
-    const {changeFavorite} = this.props;
+    const {changeFavorite, changeBookmarkIsActive, bookmarkIsActive} = this.props;
     const status = (this.props.activeOffer.isFavorite) ? 0 : 1;
     changeFavorite({
       id: this.props.activeOffer.id,
       status
     });
 
-    this.setState((state) => {
-      return {
-        isFavorite: !state.isFavorite
-      };
-    });
+    changeBookmarkIsActive(!bookmarkIsActive);
   }
 
   render() {
@@ -48,23 +47,7 @@ export class OfferDetails extends PureComponent {
       }).slice(0, 3);
     const offersOnMap = offers.slice();
     offersOnMap.push(offer);
-    const {user} = this.props;
-    const userElementSwitch = () => {
-      return user ?
-        <Link
-          className="header__nav-link header__nav-link--profile"
-          to={`/favorites`}> <div className="header__avatar-wrapper user__avatar-wrapper">
-            <img src={`https://es31-server.appspot.com/six-cities${user.avatar}`}/>
-            <span className="header__user-name user__name">{user.email}</span>
-          </div>
-        </Link>
-        :
-        <Link className="header__nav-link header__nav-link--profile" to={`/login`}>
-          <div className="header__avatar-wrapper user__avatar-wrapper">
-          </div>
-          <span className="header__login">Sign in</span>
-        </Link>;
-    };
+    const {user, bookmarkIsActive} = this.props;
 
     return <React.Fragment>
       <div>
@@ -75,14 +58,16 @@ export class OfferDetails extends PureComponent {
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <a className="header__logo-link" href="main.html">
+                <Link to="/" className="header__logo-link">
                   <img className="header__logo" src="/img/logo.svg" alt="6 cities logo" width={81} height={41} />
-                </a>
+                </Link>
               </div>
               <nav className="header__nav">
                 <ul className="header__nav-list">
                   <li className="header__nav-item user">
-                    {userElementSwitch()}
+                    <UserElementSwitch
+                      user={user}
+                    />
                   </li>
                 </ul>
               </nav>
@@ -111,8 +96,8 @@ export class OfferDetails extends PureComponent {
                   <h1 className="property__name">
                     {offer.name}
                   </h1>
-                  <button className={offer.isFavorite ? `property__bookmark-button  property__bookmark-button--active button` : `property__bookmark-button button`} type="button" onClick={this.favoriteClickHandler}>
-                    <svg className="property__bookmark-icon" width={31} style={this.state.isFavorite ? {fill: `#4481c3`, stroke: `#4481c3`} : {}} height={33}>
+                  <button className={offer.isFavorite ? `property__bookmark-button  property__bookmark-button--active button` : `property__bookmark-button button`} type="button" onClick={this.favoriteClickHandle}>
+                    <svg className="property__bookmark-icon" width={31} style={bookmarkIsActive ? {fill: `#4481c3`, stroke: `#4481c3`} : {}} height={33}>
                       <use xlinkHref="#icon-bookmark" />
                     </svg>
                     <span className="visually-hidden">To bookmarks</span>
@@ -199,16 +184,30 @@ export class OfferDetails extends PureComponent {
 }
 
 OfferDetails.propTypes = {
-  activeOffer: PropTypes.object,
+  activeOffer: offerPropTypes,
   isAuthorizationRequired: PropTypes.bool,
-  user: PropTypes.object,
+  user: userPropTypes,
   cityName: PropTypes.string,
   changeActiveOffer: PropTypes.func,
-  offers: PropTypes.array,
+  offers: PropTypes.arrayOf(offerPropTypes),
   changeActivePinOffer: PropTypes.func,
-  activePinOffer: PropTypes.object,
+  activePinOffer: offerPropTypes,
   fetchReviews: PropTypes.func,
-  changeFavorite: PropTypes.func
+  changeFavorite: PropTypes.func,
+  changeBookmarkIsActive: PropTypes.func,
+  bookmarkIsActive: PropTypes.bool
 };
 
+export const OfferDetailsWithActiveItem = (props) => {
+  return <WithActiveItem render={(data) => {
+    const {activeItem, onChange} = data;
+
+    return <OfferDetails {...props}
+      bookmarkIsActive={activeItem}
+      changeBookmarkIsActive={onChange}
+    />;
+  }
+  }
+  />;
+};
 
