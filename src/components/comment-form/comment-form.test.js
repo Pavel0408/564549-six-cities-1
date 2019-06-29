@@ -28,6 +28,7 @@ const offersMock = {
   city: `Amsterdam`,
   id: 0
 };
+const changeFormIsValid = () => {};
 
 describe(`testing CommentForm render`, () => {
   it(`CommentForm is render correctly`, () => {
@@ -36,6 +37,7 @@ describe(`testing CommentForm render`, () => {
           <CommentForm
             reviews={mockComments}
             activeOffer={offersMock}
+            changeFormIsValid={changeFormIsValid}
           />
         </BrowserRouter>).toJSON();
 

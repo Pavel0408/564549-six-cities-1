@@ -1,6 +1,5 @@
 import {fetchOffersReducer} from "./fetch-offers-reducer";
 import {ActionType} from "../action-type";
-import {randomOffers as offers} from "../mocks/offers";
 
 describe(`fetchOffersReducer is correct`, () => {
   it(`returns initial state without parameters`, () => {
@@ -36,7 +35,7 @@ describe(`fetchOffersReducer is correct`, () => {
   });
   it(`correctly change offers`, () => {
     const state = {
-      offers
+      offers: []
     };
     const offersMock = [
       {

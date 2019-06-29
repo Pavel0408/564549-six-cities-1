@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {PureComponent} from "react";
+import React from "react";
 
 import {SortWithActiveItem} from "../sort/sort";
 import {OffersList} from "../offers-list/offers-list";

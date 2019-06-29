@@ -122,7 +122,7 @@ Array [
               onClick={[Function]}
             >
               <span>
-                PARIS
+                Paris
               </span>
             </a>
           </li>
@@ -195,7 +195,7 @@ Array [
             className="places__found"
           >
             2
-             places to stay in
+             places to stay in 
             Amsterdam
           </b>
           <form
@@ -206,7 +206,7 @@ Array [
             <span
               className="places__sorting-caption"
             >
-              Sort by
+              Sort by 
             </span>
             <span
               className="places__sorting-type"

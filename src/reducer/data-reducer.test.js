@@ -1,5 +1,4 @@
 import {dataReducer} from './data-reducer';
-import {randomOffers as offers} from "../mocks/offers";
 import {ActionType} from "../action-type";
 import {SortName} from "../sort-functions";
 
@@ -15,7 +14,7 @@ describe(`Data reducer is correct`, () => {
   it(`correctly change city`, () => {
     const state = {
       cityName: `Amsterdam`,
-      offers
+      offers: []
     };
 
     const cityChangeAction = {
@@ -26,7 +25,7 @@ describe(`Data reducer is correct`, () => {
     };
     expect(dataReducer(state, cityChangeAction)).toEqual({
       cityName: `Brussels`,
-      offers
+      offers: []
     });
   });
   it(`correctly change activeOffer`, () => {

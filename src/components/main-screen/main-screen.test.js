@@ -37,7 +37,7 @@ const cities = [
   `Dusseldorf`
 ];
 
-const cityClickHandle = () => {
+const onCityClick = () => {
 };
 
 const cityName = `Amsterdam`;
@@ -50,7 +50,7 @@ describe(`testing MainScreen render`, () => {
             offers={offersMock}
             cities={cities}
             cityName={cityName}
-            cityClickHandle={cityClickHandle}
+            onCityClick={onCityClick}
           />
         </BrowserRouter>).toJSON();
 

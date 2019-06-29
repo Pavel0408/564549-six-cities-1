@@ -28,7 +28,7 @@ exports[`testing Sort render Sort is render correctly 1`] = `
     </svg>
   </span>
   <ul
-    className="places__options places__options--custom false"
+    className="places__options places__options--custom undefined"
     onClick={[Function]}
   >
     <li

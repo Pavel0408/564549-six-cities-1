@@ -6,6 +6,7 @@ import {SortName} from "../../sort-functions";
 
 const sort = SortName.popular;
 const changeSort = () => {};
+const changeListOpen = () => {};
 
 describe(`testing Sort render`, () => {
   it(`Sort is render correctly`, () => {
@@ -14,6 +15,7 @@ describe(`testing Sort render`, () => {
         <Sort
           sort={sort}
           changeSort={changeSort}
+          changeListOpen={changeListOpen}
         />).toJSON();
 
     expect(tree).toMatchSnapshot();
