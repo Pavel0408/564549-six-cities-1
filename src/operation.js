@@ -1,17 +1,23 @@
-import {ActionCreator} from "./action-creator";
+import {
+  authorization, authorizationFailed, fetchFavoriteFailed, fetchFavoriteReceived,
+  fetchOffersFailed,
+  fetchOffersReceived, fetchReviewsFailed,
+  fetchReviewsSuccess, loadingFavorite,
+  loadingOffers, sendingReviews, sendingReviewsError
+} from "./action-creator";
 import {parseServerResponseOffers} from "./parse-server-response/parse-server-response-offers";
 import {ServerPath} from "./constants/server-path";
 import {parseAuthorizationResponse} from "./parse-server-response/parse-server-response-authorization";
 import {parseServerResponseReviews} from "./parse-server-response/parse-server-response-reviews";
 
 export const loadOffers = () => (dispatch, getState, api) => {
-  dispatch(ActionCreator.loadingOffers());
+  dispatch(loadingOffers());
   return api.get(ServerPath.HOTELS)
       .then(parseServerResponseOffers)
       .then((offers) => {
-        dispatch(ActionCreator.fetchOffersReceived(offers));
+        dispatch(fetchOffersReceived(offers));
       }).catch((e) => {
-        dispatch(ActionCreator.fetchOffersFailed(e));
+        dispatch(fetchOffersFailed(e));
       });
 };
 export const authorize = (authorizationData) => (dispatch, getState, api) => {
@@ -23,10 +29,10 @@ export const authorize = (authorizationData) => (dispatch, getState, api) => {
         return parseAuthorizationResponse(response);
       })
       .then((user) => {
-        dispatch(ActionCreator.authorization(user));
+        dispatch(authorization(user));
       })
-      .catch((e) =>{
-        dispatch(ActionCreator.authorization(e));
+      .catch(() =>{
+        dispatch(authorization(null));
       });
 };
 export const isAuthorized = () => (dispatch, getState, api) => {
@@ -35,10 +41,10 @@ export const isAuthorized = () => (dispatch, getState, api) => {
         return parseAuthorizationResponse(response);
       })
       .then((user) => {
-        dispatch(ActionCreator.authorization(user));
+        dispatch(authorization(user));
       })
       .catch(() => {
-        dispatch(ActionCreator.authorization(null));
+        dispatch(authorization(null));
       });
 };
 export const fetchReviews = (id) => (dispatch, getState, api) => {
@@ -47,14 +53,14 @@ export const fetchReviews = (id) => (dispatch, getState, api) => {
         return parseServerResponseReviews(response);
       })
       .then((reviews) => {
-        dispatch(ActionCreator.fetchReviewsSuccess(reviews));
+        dispatch(fetchReviewsSuccess(reviews));
       })
       .catch((e) => {
-        dispatch(ActionCreator.fetchReviewsFailed(e));
+        dispatch(fetchReviewsFailed(e));
       });
 };
 export const sendReviews = (review) => (dispatch, getState, api) => {
-  dispatch(ActionCreator.sendingReviews());
+  dispatch(sendingReviews());
   return api.post(ServerPath.COMMENTS + review.id, {
     rating: review.rating,
     comment: review.comment
@@ -62,32 +68,32 @@ export const sendReviews = (review) => (dispatch, getState, api) => {
     return parseServerResponseReviews(response);
   })
       .then((reviews) => {
-        dispatch(ActionCreator.fetchReviewsSuccess(reviews));
+        dispatch(fetchReviewsSuccess(reviews));
       }).catch((e) => {
-        dispatch(ActionCreator.sendingReviewsError(e));
+        dispatch(sendingReviewsError(e));
       });
 };
 export const changeFavorite = (favoriteItem) => (dispatch, getState, api) => {
   return api.post(`${ServerPath.FAVORITE}${favoriteItem.id}/${favoriteItem.status}`)
       .catch((e) => {
-        dispatch(ActionCreator.authorizationFailed(e));
+        dispatch(authorizationFailed(e));
       });
 };
 export const updateOffers = () => (dispatch, getState, api) => {
   return api.get(ServerPath.HOTELS)
       .then(parseServerResponseOffers)
       .then((offers) => {
-        dispatch(ActionCreator.fetchOffersReceived(offers));
+        dispatch(fetchOffersReceived(offers));
       });
 };
 export const getFavorite = () => (dispatch, getState, api) => {
-  dispatch(ActionCreator.loadingFavorite());
+  dispatch(loadingFavorite());
   return api.get(ServerPath.FAVORITE)
       .then(parseServerResponseOffers)
       .then((offers) => {
-        dispatch(ActionCreator.fetchFavoriteReceived(offers));
+        dispatch(fetchFavoriteReceived(offers));
       }).catch((e) => {
-        dispatch(ActionCreator.fetchFavoriteFailed(e));
+        dispatch(fetchFavoriteFailed(e));
       });
 };
 

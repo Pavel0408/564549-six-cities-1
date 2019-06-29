@@ -24,9 +24,7 @@ export class OffersMap extends PureComponent {
 
   renderMap() {
     const {offers, cityName} = this.props;
-    console.log(cityName.toUpperCase())
     const city = CityLocation[cityName.toUpperCase()];
-
     const zoom = 12;
     const mapConfig = {
       offers,

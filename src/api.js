@@ -1,7 +1,6 @@
 import axios from "axios";
-import {ActionCreator} from "./action-creator";
 
-export const createAPI = (dispatch) => {
+export const createAPI = () => {
   const api = axios.create({
     baseURL: `https://es31-server.appspot.com/six-cities`,
     timeout: 5000,
@@ -10,9 +9,6 @@ export const createAPI = (dispatch) => {
 
   const onSuccess = (response) => response;
   const onFail = (err) => {
-    if (err.response.status === 403) {
-      dispatch(ActionCreator.authorizationFailed(err));
-    }
     throw new Error(err);
   };
   api.interceptors.response.use(onSuccess, onFail);

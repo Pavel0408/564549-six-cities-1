@@ -1,6 +1,6 @@
 import connect from "react-redux/es/connect/connect";
 
-import {ActionCreator} from "../../action-creator";
+import {changeActiveCity, changeActivePinOffer, changeSort, setActiveOffer} from "../../action-creator";
 import {App} from "./app";
 import {
   getActiveOffer,
@@ -61,7 +61,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onCityClick: (changedCity) => {
-      dispatch(ActionCreator.changeActiveCity(changedCity));
+      dispatch(changeActiveCity(changedCity));
     },
     loadOffers: () => {
       dispatch(loadOffers());
@@ -92,16 +92,16 @@ const mapDispatchToProps = (dispatch) => {
       }));
     },
     changeActiveOffer: (offer) => {
-      dispatch(ActionCreator.setActiveOffer(offer));
+      dispatch(setActiveOffer(offer));
     },
     fetchReviews: (id) => {
       dispatch(fetchReviews(id));
     },
     changeSort: (sort) => {
-      dispatch(ActionCreator.changeSort(sort));
+      dispatch(changeSort(sort));
     },
     changeActivePinOffer: (offer) => {
-      dispatch(ActionCreator.changeActivePinOffer(offer));
+      dispatch(changeActivePinOffer(offer));
     },
     changeFavorite: (favoriteItem) => {
       dispatch(changeFavorite(favoriteItem))

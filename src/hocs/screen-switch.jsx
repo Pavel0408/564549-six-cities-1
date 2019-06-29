@@ -5,7 +5,7 @@ import {SignIn} from "../components/sign-in/sign-in";
 import {Favorite} from "../components/favorite/favorite";
 import React from "react";
 import PropTypes from "prop-types";
-import {OfferDetails, OfferDetailsWithActiveItem} from "../components/offer-details/offer-details";
+import {OfferDetailsWithActiveItem} from "../components/offer-details/offer-details";
 import {FavoriteEmpty} from "../components/favorte-empty/favorite-empty";
 import {offerPropTypes} from "../prop-types/offer-prop-types";
 import {userPropTypes} from "../prop-types/user-prop-types";
