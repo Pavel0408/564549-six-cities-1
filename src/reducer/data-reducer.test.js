@@ -45,6 +45,40 @@ describe(`Data reducer is correct`, () => {
     });
   });
 
+  it(`correctly change activePinOffer`, () => {
+    const state = {
+      activePinOffer: null
+    };
+
+    const activeOfferChangeAction = {
+      type: ActionType.ACTIVE_PIN_OFFER_CHANGE,
+      payload: {
+        activePinOffer: `newOffer`
+      }
+    };
+
+    expect(dataReducer(state, activeOfferChangeAction)).toEqual({
+      activePinOffer: `newOffer`
+    });
+  });
+
+  it(`correctly change sort`, () => {
+    const state = {
+      sort: SortName.popular
+    };
+
+    const activeOfferChangeAction = {
+      type: ActionType.CHANGE_SORT,
+      payload: {
+        sort: SortName.topRated
+      }
+    };
+
+    expect(dataReducer(state, activeOfferChangeAction)).toEqual({
+      sort: SortName.topRated
+    });
+  });
+
   it(`returns state on incorrect action`, () => {
     const offersMock = [
       {
