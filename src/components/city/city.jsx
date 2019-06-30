@@ -5,10 +5,10 @@ export class City extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.cityClickHandle = this.cityClickHandle.bind(this);
+    this.handleCityClick = this.handleCityClick.bind(this);
   }
 
-  cityClickHandle(evt) {
+  handleCityClick(evt) {
     evt.preventDefault();
     this.props.onCityClick(this.props.city);
   }
@@ -17,7 +17,7 @@ export class City extends PureComponent {
     const isActive = this.props.isActive;
 
     return <li className="locations__item">
-      <a className={isActive ? `locations__item-link tabs__item tabs__item tabs__item--active` : `locations__item-link tabs__item tabs__item`} onClick={this.cityClickHandle}>
+      <a className={isActive ? `locations__item-link tabs__item tabs__item tabs__item--active` : `locations__item-link tabs__item tabs__item`} onClick={this.handleCityClick}>
         <span>{this.props.city}</span>
       </a>
     </li>;

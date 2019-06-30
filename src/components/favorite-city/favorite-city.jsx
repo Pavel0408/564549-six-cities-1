@@ -9,10 +9,10 @@ export class FavoriteCity extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.cityClickHandle = this.cityClickHandle.bind(this);
+    this.handleCityClick = this.handleCityClick.bind(this);
   }
 
-  cityClickHandle() {
+  handleCityClick() {
     this.props.onCityClick(this.props.favoriteCityName);
   }
 
@@ -23,7 +23,7 @@ export class FavoriteCity extends PureComponent {
       <li className="favorites__locations-items">
         <div className="favorites__locations locations locations--current">
           <div className="locations__item">
-            <Link to="/" className="locations__item-link" href="#" onClick={this.onCityClick}>
+            <Link to="/" className="locations__item-link" href="#" onClick={this.handleCityClick}>
               <span>{favoriteCityName}</span>
             </Link>
           </div>

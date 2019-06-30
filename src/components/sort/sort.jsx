@@ -3,16 +3,15 @@ import PropTypes from "prop-types";
 import {SortName, SortText} from "../../sort-functions";
 import {WithActiveItem} from "../../hocs/with-active-item";
 
-
 export class Sort extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.togglelList = this.togglelList.bind(this);
+    this.handleListClick = this.handleListClick.bind(this);
     props.onChangeListOpen(false);
   }
 
-  togglelList() {
+  handleListClick() {
     const {onChangeListOpen, listOpen} = this.props;
     onChangeListOpen(!listOpen);
   }
@@ -27,7 +26,7 @@ export class Sort extends PureComponent {
     const {listOpen} = this.props;
     return <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by </span>
-      <span className="places__sorting-type" tabIndex="0" onClick={this.togglelList}>
+      <span className="places__sorting-type" tabIndex="0" onClick={this.handleListClick}>
         {SortText[this.props.sort]}
         <svg
           className="places__sorting-arrow"
@@ -37,7 +36,7 @@ export class Sort extends PureComponent {
           <use xlinkHref="#icon-arrow-select"/>
         </svg>
       </span>
-      <ul className={`places__options places__options--custom ${listOpen && `places__options--opened`}`} onClick={this.togglelList}>
+      <ul className={`places__options places__options--custom ${listOpen && `places__options--opened`}`} onClick={this.handleListClick}>
         <li
           className="places__option places__option--active"
           tabIndex="0"

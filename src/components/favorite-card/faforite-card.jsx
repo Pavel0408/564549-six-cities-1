@@ -7,17 +7,17 @@ export class FavoriteCard extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.titleClickHandle = this.titleClickHandle.bind(this);
-    this.favoriteClickHandle = this.favoriteClickHandle.bind(this);
+    this.handleTitleClick = this.handleTitleClick.bind(this);
+    this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
   }
 
-  titleClickHandle() {
+  handleTitleClick() {
     const {onChangeActiveOffer, onFetchReviews, offer} = this.props;
     onChangeActiveOffer(offer);
     onFetchReviews(offer.id);
   }
 
-  favoriteClickHandle(evt) {
+  handleFavoriteClick(evt) {
     evt.preventDefault();
     const {onChangeFavorite} = this.props;
     const status = (this._offer.isFavorite) ? 0 : 1;
@@ -27,7 +27,7 @@ export class FavoriteCard extends PureComponent {
     });
   }
 
-  favoriteClickHandle(evt) {
+  handleFavoriteClick(evt) {
     evt.preventDefault();
     const {onChangeFavorite, offer} = this.props;
     onChangeFavorite({
@@ -50,7 +50,7 @@ export class FavoriteCard extends PureComponent {
             <b className="place-card__price-value">€{offer.price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button" onClick={this.favoriteClickHandle}>
+          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button" onClick={this.handleFavoriteClick}>
             <svg className="place-card__bookmark-icon" width={18} height={19}>
               <use xlinkHref="#icon-bookmark"/>
             </svg>
@@ -64,7 +64,7 @@ export class FavoriteCard extends PureComponent {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${offer.id}`} href="#" onClick={this.titleClickHandle}>{offer.name}</Link>
+          <Link to={`/offer/${offer.id}`} href="#" onClick={this.handleTitleClick}>{offer.name}</Link>
         </h2>
         <p className="place-card__type">{offer.type}</p>
       </div>
