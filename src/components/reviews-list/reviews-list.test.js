@@ -4,6 +4,12 @@ import {BrowserRouter} from "react-router-dom";
 
 import {ReviewsList} from "./reviews-list";
 
+const dateFormat = new Intl.DateTimeFormat(`en-US`, {
+  month: `long`,
+  year: `numeric`
+});
+
+
 const mockComments = [
   {
     id: 1,
@@ -44,6 +50,7 @@ describe(`testing ReviewList render`, () => {
             reviews={mockComments}
             activeOffer={offersMock}
             user={user}
+            dateFormat={dateFormat}
           />
         </BrowserRouter>).toJSON();
 

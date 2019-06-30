@@ -4,6 +4,11 @@ import {BrowserRouter} from "react-router-dom";
 
 import {Review} from "./review";
 
+const dateFormat = new Intl.DateTimeFormat(`en-US`, {
+  month: `long`,
+  year: `numeric`
+});
+
 const mockComment = {
   id: 1,
   userId: 3,
@@ -21,6 +26,7 @@ describe(`testing Review render`, () => {
         <BrowserRouter>
           <Review
             comment={mockComment}
+            dateFormat={dateFormat}
           />
         </BrowserRouter>).toJSON();
 

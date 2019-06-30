@@ -55,6 +55,8 @@ describe(`testing OfferDetails render`, () => {
         <BrowserRouter>
           <OfferDetails
             activeOffer={offerMock[0]}
+            nearestOffers={offerMock}
+            offersOnMap={offerMock}
             isAuthorizationRequired={false}
             user={null}
             offers={offerMock}

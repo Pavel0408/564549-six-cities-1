@@ -36,6 +36,10 @@ const user = {
   isPro: false
 };
 
+const favoriteCityNames = [
+  `Amsterdam`
+];
+
 const fetchFavorite = () => {};
 
 describe(`testing Favorite render`, () => {
@@ -46,6 +50,7 @@ describe(`testing Favorite render`, () => {
             favoriteOffers={offersMock}
             user={user}
             onFetchFavorite={fetchFavorite}
+            favoriteCityNames={favoriteCityNames}
           />
         </BrowserRouter>).toJSON();
 
