@@ -7,7 +7,7 @@ describe(`Data reducer is correct`, () => {
     expect(dataReducer(undefined, {})).toEqual({
       cityName: `Amsterdam`,
       activeOffer: null,
-      sort: SortName.popular,
+      sort: SortName.POPULAR,
       activePinOffer: null
     });
   });
@@ -64,18 +64,18 @@ describe(`Data reducer is correct`, () => {
 
   it(`correctly change sort`, () => {
     const state = {
-      sort: SortName.popular
+      sort: SortName.POPULAR
     };
 
     const activeOfferChangeAction = {
       type: ActionType.CHANGE_SORT,
       payload: {
-        sort: SortName.topRated
+        sort: SortName.TOP_RATED
       }
     };
 
     expect(dataReducer(state, activeOfferChangeAction)).toEqual({
-      sort: SortName.topRated
+      sort: SortName.TOP_RATED
     });
   });
 

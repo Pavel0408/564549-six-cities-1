@@ -34,7 +34,6 @@ exports[`testing CitiesPlaces render CitiesPlaces is render correctly 1`] = `
         onClick={[Function]}
         tabIndex="0"
       >
-        Popular
         <svg
           className="places__sorting-arrow"
           height="4"
