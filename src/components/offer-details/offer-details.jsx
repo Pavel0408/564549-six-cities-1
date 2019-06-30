@@ -167,7 +167,6 @@ export class OfferDetails extends PureComponent {
           </div>
         </main>
       </div>
-
     </React.Fragment>;
   }
 }
