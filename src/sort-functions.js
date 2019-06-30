@@ -22,7 +22,7 @@ export const SortFunctions = {
   [SortName.priceLow]: (offerFirst, offerSecond) => {
     return offerFirst.price - offerSecond.price;
   },
-  [SortName.popular]: () => {
-    return 0;
+  [SortName.popular]: (offerFirst, offerSecond) => {
+    return offerFirst.id - offerSecond.id;
   }
 };
