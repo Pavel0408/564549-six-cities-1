@@ -33,7 +33,7 @@ export const ScreenSwitch = (props) => {
         />;
       }}
       />
-      <Route path="/offer/:id" render={() => {
+      <Route path="/offer/:id" render={(routeProps) => {
         if (props.isAuthorizationRequired) {
           return <SignIn
             {...props}
@@ -41,8 +41,20 @@ export const ScreenSwitch = (props) => {
         }
         if (props.activeOffer) {
           return <OfferDetailsWithActiveItem {...props}/>;
+        } else {
+          const {offers, changeActiveOffer, changeActivePinOffer} = props;
+          const id = routeProps.match.params.id;
+          const activeOffer = offers.find((offer) => {
+            return parseInt(offer.id, 10) === parseInt(id, 10);
+          });
+          if (activeOffer) {
+            changeActiveOffer(activeOffer);
+            changeActivePinOffer(activeOffer);
+          }
         }
-        return <Redirect to="/" />;
+        return <MainScreen
+          {...props}
+        />;
       }}
       />
       <Route path="/favorites" exact render={() => {
@@ -74,5 +86,8 @@ ScreenSwitch.propTypes = {
   activeOffer: PropTypes.offerPropTypes,
   user: userPropTypes,
   fetchFavorite: PropTypes.func,
-  favoriteOffers: PropTypes.arrayOf(offerPropTypes)
+  favoriteOffers: PropTypes.arrayOf(offerPropTypes),
+  offers: PropTypes.arrayOf(offerPropTypes),
+  changeActiveOffer: PropTypes.func,
+  changeActivePinOffer: PropTypes.func
 };
