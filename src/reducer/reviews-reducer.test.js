@@ -3,16 +3,9 @@ import {ActionType} from "../action-type";
 import {reviewsReducer} from "./reviews-reducer";
 
 describe(`reviewsReducer is correct`, () => {
-  it(`returns initial state without parameters`, () => {
-    expect(reviewsReducer(undefined, {})).toEqual({
-      reviews: [],
-      error: null,
-      isSending: false,
-      sendingError: null
-    });
-  });
+  // тест на неподдерживаемый action
   it(`returns correctly state on incorrect action`, () => {
-    const successAuthorizationAction = {
+    const incorrectAction = {
       type: ActionType.ACTIVE_OFFER,
       payload: {
         user: `something`
@@ -24,7 +17,15 @@ describe(`reviewsReducer is correct`, () => {
       isSending: false,
       sendingError: null
     };
-    expect(reviewsReducer(state, successAuthorizationAction)).toEqual({
+    expect(reviewsReducer(state, incorrectAction)).toEqual({
+      reviews: [],
+      error: null,
+      isSending: false,
+      sendingError: null
+    });
+  });
+  it(`returns initial state without parameters`, () => {
+    expect(reviewsReducer(undefined, {})).toEqual({
       reviews: [],
       error: null,
       isSending: false,

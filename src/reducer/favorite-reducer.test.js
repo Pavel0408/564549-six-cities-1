@@ -2,13 +2,7 @@ import {ActionType} from "../action-type";
 import {favoriteReducer} from "./favorite-reducer";
 
 describe(`favoriteReducer is correct`, () => {
-  it(`returns initial state without parameters`, () => {
-    expect(favoriteReducer(undefined, {})).toEqual({
-      isLoading: false,
-      error: null,
-      favoriteOffers: []
-    });
-  });
+  // тест на неподдерживаемый action
   it(`returns correctly state on incorrect action`, () => {
     const successAuthorizationAction = {
       type: ActionType.SENDING_REVIEWS,
@@ -22,6 +16,13 @@ describe(`favoriteReducer is correct`, () => {
       favoriteOffers: []
     };
     expect(favoriteReducer(state, successAuthorizationAction)).toEqual({
+      isLoading: false,
+      error: null,
+      favoriteOffers: []
+    });
+  });
+  it(`returns initial state without parameters`, () => {
+    expect(favoriteReducer(undefined, {})).toEqual({
       isLoading: false,
       error: null,
       favoriteOffers: []

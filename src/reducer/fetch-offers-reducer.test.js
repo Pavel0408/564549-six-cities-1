@@ -2,6 +2,23 @@ import {fetchOffersReducer} from "./fetch-offers-reducer";
 import {ActionType} from "../action-type";
 
 describe(`fetchOffersReducer is correct`, () => {
+  // тест на неподдерживаемый action
+  it(`returns correctly state on incorrect action`, () => {
+    const state = {
+      offer: [],
+      isLoading: false
+    };
+    const incorrectActon = {
+      type: ActionType.FETCH_REVIEWS_FAILED,
+      payload: {
+        isLoading: true
+      }
+    };
+    expect(fetchOffersReducer(state, incorrectActon)).toEqual({
+      offer: [],
+      isLoading: false
+    });
+  });
   it(`returns initial state without parameters`, () => {
     expect(fetchOffersReducer(undefined, {})).toEqual({
       isLoading: false,
