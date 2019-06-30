@@ -31,7 +31,6 @@ const offersMock = [
 
 const cityName = `Amsterdam`;
 
-
 describe(`testing FavoriteCity render`, () => {
   it(`FavoriteCity is render correctly`, () => {
     const tree = renderer.create(

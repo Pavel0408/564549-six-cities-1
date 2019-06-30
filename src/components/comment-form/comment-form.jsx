@@ -34,12 +34,8 @@ export class CommentForm extends PureComponent {
   changeTextAreaIsCompleted(evt) {
     const minCommentLength = 50;
     const maxCommentLength = 300;
-    if (evt.target.value.length > minCommentLength
-      && evt.target.value.length < maxCommentLength) {
-      this.textAreaIsCompleted = true;
-    } else {
-      this.textAreaIsCompleted = false;
-    }
+    this.textAreaIsCompleted = evt.target.value.length > minCommentLength
+      && evt.target.value.length < maxCommentLength;
   }
   handleChangeRating() {
     this.changeRatingChecked();

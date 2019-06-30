@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-
 import {BrowserRouter} from "react-router-dom";
+
 import {Favorite} from "./favorite";
 
 const offersMock = [

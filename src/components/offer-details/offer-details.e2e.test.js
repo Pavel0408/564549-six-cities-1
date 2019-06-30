@@ -45,7 +45,7 @@ const mockServerOffers = {
       }
     }
   ]
-}
+};
 
 const offersMock = parseServerResponseOffers(mockServerOffers);
 const fetchReviews = () => {};
