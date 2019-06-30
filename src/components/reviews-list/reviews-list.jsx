@@ -7,7 +7,8 @@ import {reviewPropTypes} from "../../prop-types/review-prop-type";
 import {userPropTypes} from "../../prop-types/user-prop-types";
 
 export const ReviewsList = (props) => {
-  const {reviewsError, reviews, user, onSendReview, sendingError, isSending, activeOffer} = props;
+  const {reviewsError, reviews, user, onSendReview, sendingError, isSending, activeOffer, dateFormat} = props;
+
   if (reviewsError && reviewsError.message) {
     return <h2>{reviewsError.message}</h2>;
   }
@@ -19,6 +20,7 @@ export const ReviewsList = (props) => {
         return <Review
           key={props.activeOffer.id.toString() + review.id}
           comment={review}
+          dateFormat={dateFormat}
         />;
       })}
     </ul>
@@ -40,5 +42,6 @@ ReviewsList.propTypes = {
   user: userPropTypes,
   onSendReview: PropTypes.func,
   sendingError: PropTypes.object,
-  isSending: PropTypes.bool
+  isSending: PropTypes.bool,
+  dateFormat: PropTypes.object
 };

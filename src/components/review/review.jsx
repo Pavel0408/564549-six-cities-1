@@ -1,12 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import {reviewPropTypes} from "../../prop-types/review-prop-type";
 
 export const Review = (props) => {
-  const {comment} = props;
-  const dateFormat = new Intl.DateTimeFormat(`en-US`, {
-    month: `long`,
-    year: `numeric`
-  });
+  const {comment, dateFormat} = props;
+
   return <React.Fragment>
     <li className="reviews__item">
       <div className="reviews__user user">
@@ -34,5 +33,7 @@ export const Review = (props) => {
 };
 
 Review.propTypes = {
-  comment: reviewPropTypes
+  comment: reviewPropTypes,
+  dateFormat: PropTypes.object
 };
+

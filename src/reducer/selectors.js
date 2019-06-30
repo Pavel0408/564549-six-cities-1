@@ -1,6 +1,7 @@
 import {createSelector} from "reselect";
 
 import {NameSpace} from "./name-space";
+import {getDistanceFromCoords} from "../utils";
 
 export const getOffers = (state) => {
   return state[NameSpace.FETCH_OFFERS].offers;
@@ -34,16 +35,38 @@ export const getActiveOffers = createSelector([getOffers, getCityName], (offers,
   return offers.filter((offer) => offer.city === cityName);
 });
 
+export const getActiveOffer = (state) => {
+  return state[NameSpace.DATA].activeOffer;
+};
+
+export const getNearestOffers = createSelector([getOffers, getActiveOffer],
+    (offers, activeOffer) => {
+      if (!activeOffer) {
+        return [];
+      }
+      return offers.filter((offersItem) => offersItem !== activeOffer)
+    .sort((a, b) => {
+      return getDistanceFromCoords({
+        coordinateFirst: a.coordinates,
+        coordinateSecond: activeOffer.coordinates})
+        - getDistanceFromCoords({
+          coordinateFirst: b.coordinates,
+          coordinateSecond: activeOffer.coordinates});
+    }).slice(0, 3);
+    });
+
+export const getOffersOnMap = createSelector([getNearestOffers, getActiveOffer], (offers, activeOffer) => {
+  const offersOnMap = offers.slice();
+  offersOnMap.push(activeOffer);
+  return offersOnMap;
+});
+
 export const getIsAuthorizationRequired = (state) => {
   return state[NameSpace.AUTHORIZATION].isAuthorizationRequired;
 };
 
 export const getUser = (state) => {
   return state[NameSpace.AUTHORIZATION].user;
-};
-
-export const getActiveOffer = (state) => {
-  return state[NameSpace.DATA].activeOffer;
 };
 
 export const getReviews = (state) => {
@@ -76,6 +99,15 @@ export const getFavoriteIsLoading = (state) => {
 
 export const getFavoriteLoadingError = (state) => {
   return state[NameSpace.FAVORITE].error;
+};
+
+export const getDateFormat = () => {
+  const dateFormat = new Intl.DateTimeFormat(`en-US`, {
+    month: `long`,
+    year: `numeric`
+  });
+
+  return dateFormat;
 };
 
 

@@ -47,6 +47,10 @@ App.propTypes = {
   onChangeSort: PropTypes.func,
   onChangeActivePinOffer: PropTypes.func,
   onChangeFavorite: PropTypes.func,
-  onFetchFavorite: PropTypes.func
+  onFetchFavorite: PropTypes.func,
+  favoriteCityNames: PropTypes.arrayOf(PropTypes.string),
+  nearestOffers: PropTypes.arrayOf(offerPropTypes),
+  offersOnMap: PropTypes.arrayOf(offerPropTypes),
+  dateFormat: PropTypes.object
 };
 

@@ -6,7 +6,6 @@ import {ReviewsList} from "../reviews-list/reviews-list";
 import {OffersList} from "../offers-list/offers-list";
 import {WithLeafletMap} from "../../hocs/with-leaflet-map";
 import {OffersMap} from "../offers-map/offers-map";
-import {getDistanceFromCoords} from "../../utils";
 import {UserElementSwitch} from "../../hocs/user-element-switch";
 import {offerPropTypes} from "../../prop-types/offer-prop-types";
 import {userPropTypes} from "../../prop-types/user-prop-types";
@@ -16,15 +15,9 @@ export class OfferDetails extends PureComponent {
   constructor(props) {
     super(props);
 
+    props.onFetchReviews(props.activeOffer.id);
     props.onChangeBookmarkIsActive(props.activeOffer.isFavorite);
     this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
-  }
-
-  getDistanceFromActiveOffer(offer) {
-    return getDistanceFromCoords({
-      coordinateFirst: this.props.activeOffer.coordinates,
-      coordinateSecond: offer.coordinates
-    });
   }
 
   handleFavoriteClick(evt) {
@@ -41,13 +34,8 @@ export class OfferDetails extends PureComponent {
 
   render() {
     const offer = this.props.activeOffer;
-    const offers = this.props.offers.filter((offersItem) => offersItem !== offer)
-      .sort((a, b) => {
-        return this.getDistanceFromActiveOffer(a) - this.getDistanceFromActiveOffer(b);
-      }).slice(0, 3);
-    const offersOnMap = offers.slice();
-    offersOnMap.push(offer);
-    const {user, bookmarkIsActive} = this.props;
+    const offers = this.props.nearestOffers;
+    const {user, bookmarkIsActive, offersOnMap} = this.props;
 
     return <React.Fragment>
       <div>
@@ -154,7 +142,8 @@ export class OfferDetails extends PureComponent {
                     </p>
                   </div>
                 </div>
-                <ReviewsList {...this.props}/>
+                <ReviewsList {...this.props}
+                />
               </div>
             </div>
             <section className="property__map map" style={{backgroundImage: `none`}}>
@@ -195,7 +184,9 @@ OfferDetails.propTypes = {
   onFetchReviews: PropTypes.func,
   onChangeFavorite: PropTypes.func,
   onChangeBookmarkIsActive: PropTypes.func,
-  bookmarkIsActive: PropTypes.bool
+  bookmarkIsActive: PropTypes.bool,
+  nearestOffers: PropTypes.arrayOf(offerPropTypes),
+  offersOnMap: PropTypes.arrayOf(offerPropTypes)
 };
 
 export const OfferDetailsWithActiveItem = (props) => {

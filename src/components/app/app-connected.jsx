@@ -7,14 +7,14 @@ import {
   getActiveOffers,
   getActivePinOffer,
   getCities,
-  getCityName, getFavoriteCityNames,
+  getCityName, getDateFormat, getFavoriteCityNames,
   getFavoriteIsLoading,
   getFavoriteLoadingError,
   getFavoriteOffers,
   getIsAuthorizationRequired,
-  getIsSending,
+  getIsSending, getNearestOffers,
   getOffersIsLoading,
-  getOffersLoadError,
+  getOffersLoadError, getOffersOnMap,
   getReviews,
   getReviewsError,
   getSendingError,
@@ -55,7 +55,10 @@ const mapStateToProps = (state) => {
     favoriteIsLoading: getFavoriteIsLoading(state),
     favoriteLoadingError: getFavoriteLoadingError(state),
     favoriteOffers: getFavoriteOffers(state),
-    favoriteCityNames: getFavoriteCityNames(state)
+    favoriteCityNames: getFavoriteCityNames(state),
+    nearestOffers: getNearestOffers(state),
+    offersOnMap: getOffersOnMap(state),
+    dateFormat: getDateFormat()
   };
 };
 
