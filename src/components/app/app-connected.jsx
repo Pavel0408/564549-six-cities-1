@@ -7,7 +7,7 @@ import {
   getActiveOffers,
   getActivePinOffer,
   getCities,
-  getCityName,
+  getCityName, getFavoriteCityNames,
   getFavoriteIsLoading,
   getFavoriteLoadingError,
   getFavoriteOffers,
@@ -54,7 +54,8 @@ const mapStateToProps = (state) => {
     isSending: getIsSending(state),
     favoriteIsLoading: getFavoriteIsLoading(state),
     favoriteLoadingError: getFavoriteLoadingError(state),
-    favoriteOffers: getFavoriteOffers(state)
+    favoriteOffers: getFavoriteOffers(state),
+    favoriteCityNames: getFavoriteCityNames(state)
   };
 };
 

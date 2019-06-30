@@ -22,6 +22,13 @@ export const getCities = createSelector([getOffers],
     (offers) => {
       return [...new Set(offers.map((offer) => offer.city))];
     });
+export const getFavoriteOffers = (state) => {
+  return state[NameSpace.FAVORITE].favoriteOffers;
+};
+
+export const getFavoriteCityNames = createSelector([getFavoriteOffers], (offers) => {
+  return [...new Set(offers.map((offer) => offer.city))];
+});
 
 export const getActiveOffers = createSelector([getOffers, getCityName], (offers, cityName) => {
   return offers.filter((offer) => offer.city === cityName);
@@ -63,10 +70,6 @@ export const getIsSending = (state) => {
   return state[NameSpace.REVIEWS].isSending;
 };
 
-export const getIsNeedAuthorization = (state) => {
-  return state[NameSpace.AUTHORIZATION].isNeedAuthorization;
-};
-
 export const getFavoriteIsLoading = (state) => {
   return state[NameSpace.FAVORITE].isLoading;
 };
@@ -75,6 +78,4 @@ export const getFavoriteLoadingError = (state) => {
   return state[NameSpace.FAVORITE].error;
 };
 
-export const getFavoriteOffers = (state) => {
-  return state[NameSpace.FAVORITE].favoriteOffers;
-};
+
