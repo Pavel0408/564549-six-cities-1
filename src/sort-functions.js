@@ -1,28 +1,28 @@
 export const SortName = {
-  popular: `popular`,
-  priceLow: `priceLow`,
-  priceHigh: `priceHigh`,
-  topRated: `topRated`
+  POPULAR: `popular`,
+  PRICE_LOW: `priceLow`,
+  PRICE_HIGH: `priceHigh`,
+  TOP_RATED: `topRated`
 };
 
 export const SortText = {
-  popular: `Popular`,
-  priceLow: `Price: low to high`,
-  priceHigh: `Price: high to low`,
-  topRated: `Top rated first`
+  [SortName.POPULAR]: `Popular`,
+  [SortName.PRICE_LOW]: `Price: low to high`,
+  [SortName.PRICE_HIGH]: `Price: high to low`,
+  [SortName.TOP_RATED]: `Top rated first`
 };
 
 export const SortFunctions = {
-  [SortName.topRated]: (offerFirst, offerSecond) => {
+  [SortName.TOP_RATED]: (offerFirst, offerSecond) => {
     return offerSecond.rating - offerFirst.rating;
   },
-  [SortName.priceHigh]: (offerFirst, offerSecond) => {
+  [SortName.PRICE_HIGH]: (offerFirst, offerSecond) => {
     return offerSecond.price - offerFirst.price;
   },
-  [SortName.priceLow]: (offerFirst, offerSecond) => {
+  [SortName.PRICE_LOW]: (offerFirst, offerSecond) => {
     return offerFirst.price - offerSecond.price;
   },
-  [SortName.popular]: (offerFirst, offerSecond) => {
+  [SortName.POPULAR]: (offerFirst, offerSecond) => {
     return offerFirst.id - offerSecond.id;
   }
 };

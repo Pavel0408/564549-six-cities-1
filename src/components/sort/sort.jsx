@@ -23,10 +23,6 @@ export class Sort extends PureComponent {
     };
   }
 
-  changeSortPopular() {
-    return this.props.changeSort(SortName.popular);
-  }
-
   render() {
     const {listOpen} = this.props;
     return <form className="places__sorting" action="#" method="get">
@@ -45,22 +41,22 @@ export class Sort extends PureComponent {
         <li
           className="places__option places__option--active"
           tabIndex="0"
-          onClick={this.generateChangeSort(SortName.popular)}
+          onClick={this.generateChangeSort(SortName.POPULAR)}
         >
           Popular
         </li>
         <li className="places__option" tabIndex="0"
-          onClick={this.generateChangeSort(SortName.priceLow)}
+          onClick={this.generateChangeSort(SortName.PRICE_LOW)}
         >
           Price: low to high
         </li>
         <li className="places__option" tabIndex="0"
-          onClick={this.generateChangeSort(SortName.priceHigh)}
+          onClick={this.generateChangeSort(SortName.PRICE_HIGH)}
         >
           Price: high to low
         </li>
         <li className="places__option" tabIndex="0"
-          onClick={this.generateChangeSort(SortName.topRated)}
+          onClick={this.generateChangeSort(SortName.TOP_RATED)}
         >
           Top rated first
         </li>

@@ -6,7 +6,7 @@ const cityName = `Amsterdam`;
 const initialState = {
   cityName,
   activeOffer: null,
-  sort: SortName.popular,
+  sort: SortName.POPULAR,
   activePinOffer: null
 };
 
