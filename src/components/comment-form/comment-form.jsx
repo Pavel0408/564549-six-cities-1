@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import {RatingName} from "../../constants/rating-names";
 import PropTypes from "prop-types";
+
 import {offerPropTypes} from "../../prop-types/offer-prop-types";
 import {reviewPropTypes} from "../../prop-types/review-prop-type";
 import {WithActiveItem} from "../../hocs/with-active-item";
@@ -31,7 +32,10 @@ export class CommentForm extends PureComponent {
     this.ratingIschecked = true;
   }
   changeTextAreaIsCompleted(evt) {
-    if (evt.target.value.length > 50 && evt.target.value.length < 300) {
+    const minCommentLength = 50;
+    const maxCommentLength = 300;
+    if (evt.target.value.length > minCommentLength
+      && evt.target.value.length < maxCommentLength) {
       this.textAreaIsCompleted = true;
     } else {
       this.textAreaIsCompleted = false;
@@ -48,13 +52,14 @@ export class CommentForm extends PureComponent {
 
   render() {
     const {onSendReview, sendingError, activeOffer, isSending, formIsValid} = this.props;
+    const maxRating = 5;
 
     return <form className="reviews__form form" action="#" method="post" onSubmit={onSendReview} ref={this.formRef}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       {sendingError && <h3>Review is not sent to the server. Error: {sendingError.message}</h3>}
       <div className="reviews__rating-form form__rating">
-        {new Array(5).fill(``).map((it, i) =>{
-          const index = 5 - i;
+        {new Array(maxRating).fill(``).map((it, i) =>{
+          const index = maxRating - i;
           return <React.Fragment key={`${activeOffer.id}${i}`}>
             <input className="form__rating-input visually-hidden" name="rating" defaultValue={index} id={`${index}-stars`} type="radio" onChange={this.handleChangeRating}/>
             <label htmlFor={`${index}-stars`} className="reviews__rating-label form__rating-label" title={RatingName[index]} onClick={this.handleChangeRating}>
