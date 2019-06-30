@@ -23,6 +23,8 @@ export class CommentForm extends PureComponent {
     const {changeFormIsValid} = this.props;
     if (this.ratingIschecked && this.textAreaIsCompleted) {
       changeFormIsValid(true);
+    } else {
+      changeFormIsValid(false);
     }
   }
   changeRatingChecked() {
@@ -31,6 +33,8 @@ export class CommentForm extends PureComponent {
   changeTextAreaIsCompleted(evt) {
     if (evt.target.value.length > 50 && evt.target.value.length < 300) {
       this.textAreaIsCompleted = true;
+    } else {
+      this.textAreaIsCompleted = false;
     }
   }
   changeRatingHandle() {
@@ -53,7 +57,7 @@ export class CommentForm extends PureComponent {
           const index = 5 - i;
           return <React.Fragment key={`${activeOffer.id}${i}`}>
             <input className="form__rating-input visually-hidden" name="rating" defaultValue={index} id={`${index}-stars`} type="radio" onChange={this.changeRatingHandle} />
-            <label htmlFor={`${index}-stars`} className="reviews__rating-label form__rating-label" title={RatingName[index]}>
+            <label htmlFor={`${index}-stars`} className="reviews__rating-label form__rating-label" title={RatingName[index]} onClick={this.changeRatingHandle}>
               <svg className="form__star-image" width={37} height={33}>
                 <use xlinkHref="#icon-star" />
               </svg>
