@@ -5,7 +5,7 @@ import {BrowserRouter} from "react-router-dom";
 import {FavoriteEmpty} from "./favorite-empty";
 
 const user = null;
-const fetchFavorite = () => {};
+const onFetchFavorite = () => {};
 
 describe(`testing FavoriteEmpty render`, () => {
   it(`Favorite Empty is render correctly`, () => {
@@ -13,7 +13,7 @@ describe(`testing FavoriteEmpty render`, () => {
         <BrowserRouter>
           <FavoriteEmpty
             user={user}
-            fetchFavorite={fetchFavorite}
+            onFetchFavorite={onFetchFavorite}
           />
         </BrowserRouter>).toJSON();
 

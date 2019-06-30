@@ -14,10 +14,10 @@ const offerMock = {
   id: 0
 };
 
-const titleOnClick = () => {
+const onChangeActiveOffer = () => {
 };
 
-const imgOnClick = () => {
+const onChangeActivePinOffer = () => {
 };
 
 describe(`testing OfferCard render`, () => {
@@ -26,8 +26,8 @@ describe(`testing OfferCard render`, () => {
         <BrowserRouter>
           <OfferCard
             offer={offerMock}
-            titleOnClick={titleOnClick}
-            imgOnClick={imgOnClick}
+            onChangeActiveOffer={onChangeActiveOffer}
+            onChangeActivePinOffer={onChangeActivePinOffer}
           />
         </BrowserRouter>).toJSON();
 

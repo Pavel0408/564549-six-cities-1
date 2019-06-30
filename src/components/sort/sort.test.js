@@ -4,9 +4,9 @@ import renderer from 'react-test-renderer';
 import {Sort} from "./sort";
 import {SortName} from "../../sort-functions";
 
-const sort = SortName.popular;
-const changeSort = () => {};
-const changeListOpen = () => {};
+const sort = SortName.POPULAR;
+const onChangeSort = () => {};
+const onChangeListOpen = () => {};
 
 describe(`testing Sort render`, () => {
   it(`Sort is render correctly`, () => {
@@ -14,8 +14,8 @@ describe(`testing Sort render`, () => {
 
         <Sort
           sort={sort}
-          changeSort={changeSort}
-          changeListOpen={changeListOpen}
+          onChangeSort={onChangeSort}
+          onChangeListOpen={onChangeListOpen}
         />).toJSON();
 
     expect(tree).toMatchSnapshot();

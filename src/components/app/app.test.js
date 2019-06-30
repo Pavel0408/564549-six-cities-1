@@ -30,9 +30,6 @@ const offersMock = [
 
 const cityName = `Amsterdam`;
 
-const cityClickHandler = () => {
-};
-
 const cities = [
   `Paris`,
   `Brussels`,
@@ -61,9 +58,8 @@ describe(`testing App render`, () => {
             offers={offersMock}
             cityName={cityName}
             cities={cities}
-            cityClickHandler={cityClickHandler}
-            loadOffers={loadOffers}
-            isAuthorized={isAuthorized}
+            onLoadOffers={loadOffers}
+            onIsAuthorized={isAuthorized}
             screenSwitch={screenSwitch}
             onCityClick={onCityClick}
           />

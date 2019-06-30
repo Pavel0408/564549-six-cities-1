@@ -58,10 +58,10 @@ describe(`testing OfferDetails render`, () => {
             isAuthorizationRequired={false}
             user={null}
             offers={offerMock}
-            fetchReviews={fetchReviews}
+            onFetchReviews={fetchReviews}
             cityName={`Amsterdam`}
             reviews={[]}
-            changeBookmarkIsActive={changeBookmarkIsActive}
+            onChangeBookmarkIsActive={changeBookmarkIsActive}
           />
         </BrowserRouter>
     ).toJSON();

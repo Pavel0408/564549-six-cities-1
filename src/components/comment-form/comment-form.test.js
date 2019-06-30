@@ -37,7 +37,7 @@ describe(`testing CommentForm render`, () => {
           <CommentForm
             reviews={mockComments}
             activeOffer={offersMock}
-            changeFormIsValid={changeFormIsValid}
+            onChangeFormIsValid={changeFormIsValid}
           />
         </BrowserRouter>).toJSON();
 

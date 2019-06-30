@@ -9,10 +9,10 @@ configure({adapter: new Adapter()});
 
 describe(`testing SignIn work`, () => {
   it(`submit is call callback`, () => {
-    const authorize = jest.fn();
+    const onAuthorize = jest.fn();
     const signIn = mount(<BrowserRouter>
       <SignIn
-        authorize={authorize}
+        onAuthorize={onAuthorize}
       />
     </BrowserRouter>);
 
@@ -28,6 +28,6 @@ describe(`testing SignIn work`, () => {
       ],
     });
 
-    expect(authorize).toHaveBeenCalledTimes(1);
+    expect(onAuthorize).toHaveBeenCalledTimes(1);
   });
 });

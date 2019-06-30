@@ -45,7 +45,7 @@ describe(`testing Favorite render`, () => {
           <Favorite
             favoriteOffers={offersMock}
             user={user}
-            fetchFavorite={fetchFavorite}
+            onFetchFavorite={fetchFavorite}
           />
         </BrowserRouter>).toJSON();
 

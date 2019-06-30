@@ -18,44 +18,44 @@ const offerMock = {
 
 describe(`testing the OfferCard work`, () => {
   it(`click on image return offers element`, () => {
-    const titleOnClick = () => {};
-    const imgOnClick = jest.fn();
-    const fetchReviews = () => {};
+    const onChangeActiveOffer = () => {};
+    const onChangeActivePinOffer = jest.fn();
+    const onFetchReviews = () => {};
     const card = mount(
         <BrowserRouter>
           <OfferCard
-            changeActivePinOffer={imgOnClick}
-            titleOnClick={titleOnClick}
+            onChangeActivePinOffer={onChangeActivePinOffer}
+            onChangeActiveOffer={onChangeActiveOffer}
             offer={offerMock}
-            fetchReviews={fetchReviews}
+            onFetchReviews={onFetchReviews}
           />
         </BrowserRouter>);
 
     const image = card.find(`img`);
     image.simulate(`click`);
 
-    expect(imgOnClick).toHaveBeenCalledTimes(1);
-    expect(imgOnClick).toHaveBeenCalledWith(offerMock);
+    expect(onChangeActivePinOffer).toHaveBeenCalledTimes(1);
+    expect(onChangeActivePinOffer).toHaveBeenCalledWith(offerMock);
   });
 
   it(`click on title return offers element`, () => {
-    const titleOnClick = jest.fn();
-    const imgOnClick = () => {};
-    const fetchReviews = () => {};
+    const onChangeActiveOffer = jest.fn();
+    const onChangeActivePinOffer = () => {};
+    const onFetchReviews = () => {};
     const card = mount(
         <BrowserRouter>
           <OfferCard
-            changeActivePinOffer={imgOnClick}
-            titleOnClick={titleOnClick}
+            onChangeActivePinOffer={onChangeActivePinOffer}
+            onChangeActiveOffer={onChangeActiveOffer}
             offer={offerMock}
-            fetchReviews={fetchReviews}
+            onFetchReviews={onFetchReviews}
           />
         </BrowserRouter>);
 
     const title = card.find(`.place-card__name a`);
     title.simulate(`click`);
 
-    expect(titleOnClick).toHaveBeenCalledTimes(1);
-    expect(titleOnClick).toHaveBeenCalledWith(offerMock);
+    expect(onChangeActiveOffer).toHaveBeenCalledTimes(1);
+    expect(onChangeActiveOffer).toHaveBeenCalledWith(offerMock);
   });
 });
