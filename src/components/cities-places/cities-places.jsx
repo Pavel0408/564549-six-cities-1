@@ -8,7 +8,7 @@ import {OffersMap} from "../offers-map/offers-map";
 import {offerPropTypes} from "../../prop-types/offer-prop-types";
 
 export const CitiesPlaces = (props) => {
-  const {offers, cityName, changeSort, sort, isLoading, error, changeActiveOffer, changeActivePinOffer, fetchReviews, activePinOffer, changeFavorite} = props;
+  const {offers, cityName, onChangeSort, sort, isLoading, error, onChangeActiveOffer, onChangeActivePinOffer, onFetchReviews, activePinOffer, onChangeFavorite} = props;
   return <React.Fragment>
     <div className="cities__places-container container">
       <section className="cities__places places">
@@ -17,18 +17,18 @@ export const CitiesPlaces = (props) => {
           {offers.length} places to stay in {cityName}
         </b>
         <SortWithActiveItem
-          changeSort={changeSort}
+          onChangeSort={onChangeSort}
           sort={sort}
         />
         <div className="cities__places-list places__list tabs__content" style={{overflow: `auto`, height: `calc(100vh - 350px)`}}>
           {isLoading && <h3>Offers is loading</h3>}
           {error && <h3>Download failed {error.message}</h3>}
           <OffersList offers={offers}
-            changeActiveOffer={changeActiveOffer}
+            onChangeActiveOffer={onChangeActiveOffer}
             sort={sort}
-            changeActivePinOffer={changeActivePinOffer}
-            fetchReviews={fetchReviews}
-            changeFavorite={changeFavorite}
+            onChangeActivePinOffer={onChangeActivePinOffer}
+            onFetchReviews={onFetchReviews}
+            onChangeFavorite={onChangeFavorite}
           />
         </div>
       </section>
@@ -45,13 +45,13 @@ export const CitiesPlaces = (props) => {
 CitiesPlaces.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   cityName: PropTypes.string,
-  changeSort: PropTypes.func,
+  onChangeSort: PropTypes.func,
   sort: PropTypes.string,
   isLoading: PropTypes.bool,
   error: PropTypes.object,
-  changeActiveOffer: PropTypes.func,
-  changeActivePinOffer: PropTypes.func,
-  fetchReviews: PropTypes.func,
+  onChangeActiveOffer: PropTypes.func,
+  onChangeActivePinOffer: PropTypes.func,
+  onFetchReviews: PropTypes.func,
   activePinOffer: offerPropTypes,
-  changeFavorite: PropTypes.func
+  onChangeFavorite: PropTypes.func
 };

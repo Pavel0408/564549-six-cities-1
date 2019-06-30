@@ -8,32 +8,32 @@ export class OfferCard extends PureComponent {
   constructor(props) {
     super(props);
 
-    const {offer, changeActivePinOffer, titleOnClick} = props;
+    const {offer} = props;
     this._offer = offer;
     this.titleClickHandle = this.titleClickHandle.bind(this);
     this.imgClickHandle = this.imgClickHandle.bind(this);
-    this.changeActivePinOffer = changeActivePinOffer;
-    this.titleOnClick = titleOnClick;
     this.favoriteClickHandle = this.favoriteClickHandle.bind(this);
     this.favoriteRef = React.createRef();
   }
 
   titleClickHandle() {
-    this.titleOnClick(this._offer);
-    this.changeActivePinOffer(this._offer);
-    this.props.fetchReviews(this._offer.id);
+    const {onChangeActiveOffer, onChangeActivePinOffer, onFetchReviews} = this.props;
+    onChangeActiveOffer(this._offer);
+    onChangeActivePinOffer(this._offer);
+    onFetchReviews(this._offer.id);
   }
 
   imgClickHandle(evt) {
+    const {onChangeActivePinOffer} = this.props;
     evt.preventDefault();
-    this.changeActivePinOffer(this._offer);
+    onChangeActivePinOffer(this._offer);
   }
 
   favoriteClickHandle(evt) {
     evt.preventDefault();
-    const {changeFavorite} = this.props;
+    const {onChangeFavorite} = this.props;
     const status = (this._offer.isFavorite) ? 0 : 1;
-    changeFavorite({
+    onChangeFavorite({
       id: this._offer.id,
       status
     });
@@ -98,8 +98,8 @@ export class OfferCard extends PureComponent {
 
 OfferCard.propTypes = {
   offer: offerPropTypes,
-  changeActivePinOffer: PropTypes.func,
-  titleOnClick: PropTypes.func,
-  fetchReviews: PropTypes.func,
-  changeFavorite: PropTypes.func
+  onChangeActivePinOffer: PropTypes.func,
+  onFetchReviews: PropTypes.func,
+  onChangeFavorite: PropTypes.func,
+  onChangeActiveOffer: PropTypes.func
 };

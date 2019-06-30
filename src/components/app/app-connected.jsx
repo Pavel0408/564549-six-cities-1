@@ -63,13 +63,13 @@ const mapDispatchToProps = (dispatch) => {
     onCityClick: (changedCity) => {
       dispatch(changeActiveCity(changedCity));
     },
-    loadOffers: () => {
+    onLoadOffers: () => {
       dispatch(loadOffers());
     },
-    isAuthorized: () => {
+    onIsAuthorized: () => {
       dispatch(isAuthorized());
     },
-    authorize: (evt) => {
+    onAuthorize: (evt) => {
       evt.preventDefault();
       const authorizationFormData = new FormData(evt.target);
       const email = authorizationFormData.get(`email`);
@@ -79,7 +79,7 @@ const mapDispatchToProps = (dispatch) => {
         password
       }));
     },
-    sendReview: (evt) => {
+    onSendReview: (evt) => {
       evt.preventDefault();
       const sendReviewsFormData = new FormData(evt.target);
       const id = sendReviewsFormData.get(`activeOfferId`);
@@ -91,24 +91,24 @@ const mapDispatchToProps = (dispatch) => {
         comment
       }));
     },
-    changeActiveOffer: (offer) => {
+    onChangeActiveOffer: (offer) => {
       dispatch(setActiveOffer(offer));
     },
-    fetchReviews: (id) => {
+    onFetchReviews: (id) => {
       dispatch(fetchReviews(id));
     },
-    changeSort: (sort) => {
+    onChangeSort: (sort) => {
       dispatch(changeSort(sort));
     },
-    changeActivePinOffer: (offer) => {
+    onChangeActivePinOffer: (offer) => {
       dispatch(changeActivePinOffer(offer));
     },
-    changeFavorite: (favoriteItem) => {
+    onChangeFavorite: (favoriteItem) => {
       dispatch(changeFavorite(favoriteItem))
         .then(dispatch(updateOffers())
           .then(dispatch(getFavorite())));
     },
-    fetchFavorite: () => {
+    onFetchFavorite: () => {
       dispatch(getFavorite());
     }
   };

@@ -17,7 +17,7 @@ export class FavoriteCity extends PureComponent {
   }
 
   render() {
-    const {favoriteCityName, favoriteOffers, titleOnClick, fetchReviews, changeFavorite} = this.props;
+    const {favoriteCityName, favoriteOffers, onChangeActiveOffer, onFetchReviews, onChangeFavorite} = this.props;
 
     return <React.Fragment>.
       <li className="favorites__locations-items">
@@ -33,9 +33,9 @@ export class FavoriteCity extends PureComponent {
             return <FavoriteCard
               offer={offer}
               key={`${offer.id}${i}`}
-              titleOnClick={titleOnClick}
-              fetchReviews={fetchReviews}
-              changeFavorite={changeFavorite}
+              onChangeActiveOffer={onChangeActiveOffer}
+              onFetchReviews={onFetchReviews}
+              onChangeFavorite={onChangeFavorite}
             />;
           })}
         </div>
@@ -48,9 +48,9 @@ FavoriteCity.propTypes = {
   onCityClick: PropTypes.func,
   favoriteCityName: PropTypes.string,
   favoriteOffers: PropTypes.arrayOf(offerPropTypes),
-  titleOnClick: PropTypes.func,
-  fetchReviews: PropTypes.func,
-  changeFavorite: PropTypes.func
+  onChangeActiveOffer: PropTypes.func,
+  onFetchReviews: PropTypes.func,
+  onChangeFavorite: PropTypes.func
 };
 
 

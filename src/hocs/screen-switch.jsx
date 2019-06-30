@@ -42,14 +42,14 @@ export const ScreenSwitch = (props) => {
         if (props.activeOffer) {
           return <OfferDetailsWithActiveItem {...props}/>;
         } else {
-          const {offers, changeActiveOffer, changeActivePinOffer} = props;
+          const {offers, onChangeActiveOffer, onChangeActivePinOffer} = props;
           const id = routeProps.match.params.id;
           const activeOffer = offers.find((offer) => {
             return parseInt(offer.id, 10) === parseInt(id, 10);
           });
           if (activeOffer) {
-            changeActiveOffer(activeOffer);
-            changeActivePinOffer(activeOffer);
+            onChangeActiveOffer(activeOffer);
+            onChangeActivePinOffer(activeOffer);
           }
         }
         return <MainScreen
@@ -58,7 +58,7 @@ export const ScreenSwitch = (props) => {
       }}
       />
       <Route path="/favorites" exact render={() => {
-        const {fetchFavorite, user, favoriteOffers} = props;
+        const {onFetchFavorite, user, favoriteOffers} = props;
         if (user) {
           if (favoriteOffers && favoriteOffers.length > 0) {
             return <Favorite
@@ -66,7 +66,7 @@ export const ScreenSwitch = (props) => {
             />;
           } else {
             return <FavoriteEmpty
-              fetchFavorite={fetchFavorite}
+              onFetchFavorite={onFetchFavorite}
               user={user}
             />;
           }
@@ -85,9 +85,9 @@ ScreenSwitch.propTypes = {
   isAuthorizationRequired: PropTypes.bool,
   activeOffer: PropTypes.offerPropTypes,
   user: userPropTypes,
-  fetchFavorite: PropTypes.func,
+  onFetchFavorite: PropTypes.func,
   favoriteOffers: PropTypes.arrayOf(offerPropTypes),
   offers: PropTypes.arrayOf(offerPropTypes),
-  changeActiveOffer: PropTypes.func,
-  changeActivePinOffer: PropTypes.func
+  onChangeActiveOffer: PropTypes.func,
+  onChangeActivePinOffer: PropTypes.func
 };

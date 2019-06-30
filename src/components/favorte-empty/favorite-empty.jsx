@@ -9,7 +9,7 @@ export class FavoriteEmpty extends PureComponent {
   constructor(props) {
     super(props);
 
-    props.fetchFavorite();
+    props.onFetchFavorite();
   }
 
   render() {
@@ -57,6 +57,6 @@ export class FavoriteEmpty extends PureComponent {
 }
 
 FavoriteEmpty.propTypes = {
-  fetchFavorite: PropTypes.func,
+  onFetchFavorite: PropTypes.func,
   user: userPropTypes
 };

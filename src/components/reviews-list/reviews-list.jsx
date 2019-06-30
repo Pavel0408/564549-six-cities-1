@@ -7,7 +7,7 @@ import {reviewPropTypes} from "../../prop-types/review-prop-type";
 import {userPropTypes} from "../../prop-types/user-prop-types";
 
 export const ReviewsList = (props) => {
-  const {reviewsError, reviews, user, sendReview, sendingError, isSending, activeOffer} = props;
+  const {reviewsError, reviews, user, onSendReview, sendingError, isSending, activeOffer} = props;
   if (reviewsError && reviewsError.message) {
     return <h2>{reviewsError.message}</h2>;
   }
@@ -25,7 +25,7 @@ export const ReviewsList = (props) => {
     {user && <CommentFormWithActiveItem
       activeOffer={activeOffer}
       sendingError={sendingError}
-      sendReview={sendReview}
+      onSendReview={onSendReview}
       reviews={reviews}
       isSending={isSending}/>}
   </section>;
@@ -35,10 +35,10 @@ ReviewsList.propTypes = {
   activeOffer: offerPropTypes,
   reviewsError: PropTypes.object,
   reviews: PropTypes.arrayOf(reviewPropTypes),
-  fetchReviews: PropTypes.func,
+  onFetchReviews: PropTypes.func,
   isAuthorizationRequired: PropTypes.bool,
   user: userPropTypes,
-  sendReview: PropTypes.func,
+  onSendReview: PropTypes.func,
   sendingError: PropTypes.object,
   isSending: PropTypes.bool
 };

@@ -9,17 +9,17 @@ export class Sort extends PureComponent {
     super(props);
 
     this.togglelList = this.togglelList.bind(this);
-    props.changeListOpen(false);
+    props.onChangeListOpen(false);
   }
 
   togglelList() {
-    const {changeListOpen, listOpen} = this.props;
-    changeListOpen(!listOpen);
+    const {onChangeListOpen, listOpen} = this.props;
+    onChangeListOpen(!listOpen);
   }
 
   generateChangeSort(sort) {
     return () => {
-      return this.props.changeSort(sort);
+      return this.props.onChangeSort(sort);
     };
   }
 
@@ -66,9 +66,9 @@ export class Sort extends PureComponent {
 }
 
 Sort.propTypes = {
-  changeSort: PropTypes.func,
+  onChangeSort: PropTypes.func,
   sort: PropTypes.string,
-  changeListOpen: PropTypes.func,
+  onChangeListOpen: PropTypes.func,
   listOpen: PropTypes.bool
 };
 
@@ -78,7 +78,7 @@ export const SortWithActiveItem = (props) => {
 
     return <Sort {...props}
       listOpen={activeItem}
-      changeListOpen={onChange}
+      onChangeListOpen={onChange}
     />;
   }
   }

@@ -8,8 +8,8 @@ import {reviewPropTypes} from "../../prop-types/review-prop-type";
 export class App extends PureComponent {
   constructor(props) {
     super(props);
-    props.isAuthorized();
-    this.props.loadOffers();
+    props.onIsAuthorized();
+    this.props.onLoadOffers();
   }
 
   render() {
@@ -24,10 +24,10 @@ App.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string),
   isLoading: PropTypes.bool,
   error: PropTypes.object,
-  loadOffers: PropTypes.func,
-  isAuthorized: PropTypes.func,
+  onLoadOffers: PropTypes.func,
+  onIsAuthorized: PropTypes.func,
   isAuthorizationRequired: PropTypes.bool,
-  authorize: PropTypes.func,
+  onAuthorize: PropTypes.func,
   user: userPropTypes,
   signOut: PropTypes.func,
   screenSwitch: PropTypes.func,
@@ -41,12 +41,12 @@ App.propTypes = {
   favoriteIsLoading: PropTypes.bool,
   favoriteLoadingError: PropTypes.object,
   favoriteOffers: PropTypes.arrayOf(offerPropTypes),
-  sendReview: PropTypes.func,
-  changeActiveOffer: PropTypes.func,
-  fetchReviews: PropTypes.func,
-  changeSort: PropTypes.func,
-  changeActivePinOffer: PropTypes.func,
-  changeFavorite: PropTypes.func,
-  fetchFavorite: PropTypes.func
+  onSendReview: PropTypes.func,
+  onChangeActiveOffer: PropTypes.func,
+  onFetchReviews: PropTypes.func,
+  onChangeSort: PropTypes.func,
+  onChangeActivePinOffer: PropTypes.func,
+  onChangeFavorite: PropTypes.func,
+  onFetchFavorite: PropTypes.func
 };
 

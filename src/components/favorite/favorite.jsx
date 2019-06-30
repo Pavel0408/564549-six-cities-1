@@ -11,11 +11,11 @@ export class Favorite extends PureComponent {
   constructor(props) {
     super(props);
 
-    props.fetchFavorite();
+    props.onFetchFavorite();
   }
 
   render() {
-    const {favoriteOffers, onCityClick, changeActiveOffer, fetchReviews, changeFavorite, user} = this.props;
+    const {favoriteOffers, onCityClick, onChangeActiveOffer, onFetchReviews, onChangeFavorite, user} = this.props;
     const favoriteCityNames = [...new Set(favoriteOffers.map((offer) => offer.city))];
 
     return <Fragment>
@@ -69,9 +69,9 @@ export class Favorite extends PureComponent {
                     favoriteOffers={offers}
                     key={`${favoriteCityName}${i}`}
                     onCityClick={onCityClick}
-                    titleOnClick={changeActiveOffer}
-                    fetchReviews={fetchReviews}
-                    changeFavorite={changeFavorite}
+                    onChangeActiveOffer={onChangeActiveOffer}
+                    onFetchReviews={onFetchReviews}
+                    onChangeFavorite={onChangeFavorite}
                   />;
                 })
                 }
@@ -90,12 +90,12 @@ export class Favorite extends PureComponent {
 }
 
 Favorite.propTypes = {
-  fetchFavorite: PropTypes.func.isRequired,
+  onFetchFavorite: PropTypes.func.isRequired,
   favoriteOffers: PropTypes.arrayOf(offerPropTypes),
   onCityClick: PropTypes.func,
-  changeActiveOffer: PropTypes.func,
-  fetchReviews: PropTypes.func,
-  changeFavorite: PropTypes.func,
+  onChangeActiveOffer: PropTypes.func,
+  onFetchReviews: PropTypes.func,
+  onChangeFavorite: PropTypes.func,
   user: userPropTypes
 };
 

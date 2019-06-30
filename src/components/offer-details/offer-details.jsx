@@ -16,7 +16,7 @@ export class OfferDetails extends PureComponent {
   constructor(props) {
     super(props);
 
-    props.changeBookmarkIsActive(props.activeOffer.isFavorite);
+    props.onChangeBookmarkIsActive(props.activeOffer.isFavorite);
     this.favoriteClickHandle = this.favoriteClickHandle.bind(this);
   }
 
@@ -29,14 +29,14 @@ export class OfferDetails extends PureComponent {
 
   favoriteClickHandle(evt) {
     evt.preventDefault();
-    const {changeFavorite, changeBookmarkIsActive, bookmarkIsActive} = this.props;
+    const {onChangeFavorite, onChangeBookmarkIsActive, bookmarkIsActive} = this.props;
     const status = (this.props.activeOffer.isFavorite) ? 0 : 1;
-    changeFavorite({
+    onChangeFavorite({
       id: this.props.activeOffer.id,
       status
     });
 
-    changeBookmarkIsActive(!bookmarkIsActive);
+    onChangeBookmarkIsActive(!bookmarkIsActive);
   }
 
   render() {
@@ -168,10 +168,10 @@ export class OfferDetails extends PureComponent {
               <div className="near-places__list places__list">
                 <OffersList
                   offers={offers}
-                  changeActiveOffer={this.props.changeActiveOffer}
-                  changeActivePinOffer={this.props.changeActivePinOffer}
-                  fetchReviews={this.props.fetchReviews}
-                  changeFavorite={this.props.changeFavorite}
+                  onChangeActiveOffer={this.props.onChangeActiveOffer}
+                  onChangeActivePinOffer={this.props.onChangeActivePinOffer}
+                  onFetchReviews={this.props.onFetchReviews}
+                  onChangeFavorite={this.props.onChangeFavorite}
                 />
               </div>
             </section>
@@ -188,13 +188,13 @@ OfferDetails.propTypes = {
   isAuthorizationRequired: PropTypes.bool,
   user: userPropTypes,
   cityName: PropTypes.string,
-  changeActiveOffer: PropTypes.func,
+  onChangeActiveOffer: PropTypes.func,
   offers: PropTypes.arrayOf(offerPropTypes),
-  changeActivePinOffer: PropTypes.func,
+  onChangeActivePinOffer: PropTypes.func,
   activePinOffer: offerPropTypes,
-  fetchReviews: PropTypes.func,
-  changeFavorite: PropTypes.func,
-  changeBookmarkIsActive: PropTypes.func,
+  onFetchReviews: PropTypes.func,
+  onChangeFavorite: PropTypes.func,
+  onChangeBookmarkIsActive: PropTypes.func,
   bookmarkIsActive: PropTypes.bool
 };
 
@@ -204,7 +204,7 @@ export const OfferDetailsWithActiveItem = (props) => {
 
     return <OfferDetails {...props}
       bookmarkIsActive={activeItem}
-      changeBookmarkIsActive={onChange}
+      onChangeBookmarkIsActive={onChange}
     />;
   }
   }

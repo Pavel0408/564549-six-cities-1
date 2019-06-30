@@ -7,7 +7,7 @@ import {userPropTypes} from "../../prop-types/user-prop-types";
 
 
 export const SignIn = (props) => {
-  const {authorize, user} = props;
+  const {onAuthorize, user} = props;
 
   return <Fragment>
     <div>
@@ -38,7 +38,7 @@ export const SignIn = (props) => {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
-            <form className="login__form form" action="#" method="post" onSubmit={authorize}>
+            <form className="login__form form" action="#" method="post" onSubmit={onAuthorize}>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
                 <input className="login__input form__input" type="email" name="email" placeholder="Email" required />
@@ -64,6 +64,6 @@ export const SignIn = (props) => {
 };
 
 SignIn.propTypes = {
-  authorize: PropTypes.func,
+  onAuthorize: PropTypes.func,
   user: userPropTypes
 };

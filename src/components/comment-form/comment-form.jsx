@@ -12,7 +12,7 @@ export class CommentForm extends PureComponent {
     this.ratingIschecked = false;
     this.textAreaIsCompleted = false;
     this.formRef = React.createRef();
-    props.changeFormIsValid(false);
+    props.onChangeFormIsValid(false);
     this.changeRatingHandle = this.changeRatingHandle.bind(this);
     this.textareaChangeHandle = this.textareaChangeHandle.bind(this);
     this.changeRatingChecked = this.changeRatingChecked.bind(this);
@@ -20,11 +20,11 @@ export class CommentForm extends PureComponent {
   }
 
   checkForm() {
-    const {changeFormIsValid} = this.props;
+    const {onChangeFormIsValid} = this.props;
     if (this.ratingIschecked && this.textAreaIsCompleted) {
-      changeFormIsValid(true);
+      onChangeFormIsValid(true);
     } else {
-      changeFormIsValid(false);
+      onChangeFormIsValid(false);
     }
   }
   changeRatingChecked() {
@@ -47,9 +47,9 @@ export class CommentForm extends PureComponent {
   }
 
   render() {
-    const {sendReview, sendingError, activeOffer, isSending, formIsValid} = this.props;
+    const {onSendReview, sendingError, activeOffer, isSending, formIsValid} = this.props;
 
-    return <form className="reviews__form form" action="#" method="post" onSubmit={sendReview} ref={this.formRef}>
+    return <form className="reviews__form form" action="#" method="post" onSubmit={onSendReview} ref={this.formRef}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       {sendingError && <h3>Review is not sent to the server. Error: {sendingError.message}</h3>}
       <div className="reviews__rating-form form__rating">
@@ -77,10 +77,10 @@ export class CommentForm extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const {changeFormIsValid} = this.props;
+    const {onChangeFormIsValid} = this.props;
     if (this.props.activeOffer !== prevProps.activeOffer || this.props.reviews.length !== prevProps.reviews.length) {
       this.formRef.current.reset();
-      changeFormIsValid(false);
+      onChangeFormIsValid(false);
       this.ratingIschecked = false;
       this.textAreaIsCompleted = false;
     }
@@ -88,12 +88,12 @@ export class CommentForm extends PureComponent {
 }
 
 CommentForm.propTypes = {
-  sendReview: PropTypes.func,
+  onSendReview: PropTypes.func,
   sendingError: PropTypes.object,
   activeOffer: offerPropTypes,
   isSending: PropTypes.bool,
   reviews: PropTypes.arrayOf(reviewPropTypes),
-  changeFormIsValid: PropTypes.func,
+  onChangeFormIsValid: PropTypes.func,
   formIsValid: PropTypes.bool
 };
 
@@ -103,7 +103,7 @@ export const CommentFormWithActiveItem = (props) => {
 
     return <CommentForm {...props}
       formIsValid={activeItem}
-      changeFormIsValid={onChange}
+      onChangeFormIsValid={onChange}
     />;
   }
   }

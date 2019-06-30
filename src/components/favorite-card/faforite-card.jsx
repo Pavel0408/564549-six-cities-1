@@ -12,16 +12,16 @@ export class FavoriteCard extends PureComponent {
   }
 
   titleClickHandle() {
-    const {titleOnClick, fetchReviews, offer} = this.props;
-    titleOnClick(offer);
-    fetchReviews(offer.id);
+    const {onChangeActiveOffer, onFetchReviews, offer} = this.props;
+    onChangeActiveOffer(offer);
+    onFetchReviews(offer.id);
   }
 
   favoriteClickHandle(evt) {
     evt.preventDefault();
-    const {changeFavorite} = this.props;
+    const {onChangeFavorite} = this.props;
     const status = (this._offer.isFavorite) ? 0 : 1;
-    changeFavorite({
+    onChangeFavorite({
       id: this._offer.id,
       status
     });
@@ -29,8 +29,8 @@ export class FavoriteCard extends PureComponent {
 
   favoriteClickHandle(evt) {
     evt.preventDefault();
-    const {changeFavorite, offer} = this.props;
-    changeFavorite({
+    const {onChangeFavorite, offer} = this.props;
+    onChangeFavorite({
       id: offer.id,
       status: 0
     });
@@ -73,8 +73,8 @@ export class FavoriteCard extends PureComponent {
 }
 
 FavoriteCard.propTypes = {
-  titleOnClick: PropTypes.func,
-  fetchReviews: PropTypes.func,
+  onChangeActiveOffer: PropTypes.func,
+  onFetchReviews: PropTypes.func,
   offer: offerPropTypes,
-  changeFavorite: PropTypes.func
+  onChangeFavorite: PropTypes.func
 };
